@@ -27,8 +27,8 @@ const PhonesFeatured = () => (
 
       <div className="grid gap-5 lg:grid-cols-5">
         {/* Editorial banner */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-deep p-6 text-primary-foreground shadow-lift sm:p-10 lg:col-span-2 lg:row-span-1">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-primary-glow/40 blur-3xl" />
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-deep p-6 text-primary-foreground shadow-card sm:p-10 lg:col-span-2 lg:row-span-1">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-primary-glow/20 blur-3xl" />
           <div className="relative flex h-full flex-col">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur">
               Now Available
