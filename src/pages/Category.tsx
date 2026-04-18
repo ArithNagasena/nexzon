@@ -1,0 +1,861 @@
+import { useEffect, useMemo, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import {
+  ChevronRight,
+  Search,
+  SlidersHorizontal,
+  X,
+  Star,
+  Sparkles,
+  ShieldCheck,
+  Wallet,
+  Truck,
+  BadgeCheck,
+  Camera,
+  Smartphone,
+  Zap,
+  ArrowRight,
+} from "lucide-react";
+import PromoBar from "@/components/cellexa/PromoBar";
+import Header from "@/components/cellexa/Header";
+import Footer from "@/components/cellexa/Footer";
+import ProductCard, { type Product } from "@/components/cellexa/ProductCard";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Slider } from "@/components/ui/slider";
+import { Switch } from "@/components/ui/switch";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+import heroSmartphones from "@/assets/cat-hero-smartphones.jpg";
+import phone1 from "@/assets/product-phone-1.jpg";
+import phone2 from "@/assets/product-phone-2.jpg";
+import phone3 from "@/assets/product-phone-3.jpg";
+import featurePhone from "@/assets/feature-phone.jpg";
+
+/* -------------------- Catalog (smartphones) -------------------- */
+const catalog: (Product & { sub: string; storage: string; ram: string; color: string; screen: number; battery: number; fiveG: boolean })[] = [
+  { id: "p1",  name: "Apple iPhone 15 Pro Max 256GB Titanium",   brand: "Apple",   price: 489000, oldPrice: 525000, rating: 4.9, reviews: 312, image: phone1, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "8GB",  color: "Titanium", screen: 6.7, battery: 4422, fiveG: true },
+  { id: "p2",  name: "Samsung Galaxy S24 Ultra 5G 512GB",        brand: "Samsung", price: 459000, oldPrice: 489000, rating: 4.8, reviews: 248, image: phone2, badge: { label: "Hot Deal", tone: "promo" },  sub: "Flagship",  storage: "512GB", ram: "12GB", color: "Black",    screen: 6.8, battery: 5000, fiveG: true },
+  { id: "p3",  name: "Xiaomi Redmi Note 13 Pro+ 5G 256GB",        brand: "Xiaomi",  price: 119500, oldPrice: 134000, rating: 4.6, reviews: 192, image: phone3, badge: { label: "-12%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "Blue",     screen: 6.7, battery: 5000, fiveG: true },
+  { id: "p4",  name: "OnePlus 12R 5G 256GB Cool Blue",           brand: "OnePlus", price: 159000, oldPrice: 175000, rating: 4.7, reviews: 98,  image: phone3, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Blue",     screen: 6.78, battery: 5500, fiveG: true },
+  { id: "p5",  name: "Samsung Galaxy Z Flip5 5G 256GB",          brand: "Samsung", price: 329000, oldPrice: 365000, rating: 4.6, reviews: 142, image: phone2, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "8GB",  color: "Gold",     screen: 6.7, battery: 3700, fiveG: true },
+  { id: "p6",  name: "Apple iPhone 15 128GB Pink",                brand: "Apple",   price: 289000, oldPrice: 309000, rating: 4.8, reviews: 421, image: phone1,                                              sub: "Flagship",  storage: "128GB", ram: "6GB",  color: "Pink",     screen: 6.1, battery: 3349, fiveG: true },
+  { id: "p7",  name: "ASUS ROG Phone 8 Pro 512GB Gaming",         brand: "ASUS",    price: 359000,                  rating: 4.7, reviews: 76,  image: phone2, badge: { label: "Pre-Order", tone: "warning" }, sub: "Gaming",  storage: "512GB", ram: "16GB", color: "Black",    screen: 6.78, battery: 5500, fiveG: true },
+  { id: "p8",  name: "Google Pixel 8 Pro 256GB Bay Blue",         brand: "Google",  price: 269000, oldPrice: 295000, rating: 4.7, reviews: 184, image: phone1, badge: { label: "Best Camera", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Blue", screen: 6.7, battery: 5050, fiveG: true },
+  { id: "p9",  name: "Xiaomi 14 Ultra 512GB Photography Kit",     brand: "Xiaomi",  price: 339000, oldPrice: 369000, rating: 4.8, reviews: 88,  image: phone3, badge: { label: "Hot", tone: "promo" },        sub: "Flagship",  storage: "512GB", ram: "16GB", color: "Black", screen: 6.73, battery: 5300, fiveG: true },
+  { id: "p10", name: "Honor Magic 6 Pro 5G 256GB",               brand: "Honor",   price: 219000,                  rating: 4.6, reviews: 64,  image: phone2,                                              sub: "Flagship",  storage: "256GB", ram: "12GB", color: "Green",   screen: 6.8, battery: 5600, fiveG: true },
+  { id: "p11", name: "Vivo V30 Pro 5G 256GB Aurora",              brand: "Vivo",    price: 139000, oldPrice: 152000, rating: 4.5, reviews: 121, image: phone3, badge: { label: "-9%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "Blue",     screen: 6.78, battery: 5000, fiveG: true },
+  { id: "p12", name: "Oppo Reno 11 Pro 5G 256GB Pearl White",     brand: "Oppo",    price: 124000,                  rating: 4.5, reviews: 92,  image: phone3,                                              sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "White",   screen: 6.7, battery: 4600, fiveG: true },
+  { id: "p13", name: "Xiaomi Redmi 13C 128GB Midnight Black",     brand: "Xiaomi",  price: 39900, oldPrice: 45000,  rating: 4.4, reviews: 312, image: phone3, badge: { label: "Best Value", tone: "success" }, sub: "Budget", storage: "128GB", ram: "6GB",  color: "Black",    screen: 6.74, battery: 5000, fiveG: false },
+  { id: "p14", name: "Samsung Galaxy A15 5G 128GB Light Blue",    brand: "Samsung", price: 54900,                  rating: 4.5, reviews: 218, image: phone2,                                              sub: "Budget",    storage: "128GB", ram: "6GB",  color: "Blue",     screen: 6.5, battery: 5000, fiveG: true },
+  { id: "p15", name: "Samsung Galaxy Z Fold5 5G 512GB",           brand: "Samsung", price: 549000, oldPrice: 589000, rating: 4.7, reviews: 76,  image: phone2, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "512GB", ram: "12GB", color: "Black", screen: 7.6, battery: 4400, fiveG: true },
+  { id: "p16", name: "OnePlus 12 5G 256GB Silky Black",           brand: "OnePlus", price: 229000, oldPrice: 249000, rating: 4.8, reviews: 156, image: phone1, badge: { label: "Best Seller", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Black", screen: 6.82, battery: 5400, fiveG: true },
+];
+
+const subcats = ["All", "Flagship", "Mid-Range", "Budget", "Gaming", "Foldable", "5G", "New Launches"];
+const brands = ["Apple", "Samsung", "Xiaomi", "OnePlus", "Google", "ASUS", "Honor", "Vivo", "Oppo"];
+const ratings = [4, 3, 2, 1];
+const storages = ["64GB", "128GB", "256GB", "512GB", "1TB"];
+const rams = ["4GB", "6GB", "8GB", "12GB", "16GB"];
+const colors = [
+  { name: "Black", hex: "#0F172A" },
+  { name: "White", hex: "#F8FAFC" },
+  { name: "Blue", hex: "#2563EB" },
+  { name: "Titanium", hex: "#9CA3AF" },
+  { name: "Gold", hex: "#D4AF37" },
+  { name: "Green", hex: "#10B981" },
+  { name: "Pink", hex: "#F472B6" },
+];
+const cameras = ["12MP+", "48MP+", "108MP+", "200MP+"];
+
+const fmtLKR = (n: number) =>
+  "LKR " + n.toLocaleString("en-LK", { maximumFractionDigits: 0 });
+
+/* Brand quick-shop tiles */
+const brandTiles = [
+  { name: "Apple", count: 28 },
+  { name: "Samsung", count: 42 },
+  { name: "Xiaomi", count: 36 },
+  { name: "OnePlus", count: 14 },
+  { name: "Google", count: 9 },
+  { name: "ASUS", count: 7 },
+  { name: "Honor", count: 11 },
+  { name: "Vivo", count: 16 },
+  { name: "Oppo", count: 18 },
+];
+
+/* -------------------- Filter sidebar -------------------- */
+type FilterState = {
+  brands: string[];
+  price: [number, number];
+  inStock: boolean;
+  rating: number | null;
+  warranty: boolean;
+  storages: string[];
+  rams: string[];
+  colors: string[];
+  screen: [number, number];
+  battery: number;
+  cameras: string[];
+  fiveG: boolean;
+  promo: boolean;
+  preorder: boolean;
+};
+
+const defaultFilters: FilterState = {
+  brands: [],
+  price: [0, 600000],
+  inStock: false,
+  rating: null,
+  warranty: false,
+  storages: [],
+  rams: [],
+  colors: [],
+  screen: [5.5, 8],
+  battery: 0,
+  cameras: [],
+  fiveG: false,
+  promo: false,
+  preorder: false,
+};
+
+const FilterSidebar = ({
+  filters,
+  setFilters,
+}: {
+  filters: FilterState;
+  setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
+}) => {
+  const toggle = <K extends keyof FilterState>(key: K, value: string) => {
+    setFilters((f) => {
+      const arr = f[key] as unknown as string[];
+      const next = arr.includes(value) ? arr.filter((x) => x !== value) : [...arr, value];
+      return { ...f, [key]: next } as FilterState;
+    });
+  };
+
+  return (
+    <aside className="space-y-3">
+      <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
+        <div className="mb-3 flex items-center justify-between">
+          <h3 className="font-display text-base font-bold">Refine</h3>
+          <button
+            onClick={() => setFilters(defaultFilters)}
+            className="text-xs font-semibold text-primary hover:underline"
+          >
+            Clear all
+          </button>
+        </div>
+
+        <Accordion type="multiple" defaultValue={["brand", "price", "rating", "storage"]} className="w-full">
+          <AccordionItem value="brand">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Brand</AccordionTrigger>
+            <AccordionContent>
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                {brands.map((b) => {
+                  const active = filters.brands.includes(b);
+                  return (
+                    <button
+                      key={b}
+                      onClick={() => toggle("brands", b)}
+                      className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-all ${
+                        active
+                          ? "border-primary bg-primary/10 text-primary"
+                          : "border-border bg-background text-foreground/80 hover:border-primary/40"
+                      }`}
+                    >
+                      {b}
+                    </button>
+                  );
+                })}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="price">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Price (LKR)</AccordionTrigger>
+            <AccordionContent>
+              <div className="px-1 pb-1 pt-3">
+                <Slider
+                  value={filters.price}
+                  min={0}
+                  max={600000}
+                  step={5000}
+                  onValueChange={(v) =>
+                    setFilters((f) => ({ ...f, price: [v[0], v[1]] as [number, number] }))
+                  }
+                />
+                <div className="mt-3 flex items-center justify-between text-xs font-medium">
+                  <span className="rounded-md bg-secondary px-2 py-1">{fmtLKR(filters.price[0])}</span>
+                  <span className="text-muted-foreground">to</span>
+                  <span className="rounded-md bg-secondary px-2 py-1">{fmtLKR(filters.price[1])}</span>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="avail">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Availability</AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-3 pt-1">
+                <label className="flex items-center justify-between text-sm">
+                  <span>In stock only</span>
+                  <Switch checked={filters.inStock} onCheckedChange={(v) => setFilters((f) => ({ ...f, inStock: v }))} />
+                </label>
+                <label className="flex items-center justify-between text-sm">
+                  <span>Pre-order</span>
+                  <Switch checked={filters.preorder} onCheckedChange={(v) => setFilters((f) => ({ ...f, preorder: v }))} />
+                </label>
+                <label className="flex items-center justify-between text-sm">
+                  <span>On promotion</span>
+                  <Switch checked={filters.promo} onCheckedChange={(v) => setFilters((f) => ({ ...f, promo: v }))} />
+                </label>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="rating">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Rating</AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-2 pt-1">
+                {ratings.map((r) => {
+                  const active = filters.rating === r;
+                  return (
+                    <button
+                      key={r}
+                      onClick={() => setFilters((f) => ({ ...f, rating: active ? null : r }))}
+                      className={`flex w-full items-center justify-between rounded-lg border px-3 py-2 text-sm transition-all ${
+                        active ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"
+                      }`}
+                    >
+                      <span className="flex items-center gap-1">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-3.5 w-3.5 ${
+                              i < r ? "fill-warning text-warning" : "text-muted-foreground/40"
+                            }`}
+                          />
+                        ))}
+                      </span>
+                      <span className="text-xs text-muted-foreground">& up</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="warr">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Warranty</AccordionTrigger>
+            <AccordionContent>
+              <label className="flex items-center justify-between pt-1 text-sm">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-success" /> Warranty backed
+                </span>
+                <Switch checked={filters.warranty} onCheckedChange={(v) => setFilters((f) => ({ ...f, warranty: v }))} />
+              </label>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="storage">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Storage</AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {storages.map((s) => {
+                  const active = filters.storages.includes(s);
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => toggle("storages", s)}
+                      className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
+                        active
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-background hover:border-primary/40"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  );
+                })}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="ram">
+            <AccordionTrigger className="py-3 text-sm font-semibold">RAM</AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {rams.map((s) => {
+                  const active = filters.rams.includes(s);
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => toggle("rams", s)}
+                      className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
+                        active
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-background hover:border-primary/40"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  );
+                })}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="color">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Color</AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {colors.map((c) => {
+                  const active = filters.colors.includes(c.name);
+                  return (
+                    <button
+                      key={c.name}
+                      title={c.name}
+                      onClick={() => toggle("colors", c.name)}
+                      className={`relative h-8 w-8 rounded-full border-2 transition-all ${
+                        active ? "border-primary ring-2 ring-primary/30" : "border-border hover:border-primary/40"
+                      }`}
+                      style={{ backgroundColor: c.hex }}
+                    />
+                  );
+                })}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="screen">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Screen size</AccordionTrigger>
+            <AccordionContent>
+              <div className="px-1 pb-1 pt-3">
+                <Slider
+                  value={filters.screen}
+                  min={5}
+                  max={8}
+                  step={0.1}
+                  onValueChange={(v) =>
+                    setFilters((f) => ({ ...f, screen: [v[0], v[1]] as [number, number] }))
+                  }
+                />
+                <div className="mt-3 flex items-center justify-between text-xs font-medium">
+                  <span className="rounded-md bg-secondary px-2 py-1">{filters.screen[0].toFixed(1)}"</span>
+                  <span className="text-muted-foreground">to</span>
+                  <span className="rounded-md bg-secondary px-2 py-1">{filters.screen[1].toFixed(1)}"</span>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="battery">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Battery (mAh+)</AccordionTrigger>
+            <AccordionContent>
+              <div className="grid grid-cols-2 gap-1.5 pt-1">
+                {[0, 4000, 5000, 5500].map((v) => {
+                  const active = filters.battery === v;
+                  return (
+                    <button
+                      key={v}
+                      onClick={() => setFilters((f) => ({ ...f, battery: v }))}
+                      className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-all ${
+                        active
+                          ? "border-primary bg-primary/10 text-primary"
+                          : "border-border bg-background hover:border-primary/40"
+                      }`}
+                    >
+                      {v === 0 ? "Any" : `${v}+`}
+                    </button>
+                  );
+                })}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="cam">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Camera</AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-2.5 pt-1">
+                {cameras.map((c) => (
+                  <label key={c} className="flex cursor-pointer items-center gap-2.5 text-sm">
+                    <Checkbox
+                      checked={filters.cameras.includes(c)}
+                      onCheckedChange={() => toggle("cameras", c)}
+                    />
+                    <span className="text-foreground/90">{c}</span>
+                  </label>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="5g">
+            <AccordionTrigger className="py-3 text-sm font-semibold">5G Support</AccordionTrigger>
+            <AccordionContent>
+              <label className="flex items-center justify-between pt-1 text-sm">
+                <span className="inline-flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-primary" /> 5G ready only
+                </span>
+                <Switch checked={filters.fiveG} onCheckedChange={(v) => setFilters((f) => ({ ...f, fiveG: v }))} />
+              </label>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+
+      <div className="rounded-2xl border border-border/70 bg-gradient-brand-soft p-4">
+        <div className="flex items-start gap-3">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-background shadow-soft">
+            <Wallet className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h4 className="text-sm font-bold text-foreground">0% Installments</h4>
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              Pay in 3, 6, 12 or 24 months on selected smartphones with leading banks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
+};
+
+/* -------------------- Page -------------------- */
+const Category = () => {
+  const params = useParams();
+  const slug = params.slug ?? "smartphones";
+  const titleMap: Record<string, string> = {
+    smartphones: "Smartphones",
+    tablets: "Tablets",
+    accessories: "Accessories",
+    audio: "Audio",
+    gaming: "Gaming",
+  };
+  const categoryName = titleMap[slug] ?? "Smartphones";
+
+  const [filters, setFilters] = useState<FilterState>(defaultFilters);
+  const [sort, setSort] = useState("relevance");
+  const [activeSub, setActiveSub] = useState<string>("All");
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const perPage = 12;
+
+  useEffect(() => {
+    document.title = `${categoryName} — Best Prices in Sri Lanka | Cellexa`;
+    const desc = `Shop the latest ${categoryName.toLowerCase()} at Cellexa. Genuine products, warranty support, 0% installments and islandwide delivery.`;
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", desc);
+  }, [categoryName]);
+
+  const filtered = useMemo(() => {
+    let list = catalog.filter((p) => {
+      if (activeSub !== "All") {
+        if (activeSub === "5G" && !p.fiveG) return false;
+        if (activeSub === "New Launches" && p.badge?.label !== "New") return false;
+        if (!["5G", "New Launches"].includes(activeSub) && p.sub !== activeSub) return false;
+      }
+      if (filters.brands.length && !filters.brands.includes(p.brand)) return false;
+      if (p.price < filters.price[0] || p.price > filters.price[1]) return false;
+      if (filters.rating && p.rating < filters.rating) return false;
+      if (filters.storages.length && !filters.storages.includes(p.storage)) return false;
+      if (filters.rams.length && !filters.rams.includes(p.ram)) return false;
+      if (filters.colors.length && !filters.colors.includes(p.color)) return false;
+      if (p.screen < filters.screen[0] || p.screen > filters.screen[1]) return false;
+      if (filters.battery && p.battery < filters.battery) return false;
+      if (filters.fiveG && !p.fiveG) return false;
+      if (filters.promo && !p.oldPrice) return false;
+      if (filters.preorder && p.badge?.label !== "Pre-Order") return false;
+      if (search && !`${p.name} ${p.brand}`.toLowerCase().includes(search.toLowerCase())) return false;
+      return true;
+    });
+    switch (sort) {
+      case "price-asc": list = [...list].sort((a, b) => a.price - b.price); break;
+      case "price-desc": list = [...list].sort((a, b) => b.price - a.price); break;
+      case "rating": list = [...list].sort((a, b) => b.rating - a.rating); break;
+      case "newest": list = [...list].sort((a, b) => Number(b.id.slice(1)) - Number(a.id.slice(1))); break;
+    }
+    return list;
+  }, [filters, sort, activeSub, search]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+  const visible = filtered.slice(0, page * perPage);
+
+  /* Top flagships highlight */
+  const topFlagships = useMemo(
+    () => catalog.filter((p) => p.sub === "Flagship").slice(0, 3),
+    [],
+  );
+
+  /* Active chips */
+  const chips: { label: string; onRemove: () => void }[] = [];
+  filters.brands.forEach((b) =>
+    chips.push({ label: b, onRemove: () => setFilters((f) => ({ ...f, brands: f.brands.filter((x) => x !== b) })) }),
+  );
+  filters.storages.forEach((s) =>
+    chips.push({ label: s, onRemove: () => setFilters((f) => ({ ...f, storages: f.storages.filter((x) => x !== s) })) }),
+  );
+  filters.colors.forEach((c) =>
+    chips.push({ label: c, onRemove: () => setFilters((f) => ({ ...f, colors: f.colors.filter((x) => x !== c) })) }),
+  );
+  if (filters.rating)
+    chips.push({ label: `${filters.rating}★ & up`, onRemove: () => setFilters((f) => ({ ...f, rating: null })) });
+  if (filters.fiveG)
+    chips.push({ label: "5G", onRemove: () => setFilters((f) => ({ ...f, fiveG: false })) });
+  if (filters.warranty)
+    chips.push({ label: "Warranty", onRemove: () => setFilters((f) => ({ ...f, warranty: false })) });
+  if (filters.promo)
+    chips.push({ label: "On Sale", onRemove: () => setFilters((f) => ({ ...f, promo: false })) });
+  if (filters.preorder)
+    chips.push({ label: "Pre-Order", onRemove: () => setFilters((f) => ({ ...f, preorder: false })) });
+
+  return (
+    <div className="min-h-screen bg-surface">
+      <PromoBar />
+      <Header />
+
+      <main>
+        {/* Breadcrumb */}
+        <section className="bg-background">
+          <div className="container-page pt-5 sm:pt-6">
+            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+              <Link to="/" className="hover:text-primary">Home</Link>
+              <ChevronRight className="h-3.5 w-3.5" />
+              <Link to="/shop" className="hover:text-primary">Shop</Link>
+              <ChevronRight className="h-3.5 w-3.5" />
+              <span className="text-foreground">{categoryName}</span>
+            </nav>
+          </div>
+        </section>
+
+        {/* Category hero */}
+        <section className="bg-background pt-5 sm:pt-6">
+          <div className="container-page">
+            <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-brand-soft">
+              <div className="grid items-center gap-6 lg:grid-cols-2">
+                <div className="relative z-10 px-6 py-8 sm:px-10 sm:py-10 lg:py-14">
+                  <span className="badge-promo bg-primary/10 text-primary">
+                    <Smartphone className="h-3 w-3" /> {categoryName} Collection
+                  </span>
+                  <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+                    Flagship power, <span className="bg-gradient-hero bg-clip-text text-transparent">everyday brilliance.</span>
+                  </h1>
+                  <p className="mt-3 max-w-md text-sm text-muted-foreground sm:text-base">
+                    The latest 5G smartphones from Apple, Samsung, Xiaomi, OnePlus & more — all genuine,
+                    warranty-backed, with 0% installments available islandwide.
+                  </p>
+                  <div className="mt-5 flex flex-wrap items-center gap-2">
+                    <Button size="lg" className="rounded-xl">
+                      <Sparkles className="h-4 w-4" /> Explore Flagships
+                    </Button>
+                    <Button size="lg" variant="outline" className="rounded-xl">
+                      Shop by Brand <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-3.5 w-3.5 text-success" /> Genuine</span>
+                    <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Warranty</span>
+                    <span className="inline-flex items-center gap-1.5"><Truck className="h-3.5 w-3.5 text-primary" /> Islandwide</span>
+                    <span className="inline-flex items-center gap-1.5"><Wallet className="h-3.5 w-3.5 text-primary" /> 0% Installments</span>
+                  </div>
+                </div>
+
+                <div className="relative h-56 sm:h-72 lg:h-full lg:min-h-[360px]">
+                  <img
+                    src={heroSmartphones}
+                    alt={`${categoryName} category banner`}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary)/0.05)] via-transparent to-transparent lg:from-background/30" />
+                  <div className="absolute bottom-4 right-4 hidden rounded-2xl border border-white/40 bg-white/85 px-4 py-3 shadow-lift backdrop-blur sm:block">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">Featured</p>
+                    <p className="text-sm font-bold text-foreground">120+ models in stock</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Subcategory chips */}
+        <section className="bg-background pt-6">
+          <div className="container-page">
+            <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+              {subcats.map((c) => {
+                const active = activeSub === c;
+                return (
+                  <button
+                    key={c}
+                    onClick={() => setActiveSub(c)}
+                    className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all ${
+                      active
+                        ? "border-primary bg-primary text-primary-foreground shadow-soft"
+                        : "border-border bg-card text-foreground/80 hover:border-primary/40 hover:text-primary"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured brands */}
+        <section className="bg-background pt-6">
+          <div className="container-page">
+            <div className="mb-3 flex items-end justify-between">
+              <div>
+                <h2 className="font-display text-lg font-bold sm:text-xl">Shop by Brand</h2>
+                <p className="text-xs text-muted-foreground">Top {categoryName.toLowerCase()} brands available at Cellexa.</p>
+              </div>
+              <Link to="/shop" className="hidden text-xs font-semibold text-primary hover:underline sm:inline">All brands →</Link>
+            </div>
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
+              {brandTiles.map((b) => (
+                <button
+                  key={b.name}
+                  onClick={() => setFilters((f) => ({
+                    ...f,
+                    brands: f.brands.includes(b.name) ? f.brands.filter((x) => x !== b.name) : [...f.brands, b.name],
+                  }))}
+                  className="card-category group flex flex-col items-center justify-center gap-1 px-2 py-3 text-center"
+                >
+                  <span className="font-display text-sm font-extrabold text-foreground transition-colors group-hover:text-primary">
+                    {b.name}
+                  </span>
+                  <span className="text-[10px] font-medium text-muted-foreground">{b.count} items</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="container-page py-7 lg:py-10">
+          <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8">
+            {/* Desktop sidebar */}
+            <div className="hidden lg:block">
+              <div className="sticky top-[180px]">
+                <FilterSidebar filters={filters} setFilters={setFilters} />
+              </div>
+            </div>
+
+            {/* Right area */}
+            <div className="min-w-0">
+              {/* Category-specific merchandising */}
+              <div className="mb-5 grid gap-3 sm:grid-cols-3">
+                <div className="overflow-hidden rounded-2xl bg-gradient-deep p-4 text-primary-foreground sm:col-span-2">
+                  <span className="badge-promo bg-white/15 text-white">Latest Launches</span>
+                  <h3 className="mt-2 font-display text-lg font-extrabold sm:text-xl">
+                    iPhone 15 series + Galaxy S24 Ultra in stock now
+                  </h3>
+                  <p className="mt-1 text-sm text-white/85">Pre-orders open. Pay in 0% installments.</p>
+                </div>
+                <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-soft">
+                  <div className="flex items-center gap-2 text-primary">
+                    <Camera className="h-5 w-5" />
+                    <span className="text-xs font-bold uppercase tracking-wider">Camera Phones</span>
+                  </div>
+                  <p className="mt-2 text-sm font-semibold text-foreground">Pro-grade shooters under LKR 350K</p>
+                  <button className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
+                    View collection <ArrowRight className="h-3 w-3" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Toolbar */}
+              <div className="mb-4 flex flex-col gap-3 rounded-2xl border border-border/70 bg-card p-3 shadow-soft sm:p-4 md:flex-row md:items-center">
+                <div className="relative flex-1">
+                  <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <input
+                    type="search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder={`Search in ${categoryName.toLowerCase()}…`}
+                    className="h-10 w-full rounded-xl border border-border bg-surface pl-10 pr-3 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/20"
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="hidden text-xs font-medium text-muted-foreground sm:inline">
+                    Showing <strong className="text-foreground">{visible.length}</strong> of{" "}
+                    <strong className="text-foreground">{filtered.length}</strong>
+                  </span>
+                  <Select value={sort} onValueChange={setSort}>
+                    <SelectTrigger className="h-10 w-[180px] rounded-xl">
+                      <SelectValue placeholder="Sort by" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="relevance">Relevance</SelectItem>
+                      <SelectItem value="newest">Newest</SelectItem>
+                      <SelectItem value="price-asc">Price: Low to High</SelectItem>
+                      <SelectItem value="price-desc">Price: High to Low</SelectItem>
+                      <SelectItem value="rating">Top Rated</SelectItem>
+                      <SelectItem value="best">Best Selling</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <Button variant="outline" className="h-10 rounded-xl lg:hidden">
+                        <SlidersHorizontal className="h-4 w-4" />
+                        Filters
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent side="left" className="w-[88%] max-w-sm overflow-y-auto p-4">
+                      <SheetHeader>
+                        <SheetTitle>Refine</SheetTitle>
+                      </SheetHeader>
+                      <div className="mt-4">
+                        <FilterSidebar filters={filters} setFilters={setFilters} />
+                      </div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
+              </div>
+
+              {/* Active chips */}
+              {chips.length > 0 && (
+                <div className="mb-4 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-semibold text-muted-foreground">Active:</span>
+                  {chips.map((c, i) => (
+                    <button
+                      key={i}
+                      onClick={c.onRemove}
+                      className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/15"
+                    >
+                      {c.label}
+                      <X className="h-3 w-3" />
+                    </button>
+                  ))}
+                  <button
+                    onClick={() => setFilters(defaultFilters)}
+                    className="text-xs font-semibold text-muted-foreground hover:text-foreground"
+                  >
+                    Clear all
+                  </button>
+                </div>
+              )}
+
+              {/* Grid */}
+              {visible.length > 0 ? (
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+                  {visible.map((p) => (
+                    <ProductCard key={p.id} product={p} />
+                  ))}
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
+                  <Smartphone className="mx-auto h-10 w-10 text-muted-foreground/60" />
+                  <h3 className="mt-3 font-display text-lg font-bold">No {categoryName.toLowerCase()} match your filters</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">Try removing a few filters.</p>
+                  <Button variant="outline" className="mt-4" onClick={() => { setFilters(defaultFilters); setSearch(""); setActiveSub("All"); }}>
+                    Reset filters
+                  </Button>
+                </div>
+              )}
+
+              {/* Editorial highlight */}
+              <section className="mt-10 overflow-hidden rounded-3xl border border-border/60 bg-card shadow-soft">
+                <div className="grid lg:grid-cols-[1.1fr_1fr]">
+                  <div className="relative bg-gradient-deep p-6 text-primary-foreground sm:p-8">
+                    <span className="badge-promo bg-white/15 text-white">
+                      <Sparkles className="h-3 w-3" /> Editor's Pick
+                    </span>
+                    <h3 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
+                      Top Flagships This Month
+                    </h3>
+                    <p className="mt-2 max-w-md text-sm text-white/85">
+                      Hand-picked by our team — the most loved premium smartphones at Cellexa right now,
+                      backed by full warranty and instant 0% installments.
+                    </p>
+                    <Button variant="secondary" size="lg" className="mt-5 rounded-xl bg-white text-primary hover:bg-white/90">
+                      Explore all flagships <ArrowRight className="h-4 w-4" />
+                    </Button>
+                    <img
+                      src={featurePhone}
+                      alt=""
+                      className="pointer-events-none absolute -right-10 -top-6 hidden h-[140%] w-auto object-contain opacity-25 lg:block"
+                    />
+                  </div>
+
+                  <div className="grid gap-3 p-4 sm:grid-cols-3 sm:p-5">
+                    {topFlagships.map((p) => (
+                      <ProductCard key={p.id} product={p} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              {/* Pagination */}
+              {filtered.length > perPage && (
+                <div className="mt-8 flex flex-col items-center gap-5">
+                  {visible.length < filtered.length && (
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="rounded-xl"
+                      onClick={() => setPage((p) => p + 1)}
+                    >
+                      Load more {categoryName.toLowerCase()}
+                    </Button>
+                  )}
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
+                      {Array.from({ length: Math.min(totalPages, 4) }).map((_, i) => (
+                        <PaginationItem key={i}>
+                          <PaginationLink href="#" isActive={i === 0}>{i + 1}</PaginationLink>
+                        </PaginationItem>
+                      ))}
+                      {totalPages > 4 && (
+                        <PaginationItem><PaginationEllipsis /></PaginationItem>
+                      )}
+                      <PaginationItem><PaginationNext href="#" /></PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Category;
