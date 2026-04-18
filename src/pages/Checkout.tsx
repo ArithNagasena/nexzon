@@ -619,8 +619,10 @@ const CheckoutPage = () => {
                       <Link to="/" className="text-primary hover:underline">Privacy Policy</Link>.
                     </label>
 
-                    <Button size="lg" disabled={!terms} className="mt-1 w-full">
-                      <Lock className="h-4 w-4" /> Place Order · {fmtLKR(total)}
+                    <Button asChild size="lg" disabled={!terms} className="mt-1 w-full">
+                      <Link to="/order/success">
+                        <Lock className="h-4 w-4" /> Place Order · {fmtLKR(total)}
+                      </Link>
                     </Button>
 
                     <Button asChild variant="outline" size="lg" className="w-full">
