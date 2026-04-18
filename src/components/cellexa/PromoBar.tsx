@@ -1,4 +1,5 @@
 import { Truck, Banknote, ShieldCheck, Wallet, BadgeCheck, Headphones } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const items = [
   { icon: Truck, text: "Islandwide Delivery" },
@@ -32,9 +33,9 @@ const PromoBar = () => (
           </span>
         ))}
         <span className="inline-flex items-center gap-3 text-white/80">
-          <a href="#" className="hover:text-white">Track Order</a>
+          <Link to="/shop" className="hover:text-white">Track Order</Link>
           <span className="opacity-40">|</span>
-          <a href="#" className="hover:text-white">Help</a>
+          <Link to="/shop" className="hover:text-white">Help</Link>
         </span>
       </div>
     </div>

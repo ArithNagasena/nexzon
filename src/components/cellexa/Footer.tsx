@@ -25,6 +25,17 @@ const linkSections: { title: string; links: { label: string; to: string }[] }[] 
     ],
   },
   {
+    title: "Brands",
+    links: [
+      { label: "Apple", to: "/brand/apple" },
+      { label: "Samsung", to: "/brand/samsung" },
+      { label: "Xiaomi", to: "/brand/xiaomi" },
+      { label: "Sony", to: "/brand/sony" },
+      { label: "JBL", to: "/brand/jbl" },
+      { label: "OnePlus", to: "/brand/oneplus" },
+    ],
+  },
+  {
     title: "Company",
     links: [
       { label: "About Cellexa", to: "/" },
@@ -86,7 +97,7 @@ const Footer = () => (
         </div>
 
         {/* Link sections */}
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8 lg:grid-cols-4">
           {linkSections.map((s) => (
             <div key={s.title}>
               <h4 className="font-display text-sm font-bold uppercase tracking-wider text-background">
