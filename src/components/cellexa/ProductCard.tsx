@@ -55,6 +55,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         {/* Wishlist */}
         <button
           aria-label="Add to wishlist"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
           className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-foreground shadow-soft backdrop-blur transition-all hover:bg-white hover:text-promo"
         >
           <Heart className="h-4 w-4" />
@@ -62,7 +63,10 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         {/* Quick add (desktop hover) */}
         <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background hover:bg-primary">
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background hover:bg-primary"
+          >
             <ShoppingCart className="h-4 w-4" /> Add to Cart
           </button>
         </div>
