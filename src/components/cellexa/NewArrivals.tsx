@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import ProductCard, { type Product } from "./ProductCard";
 import phone1 from "@/assets/product-phone-1.jpg";
 import phone2 from "@/assets/product-phone-2.jpg";
@@ -31,9 +32,9 @@ const NewArrivals = () => (
             Handpicked fresh stock from the world's most trusted brands.
           </p>
         </div>
-        <a href="#" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+        <Link to="/shop" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
           View all <ArrowRight className="h-4 w-4" />
-        </a>
+        </Link>
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">

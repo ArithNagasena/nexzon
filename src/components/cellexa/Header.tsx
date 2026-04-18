@@ -58,14 +58,14 @@ const Header = () => {
 
           {/* Right icons */}
           <div className="ml-auto flex items-center gap-1 sm:gap-2">
-            <button className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-secondary" aria-label="Account">
+            <Link to="/shop" className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-secondary" aria-label="Account">
               <User className="h-5 w-5" />
               <span className="hidden xl:inline">Account</span>
-            </button>
-            <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg hover:bg-secondary" aria-label="Wishlist">
+            </Link>
+            <Link to="/cart" className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg hover:bg-secondary" aria-label="Wishlist">
               <Heart className="h-5 w-5" />
               <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-promo px-1 text-[10px] font-bold text-promo-foreground">3</span>
-            </button>
+            </Link>
             <Link to="/cart" className="relative inline-flex h-10 items-center gap-2 rounded-lg px-2.5 hover:bg-secondary sm:px-3" aria-label="Cart">
               <div className="relative">
                 <ShoppingCart className="h-5 w-5" />
