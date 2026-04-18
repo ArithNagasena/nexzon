@@ -31,48 +31,11 @@ import {
 } from "lucide-react";
 import Header from "@/components/cellexa/Header";
 import Footer from "@/components/cellexa/Footer";
+import { AccountSidebarNav, AccountProfileCard } from "@/components/cellexa/AccountSidebar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-const navGroups: {
-  title: string;
-  items: { label: string; icon: typeof User; to: string; badge?: string; active?: boolean }[];
-}[] = [
-  {
-    title: "Overview",
-    items: [
-      { label: "Dashboard", icon: LayoutDashboard, to: "/account", active: true },
-      { label: "Profile", icon: User, to: "/account" },
-      { label: "Addresses", icon: MapPin, to: "/account" },
-    ],
-  },
-  {
-    title: "Shopping",
-    items: [
-      { label: "Orders", icon: Package, to: "/account", badge: "3" },
-      { label: "Order Tracking", icon: Truck, to: "/account" },
-      { label: "Wishlist", icon: Heart, to: "/account", badge: "12" },
-      { label: "Reviews", icon: Star, to: "/account" },
-    ],
-  },
-  {
-    title: "Alerts & Rewards",
-    items: [
-      { label: "Notifications", icon: Bell, to: "/account", badge: "5" },
-      { label: "Loyalty & Rewards", icon: Gift, to: "/account" },
-      { label: "Price Alerts", icon: TrendingDown, to: "/account" },
-      { label: "Back-in-Stock", icon: Boxes, to: "/account" },
-    ],
-  },
-  {
-    title: "Service",
-    items: [
-      { label: "Returns & Refunds", icon: Undo2, to: "/account" },
-      { label: "Warranty & Claims", icon: ShieldCheck, to: "/account" },
-      { label: "Trade-In Requests", icon: Repeat, to: "/account" },
-    ],
-  },
-];
+// Account sidebar nav now lives in @/components/cellexa/AccountSidebar
 
 const stats = [
   { label: "Active Orders", value: "3", icon: Package, tone: "primary", hint: "2 shipping today" },
@@ -162,7 +125,7 @@ const notifications = [
 ];
 
 const shortcuts = [
-  { icon: Edit3, label: "Edit Profile", to: "/account" },
+  { icon: Edit3, label: "Edit Profile", to: "/account/profile" },
   { icon: Truck, label: "Track Orders", to: "/account" },
   { icon: Heart, label: "Manage Wishlist", to: "/account" },
   { icon: Undo2, label: "View Returns", to: "/account" },
