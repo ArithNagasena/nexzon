@@ -1,4 +1,5 @@
 import { Heart, Star, ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export type Product = {
   id: string;
@@ -31,7 +32,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="card-product group flex flex-col">
       {/* Image area */}
-      <div className="relative aspect-square overflow-hidden bg-gradient-brand-soft">
+      <Link to={`/product/${product.id}`} className="relative block aspect-square overflow-hidden bg-gradient-brand-soft">
         <img
           src={product.image}
           alt={product.name}
@@ -54,6 +55,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         {/* Wishlist */}
         <button
           aria-label="Add to wishlist"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
           className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-foreground shadow-soft backdrop-blur transition-all hover:bg-white hover:text-promo"
         >
           <Heart className="h-4 w-4" />
@@ -61,14 +63,17 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         {/* Quick add (desktop hover) */}
         <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background hover:bg-primary">
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background hover:bg-primary"
+          >
             <ShoppingCart className="h-4 w-4" /> Add to Cart
           </button>
         </div>
-      </div>
+      </Link>
 
       {/* Body */}
-      <div className="flex flex-1 flex-col gap-1.5 p-4">
+      <Link to={`/product/${product.id}`} className="flex flex-1 flex-col gap-1.5 p-4">
         <div className="flex items-center justify-between gap-2">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
             {product.brand}
@@ -94,7 +99,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             )}
           </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 };
