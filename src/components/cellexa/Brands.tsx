@@ -17,7 +17,7 @@ const Brands = () => (
         {brands.slice(0, 10).map((b) => (
           <Link
             key={b}
-            to="/shop"
+            to={`/brand/${b.toLowerCase()}`}
             className="group flex h-20 items-center justify-center rounded-xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lift sm:h-24"
           >
             <span className="font-display text-xl font-extrabold tracking-tight text-foreground/70 transition-colors group-hover:text-primary sm:text-2xl">
