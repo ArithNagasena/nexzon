@@ -4,67 +4,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cellexa design system — premium muted navy/slate, light UI */
+/* Cellexa design system — bright sky-tech blue, premium ecommerce */
 @layer base {
   :root {
-    /* Base */
     --background: 0 0% 100%;
-    --foreground: 222 30% 14%;       /* charcoal */
+    --foreground: 222 32% 12%;
 
-    --surface: 220 20% 98%;          /* near-white cool */
-    --surface-2: 218 22% 95%;        /* soft cool-gray */
+    --surface: 210 40% 98%;
+    --surface-2: 214 32% 95%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 30% 14%;
+    --card-foreground: 222 32% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 30% 14%;
+    --popover-foreground: 222 32% 12%;
 
-    /* Brand: muted cobalt with deep navy emphasis */
-    --primary: 220 60% 32%;          /* muted cobalt — main accent */
+    /* Brand: bright sky-tech blue */
+    --primary: 217 91% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 215 55% 55%;     /* slate blue, restrained */
-    --primary-deep: 222 55% 18%;     /* deep navy — premium emphasis */
+    --primary-glow: 199 89% 60%;
+    --primary-deep: 224 76% 38%;
 
-    --secondary: 218 22% 95%;
-    --secondary-foreground: 222 30% 14%;
+    --secondary: 214 32% 95%;
+    --secondary-foreground: 222 32% 12%;
 
-    --muted: 218 22% 95%;
-    --muted-foreground: 218 14% 45%;
+    --muted: 214 32% 95%;
+    --muted-foreground: 215 16% 42%;
 
-    --accent: 218 30% 94%;           /* soft blue-gray */
-    --accent-foreground: 222 55% 18%;
+    --accent: 199 89% 95%;
+    --accent-foreground: 217 91% 35%;
 
-    /* Promo accents (used sparingly inside promo cards only) */
-    --promo: 14 78% 52%;             /* warm terracotta-orange */
+    /* Promo accents */
+    --promo: 14 95% 55%;        /* warm orange for sale */
     --promo-foreground: 0 0% 100%;
-    --success: 158 50% 36%;
+    --success: 152 65% 42%;
     --success-foreground: 0 0% 100%;
-    --warning: 35 85% 52%;
-    --warning-foreground: 222 30% 14%;
+    --warning: 38 95% 55%;
+    --warning-foreground: 222 32% 12%;
 
-    --destructive: 0 72% 52%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 16% 90%;
-    --input: 220 16% 90%;
-    --ring: 220 60% 32%;
+    --border: 214 28% 90%;
+    --input: 214 28% 90%;
+    --ring: 217 91% 55%;
 
     --radius: 0.875rem;
 
-    /* Gradients — subtle, premium */
-    --gradient-hero: linear-gradient(135deg, hsl(220 35% 97%) 0%, hsl(218 30% 92%) 100%);
-    --gradient-deep: linear-gradient(135deg, hsl(222 55% 18%) 0%, hsl(220 50% 26%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(220 20% 98%) 0%, hsl(218 22% 95%) 100%);
-    --gradient-brand-soft: linear-gradient(135deg, hsl(220 30% 97%) 0%, hsl(218 28% 93%) 100%);
-    --gradient-promo: linear-gradient(135deg, hsl(222 55% 18%) 0%, hsl(220 45% 30%) 100%);
-    --gradient-warm: linear-gradient(135deg, hsl(14 78% 52%) 0%, hsl(28 82% 56%) 100%);
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 55%) 0%, hsl(199 89% 60%) 100%);
+    --gradient-promo: linear-gradient(135deg, hsl(14 95% 55%) 0%, hsl(35 95% 58%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(214 32% 95%) 100%);
+    --gradient-brand-soft: linear-gradient(135deg, hsl(217 91% 97%) 0%, hsl(199 89% 95%) 100%);
+    --gradient-deep: linear-gradient(135deg, hsl(224 76% 38%) 0%, hsl(217 91% 55%) 60%, hsl(199 89% 60%) 100%);
 
-    /* Shadows — softer, lighter */
-    --shadow-card: 0 1px 2px hsl(220 30% 20% / 0.04), 0 2px 8px hsl(220 30% 20% / 0.04);
-    --shadow-lift: 0 8px 24px -10px hsl(222 55% 18% / 0.18), 0 2px 8px hsl(220 30% 20% / 0.05);
-    --shadow-glow: 0 18px 48px -12px hsl(222 55% 18% / 0.28);
-    --shadow-soft: 0 1px 2px hsl(220 30% 20% / 0.04);
+    /* Shadows */
+    --shadow-card: 0 1px 2px hsl(217 30% 30% / 0.04), 0 4px 16px hsl(217 30% 30% / 0.06);
+    --shadow-lift: 0 10px 30px -8px hsl(217 91% 55% / 0.18), 0 4px 12px hsl(217 30% 30% / 0.06);
+    --shadow-glow: 0 20px 60px -10px hsl(217 91% 55% / 0.45);
+    --shadow-soft: 0 1px 3px hsl(217 30% 30% / 0.05);
 
     --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -97,22 +95,22 @@
   .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
 
   .card-product {
-    @apply relative bg-card rounded-2xl border border-border/70 overflow-hidden;
+    @apply relative bg-card rounded-2xl border border-border/60 overflow-hidden;
     box-shadow: var(--shadow-soft);
     transition: var(--transition-base);
   }
   .card-product:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lift);
-    @apply border-primary/25;
+    @apply border-primary/30;
   }
 
   .card-category {
-    @apply relative rounded-2xl overflow-hidden border border-border/70 bg-card;
+    @apply relative rounded-2xl overflow-hidden border border-border/60 bg-card;
     transition: var(--transition-base);
   }
   .card-category:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lift);
   }
 
@@ -132,6 +130,6 @@
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50% { transform: translateY(-8px); }
 }
-.animate-float { animation: float 7s ease-in-out infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }

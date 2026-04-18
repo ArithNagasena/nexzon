@@ -33,7 +33,7 @@ const InstallmentBanner = () => (
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {items.map((it) => (
               <div key={it.title} className="rounded-2xl bg-background p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-lift">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-primary-deep ring-1 ring-primary/15">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-hero text-primary-foreground">
                   <it.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-display text-base font-bold text-foreground">{it.title}</h3>
