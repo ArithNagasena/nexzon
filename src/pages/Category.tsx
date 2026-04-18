@@ -647,19 +647,16 @@ const Category = () => {
             </div>
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
               {brandTiles.map((b) => (
-                <button
+                <Link
                   key={b.name}
-                  onClick={() => setFilters((f) => ({
-                    ...f,
-                    brands: f.brands.includes(b.name) ? f.brands.filter((x) => x !== b.name) : [...f.brands, b.name],
-                  }))}
+                  to={`/brand/${b.name.toLowerCase()}`}
                   className="card-category group flex flex-col items-center justify-center gap-1 px-2 py-3 text-center"
                 >
                   <span className="font-display text-sm font-extrabold text-foreground transition-colors group-hover:text-primary">
                     {b.name}
                   </span>
                   <span className="text-[10px] font-medium text-muted-foreground">{b.count} items</span>
-                </button>
+                </Link>
               ))}
             </div>
           </div>
