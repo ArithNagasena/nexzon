@@ -41,7 +41,7 @@ const FAQ = () => (
         </p>
         <div className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-card">
           <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-hero text-primary-foreground">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary-deep text-primary-foreground">
               <LifeBuoy className="h-5 w-5" />
             </div>
             <div>

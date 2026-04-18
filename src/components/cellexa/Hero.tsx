@@ -1,76 +1,97 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import heroImg from "@/assets/hero-megasale.jpg";
 
 const Hero = () => (
-  <section className="relative overflow-hidden bg-gradient-deep">
-    {/* decorative glow */}
-    <div className="pointer-events-none absolute -top-20 -right-20 h-[480px] w-[480px] rounded-full bg-primary-glow/30 blur-3xl" />
-    <div className="pointer-events-none absolute -bottom-32 -left-20 h-[420px] w-[420px] rounded-full bg-white/10 blur-3xl" />
+  <section className="relative overflow-hidden bg-gradient-hero">
+    {/* subtle decorative accents */}
+    <div className="pointer-events-none absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full bg-primary-glow/10 blur-3xl" />
+    <div className="pointer-events-none absolute -bottom-32 -left-24 h-[360px] w-[360px] rounded-full bg-primary/5 blur-3xl" />
+    <div
+      className="pointer-events-none absolute inset-0 opacity-[0.35]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 1px 1px, hsl(220 30% 60% / 0.18) 1px, transparent 0)",
+        backgroundSize: "28px 28px",
+      }}
+    />
 
-    <div className="container-page relative grid items-center gap-8 py-10 sm:py-14 lg:grid-cols-2 lg:py-20">
+    <div className="container-page relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
       {/* Copy */}
-      <div className="relative z-10 text-primary-foreground">
-        <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur-md ring-1 ring-white/20">
-          <Sparkles className="h-3.5 w-3.5" />
-          Cellexa Mega Tech Sale · Limited Time
+      <div className="relative z-10">
+        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary-deep shadow-soft backdrop-blur">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          New Season · Curated Tech Collection
         </span>
-        <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-          Sri Lanka's <br className="hidden sm:block" />
-          Smartest place <br className="hidden sm:block" />
-          to <span className="bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">upgrade.</span>
+
+        <h1 className="mt-5 font-display text-[2.5rem] font-extrabold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+          Premium tech,
+          <br />
+          <span className="text-primary-deep">delivered with trust.</span>
         </h1>
-        <p className="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
-          Save up to <span className="font-bold text-white">25% off</span> on the latest flagship smartphones, audio &amp; accessories.
-          Genuine products, islandwide delivery, and 0% installment plans.
+
+        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Discover the latest flagship smartphones, audio and accessories from the world's most trusted brands —
+          backed by genuine warranty, islandwide delivery, and 0% installment plans across Sri Lanka.
         </p>
 
-        <div className="mt-7 flex flex-wrap items-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <Button variant="hero" size="xl">
             Shop Now <ArrowRight className="h-5 w-5" />
           </Button>
           <Button variant="heroOutline" size="xl">
-            View Deals
+            Explore Collection
           </Button>
         </div>
 
+        <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
+          <ShieldCheck className="h-4 w-4 text-primary" />
+          Authorized retailer · 100% genuine products
+        </div>
+
         {/* mini stats */}
-        <div className="mt-9 grid max-w-md grid-cols-3 gap-2 border-t border-white/15 pt-6 text-white/85">
+        <div className="mt-10 grid max-w-lg grid-cols-3 gap-2 border-t border-border pt-6">
           <div>
-            <div className="font-display text-2xl font-extrabold text-white">120K+</div>
-            <div className="text-xs">Happy Customers</div>
+            <div className="font-display text-2xl font-extrabold text-primary-deep">120K+</div>
+            <div className="text-xs text-muted-foreground">Happy Customers</div>
           </div>
           <div>
-            <div className="font-display text-2xl font-extrabold text-white">500+</div>
-            <div className="text-xs">Genuine Products</div>
+            <div className="font-display text-2xl font-extrabold text-primary-deep">500+</div>
+            <div className="text-xs text-muted-foreground">Genuine Products</div>
           </div>
           <div>
-            <div className="font-display text-2xl font-extrabold text-white">4.9★</div>
-            <div className="text-xs">Customer Rating</div>
+            <div className="font-display text-2xl font-extrabold text-primary-deep">4.9★</div>
+            <div className="text-xs text-muted-foreground">Customer Rating</div>
           </div>
         </div>
       </div>
 
       {/* Hero visual */}
       <div className="relative">
-        <div className="absolute inset-0 -z-10 mx-auto h-[80%] w-[80%] rounded-full bg-primary-glow/30 blur-3xl" />
+        <div className="absolute inset-0 -z-10 mx-auto h-[78%] w-[78%] rounded-full bg-primary-glow/15 blur-3xl" />
         <img
           src={heroImg}
-          alt="Latest flagship smartphones available at Cellexa mega tech sale"
+          alt="Latest flagship smartphones available at Cellexa"
           width={1600}
           height={900}
-          className="relative w-full max-w-2xl mx-auto drop-shadow-2xl animate-float"
+          className="relative w-full max-w-2xl mx-auto animate-float"
+          style={{ filter: "drop-shadow(0 24px 32px hsl(222 55% 18% / 0.18))" }}
         />
-        {/* floating offer pill */}
-        <div className="absolute left-2 top-6 hidden rounded-2xl bg-white p-3 pr-4 shadow-glow sm:flex sm:items-center sm:gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-promo text-promo-foreground font-extrabold">25%</div>
+
+        {/* curated floating cards */}
+        <div className="absolute left-0 top-4 hidden rounded-2xl border border-border bg-background/95 p-3 pr-4 shadow-lift backdrop-blur sm:flex sm:items-center sm:gap-3">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-primary-deep font-extrabold text-sm">
+            25%
+          </div>
           <div className="text-left">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Mega Sale</div>
-            <div className="text-sm font-bold text-foreground">Up to 25% OFF</div>
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Season Offer</div>
+            <div className="text-sm font-bold text-foreground">Up to 25% off</div>
           </div>
         </div>
-        <div className="absolute bottom-4 right-2 hidden rounded-2xl bg-white p-3 pr-4 shadow-glow md:flex md:items-center md:gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-success text-success-foreground font-extrabold">0%</div>
+        <div className="absolute bottom-2 right-0 hidden rounded-2xl border border-border bg-background/95 p-3 pr-4 shadow-lift backdrop-blur md:flex md:items-center md:gap-3">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-primary-deep font-extrabold text-sm">
+            0%
+          </div>
           <div className="text-left">
             <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Installments</div>
             <div className="text-sm font-bold text-foreground">From LKR 8,500/mo</div>

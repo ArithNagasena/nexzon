@@ -53,7 +53,7 @@ const Testimonials = () => (
             </div>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85">"{r.text}"</p>
             <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-hero font-bold text-primary-foreground">
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-primary-deep font-bold text-primary-foreground">
                 {r.name[0]}
               </div>
               <div>

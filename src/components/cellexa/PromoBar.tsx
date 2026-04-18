@@ -10,14 +10,14 @@ const items = [
 ];
 
 const PromoBar = () => (
-  <div className="bg-gradient-deep text-primary-foreground text-xs sm:text-[13px]">
+  <div className="border-b border-border bg-primary-deep text-primary-foreground/90 text-xs sm:text-[12.5px]">
     <div className="container-page flex h-9 items-center overflow-hidden">
       {/* Mobile: marquee */}
       <div className="flex w-full overflow-hidden md:hidden">
         <div className="marquee-track flex shrink-0 items-center gap-8 whitespace-nowrap">
           {[...items, ...items].map((it, i) => (
-            <span key={i} className="inline-flex items-center gap-1.5 opacity-95">
-              <it.icon className="h-3.5 w-3.5" />
+            <span key={i} className="inline-flex items-center gap-1.5">
+              <it.icon className="h-3.5 w-3.5 text-primary-glow" />
               {it.text}
             </span>
           ))}
@@ -26,14 +26,14 @@ const PromoBar = () => (
       {/* Desktop: spaced row */}
       <div className="hidden w-full items-center justify-between md:flex">
         {items.slice(0, 5).map((it) => (
-          <span key={it.text} className="inline-flex items-center gap-1.5 opacity-95">
-            <it.icon className="h-3.5 w-3.5" />
+          <span key={it.text} className="inline-flex items-center gap-1.5">
+            <it.icon className="h-3.5 w-3.5 text-primary-glow" />
             {it.text}
           </span>
         ))}
-        <span className="inline-flex items-center gap-3 text-white/80">
+        <span className="inline-flex items-center gap-3 text-white/70">
           <a href="#" className="hover:text-white">Track Order</a>
-          <span className="opacity-40">|</span>
+          <span className="opacity-30">|</span>
           <a href="#" className="hover:text-white">Help</a>
         </span>
       </div>

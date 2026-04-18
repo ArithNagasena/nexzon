@@ -18,7 +18,7 @@ const Logo = () => (
     <span className="font-display text-2xl font-extrabold tracking-tight text-foreground">
       Cell<span className="text-primary">exa</span>
     </span>
-    <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
+    <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-primary" />
   </a>
 );
 
@@ -89,7 +89,7 @@ const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden h-12 items-center gap-1 border-t border-border/60 lg:flex">
-          <button className="mr-2 inline-flex items-center gap-2 rounded-lg bg-gradient-hero px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm">
+          <button className="mr-2 inline-flex items-center gap-2 rounded-lg bg-primary-deep px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary">
             <Menu className="h-4 w-4" />
             All Categories
             <ChevronDown className="h-4 w-4" />
