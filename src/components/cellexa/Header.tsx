@@ -58,7 +58,7 @@ const Header = () => {
 
           {/* Right icons */}
           <div className="ml-auto flex items-center gap-1 sm:gap-2">
-            <Link to="/shop" className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-secondary" aria-label="Account">
+            <Link to="/login" className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-secondary" aria-label="Account">
               <User className="h-5 w-5" />
               <span className="hidden xl:inline">Account</span>
             </Link>
@@ -143,8 +143,10 @@ const Header = () => {
               ))}
             </nav>
             <div className="mt-6 border-t border-border pt-6">
-              <Button className="w-full" size="lg">
-                <User className="h-4 w-4" /> Sign In / Register
+              <Button className="w-full" size="lg" asChild>
+                <Link to="/login" onClick={() => setMobileOpen(false)}>
+                  <User className="h-4 w-4" /> Sign In / Register
+                </Link>
               </Button>
               <p className="mt-4 text-sm text-muted-foreground">
                 Hotline: <a href="tel:+94112000000" className="text-primary">+94 11 200 0000</a>
