@@ -1,4 +1,5 @@
 import { Heart, Star, ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export type Product = {
   id: string;
@@ -31,7 +32,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="card-product group flex flex-col">
       {/* Image area */}
-      <div className="relative aspect-square overflow-hidden bg-gradient-brand-soft">
+      <Link to={`/product/${product.id}`} className="relative block aspect-square overflow-hidden bg-gradient-brand-soft">
         <img
           src={product.image}
           alt={product.name}
@@ -65,10 +66,10 @@ const ProductCard = ({ product }: { product: Product }) => {
             <ShoppingCart className="h-4 w-4" /> Add to Cart
           </button>
         </div>
-      </div>
+      </Link>
 
       {/* Body */}
-      <div className="flex flex-1 flex-col gap-1.5 p-4">
+      <Link to={`/product/${product.id}`} className="flex flex-1 flex-col gap-1.5 p-4">
         <div className="flex items-center justify-between gap-2">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
             {product.brand}
@@ -94,7 +95,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             )}
           </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 };
