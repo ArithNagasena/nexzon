@@ -11,10 +11,11 @@ import {
   Wallet,
   Truck,
   BadgeCheck,
-  Camera,
-  Smartphone,
-  Zap,
   ArrowRight,
+  Award,
+  Cpu,
+  Layers,
+  Package,
 } from "lucide-react";
 import PromoBar from "@/components/cellexa/PromoBar";
 import Header from "@/components/cellexa/Header";
@@ -54,34 +55,114 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import heroSmartphones from "@/assets/cat-hero-smartphones.jpg";
+import brandHero from "@/assets/brand-hero-samsung.jpg";
 import phone1 from "@/assets/product-phone-1.jpg";
 import phone2 from "@/assets/product-phone-2.jpg";
 import phone3 from "@/assets/product-phone-3.jpg";
-import featurePhone from "@/assets/feature-phone.jpg";
+import tablet from "@/assets/product-tablet.jpg";
+import watch from "@/assets/product-watch.jpg";
+import earbuds from "@/assets/product-earbuds.jpg";
+import headphones from "@/assets/product-headphones.jpg";
+import controller from "@/assets/product-controller.jpg";
+import productCase from "@/assets/product-case.jpg";
+import charger from "@/assets/product-charger.jpg";
 
-/* -------------------- Catalog (smartphones) -------------------- */
-const catalog: (Product & { sub: string; storage: string; ram: string; color: string; screen: number; battery: number; fiveG: boolean })[] = [
-  { id: "p1",  name: "Apple iPhone 15 Pro Max 256GB Titanium",   brand: "Apple",   price: 489000, oldPrice: 525000, rating: 4.9, reviews: 312, image: phone1, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "8GB",  color: "Titanium", screen: 6.7, battery: 4422, fiveG: true },
-  { id: "p2",  name: "Samsung Galaxy S24 Ultra 5G 512GB",        brand: "Samsung", price: 459000, oldPrice: 489000, rating: 4.8, reviews: 248, image: phone2, badge: { label: "Hot Deal", tone: "promo" },  sub: "Flagship",  storage: "512GB", ram: "12GB", color: "Black",    screen: 6.8, battery: 5000, fiveG: true },
-  { id: "p3",  name: "Xiaomi Redmi Note 13 Pro+ 5G 256GB",        brand: "Xiaomi",  price: 119500, oldPrice: 134000, rating: 4.6, reviews: 192, image: phone3, badge: { label: "-12%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "Blue",     screen: 6.7, battery: 5000, fiveG: true },
-  { id: "p4",  name: "OnePlus 12R 5G 256GB Cool Blue",           brand: "OnePlus", price: 159000, oldPrice: 175000, rating: 4.7, reviews: 98,  image: phone3, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Blue",     screen: 6.78, battery: 5500, fiveG: true },
-  { id: "p5",  name: "Samsung Galaxy Z Flip5 5G 256GB",          brand: "Samsung", price: 329000, oldPrice: 365000, rating: 4.6, reviews: 142, image: phone2, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "8GB",  color: "Gold",     screen: 6.7, battery: 3700, fiveG: true },
-  { id: "p6",  name: "Apple iPhone 15 128GB Pink",                brand: "Apple",   price: 289000, oldPrice: 309000, rating: 4.8, reviews: 421, image: phone1,                                              sub: "Flagship",  storage: "128GB", ram: "6GB",  color: "Pink",     screen: 6.1, battery: 3349, fiveG: true },
-  { id: "p7",  name: "ASUS ROG Phone 8 Pro 512GB Gaming",         brand: "ASUS",    price: 359000,                  rating: 4.7, reviews: 76,  image: phone2, badge: { label: "Pre-Order", tone: "warning" }, sub: "Gaming",  storage: "512GB", ram: "16GB", color: "Black",    screen: 6.78, battery: 5500, fiveG: true },
-  { id: "p8",  name: "Google Pixel 8 Pro 256GB Bay Blue",         brand: "Google",  price: 269000, oldPrice: 295000, rating: 4.7, reviews: 184, image: phone1, badge: { label: "Best Camera", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Blue", screen: 6.7, battery: 5050, fiveG: true },
-  { id: "p9",  name: "Xiaomi 14 Ultra 512GB Photography Kit",     brand: "Xiaomi",  price: 339000, oldPrice: 369000, rating: 4.8, reviews: 88,  image: phone3, badge: { label: "Hot", tone: "promo" },        sub: "Flagship",  storage: "512GB", ram: "16GB", color: "Black", screen: 6.73, battery: 5300, fiveG: true },
-  { id: "p10", name: "Honor Magic 6 Pro 5G 256GB",               brand: "Honor",   price: 219000,                  rating: 4.6, reviews: 64,  image: phone2,                                              sub: "Flagship",  storage: "256GB", ram: "12GB", color: "Green",   screen: 6.8, battery: 5600, fiveG: true },
-  { id: "p11", name: "Vivo V30 Pro 5G 256GB Aurora",              brand: "Vivo",    price: 139000, oldPrice: 152000, rating: 4.5, reviews: 121, image: phone3, badge: { label: "-9%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "Blue",     screen: 6.78, battery: 5000, fiveG: true },
-  { id: "p12", name: "Oppo Reno 11 Pro 5G 256GB Pearl White",     brand: "Oppo",    price: 124000,                  rating: 4.5, reviews: 92,  image: phone3,                                              sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "White",   screen: 6.7, battery: 4600, fiveG: true },
-  { id: "p13", name: "Xiaomi Redmi 13C 128GB Midnight Black",     brand: "Xiaomi",  price: 39900, oldPrice: 45000,  rating: 4.4, reviews: 312, image: phone3, badge: { label: "Best Value", tone: "success" }, sub: "Budget", storage: "128GB", ram: "6GB",  color: "Black",    screen: 6.74, battery: 5000, fiveG: false },
-  { id: "p14", name: "Samsung Galaxy A15 5G 128GB Light Blue",    brand: "Samsung", price: 54900,                  rating: 4.5, reviews: 218, image: phone2,                                              sub: "Budget",    storage: "128GB", ram: "6GB",  color: "Blue",     screen: 6.5, battery: 5000, fiveG: true },
-  { id: "p15", name: "Samsung Galaxy Z Fold5 5G 512GB",           brand: "Samsung", price: 549000, oldPrice: 589000, rating: 4.7, reviews: 76,  image: phone2, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "512GB", ram: "12GB", color: "Black", screen: 7.6, battery: 4400, fiveG: true },
-  { id: "p16", name: "OnePlus 12 5G 256GB Silky Black",           brand: "OnePlus", price: 229000, oldPrice: 249000, rating: 4.8, reviews: 156, image: phone1, badge: { label: "Best Seller", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Black", screen: 6.82, battery: 5400, fiveG: true },
+/* -------------------- Brand catalog (Samsung default) -------------------- */
+type BrandProduct = Product & {
+  category: string;
+  series: string;
+  storage?: string;
+  ram?: string;
+  color: string;
+  fiveG?: boolean;
+};
+
+const samsungProducts: BrandProduct[] = [
+  { id: "s1",  name: "Samsung Galaxy S24 Ultra 5G 512GB",          brand: "Samsung", price: 459000, oldPrice: 489000, rating: 4.8, reviews: 248, image: phone2, badge: { label: "Hot Deal", tone: "promo" },  category: "Smartphones", series: "Galaxy S",   storage: "512GB", ram: "12GB", color: "Black",   fiveG: true },
+  { id: "s2",  name: "Samsung Galaxy S24+ 5G 256GB Marble Gray",   brand: "Samsung", price: 329000, oldPrice: 355000, rating: 4.7, reviews: 184, image: phone2, badge: { label: "New", tone: "primary" },     category: "Smartphones", series: "Galaxy S",   storage: "256GB", ram: "12GB", color: "Titanium",fiveG: true },
+  { id: "s3",  name: "Samsung Galaxy Z Flip5 5G 256GB Mint",       brand: "Samsung", price: 329000, oldPrice: 365000, rating: 4.6, reviews: 142, image: phone1, badge: { label: "Foldable", tone: "primary" }, category: "Smartphones", series: "Galaxy Z",  storage: "256GB", ram: "8GB",  color: "Green",   fiveG: true },
+  { id: "s4",  name: "Samsung Galaxy Z Fold5 5G 512GB Phantom",    brand: "Samsung", price: 549000, oldPrice: 589000, rating: 4.7, reviews: 76,  image: phone1, badge: { label: "Foldable", tone: "primary" }, category: "Smartphones", series: "Galaxy Z",  storage: "512GB", ram: "12GB", color: "Black",   fiveG: true },
+  { id: "s5",  name: "Samsung Galaxy A55 5G 256GB Awesome Navy",   brand: "Samsung", price: 109000, oldPrice: 119000, rating: 4.6, reviews: 212, image: phone3, badge: { label: "Best Value", tone: "success" }, category: "Smartphones", series: "Galaxy A", storage: "256GB", ram: "8GB",  color: "Blue",    fiveG: true },
+  { id: "s6",  name: "Samsung Galaxy A15 5G 128GB Light Blue",     brand: "Samsung", price: 54900,                  rating: 4.5, reviews: 218, image: phone3,                                              category: "Smartphones", series: "Galaxy A",   storage: "128GB", ram: "6GB",  color: "Blue",    fiveG: true },
+  { id: "s7",  name: "Samsung Galaxy Tab S9 FE 128GB Wi-Fi",       brand: "Samsung", price: 169000,                  rating: 4.7, reviews: 73,  image: tablet, badge: { label: "New", tone: "primary" },    category: "Tablets",     series: "Galaxy Tab", storage: "128GB", ram: "6GB",  color: "Black" },
+  { id: "s8",  name: "Samsung Galaxy Tab S9 Ultra 5G 256GB",       brand: "Samsung", price: 359000, oldPrice: 389000, rating: 4.8, reviews: 64,  image: tablet, badge: { label: "Pre-Order", tone: "warning" }, category: "Tablets", series: "Galaxy Tab", storage: "256GB", ram: "12GB", color: "Titanium", fiveG: true },
+  { id: "s9",  name: "Samsung Galaxy Buds3 Pro Silver",            brand: "Samsung", price: 65900, oldPrice: 72000,  rating: 4.6, reviews: 189, image: earbuds, badge: { label: "Hot", tone: "promo" },     category: "Audio",       series: "Galaxy Buds", color: "White" },
+  { id: "s10", name: "Samsung Galaxy Buds FE Graphite",            brand: "Samsung", price: 27900,                  rating: 4.5, reviews: 124, image: earbuds,                                              category: "Audio",       series: "Galaxy Buds", color: "Black" },
+  { id: "s11", name: "Samsung Galaxy Watch 7 LTE 44mm Silver",     brand: "Samsung", price: 89500, oldPrice: 99000,  rating: 4.7, reviews: 156, image: watch, badge: { label: "Best Seller", tone: "success" }, category: "Wearables", series: "Galaxy Watch", color: "Titanium" },
+  { id: "s12", name: "Samsung Galaxy Watch 7 Classic 47mm",        brand: "Samsung", price: 119000,                  rating: 4.7, reviews: 98,  image: watch,                                              category: "Wearables",   series: "Galaxy Watch", color: "Black" },
+  { id: "s13", name: "Samsung 45W Super Fast Charger USB-C",       brand: "Samsung", price: 12900, oldPrice: 14900,  rating: 4.7, reviews: 312, image: charger, badge: { label: "-13%", tone: "promo" },   category: "Accessories", series: "Power",      color: "Black" },
+  { id: "s14", name: "Samsung Smart Cover for Galaxy S24 Ultra",   brand: "Samsung", price: 8900,                    rating: 4.5, reviews: 88,  image: productCase,                                          category: "Accessories", series: "Cases",      color: "Black" },
+  { id: "s15", name: "Samsung Galaxy Watch FE 40mm Pink Gold",     brand: "Samsung", price: 64900, oldPrice: 72000,  rating: 4.6, reviews: 64,  image: watch, badge: { label: "New", tone: "primary" },    category: "Wearables",   series: "Galaxy Watch", color: "Pink" },
+  { id: "s16", name: "Samsung HW-Q990C Soundbar Wireless Atmos",   brand: "Samsung", price: 289000, oldPrice: 319000, rating: 4.8, reviews: 41,  image: headphones,                                           category: "Audio",       series: "Soundbar",   color: "Black" },
+  { id: "s17", name: "Samsung Galaxy SmartTag2",                   brand: "Samsung", price: 7900,                    rating: 4.7, reviews: 142, image: productCase,                                          category: "Accessories", series: "SmartThings", color: "White" },
+  { id: "s18", name: "Samsung 25W Power Bank 10000mAh",            brand: "Samsung", price: 9900,                    rating: 4.6, reviews: 218, image: charger,                                              category: "Accessories", series: "Power",      color: "White" },
 ];
 
-const subcats = ["All", "Flagship", "Mid-Range", "Budget", "Gaming", "Foldable", "5G", "New Launches"];
-const brands = ["Apple", "Samsung", "Xiaomi", "OnePlus", "Google", "ASUS", "Honor", "Vivo", "Oppo"];
+/* -------------------- Brand registry (extensible) -------------------- */
+type BrandConfig = {
+  name: string;
+  slug: string;
+  tagline: string;
+  description: string;
+  productCount: number;
+  series: string[];
+  pillars: { icon: typeof Cpu; title: string; desc: string }[];
+  highlight: { eyebrow: string; title: string; desc: string };
+  catalog: BrandProduct[];
+};
+
+const samsungConfig: BrandConfig = {
+  name: "Samsung",
+  slug: "samsung",
+  tagline: "Galaxy power for every moment.",
+  description:
+    "Authorized Samsung products at Cellexa — flagship Galaxy smartphones, tablets, earbuds, wearables and accessories with full local warranty.",
+  productCount: samsungProducts.length,
+  series: ["Galaxy S", "Galaxy Z", "Galaxy A", "Galaxy Tab", "Galaxy Watch", "Galaxy Buds", "Soundbar", "Power"],
+  pillars: [
+    { icon: Cpu,     title: "Innovation",       desc: "Industry-leading displays, AI features and fold-tech." },
+    { icon: Award,   title: "Flagship Quality", desc: "Premium materials, cameras and performance." },
+    { icon: Layers,  title: "One Ecosystem",    desc: "Seamless sync across phones, tabs, watches & buds." },
+    { icon: ShieldCheck, title: "Genuine + Warranty", desc: "Backed by Samsung Sri Lanka authorized service." },
+  ],
+  highlight: {
+    eyebrow: "Top Samsung Picks",
+    title: "Latest Galaxy devices, hand-picked.",
+    desc: "Our team's most-loved Samsung flagships right now — all genuine, warranty-backed, with 0% installments.",
+  },
+  catalog: samsungProducts,
+};
+
+/* Minimal stubs for other brands (reuse layout) */
+const fallbackBrand = (name: string, slug: string): BrandConfig => ({
+  name,
+  slug,
+  tagline: `Discover the latest from ${name}.`,
+  description: `Genuine ${name} products available at Cellexa with islandwide delivery, 0% installments and full warranty.`,
+  productCount: 0,
+  series: [],
+  pillars: samsungConfig.pillars,
+  highlight: {
+    eyebrow: `Top ${name} Picks`,
+    title: `Editor's choice from ${name}.`,
+    desc: `Our most-loved ${name} products at Cellexa — all genuine and warranty-backed.`,
+  },
+  catalog: samsungProducts.map((p) => ({ ...p, brand: name })),
+});
+
+const brandRegistry: Record<string, BrandConfig> = {
+  samsung: samsungConfig,
+  apple: fallbackBrand("Apple", "apple"),
+  xiaomi: fallbackBrand("Xiaomi", "xiaomi"),
+  sony: fallbackBrand("Sony", "sony"),
+  jbl: fallbackBrand("JBL", "jbl"),
+  logitech: fallbackBrand("Logitech", "logitech"),
+  asus: fallbackBrand("ASUS", "asus"),
+  oneplus: fallbackBrand("OnePlus", "oneplus"),
+  bose: fallbackBrand("Bose", "bose"),
+  anker: fallbackBrand("Anker", "anker"),
+};
+
 const ratings = [4, 3, 2, 1];
 const storages = ["64GB", "128GB", "256GB", "512GB", "1TB"];
 const rams = ["4GB", "6GB", "8GB", "12GB", "16GB"];
@@ -90,31 +171,18 @@ const colors = [
   { name: "White", hex: "#F8FAFC" },
   { name: "Blue", hex: "#2563EB" },
   { name: "Titanium", hex: "#9CA3AF" },
-  { name: "Gold", hex: "#D4AF37" },
   { name: "Green", hex: "#10B981" },
   { name: "Pink", hex: "#F472B6" },
 ];
-const cameras = ["12MP+", "48MP+", "108MP+", "200MP+"];
+const featureOpts = ["5G", "Wireless", "Fast Charging", "Water Resistant"];
 
 const fmtLKR = (n: number) =>
   "LKR " + n.toLocaleString("en-LK", { maximumFractionDigits: 0 });
 
-/* Brand quick-shop tiles */
-const brandTiles = [
-  { name: "Apple", count: 28 },
-  { name: "Samsung", count: 42 },
-  { name: "Xiaomi", count: 36 },
-  { name: "OnePlus", count: 14 },
-  { name: "Google", count: 9 },
-  { name: "ASUS", count: 7 },
-  { name: "Honor", count: 11 },
-  { name: "Vivo", count: 16 },
-  { name: "Oppo", count: 18 },
-];
-
 /* -------------------- Filter sidebar -------------------- */
 type FilterState = {
-  brands: string[];
+  cats: string[];
+  series: string[];
   price: [number, number];
   inStock: boolean;
   rating: number | null;
@@ -122,16 +190,14 @@ type FilterState = {
   storages: string[];
   rams: string[];
   colors: string[];
-  screen: [number, number];
-  battery: number;
-  cameras: string[];
-  fiveG: boolean;
+  features: string[];
   promo: boolean;
   preorder: boolean;
 };
 
 const defaultFilters: FilterState = {
-  brands: [],
+  cats: [],
+  series: [],
   price: [0, 600000],
   inStock: false,
   rating: null,
@@ -139,21 +205,25 @@ const defaultFilters: FilterState = {
   storages: [],
   rams: [],
   colors: [],
-  screen: [5.5, 8],
-  battery: 0,
-  cameras: [],
-  fiveG: false,
+  features: [],
   promo: false,
   preorder: false,
 };
 
 const FilterSidebar = ({
+  brand,
   filters,
   setFilters,
 }: {
+  brand: BrandConfig;
   filters: FilterState;
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
 }) => {
+  const cats = useMemo(
+    () => Array.from(new Set(brand.catalog.map((p) => p.category))),
+    [brand],
+  );
+
   const toggle = <K extends keyof FilterState>(key: K, value: string) => {
     setFilters((f) => {
       const arr = f[key] as unknown as string[];
@@ -166,7 +236,7 @@ const FilterSidebar = ({
     <aside className="space-y-3">
       <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
         <div className="mb-3 flex items-center justify-between">
-          <h3 className="font-display text-base font-bold">Refine</h3>
+          <h3 className="font-display text-base font-bold">Refine {brand.name}</h3>
           <button
             onClick={() => setFilters(defaultFilters)}
             className="text-xs font-semibold text-primary hover:underline"
@@ -175,30 +245,54 @@ const FilterSidebar = ({
           </button>
         </div>
 
-        <Accordion type="multiple" defaultValue={["brand", "price", "rating", "storage"]} className="w-full">
-          <AccordionItem value="brand">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Brand</AccordionTrigger>
+        <Accordion type="multiple" defaultValue={["cat", "series", "price", "rating"]} className="w-full">
+          <AccordionItem value="cat">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Category</AccordionTrigger>
             <AccordionContent>
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                {brands.map((b) => {
-                  const active = filters.brands.includes(b);
-                  return (
-                    <button
-                      key={b}
-                      onClick={() => toggle("brands", b)}
-                      className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-all ${
-                        active
-                          ? "border-primary bg-primary/10 text-primary"
-                          : "border-border bg-background text-foreground/80 hover:border-primary/40"
-                      }`}
-                    >
-                      {b}
-                    </button>
-                  );
-                })}
+              <div className="space-y-2.5 pt-1">
+                {cats.map((c) => (
+                  <label key={c} className="flex cursor-pointer items-center justify-between text-sm">
+                    <span className="flex items-center gap-2.5">
+                      <Checkbox
+                        checked={filters.cats.includes(c)}
+                        onCheckedChange={() => toggle("cats", c)}
+                      />
+                      <span className="text-foreground/90">{c}</span>
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {brand.catalog.filter((p) => p.category === c).length}
+                    </span>
+                  </label>
+                ))}
               </div>
             </AccordionContent>
           </AccordionItem>
+
+          {brand.series.length > 0 && (
+            <AccordionItem value="series">
+              <AccordionTrigger className="py-3 text-sm font-semibold">Product Series</AccordionTrigger>
+              <AccordionContent>
+                <div className="grid grid-cols-2 gap-1.5 pt-1">
+                  {brand.series.map((s) => {
+                    const active = filters.series.includes(s);
+                    return (
+                      <button
+                        key={s}
+                        onClick={() => toggle("series", s)}
+                        className={`rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold transition-all ${
+                          active
+                            ? "border-primary bg-primary/10 text-primary"
+                            : "border-border bg-background text-foreground/80 hover:border-primary/40"
+                        }`}
+                      >
+                        {s}
+                      </button>
+                    );
+                  })}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          )}
 
           <AccordionItem value="price">
             <AccordionTrigger className="py-3 text-sm font-semibold">Price (LKR)</AccordionTrigger>
@@ -356,78 +450,20 @@ const FilterSidebar = ({
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="screen">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Screen size</AccordionTrigger>
-            <AccordionContent>
-              <div className="px-1 pb-1 pt-3">
-                <Slider
-                  value={filters.screen}
-                  min={5}
-                  max={8}
-                  step={0.1}
-                  onValueChange={(v) =>
-                    setFilters((f) => ({ ...f, screen: [v[0], v[1]] as [number, number] }))
-                  }
-                />
-                <div className="mt-3 flex items-center justify-between text-xs font-medium">
-                  <span className="rounded-md bg-secondary px-2 py-1">{filters.screen[0].toFixed(1)}"</span>
-                  <span className="text-muted-foreground">to</span>
-                  <span className="rounded-md bg-secondary px-2 py-1">{filters.screen[1].toFixed(1)}"</span>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="battery">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Battery (mAh+)</AccordionTrigger>
-            <AccordionContent>
-              <div className="grid grid-cols-2 gap-1.5 pt-1">
-                {[0, 4000, 5000, 5500].map((v) => {
-                  const active = filters.battery === v;
-                  return (
-                    <button
-                      key={v}
-                      onClick={() => setFilters((f) => ({ ...f, battery: v }))}
-                      className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-all ${
-                        active
-                          ? "border-primary bg-primary/10 text-primary"
-                          : "border-border bg-background hover:border-primary/40"
-                      }`}
-                    >
-                      {v === 0 ? "Any" : `${v}+`}
-                    </button>
-                  );
-                })}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="cam">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Camera</AccordionTrigger>
+          <AccordionItem value="feat">
+            <AccordionTrigger className="py-3 text-sm font-semibold">Features</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-2.5 pt-1">
-                {cameras.map((c) => (
-                  <label key={c} className="flex cursor-pointer items-center gap-2.5 text-sm">
+                {featureOpts.map((f) => (
+                  <label key={f} className="flex cursor-pointer items-center gap-2.5 text-sm">
                     <Checkbox
-                      checked={filters.cameras.includes(c)}
-                      onCheckedChange={() => toggle("cameras", c)}
+                      checked={filters.features.includes(f)}
+                      onCheckedChange={() => toggle("features", f)}
                     />
-                    <span className="text-foreground/90">{c}</span>
+                    <span className="text-foreground/90">{f}</span>
                   </label>
                 ))}
               </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="5g">
-            <AccordionTrigger className="py-3 text-sm font-semibold">5G Support</AccordionTrigger>
-            <AccordionContent>
-              <label className="flex items-center justify-between pt-1 text-sm">
-                <span className="inline-flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-primary" /> 5G ready only
-                </span>
-                <Switch checked={filters.fiveG} onCheckedChange={(v) => setFilters((f) => ({ ...f, fiveG: v }))} />
-              </label>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -439,9 +475,9 @@ const FilterSidebar = ({
             <Wallet className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-foreground">0% Installments</h4>
+            <h4 className="text-sm font-bold text-foreground">0% Installments on {brand.name}</h4>
             <p className="mt-0.5 text-xs text-muted-foreground">
-              Pay in 3, 6, 12 or 24 months on selected smartphones with leading banks.
+              Pay over 3, 6, 12 or 24 months with leading Sri Lankan banks.
             </p>
           </div>
         </div>
@@ -451,28 +487,21 @@ const FilterSidebar = ({
 };
 
 /* -------------------- Page -------------------- */
-const Category = () => {
+const Brand = () => {
   const params = useParams();
-  const slug = params.slug ?? "smartphones";
-  const titleMap: Record<string, string> = {
-    smartphones: "Smartphones",
-    tablets: "Tablets",
-    accessories: "Accessories",
-    audio: "Audio",
-    gaming: "Gaming",
-  };
-  const categoryName = titleMap[slug] ?? "Smartphones";
+  const slug = (params.slug ?? "samsung").toLowerCase();
+  const brand = brandRegistry[slug] ?? fallbackBrand(slug.charAt(0).toUpperCase() + slug.slice(1), slug);
 
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [sort, setSort] = useState("relevance");
-  const [activeSub, setActiveSub] = useState<string>("All");
+  const [activeTab, setActiveTab] = useState<string>("All");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const perPage = 12;
 
   useEffect(() => {
-    document.title = `${categoryName} — Best Prices in Sri Lanka | Cellexa`;
-    const desc = `Shop the latest ${categoryName.toLowerCase()} at Cellexa. Genuine products, warranty support, 0% installments and islandwide delivery.`;
+    document.title = `${brand.name} — Genuine Products in Sri Lanka | Cellexa`;
+    const desc = `Shop genuine ${brand.name} smartphones, tablets, audio, wearables & accessories at Cellexa. Warranty, 0% installments & islandwide delivery.`;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
@@ -480,51 +509,60 @@ const Category = () => {
       document.head.appendChild(meta);
     }
     meta.setAttribute("content", desc);
-  }, [categoryName]);
+  }, [brand.name]);
+
+  const tabs = useMemo(() => {
+    const cats = Array.from(new Set(brand.catalog.map((p) => p.category)));
+    return ["All", ...cats, "New Launches", "Best Sellers"];
+  }, [brand]);
 
   const filtered = useMemo(() => {
-    let list = catalog.filter((p) => {
-      if (activeSub !== "All") {
-        if (activeSub === "5G" && !p.fiveG) return false;
-        if (activeSub === "New Launches" && p.badge?.label !== "New") return false;
-        if (!["5G", "New Launches"].includes(activeSub) && p.sub !== activeSub) return false;
+    let list = brand.catalog.filter((p) => {
+      if (activeTab !== "All") {
+        if (activeTab === "New Launches" && p.badge?.label !== "New") return false;
+        if (activeTab === "Best Sellers" && p.badge?.label !== "Best Seller") return false;
+        if (!["New Launches", "Best Sellers"].includes(activeTab) && p.category !== activeTab) return false;
       }
-      if (filters.brands.length && !filters.brands.includes(p.brand)) return false;
+      if (filters.cats.length && !filters.cats.includes(p.category)) return false;
+      if (filters.series.length && !filters.series.includes(p.series)) return false;
       if (p.price < filters.price[0] || p.price > filters.price[1]) return false;
       if (filters.rating && p.rating < filters.rating) return false;
-      if (filters.storages.length && !filters.storages.includes(p.storage)) return false;
-      if (filters.rams.length && !filters.rams.includes(p.ram)) return false;
+      if (filters.storages.length && (!p.storage || !filters.storages.includes(p.storage))) return false;
+      if (filters.rams.length && (!p.ram || !filters.rams.includes(p.ram))) return false;
       if (filters.colors.length && !filters.colors.includes(p.color)) return false;
-      if (p.screen < filters.screen[0] || p.screen > filters.screen[1]) return false;
-      if (filters.battery && p.battery < filters.battery) return false;
-      if (filters.fiveG && !p.fiveG) return false;
+      if (filters.features.includes("5G") && !p.fiveG) return false;
       if (filters.promo && !p.oldPrice) return false;
       if (filters.preorder && p.badge?.label !== "Pre-Order") return false;
       if (search && !`${p.name} ${p.brand}`.toLowerCase().includes(search.toLowerCase())) return false;
       return true;
     });
     switch (sort) {
-      case "price-asc": list = [...list].sort((a, b) => a.price - b.price); break;
+      case "price-asc":  list = [...list].sort((a, b) => a.price - b.price); break;
       case "price-desc": list = [...list].sort((a, b) => b.price - a.price); break;
-      case "rating": list = [...list].sort((a, b) => b.rating - a.rating); break;
-      case "newest": list = [...list].sort((a, b) => Number(b.id.slice(1)) - Number(a.id.slice(1))); break;
+      case "rating":     list = [...list].sort((a, b) => b.rating - a.rating); break;
+      case "newest":     list = [...list].sort((a, b) => b.id.localeCompare(a.id)); break;
     }
     return list;
-  }, [filters, sort, activeSub, search]);
+  }, [filters, sort, activeTab, search, brand]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
   const visible = filtered.slice(0, page * perPage);
 
-  /* Top flagships highlight */
-  const topFlagships = useMemo(
-    () => catalog.filter((p) => p.sub === "Flagship").slice(0, 3),
-    [],
+  const topPicks = useMemo(
+    () =>
+      [...brand.catalog]
+        .sort((a, b) => b.rating - a.rating || b.reviews - a.reviews)
+        .slice(0, 3),
+    [brand],
   );
 
   /* Active chips */
   const chips: { label: string; onRemove: () => void }[] = [];
-  filters.brands.forEach((b) =>
-    chips.push({ label: b, onRemove: () => setFilters((f) => ({ ...f, brands: f.brands.filter((x) => x !== b) })) }),
+  filters.cats.forEach((c) =>
+    chips.push({ label: c, onRemove: () => setFilters((f) => ({ ...f, cats: f.cats.filter((x) => x !== c) })) }),
+  );
+  filters.series.forEach((s) =>
+    chips.push({ label: s, onRemove: () => setFilters((f) => ({ ...f, series: f.series.filter((x) => x !== s) })) }),
   );
   filters.storages.forEach((s) =>
     chips.push({ label: s, onRemove: () => setFilters((f) => ({ ...f, storages: f.storages.filter((x) => x !== s) })) }),
@@ -534,8 +572,6 @@ const Category = () => {
   );
   if (filters.rating)
     chips.push({ label: `${filters.rating}★ & up`, onRemove: () => setFilters((f) => ({ ...f, rating: null })) });
-  if (filters.fiveG)
-    chips.push({ label: "5G", onRemove: () => setFilters((f) => ({ ...f, fiveG: false })) });
   if (filters.warranty)
     chips.push({ label: "Warranty", onRemove: () => setFilters((f) => ({ ...f, warranty: false })) });
   if (filters.promo)
@@ -555,55 +591,59 @@ const Category = () => {
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
               <Link to="/" className="hover:text-primary">Home</Link>
               <ChevronRight className="h-3.5 w-3.5" />
-              <Link to="/shop" className="hover:text-primary">Shop</Link>
+              <Link to="/shop" className="hover:text-primary">Brands</Link>
               <ChevronRight className="h-3.5 w-3.5" />
-              <span className="text-foreground">{categoryName}</span>
+              <span className="text-foreground">{brand.name}</span>
             </nav>
           </div>
         </section>
 
-        {/* Category hero */}
+        {/* Brand hero */}
         <section className="bg-background pt-5 sm:pt-6">
           <div className="container-page">
-            <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-brand-soft">
-              <div className="grid items-center gap-6 lg:grid-cols-2">
-                <div className="relative z-10 px-6 py-8 sm:px-10 sm:py-10 lg:py-14">
-                  <span className="badge-promo bg-primary/10 text-primary">
-                    <Smartphone className="h-3 w-3" /> {categoryName} Collection
+            <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-deep">
+              <div className="grid items-center gap-6 lg:grid-cols-[1fr_1.1fr]">
+                <div className="relative z-10 px-6 py-8 text-primary-foreground sm:px-10 sm:py-12 lg:py-16">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur ring-1 ring-white/20">
+                    <BadgeCheck className="h-3 w-3" /> Authorized · Genuine Products
                   </span>
-                  <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
-                    Flagship power, <span className="bg-gradient-hero bg-clip-text text-transparent">everyday brilliance.</span>
+                  <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+                    {brand.name}
                   </h1>
-                  <p className="mt-3 max-w-md text-sm text-muted-foreground sm:text-base">
-                    The latest 5G smartphones from Apple, Samsung, Xiaomi, OnePlus & more — all genuine,
-                    warranty-backed, with 0% installments available islandwide.
+                  <p className="mt-2 font-display text-lg font-semibold text-white/90 sm:text-xl">
+                    {brand.tagline}
                   </p>
-                  <div className="mt-5 flex flex-wrap items-center gap-2">
-                    <Button size="lg" className="rounded-xl">
-                      <Sparkles className="h-4 w-4" /> Explore Flagships
+                  <p className="mt-3 max-w-md text-sm text-white/80">
+                    {brand.description}
+                  </p>
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <Button asChild variant="hero" size="lg" className="rounded-xl">
+                      <a href="#brand-grid">
+                        <Sparkles className="h-4 w-4" /> Shop {brand.name}
+                      </a>
                     </Button>
-                    <Button size="lg" variant="outline" className="rounded-xl">
-                      Shop by Brand <ArrowRight className="h-4 w-4" />
+                    <Button asChild variant="heroOutline" size="lg" className="rounded-xl">
+                      <a href="#brand-grid">View New Arrivals <ArrowRight className="h-4 w-4" /></a>
                     </Button>
                   </div>
-                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
-                    <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-3.5 w-3.5 text-success" /> Genuine</span>
-                    <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Warranty</span>
-                    <span className="inline-flex items-center gap-1.5"><Truck className="h-3.5 w-3.5 text-primary" /> Islandwide</span>
-                    <span className="inline-flex items-center gap-1.5"><Wallet className="h-3.5 w-3.5 text-primary" /> 0% Installments</span>
+                  <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-white/85">
+                    <span className="inline-flex items-center gap-1.5"><Package className="h-3.5 w-3.5" /> {brand.productCount}+ products</span>
+                    <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Warranty backed</span>
+                    <span className="inline-flex items-center gap-1.5"><Truck className="h-3.5 w-3.5" /> Islandwide delivery</span>
+                    <span className="inline-flex items-center gap-1.5"><Wallet className="h-3.5 w-3.5" /> 0% installments</span>
                   </div>
                 </div>
 
-                <div className="relative h-56 sm:h-72 lg:h-full lg:min-h-[360px]">
+                <div className="relative h-60 sm:h-80 lg:h-full lg:min-h-[420px]">
                   <img
-                    src={heroSmartphones}
-                    alt={`${categoryName} category banner`}
+                    src={brandHero}
+                    alt={`${brand.name} product showcase`}
                     className="absolute inset-0 h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary)/0.05)] via-transparent to-transparent lg:from-background/30" />
-                  <div className="absolute bottom-4 right-4 hidden rounded-2xl border border-white/40 bg-white/85 px-4 py-3 shadow-lift backdrop-blur sm:block">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">Featured</p>
-                    <p className="text-sm font-bold text-foreground">120+ models in stock</p>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary-deep)/0.6)] via-transparent to-transparent lg:from-[hsl(var(--primary-deep)/0.4)]" />
+                  <div className="absolute bottom-4 right-4 hidden rounded-2xl border border-white/40 bg-white/90 px-4 py-3 shadow-lift backdrop-blur sm:block">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">Exclusive</p>
+                    <p className="text-sm font-bold text-foreground">Up to 30% off select models</p>
                   </div>
                 </div>
               </div>
@@ -611,23 +651,23 @@ const Category = () => {
           </div>
         </section>
 
-        {/* Subcategory chips */}
+        {/* Tabs / shortcuts */}
         <section className="bg-background pt-6">
           <div className="container-page">
             <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
-              {subcats.map((c) => {
-                const active = activeSub === c;
+              {tabs.map((t) => {
+                const active = activeTab === t;
                 return (
                   <button
-                    key={c}
-                    onClick={() => setActiveSub(c)}
+                    key={t}
+                    onClick={() => setActiveTab(t)}
                     className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all ${
                       active
                         ? "border-primary bg-primary text-primary-foreground shadow-soft"
                         : "border-border bg-card text-foreground/80 hover:border-primary/40 hover:text-primary"
                     }`}
                   >
-                    {c}
+                    {t}
                   </button>
                 );
               })}
@@ -635,61 +675,58 @@ const Category = () => {
           </div>
         </section>
 
-        {/* Featured brands */}
+        {/* Why shop this brand */}
         <section className="bg-background pt-6">
           <div className="container-page">
-            <div className="mb-3 flex items-end justify-between">
-              <div>
-                <h2 className="font-display text-lg font-bold sm:text-xl">Shop by Brand</h2>
-                <p className="text-xs text-muted-foreground">Top {categoryName.toLowerCase()} brands available at Cellexa.</p>
-              </div>
-              <Link to="/shop" className="hidden text-xs font-semibold text-primary hover:underline sm:inline">All brands →</Link>
-            </div>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
-              {brandTiles.map((b) => (
-                <Link
-                  key={b.name}
-                  to={`/brand/${b.name.toLowerCase()}`}
-                  className="card-category group flex flex-col items-center justify-center gap-1 px-2 py-3 text-center"
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {brand.pillars.map((p) => (
+                <div
+                  key={p.title}
+                  className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lift"
                 >
-                  <span className="font-display text-sm font-extrabold text-foreground transition-colors group-hover:text-primary">
-                    {b.name}
-                  </span>
-                  <span className="text-[10px] font-medium text-muted-foreground">{b.count} items</span>
-                </Link>
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-brand-soft text-primary">
+                    <p.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-3 font-display text-sm font-bold text-foreground">{p.title}</h3>
+                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{p.desc}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <div className="container-page py-7 lg:py-10">
+        <div id="brand-grid" className="container-page py-7 lg:py-10">
           <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8">
             {/* Desktop sidebar */}
             <div className="hidden lg:block">
               <div className="sticky top-[180px]">
-                <FilterSidebar filters={filters} setFilters={setFilters} />
+                <FilterSidebar brand={brand} filters={filters} setFilters={setFilters} />
               </div>
             </div>
 
             {/* Right area */}
             <div className="min-w-0">
-              {/* Category-specific merchandising */}
+              {/* Brand merchandising strip */}
               <div className="mb-5 grid gap-3 sm:grid-cols-3">
                 <div className="overflow-hidden rounded-2xl bg-gradient-deep p-4 text-primary-foreground sm:col-span-2">
                   <span className="badge-promo bg-white/15 text-white">Latest Launches</span>
                   <h3 className="mt-2 font-display text-lg font-extrabold sm:text-xl">
-                    iPhone 15 series + Galaxy S24 Ultra in stock now
+                    New {brand.name} flagships in stock now
                   </h3>
-                  <p className="mt-1 text-sm text-white/85">Pre-orders open. Pay in 0% installments.</p>
+                  <p className="mt-1 text-sm text-white/85">
+                    Pre-orders open. 0% installments available on selected models.
+                  </p>
                 </div>
                 <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-soft">
                   <div className="flex items-center gap-2 text-primary">
-                    <Camera className="h-5 w-5" />
-                    <span className="text-xs font-bold uppercase tracking-wider">Camera Phones</span>
+                    <Layers className="h-5 w-5" />
+                    <span className="text-xs font-bold uppercase tracking-wider">Ecosystem</span>
                   </div>
-                  <p className="mt-2 text-sm font-semibold text-foreground">Pro-grade shooters under LKR 350K</p>
+                  <p className="mt-2 text-sm font-semibold text-foreground">
+                    Bundle phone + buds + watch
+                  </p>
                   <button className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
-                    View collection <ArrowRight className="h-3 w-3" />
+                    View bundles <ArrowRight className="h-3 w-3" />
                   </button>
                 </div>
               </div>
@@ -702,7 +739,7 @@ const Category = () => {
                     type="search"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder={`Search in ${categoryName.toLowerCase()}…`}
+                    placeholder={`Search ${brand.name} products…`}
                     className="h-10 w-full rounded-xl border border-border bg-surface pl-10 pr-3 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
@@ -733,10 +770,10 @@ const Category = () => {
                     </SheetTrigger>
                     <SheetContent side="left" className="w-[88%] max-w-sm overflow-y-auto p-4">
                       <SheetHeader>
-                        <SheetTitle>Refine</SheetTitle>
+                        <SheetTitle>Refine {brand.name}</SheetTitle>
                       </SheetHeader>
                       <div className="mt-4">
-                        <FilterSidebar filters={filters} setFilters={setFilters} />
+                        <FilterSidebar brand={brand} filters={filters} setFilters={setFilters} />
                       </div>
                     </SheetContent>
                   </Sheet>
@@ -775,10 +812,10 @@ const Category = () => {
                 </div>
               ) : (
                 <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
-                  <Smartphone className="mx-auto h-10 w-10 text-muted-foreground/60" />
-                  <h3 className="mt-3 font-display text-lg font-bold">No {categoryName.toLowerCase()} match your filters</h3>
+                  <Package className="mx-auto h-10 w-10 text-muted-foreground/60" />
+                  <h3 className="mt-3 font-display text-lg font-bold">No {brand.name} products match your filters</h3>
                   <p className="mt-1 text-sm text-muted-foreground">Try removing a few filters.</p>
-                  <Button variant="outline" className="mt-4" onClick={() => { setFilters(defaultFilters); setSearch(""); setActiveSub("All"); }}>
+                  <Button variant="outline" className="mt-4" onClick={() => { setFilters(defaultFilters); setSearch(""); setActiveTab("All"); }}>
                     Reset filters
                   </Button>
                 </div>
@@ -789,27 +826,23 @@ const Category = () => {
                 <div className="grid lg:grid-cols-[1.1fr_1fr]">
                   <div className="relative bg-gradient-deep p-6 text-primary-foreground sm:p-8">
                     <span className="badge-promo bg-white/15 text-white">
-                      <Sparkles className="h-3 w-3" /> Editor's Pick
+                      <Sparkles className="h-3 w-3" /> {brand.highlight.eyebrow}
                     </span>
                     <h3 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
-                      Top Flagships This Month
+                      {brand.highlight.title}
                     </h3>
                     <p className="mt-2 max-w-md text-sm text-white/85">
-                      Hand-picked by our team — the most loved premium smartphones at Cellexa right now,
-                      backed by full warranty and instant 0% installments.
+                      {brand.highlight.desc}
                     </p>
-                    <Button variant="secondary" size="lg" className="mt-5 rounded-xl bg-white text-primary hover:bg-white/90">
-                      Explore all flagships <ArrowRight className="h-4 w-4" />
+                    <Button asChild variant="secondary" size="lg" className="mt-5 rounded-xl bg-white text-primary hover:bg-white/90">
+                      <a href="#brand-grid">
+                        Shop all {brand.name} <ArrowRight className="h-4 w-4" />
+                      </a>
                     </Button>
-                    <img
-                      src={featurePhone}
-                      alt=""
-                      className="pointer-events-none absolute -right-10 -top-6 hidden h-[140%] w-auto object-contain opacity-25 lg:block"
-                    />
                   </div>
 
                   <div className="grid gap-3 p-4 sm:grid-cols-3 sm:p-5">
-                    {topFlagships.map((p) => (
+                    {topPicks.map((p) => (
                       <ProductCard key={p.id} product={p} />
                     ))}
                   </div>
@@ -826,7 +859,7 @@ const Category = () => {
                       className="rounded-xl"
                       onClick={() => setPage((p) => p + 1)}
                     >
-                      Load more {categoryName.toLowerCase()}
+                      Load more {brand.name} products
                     </Button>
                   )}
                   <Pagination>
@@ -855,4 +888,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Brand;

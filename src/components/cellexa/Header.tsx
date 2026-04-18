@@ -9,7 +9,7 @@ const navLinks: { label: string; to: string; badge?: string }[] = [
   { label: "Smartphones", to: "/category/smartphones" },
   { label: "Tablets", to: "/category/tablets" },
   { label: "Accessories", to: "/category/accessories" },
-  { label: "Brands", to: "/shop" },
+  { label: "Brands", to: "/brand/samsung" },
   { label: "Pre-Orders", to: "/shop", badge: "New" },
   { label: "Support", to: "/shop" },
 ];
