@@ -407,10 +407,12 @@ const Orders = () => {
 
                           {/* Actions */}
                           <div className="flex flex-wrap gap-2 sm:col-span-4 sm:justify-end">
-                            <Button variant="outline" size="sm" className="rounded-lg">
-                              <Eye className="h-3.5 w-3.5" />
-                              <span className="hidden sm:inline">View Details</span>
-                              <span className="sm:hidden">View</span>
+                            <Button variant="outline" size="sm" className="rounded-lg" asChild>
+                              <Link to={`/account/orders/${o.id}`}>
+                                <Eye className="h-3.5 w-3.5" />
+                                <span className="hidden sm:inline">View Details</span>
+                                <span className="sm:hidden">View</span>
+                              </Link>
                             </Button>
                             {o.status === "Shipped" || o.status === "Processing" ? (
                               <Button variant="brand" size="sm" className="rounded-lg">
