@@ -66,13 +66,13 @@ const Header = () => {
               <Heart className="h-5 w-5" />
               <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-promo px-1 text-[10px] font-bold text-promo-foreground">3</span>
             </button>
-            <button className="relative inline-flex h-10 items-center gap-2 rounded-lg px-2.5 hover:bg-secondary sm:px-3" aria-label="Cart">
+            <Link to="/cart" className="relative inline-flex h-10 items-center gap-2 rounded-lg px-2.5 hover:bg-secondary sm:px-3" aria-label="Cart">
               <div className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="absolute -right-1.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground">2</span>
               </div>
               <span className="hidden text-sm font-semibold sm:inline">LKR 0</span>
-            </button>
+            </Link>
           </div>
         </div>
 
