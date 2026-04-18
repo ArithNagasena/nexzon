@@ -58,7 +58,7 @@ const Header = () => {
 
           {/* Right icons */}
           <div className="ml-auto flex items-center gap-1 sm:gap-2">
-            <Link to="/login" className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-secondary" aria-label="Account">
+            <Link to="/account" className="hidden md:inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-secondary" aria-label="Account">
               <User className="h-5 w-5" />
               <span className="hidden xl:inline">Account</span>
             </Link>
