@@ -1,25 +1,26 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Search, User, Heart, ShoppingCart, Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Shop", href: "#" },
-  { label: "Smartphones", href: "#" },
-  { label: "Tablets", href: "#" },
-  { label: "Accessories", href: "#" },
-  { label: "Brands", href: "#" },
-  { label: "Pre-Orders", href: "#", badge: "New" },
-  { label: "Support", href: "#" },
+const navLinks: { label: string; to: string; badge?: string }[] = [
+  { label: "Home", to: "/" },
+  { label: "Shop", to: "/shop" },
+  { label: "Smartphones", to: "/category/smartphones" },
+  { label: "Tablets", to: "/category/tablets" },
+  { label: "Accessories", to: "/category/accessories" },
+  { label: "Brands", to: "/shop" },
+  { label: "Pre-Orders", to: "/shop", badge: "New" },
+  { label: "Support", to: "/shop" },
 ];
 
 const Logo = () => (
-  <a href="#" className="flex items-center gap-1.5 select-none" aria-label="Cellexa Home">
+  <Link to="/" className="flex items-center gap-1.5 select-none" aria-label="Cellexa Home">
     <span className="font-display text-2xl font-extrabold tracking-tight text-foreground">
       Cell<span className="text-primary">exa</span>
     </span>
     <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
-  </a>
+  </Link>
 );
 
 const Header = () => {
@@ -49,8 +50,8 @@ const Header = () => {
                 placeholder="Search for iPhone, Galaxy, AirPods, Xiaomi…"
                 className="h-11 w-full rounded-xl border border-border bg-surface pl-11 pr-28 text-sm outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/20"
               />
-              <Button size="sm" className="absolute right-1.5 top-1/2 h-8 -translate-y-1/2 rounded-lg px-4">
-                Search
+              <Button asChild size="sm" className="absolute right-1.5 top-1/2 h-8 -translate-y-1/2 rounded-lg px-4">
+                <Link to="/shop">Search</Link>
               </Button>
             </div>
           </div>
@@ -89,15 +90,18 @@ const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden h-12 items-center gap-1 border-t border-border/60 lg:flex">
-          <button className="mr-2 inline-flex items-center gap-2 rounded-lg bg-gradient-hero px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm">
+          <Link
+            to="/shop"
+            className="mr-2 inline-flex items-center gap-2 rounded-lg bg-gradient-hero px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm"
+          >
             <Menu className="h-4 w-4" />
             All Categories
             <ChevronDown className="h-4 w-4" />
-          </button>
+          </Link>
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.to}
               className="relative inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
             >
               {l.label}
@@ -106,7 +110,7 @@ const Header = () => {
                   {l.badge}
                 </span>
               )}
-            </a>
+            </Link>
           ))}
           <span className="ml-auto text-sm font-medium text-muted-foreground">
             Hotline: <a href="tel:+94112000000" className="text-primary hover:underline">+94 11 200 0000</a>
@@ -127,10 +131,15 @@ const Header = () => {
             </div>
             <nav className="mt-6 flex flex-col gap-1">
               {navLinks.map((l) => (
-                <a key={l.label} href={l.href} className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium hover:bg-secondary">
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium hover:bg-secondary"
+                >
                   <span>{l.label}</span>
                   {l.badge && <span className="rounded-full bg-promo px-2 py-0.5 text-[10px] font-bold uppercase text-promo-foreground">{l.badge}</span>}
-                </a>
+                </Link>
               ))}
             </nav>
             <div className="mt-6 border-t border-border pt-6">

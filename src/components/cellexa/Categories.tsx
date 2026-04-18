@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import smartphones from "@/assets/cat-smartphones.jpg";
 import tablets from "@/assets/cat-tablets.jpg";
 import accessories from "@/assets/cat-accessories.jpg";
@@ -6,11 +7,11 @@ import audio from "@/assets/cat-audio.jpg";
 import gaming from "@/assets/cat-gaming.jpg";
 
 const cats = [
-  { name: "Smartphones", count: "240+ models", img: smartphones, large: true },
-  { name: "Tablets", count: "60+ models", img: tablets },
-  { name: "Audio", count: "180+ products", img: audio },
-  { name: "Accessories", count: "500+ items", img: accessories },
-  { name: "Gaming", count: "120+ products", img: gaming },
+  { name: "Smartphones", slug: "smartphones", count: "240+ models", img: smartphones, large: true },
+  { name: "Tablets", slug: "tablets", count: "60+ models", img: tablets },
+  { name: "Audio", slug: "audio", count: "180+ products", img: audio },
+  { name: "Accessories", slug: "accessories", count: "500+ items", img: accessories },
+  { name: "Gaming", slug: "gaming", count: "120+ products", img: gaming },
 ];
 
 const Categories = () => (
@@ -21,16 +22,16 @@ const Categories = () => (
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">Shop by category</span>
           <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">Browse our top categories</h2>
         </div>
-        <a href="#" className="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-primary hover:underline sm:inline-flex">
+        <Link to="/shop" className="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-primary hover:underline sm:inline-flex">
           View all <ArrowRight className="h-4 w-4" />
-        </a>
+        </Link>
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
         {cats.map((c, i) => (
-          <a
+          <Link
             key={c.name}
-            href="#"
+            to={`/category/${c.slug}`}
             className={`card-category group relative aspect-[4/3] sm:aspect-square lg:aspect-auto ${
               i === 0 ? "lg:col-span-2 lg:row-span-2 lg:aspect-auto" : ""
             }`}
@@ -51,7 +52,7 @@ const Categories = () => (
                 Shop now <ArrowRight className="h-3.5 w-3.5" />
               </span>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

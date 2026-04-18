@@ -1,17 +1,39 @@
 import { Facebook, Instagram, Youtube, Twitter, MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const linkSections = [
+const linkSections: { title: string; links: { label: string; to: string }[] }[] = [
   {
     title: "Shop",
-    links: ["Smartphones", "Tablets", "Audio", "Accessories", "Gaming", "Wearables"],
+    links: [
+      { label: "All Products", to: "/shop" },
+      { label: "Smartphones", to: "/category/smartphones" },
+      { label: "Tablets", to: "/category/tablets" },
+      { label: "Audio", to: "/category/audio" },
+      { label: "Accessories", to: "/category/accessories" },
+      { label: "Gaming", to: "/category/gaming" },
+    ],
   },
   {
     title: "Support",
-    links: ["Help Center", "Track Order", "Returns & Refunds", "Warranty", "Contact Us", "FAQ"],
+    links: [
+      { label: "Help Center", to: "/shop" },
+      { label: "Track Order", to: "/shop" },
+      { label: "Returns & Refunds", to: "/shop" },
+      { label: "Warranty", to: "/shop" },
+      { label: "Contact Us", to: "/shop" },
+      { label: "FAQ", to: "/" },
+    ],
   },
   {
     title: "Company",
-    links: ["About Cellexa", "Stores", "Careers", "Press", "Affiliates", "Blog"],
+    links: [
+      { label: "About Cellexa", to: "/" },
+      { label: "Stores", to: "/" },
+      { label: "Careers", to: "/" },
+      { label: "Press", to: "/" },
+      { label: "Affiliates", to: "/" },
+      { label: "Blog", to: "/" },
+    ],
   },
 ];
 
@@ -23,12 +45,12 @@ const Footer = () => (
       <div className="grid gap-10 lg:grid-cols-12">
         {/* Brand */}
         <div className="lg:col-span-4">
-          <div className="flex items-center gap-1.5">
+          <Link to="/" className="flex items-center gap-1.5">
             <span className="font-display text-2xl font-extrabold tracking-tight text-background">
               Cell<span className="text-primary-glow">exa</span>
             </span>
             <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
-          </div>
+          </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-background/65">
             Sri Lanka's trusted online destination for genuine smartphones, tablets, audio, and tech
             accessories — backed by warranty, fast islandwide delivery, and local support.
@@ -72,10 +94,10 @@ const Footer = () => (
               </h4>
               <ul className="mt-4 space-y-2.5 text-sm">
                 {s.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-background/65 transition-colors hover:text-primary-glow">
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    <Link to={l.to} className="text-background/65 transition-colors hover:text-primary-glow">
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

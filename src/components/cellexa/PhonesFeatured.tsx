@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Cpu, Camera, BatteryFull } from "lucide-react";
+import { Link } from "react-router-dom";
 import ProductCard, { type Product } from "./ProductCard";
 import featurePhone from "@/assets/feature-phone.jpg";
 import phone1 from "@/assets/product-phone-1.jpg";
