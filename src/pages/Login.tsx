@@ -193,7 +193,7 @@ const Login = () => {
                 <div className="mt-8 rounded-2xl border border-dashed border-border bg-secondary/60 p-4 text-center">
                   <p className="text-sm text-muted-foreground">
                     Don't have a Cellexa account?{" "}
-                    <Link to="/login" className="font-bold text-primary hover:underline">
+                    <Link to="/register" className="font-bold text-primary hover:underline">
                       Create one free
                     </Link>
                   </p>
