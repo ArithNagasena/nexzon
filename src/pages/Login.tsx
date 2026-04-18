@@ -102,7 +102,7 @@ const Login = () => {
                         Password
                       </Label>
                       <Link
-                        to="/login"
+                        to="/forgot-password"
                         className="text-xs font-semibold text-primary hover:underline"
                       >
                         Forgot password?
