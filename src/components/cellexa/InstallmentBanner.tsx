@@ -1,5 +1,6 @@
 import { Wallet, ShieldCheck, BadgeCheck, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const items = [
   { icon: Wallet, title: "0% Installment Plans", desc: "Pay in 3, 6 or 12 months with leading Sri Lankan banks." },
@@ -25,8 +26,12 @@ const InstallmentBanner = () => (
               and enjoy peace of mind with Cellexa's warranty-backed promise.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button variant="brand" size="lg">View Installment Plans</Button>
-              <Button variant="outline" size="lg">Talk to an Expert</Button>
+              <Button asChild variant="brand" size="lg">
+                <Link to="/shop">View Installment Plans</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link to="/shop">Talk to an Expert</Link>
+              </Button>
             </div>
           </div>
 

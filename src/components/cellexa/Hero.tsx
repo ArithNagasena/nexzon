@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-megasale.jpg";
 
 const Hero = () => (
@@ -26,11 +27,11 @@ const Hero = () => (
         </p>
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
-          <Button variant="hero" size="xl">
-            Shop Now <ArrowRight className="h-5 w-5" />
+          <Button asChild variant="hero" size="xl">
+            <Link to="/shop">Shop Now <ArrowRight className="h-5 w-5" /></Link>
           </Button>
-          <Button variant="heroOutline" size="xl">
-            View Deals
+          <Button asChild variant="heroOutline" size="xl">
+            <Link to="/shop">View Deals</Link>
           </Button>
         </div>
 

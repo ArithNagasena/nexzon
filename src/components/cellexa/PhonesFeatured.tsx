@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Cpu, Camera, BatteryFull } from "lucide-react";
+import { Link } from "react-router-dom";
 import ProductCard, { type Product } from "./ProductCard";
 import featurePhone from "@/assets/feature-phone.jpg";
 import phone1 from "@/assets/product-phone-1.jpg";
@@ -20,9 +21,9 @@ const PhonesFeatured = () => (
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">Spotlight · Smartphones</span>
           <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">The flagships, decoded.</h2>
         </div>
-        <a href="#" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+        <Link to="/category/smartphones" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
           Shop all phones <ArrowRight className="h-4 w-4" />
-        </a>
+        </Link>
       </div>
 
       <div className="grid gap-5 lg:grid-cols-5">
@@ -47,8 +48,12 @@ const PhonesFeatured = () => (
             </ul>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button variant="hero" size="lg">Explore Collection</Button>
-              <Button variant="heroOutline" size="lg">Compare</Button>
+              <Button asChild variant="hero" size="lg">
+                <Link to="/category/smartphones">Explore Collection</Link>
+              </Button>
+              <Button asChild variant="heroOutline" size="lg">
+                <Link to="/shop">Compare</Link>
+              </Button>
             </div>
 
             <img

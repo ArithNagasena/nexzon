@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import promoAudio from "@/assets/promo-audio.jpg";
 
 const PromoBanner = () => (
@@ -21,8 +22,8 @@ const PromoBanner = () => (
               <p className="mt-3 max-w-sm text-sm text-white/90 sm:text-base">
                 Shop Sony, Bose, JBL &amp; AirPods. Free islandwide delivery on all audio orders this week.
               </p>
-              <Button variant="hero" size="lg" className="mt-5">
-                Shop Audio <ArrowRight className="h-4 w-4" />
+              <Button asChild variant="hero" size="lg" className="mt-5">
+                <Link to="/category/audio">Shop Audio <ArrowRight className="h-4 w-4" /></Link>
               </Button>
             </div>
             <div className="relative h-44 sm:h-56">
@@ -51,7 +52,9 @@ const PromoBanner = () => (
             </p>
           </div>
           <div className="relative mt-5 flex items-center gap-3">
-            <Button variant="hero" size="default">Reserve Now</Button>
+            <Button asChild variant="hero" size="default">
+              <Link to="/shop">Reserve Now</Link>
+            </Button>
             <span className="text-sm font-semibold text-white/85">From LKR 8,500/mo</span>
           </div>
         </div>
