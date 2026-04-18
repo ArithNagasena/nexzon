@@ -285,7 +285,7 @@ const Account = () => {
                     <p className="text-xs text-muted-foreground">Your latest 3 purchases</p>
                   </div>
                   <Link
-                    to="/account"
+                    to="/account/orders"
                     className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
                   >
                     View all <ArrowUpRight className="h-3.5 w-3.5" />
