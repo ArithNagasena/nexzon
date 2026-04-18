@@ -664,8 +664,10 @@ const CheckoutPage = () => {
               <div className="text-[11px] text-muted-foreground">Total</div>
               <div className="font-display text-lg font-extrabold leading-none text-foreground">{fmtLKR(total)}</div>
             </div>
-            <Button size="lg" className="h-12 flex-[2]">
-              <Lock className="h-4 w-4" /> Place Order
+            <Button asChild size="lg" className="h-12 flex-[2]">
+              <Link to="/order/success">
+                <Lock className="h-4 w-4" /> Place Order
+              </Link>
             </Button>
           </div>
         </div>
