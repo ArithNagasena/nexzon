@@ -513,8 +513,8 @@ const CartPage = () => {
           <section className="container-page pb-12 md:pb-16">
             <div className="mb-6 flex items-end justify-between gap-4">
               <div>
-                <h2 className="font-display text-2xl font-extrabold md:text-3xl">You May Also Like</h2>
-                <p className="text-sm text-muted-foreground">Popular picks customers add to their order.</p>
+                <h2 className="font-display text-2xl font-extrabold md:text-3xl">Recommended for You</h2>
+                <p className="text-sm text-muted-foreground">Handpicked products tailored to your interests.</p>
               </div>
               <Button asChild variant="outline" size="sm">
                 <Link to="/shop">View All <ChevronRight className="h-4 w-4" /></Link>
