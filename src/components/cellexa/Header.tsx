@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, User, Heart, ShoppingCart, Menu, X, ChevronDown } from "lucide-react";
+import { Search, User, Heart, ShoppingCart, Menu, X, ChevronDown, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks: { label: string; to: string; badge?: string }[] = [
