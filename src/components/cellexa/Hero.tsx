@@ -19,7 +19,7 @@ const Hero = () => (
     <div className="pointer-events-none absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full bg-primary/10 blur-3xl" />
     <div className="pointer-events-none absolute -bottom-32 -left-24 h-[380px] w-[380px] rounded-full bg-primary-glow/10 blur-3xl" />
 
-    <div className="container-page relative grid items-center gap-5 py-4 sm:py-5 lg:grid-cols-2 lg:gap-8 lg:py-6">
+    <div className="container-page relative grid items-center gap-6 py-6 sm:py-8 lg:grid-cols-2 lg:gap-10 lg:py-10">
       {/* Left: copy */}
       <div className="relative z-10">
         <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
@@ -27,7 +27,7 @@ const Hero = () => (
           Sri Lanka's trusted tech store
         </span>
 
-        <h1 className="mt-3 font-display text-2xl font-extrabold leading-[1.05] text-foreground sm:text-3xl lg:text-4xl xl:text-5xl">
+        <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
           Discover the latest{" "}
           <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             tech
@@ -79,7 +79,7 @@ const Hero = () => (
                 i === 0 ? "sm:translate-y-4" : ""
               } ${i === 3 ? "sm:translate-y-4" : ""}`}
             >
-              <div className="aspect-[4/3] overflow-hidden bg-surface lg:aspect-[3/2]">
+              <div className="aspect-[4/3] overflow-hidden bg-surface lg:aspect-[5/4]">
                 <img
                   src={c.img}
                   alt={`${c.name} at Cellexa`}
