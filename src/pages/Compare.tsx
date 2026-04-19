@@ -521,7 +521,7 @@ const Compare = () => {
                         key={group.group}
                         group={group}
                         slots={slots}
-                        bestIndexForRow={() => null}
+                        
                       />
                     ))}
                   </tbody>
