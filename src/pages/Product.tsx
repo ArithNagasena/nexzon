@@ -66,7 +66,7 @@ const productDetails = {
   brandSlug: "apple",
   category: "Smartphones",
   categorySlug: "smartphones",
-  name: "Samsung Galaxy S24 Ultra 5G",
+  name: "iPhone 17 Pro Max",
   tagline: "Galaxy AI is here. Titanium build, 200MP camera, S Pen included.",
   rating: 4.8,
   reviews: 1248,
