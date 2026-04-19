@@ -385,71 +385,64 @@ const Warranty = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Breadcrumb */}
-      <div className="border-b border-border/60 bg-secondary/40">
-        <div className="container mx-auto flex items-center gap-1.5 px-4 py-3 text-xs text-muted-foreground">
-          <Link to="/" className="hover:text-foreground">
-            Home
-          </Link>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <Link to="/account" className="hover:text-foreground">
-            My Account
-          </Link>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <span className="font-semibold text-foreground">
-            Warranty &amp; Claims
-          </span>
-        </div>
-      </div>
+      <main className="bg-gradient-to-b from-background to-secondary/40 pb-16">
+        <div className="container-page pt-6 sm:pt-8">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Link to="/" className="hover:text-primary">Home</Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <Link to="/account" className="hover:text-primary">My Account</Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="font-semibold text-foreground">Warranty &amp; Claims</span>
+          </nav>
 
-      <div className="container mx-auto px-4 py-6 lg:py-10">
-        {/* Mobile sidebar trigger */}
-        <div className="mb-4 flex items-center justify-between lg:hidden">
-          <h1 className="font-display text-2xl font-bold tracking-tight">
-            Warranty &amp; Claims
-          </h1>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-4 w-4" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] p-5">
-              <div className="mb-5">
-                <AccountProfileCard />
-              </div>
-              <AccountSidebarNav />
-            </SheetContent>
-          </Sheet>
-        </div>
-
-        <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
-          {/* Sidebar */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-24 space-y-5">
-              <AccountProfileCard />
-              <AccountSidebarNav />
+          {/* Page header */}
+          <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h1 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+                Warranty &amp; Claims
+              </h1>
+              <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+                Track warranties on your registered devices and submit service claims.
+              </p>
             </div>
-          </aside>
 
-          {/* Main */}
-          <main className="min-w-0 space-y-6">
-            {/* Page header */}
-            <div className="hidden items-end justify-between lg:flex">
-              <div>
-                <h1 className="font-display text-3xl font-bold tracking-tight">
-                  Warranty &amp; Claims
-                </h1>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Track warranties on your registered devices and submit
-                  service claims.
-                </p>
-              </div>
-              <Button onClick={() => openClaim()} className="gap-2">
+            <div className="flex items-center gap-2">
+              <Button onClick={() => openClaim()} className="hidden gap-2 lg:inline-flex">
                 <Wrench className="h-4 w-4" />
                 Submit New Claim
               </Button>
+
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" className="lg:hidden">
+                    <Menu className="h-4 w-4" />
+                    Account Menu
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-80 overflow-y-auto p-6">
+                  <div className="mb-6">
+                    <p className="font-display text-lg font-extrabold">Account</p>
+                  </div>
+                  <AccountSidebarNav activePath="/account/warranty" />
+                </SheetContent>
+              </Sheet>
             </div>
+          </div>
+
+          <div className="mt-6 grid gap-6 lg:mt-8 lg:grid-cols-12 lg:gap-8">
+            {/* Sidebar */}
+            <aside className="hidden lg:col-span-3 lg:block">
+              <div className="sticky top-24 space-y-4">
+                <AccountProfileCard />
+                <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-card">
+                  <AccountSidebarNav activePath="/account/warranty" />
+                </div>
+              </div>
+            </aside>
+
+            {/* Main */}
+            <section className="min-w-0 space-y-6 lg:col-span-9">
 
             {/* Stats */}
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
