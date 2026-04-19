@@ -60,8 +60,8 @@ const payments = ["VISA", "MASTERCARD", "AMEX", "LANKAQR", "FRIMI", "COD"];
 
 const Footer = () => (
   <footer className="bg-foreground text-background/85">
-    <div className="container-page py-14 sm:py-16">
-      <div className="grid gap-10 lg:grid-cols-12">
+    <div className="container-page py-8 sm:py-10">
+      <div className="grid gap-8 lg:grid-cols-12">
         {/* Brand */}
         <div className="lg:col-span-4">
           <Link to="/" className="flex items-center gap-1.5">
