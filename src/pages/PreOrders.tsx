@@ -31,7 +31,7 @@ import {
 import galaxyS26 from "@/assets/galaxy-s26-ultra.png";
 import iphone17ProMax from "@/assets/galaxy-s26-plus.png";
 import pixel10 from "@/assets/preorder-tablet.png";
-import iphone17e from "@/assets/iphone-17e.png";
+import iphone17e from "@/assets/preorder-ring.png";
 
 /* -------------------- Types & data -------------------- */
 type PreOrderStatus = "open" | "limited" | "closing" | "coming";
