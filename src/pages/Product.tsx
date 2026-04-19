@@ -438,21 +438,6 @@ const ProductPage = () => {
                   </Button>
                 </div>
 
-                {/* Trust grid */}
-                <div className="mt-2 grid grid-cols-2 gap-2 rounded-2xl border border-border/60 bg-card p-3 text-sm sm:grid-cols-4">
-                  {[
-                    { icon: Truck, label: "Islandwide", sub: "Delivery" },
-                    { icon: ShieldCheck, label: "1-Year", sub: "Warranty" },
-                    { icon: BadgeCheck, label: "100%", sub: "Genuine" },
-                    { icon: RefreshCcw, label: "7-Day", sub: "Returns" },
-                  ].map((t) => (
-                    <div key={t.label} className="flex flex-col items-center rounded-xl bg-surface px-2 py-3 text-center">
-                      <t.icon className="mb-1 h-5 w-5 text-primary" />
-                      <span className="text-xs font-bold text-foreground">{t.label}</span>
-                      <span className="text-[11px] text-muted-foreground">{t.sub}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
