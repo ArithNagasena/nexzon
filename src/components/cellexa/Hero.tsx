@@ -51,15 +51,13 @@ const Hero = () => (
       {/* Right: category tiles */}
       <div className="relative">
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          {categories.map((c, i) => (
+          {categories.map((c) => (
             <Link
               key={c.slug}
               to={`/category/${c.slug}`}
-              className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
-                i === 0 ? "sm:translate-y-4" : ""
-              } ${i === 3 ? "sm:translate-y-4" : ""}`}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
             >
-              <div className="aspect-[4/3] overflow-hidden bg-surface lg:aspect-[5/4]">
+              <div className="aspect-[5/3] overflow-hidden bg-surface">
                 <img
                   src={c.img}
                   alt={`${c.name} at Cellexa`}
@@ -67,12 +65,12 @@ const Hero = () => (
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/85 to-transparent p-4 pt-10">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/85 to-transparent p-3 pt-8">
                 <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">
                   {c.hint}
                 </div>
                 <div className="mt-0.5 flex items-center justify-between gap-2">
-                  <h3 className="font-display text-base font-bold text-foreground sm:text-lg">
+                  <h3 className="font-display text-sm font-bold text-foreground sm:text-base">
                     {c.name}
                   </h3>
                   <ArrowRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5" />
