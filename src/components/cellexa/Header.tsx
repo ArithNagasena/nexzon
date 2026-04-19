@@ -11,7 +11,8 @@ const navLinks: { label: string; to: string; badge?: string }[] = [
   { label: "Brands", to: "/brand/samsung" },
   { label: "Pre-Orders", to: "/shop" },
   { label: "Track Order", to: "/track-order" },
-  { label: "Help", to: "/help" },
+  { label: "Support", to: "/help" },
+  { label: "FAQ", to: "/faq" },
 ];
 
 const Logo = () => (
