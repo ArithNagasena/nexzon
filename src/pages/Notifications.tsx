@@ -373,36 +373,6 @@ const Notifications = () => {
                   })}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2">
-                  <Button
-                    variant="brand"
-                    size="sm"
-                    className="rounded-xl"
-                    onClick={markAllRead}
-                    disabled={!counts.unread}
-                  >
-                    <Check className="mr-1.5 h-4 w-4" /> Mark all read
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="rounded-xl"
-                    asChild
-                  >
-                    <Link to="/account/profile">
-                      <Settings className="mr-1.5 h-4 w-4" /> Preferences
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="rounded-xl text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    onClick={clearAll}
-                    disabled={!items.length}
-                  >
-                    <Trash2 className="mr-1.5 h-4 w-4" /> Clear
-                  </Button>
-                </div>
               </div>
             </div>
 
