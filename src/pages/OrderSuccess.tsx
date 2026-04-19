@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 import PromoBar from "@/components/cellexa/PromoBar";
+import Header from "@/components/cellexa/Header";
 import Footer from "@/components/cellexa/Footer";
 import ProductCard, { type Product } from "@/components/cellexa/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -89,32 +90,6 @@ const recommended: Product[] = [
 const fmtLKR = (n: number) =>
   "LKR " + n.toLocaleString("en-LK", { maximumFractionDigits: 0 });
 
-/* -------------------- Slim header -------------------- */
-const ConfirmationHeader = () => (
-  <header className="sticky top-0 z-40 w-full border-b border-border/70 bg-background/90 backdrop-blur-xl">
-    <div className="container-page flex h-16 items-center justify-between gap-4">
-      <Link to="/" className="flex items-center gap-1.5" aria-label="Cellexa Home">
-        <span className="font-display text-2xl font-extrabold tracking-tight text-foreground">
-          Cell<span className="text-primary">exa</span>
-        </span>
-        <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
-      </Link>
-
-      <div className="hidden items-center gap-2 text-xs font-medium text-muted-foreground sm:flex">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1.5 text-success">
-          <CheckCircle2 className="h-3.5 w-3.5" /> Order Confirmed
-        </span>
-      </div>
-
-      <Link
-        to="/shop"
-        className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:text-primary"
-      >
-        Continue Shopping <ChevronRight className="h-4 w-4" />
-      </Link>
-    </div>
-  </header>
-);
 
 /* -------------------- Stepper -------------------- */
 const Stepper = () => {
@@ -180,7 +155,7 @@ const OrderSuccessPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <PromoBar />
-      <ConfirmationHeader />
+      <Header />
 
       <main>
         {/* Stepper */}
