@@ -70,12 +70,12 @@ const Footer = () => (
             </span>
             <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
           </Link>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-background/65">
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-background/65">
             Sri Lanka's trusted online destination for genuine smartphones, tablets, audio, and tech
             accessories — backed by warranty, fast islandwide delivery, and local support.
           </p>
 
-          <ul className="mt-6 space-y-3 text-sm text-background/75">
+          <ul className="mt-4 space-y-2 text-sm text-background/75">
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" />
               <span>No. 142, Galle Road, Colombo 03, Sri Lanka</span>
@@ -90,7 +90,7 @@ const Footer = () => (
             </li>
           </ul>
 
-          <div className="mt-6 flex gap-2">
+          <div className="mt-4 flex gap-2">
             {[Facebook, Instagram, Youtube, Twitter].map((Icon, i) => (
               <a
                 key={i}
