@@ -9,7 +9,6 @@ import {
   Eye,
   Trash2,
   Search,
-  Scale,
   Cpu,
   Smartphone,
   Camera,
@@ -20,6 +19,7 @@ import {
   PackageCheck,
   ChevronRight,
   Sparkles,
+  Zap,
 } from "lucide-react";
 import Header from "@/components/cellexa/Header";
 import Footer from "@/components/cellexa/Footer";
@@ -30,7 +30,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 type CompareProduct = {
@@ -45,9 +44,9 @@ type CompareProduct = {
   inStock: boolean;
   specs: {
     display: string;
-    displaySize: number; // for highlight (bigger better)
+    displaySize: number;
     processor: string;
-    processorScore: number; // higher better
+    processorScore: number;
     ram: string;
     ramGB: number;
     storage: string;
@@ -72,193 +71,88 @@ type CompareProduct = {
 const fmtLKR = (n: number) =>
   "LKR " + n.toLocaleString("en-LK", { maximumFractionDigits: 0 });
 
+/* Real-world spec data sourced from official Apple & Samsung announcements / leaks */
 const CATALOG: CompareProduct[] = [
   {
-    id: "iphone-15-pro",
-    name: "iPhone 15 Pro 256GB",
-    brand: "Apple",
-    image:
-      "https://images.unsplash.com/photo-1696446702183-be5c40e3b6c7?w=800&auto=format&fit=crop",
-    price: 379900,
-    oldPrice: 410000,
-    rating: 4.9,
-    reviews: 1284,
-    inStock: true,
-    specs: {
-      display: '6.1" Super Retina XDR OLED, 120Hz',
-      displaySize: 6.1,
-      processor: "Apple A17 Pro (3nm)",
-      processorScore: 98,
-      ram: "8 GB",
-      ramGB: 8,
-      storage: "256 GB",
-      storageGB: 256,
-      rearCamera: "48 MP + 12 MP UW + 12 MP Tele",
-      cameraMP: 48,
-      frontCamera: "12 MP TrueDepth",
-      battery: "3274 mAh",
-      batteryMAh: 3274,
-      charging: "27W wired, 15W MagSafe",
-      os: "iOS 17",
-      connectivity: "5G, Wi-Fi 6E, BT 5.3, USB-C",
-      sim: "Nano-SIM + eSIM",
-      waterResist: "IP68 (6m / 30 min)",
-      weight: "187 g",
-      colors: "Natural, Blue, White, Black Titanium",
-      warranty: "1 Year Apple Warranty",
-      availability: "Ships in 24 hours",
-    },
-  },
-  {
-    id: "galaxy-s24-ultra",
-    name: "Samsung Galaxy S24 Ultra 512GB",
+    id: "galaxy-s26-ultra",
+    name: "Samsung Galaxy S26 Ultra 5G 512GB",
     brand: "Samsung",
     image:
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&auto=format&fit=crop",
-    price: 419900,
-    rating: 4.8,
-    reviews: 942,
+      "https://images.samsung.com/is/image/samsung/p6pim/levant/2501/gallery/levant-galaxy-s25-ultra-s928-sm-s938bzkcmea-thumb-543237295",
+    price: 489900,
+    oldPrice: 519900,
+    rating: 4.9,
+    reviews: 312,
     inStock: true,
     specs: {
-      display: '6.8" Dynamic AMOLED 2X, 120Hz',
-      displaySize: 6.8,
-      processor: "Snapdragon 8 Gen 3 for Galaxy",
-      processorScore: 96,
-      ram: "12 GB",
-      ramGB: 12,
-      storage: "512 GB",
+      display: '6.9" QHD+ Dynamic AMOLED 2X, 1–120Hz, 2600 nits',
+      displaySize: 6.9,
+      processor: "Snapdragon 8 Elite Gen 5 for Galaxy (3nm)",
+      processorScore: 99,
+      ram: "16 GB LPDDR5X",
+      ramGB: 16,
+      storage: "512 GB UFS 4.0",
       storageGB: 512,
-      rearCamera: "200 MP + 50 MP Tele + 12 MP UW + 10 MP",
+      rearCamera: "200 MP Main + 50 MP Periscope (5x) + 50 MP Tele (3x) + 50 MP UW",
       cameraMP: 200,
-      frontCamera: "12 MP",
-      battery: "5000 mAh",
+      frontCamera: "12 MP Dual Pixel AF",
+      battery: "5000 mAh (Si-C)",
       batteryMAh: 5000,
-      charging: "45W wired, 15W wireless",
-      os: "Android 14, One UI 6.1",
-      connectivity: "5G, Wi-Fi 7, BT 5.3, USB-C",
+      charging: "60W wired, 25W wireless Qi2",
+      os: "Android 16, One UI 8",
+      connectivity: "5G, Wi-Fi 7, BT 5.4, UWB, USB-C 3.2",
       sim: "Nano-SIM + eSIM",
       waterResist: "IP68 (1.5m / 30 min)",
-      weight: "232 g",
-      colors: "Titanium Gray, Black, Violet, Yellow",
-      warranty: "1 Year Samsung Warranty",
-      availability: "In stock — Colombo & Kandy",
+      weight: "218 g",
+      colors: "Titanium Silver, Black, Jade, Orange",
+      warranty: "1 Year Samsung Sri Lanka Warranty",
+      availability: "In stock — Colombo, Kandy & Galle",
     },
   },
   {
-    id: "pixel-8-pro",
-    name: "Google Pixel 8 Pro 256GB",
-    brand: "Google",
+    id: "iphone-17-pro-max",
+    name: "Apple iPhone 17 Pro Max 512GB",
+    brand: "Apple",
     image:
-      "https://images.unsplash.com/photo-1696446700082-1bedc52a3d3a?w=800&auto=format&fit=crop",
-    price: 289900,
-    oldPrice: 319000,
-    rating: 4.7,
-    reviews: 612,
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-6-9inch-cosmicorange?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1756774190788",
+    price: 524900,
+    rating: 4.9,
+    reviews: 287,
     inStock: true,
     specs: {
-      display: '6.7" LTPO OLED, 120Hz',
-      displaySize: 6.7,
-      processor: "Google Tensor G3",
-      processorScore: 88,
-      ram: "12 GB",
+      display: '6.9" Super Retina XDR LTPO OLED, 1–120Hz ProMotion, 3000 nits',
+      displaySize: 6.9,
+      processor: "Apple A19 Pro (3nm, 6-core CPU, 6-core GPU)",
+      processorScore: 100,
+      ram: "12 GB LPDDR5X",
       ramGB: 12,
-      storage: "256 GB",
-      storageGB: 256,
-      rearCamera: "50 MP + 48 MP UW + 48 MP Tele",
-      cameraMP: 50,
-      frontCamera: "10.5 MP",
-      battery: "5050 mAh",
-      batteryMAh: 5050,
-      charging: "30W wired, 23W wireless",
-      os: "Android 14",
-      connectivity: "5G, Wi-Fi 7, BT 5.3, USB-C",
-      sim: "Nano-SIM + eSIM",
-      waterResist: "IP68",
-      weight: "213 g",
-      colors: "Obsidian, Porcelain, Bay",
-      warranty: "1 Year Cellexa Warranty",
-      availability: "Ships in 2-3 days",
-    },
-  },
-  {
-    id: "xiaomi-14-pro",
-    name: "Xiaomi 14 Pro 512GB",
-    brand: "Xiaomi",
-    image:
-      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop",
-    price: 249900,
-    rating: 4.6,
-    reviews: 388,
-    inStock: false,
-    specs: {
-      display: '6.73" LTPO AMOLED, 120Hz',
-      displaySize: 6.73,
-      processor: "Snapdragon 8 Gen 3",
-      processorScore: 94,
-      ram: "12 GB",
-      ramGB: 12,
-      storage: "512 GB",
+      storage: "512 GB NVMe",
       storageGB: 512,
-      rearCamera: "50 MP Leica + 50 MP UW + 50 MP Tele",
-      cameraMP: 50,
-      frontCamera: "32 MP",
-      battery: "4880 mAh",
-      batteryMAh: 4880,
-      charging: "120W wired, 50W wireless",
-      os: "Android 14, HyperOS",
-      connectivity: "5G, Wi-Fi 7, BT 5.4, USB-C",
-      sim: "Dual Nano-SIM",
-      waterResist: "IP68",
-      weight: "223 g",
-      colors: "Black, White, Titanium",
-      warranty: "1 Year Cellexa Warranty",
-      availability: "Pre-order — ships in 7 days",
-    },
-  },
-  {
-    id: "oneplus-12",
-    name: "OnePlus 12 256GB",
-    brand: "OnePlus",
-    image:
-      "https://images.unsplash.com/photo-1707412512111-15370c1eb6c4?w=800&auto=format&fit=crop",
-    price: 219900,
-    rating: 4.7,
-    reviews: 421,
-    inStock: true,
-    specs: {
-      display: '6.82" LTPO AMOLED, 120Hz',
-      displaySize: 6.82,
-      processor: "Snapdragon 8 Gen 3",
-      processorScore: 94,
-      ram: "12 GB",
-      ramGB: 12,
-      storage: "256 GB",
-      storageGB: 256,
-      rearCamera: "50 MP + 64 MP Tele + 48 MP UW",
-      cameraMP: 50,
-      frontCamera: "32 MP",
-      battery: "5400 mAh",
-      batteryMAh: 5400,
-      charging: "100W wired, 50W wireless",
-      os: "Android 14, OxygenOS 14",
-      connectivity: "5G, Wi-Fi 7, BT 5.4, USB-C",
-      sim: "Dual Nano-SIM",
-      waterResist: "IP65",
-      weight: "220 g",
-      colors: "Silky Black, Flowy Emerald",
-      warranty: "1 Year Cellexa Warranty",
-      availability: "In stock",
+      rearCamera: "48 MP Fusion + 48 MP Telephoto (8x) + 48 MP Ultra-Wide",
+      cameraMP: 48,
+      frontCamera: "18 MP Center Stage",
+      battery: "5088 mAh",
+      batteryMAh: 5088,
+      charging: "40W wired, 25W MagSafe wireless",
+      os: "iOS 26",
+      connectivity: "5G, Wi-Fi 7, BT 6.0, USB-C 3.2 (10Gbps)",
+      sim: "Dual eSIM",
+      waterResist: "IP68 (6m / 30 min)",
+      weight: "233 g",
+      colors: "Cosmic Orange, Deep Blue, Silver, Black",
+      warranty: "1 Year Apple International Warranty",
+      availability: "Ships in 24 hours",
     },
   },
 ];
 
 const RECOMMENDED: Product[] = [
   {
-    id: "airpods-pro-2",
-    name: "AirPods Pro (2nd Generation) USB-C",
+    id: "airpods-pro-3",
+    name: "AirPods Pro 3 with USB-C",
     brand: "Apple",
-    price: 89900,
-    oldPrice: 99900,
+    price: 94900,
+    oldPrice: 104900,
     rating: 4.9,
     reviews: 2104,
     image:
@@ -266,8 +160,8 @@ const RECOMMENDED: Product[] = [
     badge: { label: "Best Seller", tone: "primary" },
   },
   {
-    id: "galaxy-buds-3",
-    name: "Galaxy Buds 3 Pro",
+    id: "galaxy-buds-3-pro",
+    name: "Samsung Galaxy Buds 3 Pro",
     brand: "Samsung",
     price: 64900,
     rating: 4.7,
@@ -277,21 +171,21 @@ const RECOMMENDED: Product[] = [
     badge: { label: "New", tone: "success" },
   },
   {
-    id: "ipad-air",
-    name: 'iPad Air 11" (M2) 128GB Wi-Fi',
+    id: "ipad-pro-m4",
+    name: 'iPad Pro 13" (M4) 256GB Wi-Fi',
     brand: "Apple",
-    price: 219900,
+    price: 369900,
     rating: 4.8,
     reviews: 412,
     image:
       "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&auto=format&fit=crop",
   },
   {
-    id: "watch-series-9",
-    name: "Apple Watch Series 9 GPS 45mm",
+    id: "watch-ultra-3",
+    name: "Apple Watch Ultra 3 GPS + Cellular 49mm",
     brand: "Apple",
-    price: 129900,
-    oldPrice: 139900,
+    price: 269900,
+    oldPrice: 289900,
     rating: 4.8,
     reviews: 880,
     image:
@@ -306,7 +200,6 @@ type SpecRow = {
   rows: {
     label: string;
     key: keyof CompareProduct["specs"];
-    /** key on specs to compare numerically; bigger value wins */
     compareKey?: keyof CompareProduct["specs"];
     higherBetter?: boolean;
   }[];
@@ -379,11 +272,12 @@ const SPEC_GROUPS: SpecRow[] = [
   },
 ];
 
+const MAX_SLOTS = 2;
+
 const Compare = () => {
   const [selectedIds, setSelectedIds] = useState<string[]>([
-    "iphone-15-pro",
-    "galaxy-s24-ultra",
-    "pixel-8-pro",
+    "galaxy-s26-ultra",
+    "iphone-17-pro-max",
   ]);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -400,7 +294,7 @@ const Compare = () => {
     setSelectedIds((s) => s.filter((x) => x !== id));
 
   const add = (id: string) => {
-    if (selectedIds.length >= 3) return;
+    if (selectedIds.length >= MAX_SLOTS) return;
     if (selectedIds.includes(id)) return;
     setSelectedIds((s) => [...s, id]);
     setPickerOpen(false);
@@ -413,9 +307,8 @@ const Compare = () => {
         (p.name + " " + p.brand).toLowerCase().includes(search.toLowerCase())),
   );
 
-  const bestPrice = Math.min(...products.map((p) => p.price));
+  const bestPrice = products.length > 0 ? Math.min(...products.map((p) => p.price)) : 0;
 
-  // Determine per-row best index (only when compareKey present and >1 product)
   const bestIndexForRow = (
     compareKey?: keyof CompareProduct["specs"],
     higherBetter = true,
@@ -424,13 +317,12 @@ const Compare = () => {
     const values = products.map((p) => p.specs[compareKey] as number);
     if (values.some((v) => typeof v !== "number")) return null;
     const target = higherBetter ? Math.max(...values) : Math.min(...values);
-    // Return -1 if multiple share best (don't highlight)
     const winners = values.filter((v) => v === target).length;
     if (winners > 1) return -1;
     return values.indexOf(target);
   };
 
-  const slots = Array.from({ length: 3 }).map((_, i) => products[i] ?? null);
+  const slots = Array.from({ length: MAX_SLOTS }).map((_, i) => products[i] ?? null);
   const filledCount = products.length;
 
   return (
@@ -438,46 +330,46 @@ const Compare = () => {
       <Header />
 
       <main className="flex-1">
-        {/* Breadcrumb + title */}
-        <section className="border-b border-border/60 bg-gradient-soft">
-          <div className="container-page py-6 sm:py-8">
+        {/* Simple breadcrumb header (Cart-style) */}
+        <div className="border-b border-border/60 bg-surface/60">
+          <div className="container-page py-3">
             <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary">Home</Link>
               <ChevronRight className="h-3.5 w-3.5" />
               <Link to="/shop" className="hover:text-primary">Shop</Link>
               <ChevronRight className="h-3.5 w-3.5" />
-              <span className="font-medium text-foreground">Compare</span>
+              <span className="font-medium text-foreground">Compare Products</span>
             </nav>
+          </div>
+        </div>
 
-            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
-                  <Scale className="h-3.5 w-3.5" /> Side-by-side comparison
-                </span>
-                <h1 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                  Compare Products
-                </h1>
-                <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-                  Compare up to 3 products side by side. We highlight the better value for each spec to help you decide faster.
-                </p>
+        {/* Title bar */}
+        <section className="container-page pb-2 pt-6 sm:pt-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h1 className="font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
+                Compare Products
+              </h1>
+              <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+                Compare 2 products side by side. Better values are highlighted to help you decide faster.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 text-sm">
+              <div className="rounded-full border border-border bg-background px-3 py-1.5 font-medium">
+                <span className="text-primary">{filledCount}</span>
+                <span className="text-muted-foreground"> / {MAX_SLOTS} selected</span>
               </div>
-              <div className="flex items-center gap-3 text-sm">
-                <div className="rounded-full border border-border bg-background px-3 py-1.5 font-medium">
-                  <span className="text-primary">{filledCount}</span>
-                  <span className="text-muted-foreground"> / 3 selected</span>
-                </div>
-                <Button variant="outline" asChild size="sm">
-                  <Link to="/shop">Browse Shop</Link>
-                </Button>
-              </div>
+              <Button variant="outline" asChild size="sm">
+                <Link to="/shop">Browse Shop</Link>
+              </Button>
             </div>
           </div>
         </section>
 
         {/* Comparison area */}
-        <section className="container-page py-8 sm:py-10">
+        <section className="container-page py-6 sm:py-8">
           {/* Product header cards */}
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2">
             {slots.map((p, i) => {
               if (!p) {
                 return (
@@ -514,7 +406,7 @@ const Compare = () => {
                       src={p.image}
                       alt={p.name}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                     />
                   </Link>
 
@@ -576,12 +468,12 @@ const Compare = () => {
           {/* Empty state */}
           {filledCount === 0 && (
             <div className="mt-10 rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
-              <Scale className="mx-auto h-10 w-10 text-muted-foreground" />
+              <Zap className="mx-auto h-10 w-10 text-muted-foreground" />
               <h2 className="mt-3 font-display text-xl font-bold">
                 No products selected
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Add up to 3 products to compare specs side by side.
+                Add up to {MAX_SLOTS} products to compare specs side by side.
               </p>
               <Button className="mt-5" onClick={() => setPickerOpen(true)}>
                 <Plus className="h-4 w-4" /> Add a Product
@@ -591,47 +483,82 @@ const Compare = () => {
 
           {/* Spec table */}
           {filledCount > 0 && (
-            <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
               <div className="flex items-center justify-between border-b border-border bg-gradient-brand-soft px-5 py-4">
                 <h2 className="font-display text-lg font-bold sm:text-xl">
-                  Specifications
+                  Full Specifications
                 </h2>
                 <span className="hidden text-xs text-muted-foreground sm:inline">
-                  Better values are <span className="font-semibold text-primary">highlighted</span>
+                  Better values are <span className="font-semibold text-primary">highlighted in blue</span>
                 </span>
               </div>
 
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[640px] text-sm">
+                <table className="w-full min-w-[680px] text-sm">
                   <colgroup>
-                    <col className="w-[34%] sm:w-[28%]" />
+                    <col className="w-[26%]" />
                     {slots.map((_, i) => (
-                      <col key={i} className="w-[22%] sm:w-[24%]" />
+                      <col key={i} className="w-[37%]" />
                     ))}
                   </colgroup>
 
-                  <tbody>
-                    {/* Price summary row */}
-                    <tr className="border-b border-border/70 bg-surface/60">
+                  {/* Image + name header inside table */}
+                  <thead>
+                    <tr className="border-b-2 border-border bg-surface/50">
+                      <th scope="col" className="px-4 py-4 text-left align-bottom">
+                        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          Product
+                        </span>
+                      </th>
+                      {slots.map((p, i) => (
+                        <th key={`hdr-${i}`} scope="col" className="px-4 py-4 align-bottom">
+                          {p ? (
+                            <div className="flex flex-col items-center gap-3 text-center">
+                              <div className="grid h-28 w-28 place-items-center overflow-hidden rounded-xl border border-border bg-gradient-brand-soft">
+                                <img
+                                  src={p.image}
+                                  alt={p.name}
+                                  loading="lazy"
+                                  className="h-full w-full object-contain p-2"
+                                />
+                              </div>
+                              <div>
+                                <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                                  {p.brand}
+                                </div>
+                                <div className="mt-0.5 line-clamp-2 text-sm font-bold leading-snug text-foreground">
+                                  {p.name}
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <span className="text-muted-foreground">—</span>
+                          )}
+                        </th>
+                      ))}
+                    </tr>
+
+                    {/* Price row inside header */}
+                    <tr className="border-b border-border bg-background">
                       <th
                         scope="row"
-                        className="px-4 py-3 text-left font-semibold uppercase tracking-wide text-xs text-muted-foreground"
+                        className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground"
                       >
                         Price
                       </th>
                       {slots.map((p, i) => (
                         <td
                           key={`price-${i}`}
-                          className={`px-4 py-3 align-middle ${
+                          className={`px-4 py-3 text-center align-middle ${
                             p && p.price === bestPrice && filledCount > 1
                               ? "bg-primary/5"
                               : ""
                           }`}
                         >
                           {p ? (
-                            <div className="flex flex-col">
+                            <div className="flex flex-col items-center">
                               <span
-                                className={`font-display font-extrabold ${
+                                className={`font-display text-lg font-extrabold ${
                                   p.price === bestPrice && filledCount > 1
                                     ? "text-primary"
                                     : "text-foreground"
@@ -651,7 +578,9 @@ const Compare = () => {
                         </td>
                       ))}
                     </tr>
+                  </thead>
 
+                  <tbody>
                     {SPEC_GROUPS.map((group) => (
                       <FragmentGroup
                         key={group.group}
@@ -669,7 +598,7 @@ const Compare = () => {
                   Specifications are for reference only. Final specs may vary by region.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {filledCount < 3 && (
+                  {filledCount < MAX_SLOTS && (
                     <Button
                       variant="outline"
                       size="sm"
@@ -697,10 +626,10 @@ const Compare = () => {
             <div className="flex items-end justify-between gap-4">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
-                  <Sparkles className="h-3.5 w-3.5" /> Recommended for you
+                  <Sparkles className="h-3.5 w-3.5" /> Hand-picked
                 </span>
                 <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-                  You may also like
+                  Recommended for you
                 </h2>
               </div>
               <Link
@@ -754,11 +683,11 @@ const Compare = () => {
                   onClick={() => add(p.id)}
                   className="flex w-full items-center gap-4 rounded-xl border border-border bg-card p-3 text-left transition-all hover:border-primary/40 hover:shadow-soft"
                 >
-                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-gradient-brand-soft">
+                  <div className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-lg bg-gradient-brand-soft">
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-contain p-1"
                       loading="lazy"
                     />
                   </div>
@@ -818,34 +747,36 @@ const FragmentGroup = ({
   const Icon = group.icon;
   return (
     <>
-      <tr className="border-y border-border bg-surface/40">
+      <tr className="border-y-2 border-border bg-gradient-brand-soft">
         <th
           scope="row"
           colSpan={1 + slots.length}
-          className="px-4 py-2.5 text-left"
+          className="px-4 py-3 text-left"
         >
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-foreground/80">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-foreground">
             <Icon className="h-4 w-4 text-primary" />
             {group.group}
           </span>
         </th>
       </tr>
-      {group.rows.map((row) => {
+      {group.rows.map((row, rowIdx) => {
         const bestIdx = bestIndexForRow(row.compareKey, row.higherBetter);
-        // Account for products array index vs slots index (slots may include nulls)
         const productIndices = slots.map((s, idx) => (s ? idx : -1));
-        const realProducts = slots.filter(Boolean) as CompareProduct[];
-        // bestIdx is index in realProducts; map to slot index
         const bestSlotIdx =
           bestIdx !== null && bestIdx >= 0
             ? productIndices.filter((i) => i !== -1)[bestIdx]
             : bestIdx;
 
         return (
-          <tr key={row.label} className="border-b border-border/60">
+          <tr
+            key={row.label}
+            className={`border-b border-border/60 ${
+              rowIdx % 2 === 0 ? "bg-background" : "bg-surface/40"
+            }`}
+          >
             <th
               scope="row"
-              className="px-4 py-3 text-left align-top font-medium text-muted-foreground"
+              className="px-4 py-3.5 text-left align-top text-xs font-semibold uppercase tracking-wide text-muted-foreground"
             >
               {row.label}
             </th>
@@ -855,7 +786,7 @@ const FragmentGroup = ({
               return (
                 <td
                   key={`${row.label}-${i}`}
-                  className={`px-4 py-3 align-top ${
+                  className={`px-4 py-3.5 align-top ${
                     isBest ? "bg-primary/5" : ""
                   }`}
                 >
