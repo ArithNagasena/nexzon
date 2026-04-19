@@ -202,14 +202,6 @@ const CartPage = () => {
                   : `${itemCount} ${itemCount === 1 ? "item" : "items"} ready for checkout. Genuine products with full warranty.`}
               </p>
             </div>
-            <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1.5 text-success">
-                <Lock className="h-3.5 w-3.5" /> Secure Checkout
-              </span>
-              <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5 text-accent-foreground">
-                <BadgeCheck className="h-3.5 w-3.5" /> 100% Genuine
-              </span>
-            </div>
           </div>
         </section>
 
