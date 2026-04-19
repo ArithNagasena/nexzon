@@ -20,6 +20,7 @@ import Orders from "./pages/Orders.tsx";
 import OrderDetails from "./pages/OrderDetails.tsx";
 import TrackOrder from "./pages/TrackOrder.tsx";
 import Wishlist from "./pages/Wishlist.tsx";
+import Notifications from "./pages/Notifications.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/account/orders/:id" element={<OrderDetails />} />
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/account/wishlist" element={<Wishlist />} />
+          <Route path="/account/notifications" element={<Notifications />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
