@@ -73,22 +73,22 @@ const Register = () => {
         <div className="container-page py-4 sm:py-6">
           <div className="mx-auto w-full max-w-xl">
             <div className="rounded-3xl border border-border/70 bg-card p-5 shadow-lift sm:p-8">
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Join Cellexa
-                  </span>
-                </div>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Join Cellexa
+                </span>
+              </div>
 
-                <h1 className="mt-5 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-                  Create your account
-                </h1>
-                <p className="mt-2 text-sm text-muted-foreground sm:text-base">
-                  Unlock faster checkout, order tracking, loyalty rewards, and price alerts on
-                  genuine electronics.
-                </p>
+              <h1 className="mt-3 font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
+                Create your account
+              </h1>
+              <p className="mt-1.5 text-sm text-muted-foreground">
+                Unlock faster checkout, order tracking, loyalty rewards, and price alerts on
+                genuine electronics.
+              </p>
 
-                <form className="mt-8 space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <form className="mt-5 space-y-4" onSubmit={(e) => e.preventDefault()}>
                   {/* Full name */}
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-sm font-semibold text-foreground">
