@@ -64,6 +64,7 @@ import oneplus13r from "@/assets/oneplus-13r.png";
 import iphone16 from "@/assets/iphone-16.png";
 import pixel9ProXl from "@/assets/pixel-9-pro-xl.png";
 import iphone13 from "@/assets/iphone-13.png";
+import oneplusNordCe5 from "@/assets/oneplus-nord-ce5.png";
 import phone2 from "@/assets/product-iphone-pink.png";
 import phone3 from "@/assets/product-iphone-pink.png";
 import featurePhone from "@/assets/feature-phone.jpg";
@@ -80,7 +81,7 @@ const catalog: (Product & { sub: string; storage: string; ram: string; color: st
   { id: "p8",  name: "Google Pixel 8 Pro 256GB Bay Blue",         brand: "Google",  price: 269000, oldPrice: 295000, rating: 4.7, reviews: 184, image: phone1, badge: { label: "Best Camera", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Blue", screen: 6.7, battery: 5050, fiveG: true },
   { id: "p9",  name: "OnePlus 13R 16GB",                          brand: "OnePlus",  price: 204900, oldPrice: 229000, rating: 4.8, reviews: 88,  image: oneplus13r, badge: { label: "Hot", tone: "promo" },        sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Rose Gold", screen: 6.78, battery: 5400, fiveG: true },
   { id: "p10", name: "Honor Magic 6 Pro 5G 256GB",               brand: "Honor",   price: 219000,                  rating: 4.6, reviews: 64,  image: phone2,                                              sub: "Flagship",  storage: "256GB", ram: "12GB", color: "Green",   screen: 6.8, battery: 5600, fiveG: true },
-  { id: "p11", name: "Vivo V30 Pro 5G 256GB Aurora",              brand: "Vivo",    price: 139000, oldPrice: 152000, rating: 4.5, reviews: 121, image: phone3, badge: { label: "-9%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "Blue",     screen: 6.78, battery: 5000, fiveG: true },
+  { id: "p11", name: "OnePlus Nord CE5",                            brand: "OnePlus", price: 119900, oldPrice: 134000, rating: 4.5, reviews: 121, image: oneplusNordCe5, badge: { label: "-9%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "8GB",  color: "Silver",   screen: 6.7, battery: 5200, fiveG: true },
   { id: "p12", name: "Apple iPhone 13",                              brand: "Apple",    price: 149900, oldPrice: 169000, rating: 4.5, reviews: 92,  image: iphone13,                                              sub: "Mid-Range", storage: "128GB", ram: "4GB",  color: "Pink",   screen: 6.1, battery: 3240, fiveG: true },
   { id: "p13", name: "Xiaomi Redmi 13C 128GB Midnight Black",     brand: "Xiaomi",  price: 39900, oldPrice: 45000,  rating: 4.4, reviews: 312, image: phone3, badge: { label: "Best Value", tone: "success" }, sub: "Budget", storage: "128GB", ram: "6GB",  color: "Black",    screen: 6.74, battery: 5000, fiveG: false },
   { id: "p14", name: "Samsung Galaxy A15 5G 128GB Light Blue",    brand: "Samsung", price: 54900,                  rating: 4.5, reviews: 218, image: phone2,                                              sub: "Budget",    storage: "128GB", ram: "6GB",  color: "Blue",     screen: 6.5, battery: 5000, fiveG: true },
