@@ -24,6 +24,7 @@ import Notifications from "./pages/Notifications.tsx";
 import Rewards from "./pages/Rewards.tsx";
 import Reviews from "./pages/Reviews.tsx";
 import PriceAlerts from "./pages/PriceAlerts.tsx";
+import BackInStock from "./pages/BackInStock.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -58,6 +59,7 @@ const App = () => (
           <Route path="/account/rewards" element={<Rewards />} />
           <Route path="/account/reviews" element={<Reviews />} />
           <Route path="/account/price-alerts" element={<PriceAlerts />} />
+          <Route path="/account/back-in-stock" element={<BackInStock />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
