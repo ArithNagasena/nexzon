@@ -19,9 +19,9 @@ const Hero = () => (
     <div className="pointer-events-none absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full bg-primary/10 blur-3xl" />
     <div className="pointer-events-none absolute -bottom-32 -left-24 h-[380px] w-[380px] rounded-full bg-primary-glow/10 blur-3xl" />
 
-    <div className="container-page relative grid items-center gap-6 py-6 sm:py-8 lg:grid-cols-2 lg:gap-10 lg:py-10">
+    <div className="container-page relative grid items-start gap-6 py-6 sm:py-8 lg:grid-cols-2 lg:gap-10 lg:py-10">
       {/* Left: copy */}
-      <div className="relative z-10">
+      <div className="relative z-10 lg:pt-2">
         <h1 className="font-display text-3xl font-extrabold leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
           Discover the latest{" "}
           <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
