@@ -19,6 +19,7 @@ import Profile from "./pages/Profile.tsx";
 import Orders from "./pages/Orders.tsx";
 import OrderDetails from "./pages/OrderDetails.tsx";
 import TrackOrder from "./pages/TrackOrder.tsx";
+import Wishlist from "./pages/Wishlist.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
