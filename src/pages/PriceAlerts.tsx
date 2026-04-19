@@ -621,6 +621,7 @@ const PriceAlerts = () => {
             </div>
           </section>
         </div>
+        </div>
       </main>
 
       <Footer />
