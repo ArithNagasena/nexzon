@@ -57,7 +57,7 @@ const Register = () => {
         <div className="container-page py-4 sm:py-5">
           <div className="mx-auto w-full max-w-md">
             <div className="rounded-2xl border border-border/70 bg-card p-5 shadow-lift sm:p-6">
-              <h1 className="text-center font-display text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
+              <h1 className="text-center font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
                 Create your account
               </h1>
               <p className="mt-1 text-center text-xs text-muted-foreground">
