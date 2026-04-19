@@ -545,11 +545,11 @@ const Category = () => {
         {/* Category hero */}
         <section className="bg-background pt-5 sm:pt-6">
           <div className="container-page">
-            <div className="relative overflow-hidden rounded-3xl border border-border/60">
+            <div className="relative overflow-hidden rounded-3xl border border-border/60 h-[140px] sm:h-[180px] lg:h-[220px]">
               <img
                 src={heroSmartphones}
                 alt={`${categoryName} category banner`}
-                className="h-auto w-full object-cover"
+                className="h-full w-full object-cover object-center"
               />
             </div>
           </div>
