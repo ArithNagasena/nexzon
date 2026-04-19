@@ -33,9 +33,9 @@ const PromoBar = () => (
           </span>
         ))}
         <span className="inline-flex items-center gap-3 text-white/80">
-          <Link to="/shop" className="hover:text-white">Track Order</Link>
+          <Link to="/track-order" className="hover:text-white">Track Order</Link>
           <span className="opacity-40">|</span>
-          <Link to="/shop" className="hover:text-white">Help</Link>
+          <Link to="/help" className="hover:text-white">Help</Link>
         </span>
       </div>
     </div>

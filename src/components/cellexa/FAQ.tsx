@@ -49,7 +49,12 @@ const FAQ = () => (
               <div className="text-xs text-muted-foreground">Mon–Sun · 9 AM – 9 PM</div>
             </div>
           </div>
-          <Button className="mt-4 w-full" variant="outline">Chat with Support</Button>
+          <Button asChild className="mt-4 w-full" variant="outline">
+            <Link to="/help">Visit Help Center</Link>
+          </Button>
+          <Button asChild className="mt-2 w-full" variant="ghost" size="sm">
+            <Link to="/faq">Browse all FAQs</Link>
+          </Button>
         </div>
       </div>
 
