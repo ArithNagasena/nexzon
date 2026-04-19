@@ -207,49 +207,48 @@ const Account = () => {
             {/* Main content */}
             <div className="space-y-6 lg:col-span-9">
               {/* Welcome hero */}
-              <section className="relative overflow-hidden rounded-3xl bg-gradient-hero p-6 text-primary-foreground shadow-lift sm:p-8">
-                <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-white/15 blur-2xl" />
-                <div className="pointer-events-none absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-primary-glow/30 blur-3xl" />
+              <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-card p-6 shadow-card sm:p-8">
+                <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-primary/5 blur-2xl" />
 
                 <div className="relative grid gap-6 sm:grid-cols-5 sm:items-center">
                   <div className="sm:col-span-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                       <Sparkles className="h-3.5 w-3.5" />
                       Welcome back
                     </span>
-                    <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+                    <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight tracking-tight text-foreground sm:text-3xl">
                       Hi Nuwan 👋 <br className="hidden sm:block" />
-                      <span className="text-primary-glow">You have 3 active orders</span> in motion.
+                      <span className="text-primary">You have 3 active orders</span> in motion.
                     </h2>
-                    <p className="mt-2 text-sm text-primary-foreground/85">
+                    <p className="mt-2 text-sm text-muted-foreground">
                       Track shipments, redeem points, or pick up where you left off shopping.
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
-                      <Button variant="hero" size="sm">
+                      <Button size="sm">
                         <Truck className="h-4 w-4" /> Track Orders
                       </Button>
-                      <Button variant="heroOutline" size="sm">
+                      <Button variant="outline" size="sm">
                         <ShoppingCart className="h-4 w-4" /> Continue Shopping
                       </Button>
                     </div>
                   </div>
 
                   <div className="sm:col-span-2">
-                    <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
+                    <div className="rounded-2xl border border-border/70 bg-surface p-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Crown className="h-4 w-4 text-primary-glow" />
-                          <span className="text-xs font-bold uppercase tracking-wider">
+                          <Crown className="h-4 w-4 text-primary" />
+                          <span className="text-xs font-bold uppercase tracking-wider text-foreground">
                             Gold Tier
                           </span>
                         </div>
-                        <span className="text-xs text-primary-foreground/85">2,480 pts</span>
+                        <span className="text-xs text-muted-foreground">2,480 pts</span>
                       </div>
-                      <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/20">
-                        <div className="h-full w-[68%] rounded-full bg-primary-glow" />
+                      <div className="mt-3 h-2 overflow-hidden rounded-full bg-secondary">
+                        <div className="h-full w-[68%] rounded-full bg-primary" />
                       </div>
-                      <p className="mt-2 text-xs text-primary-foreground/85">
-                        520 points to <span className="font-bold text-primary-glow">Platinum</span>
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        520 points to <span className="font-bold text-primary">Platinum</span>
                       </p>
                     </div>
                   </div>
