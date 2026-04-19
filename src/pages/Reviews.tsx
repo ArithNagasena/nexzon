@@ -267,41 +267,41 @@ const Reviews = () => {
           <section className="space-y-6">
             {/* Stats summary */}
             <div className="grid gap-4 lg:grid-cols-[1.1fr_1fr]">
-              <div className="overflow-hidden rounded-2xl border border-border/70 bg-gradient-hero p-5 text-primary-foreground shadow-lift sm:p-6">
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm">
+              <div className="overflow-hidden rounded-2xl border border-border/70 bg-card p-5 shadow-card sm:p-6">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                   <Award className="h-3.5 w-3.5" /> Top Reviewer
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   <div>
-                    <div className="font-display text-3xl font-extrabold sm:text-4xl">
+                    <div className="font-display text-3xl font-extrabold text-foreground sm:text-4xl">
                       {stats.avg.toFixed(1)}
                     </div>
                     <div className="mt-1">
                       <Stars value={stats.avg} size="sm" />
                     </div>
-                    <div className="mt-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground/80">
+                    <div className="mt-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                       Avg rating
                     </div>
                   </div>
                   <div>
-                    <div className="font-display text-3xl font-extrabold sm:text-4xl">
+                    <div className="font-display text-3xl font-extrabold text-foreground sm:text-4xl">
                       {stats.total}
                     </div>
-                    <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-primary-foreground/80">
+                    <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                       Published
                     </div>
                   </div>
                   <div>
-                    <div className="font-display text-3xl font-extrabold sm:text-4xl">
+                    <div className="font-display text-3xl font-extrabold text-foreground sm:text-4xl">
                       {stats.helpful}
                     </div>
-                    <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-primary-foreground/80">
+                    <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                       Helpful votes
                     </div>
                   </div>
                 </div>
-                <p className="mt-4 text-sm text-primary-foreground/85">
-                  You've helped <span className="font-bold text-white">{stats.helpful}+ shoppers</span> across Sri Lanka make smarter choices.
+                <p className="mt-4 text-sm text-muted-foreground">
+                  You've helped <span className="font-bold text-foreground">{stats.helpful}+ shoppers</span> across Sri Lanka make smarter choices.
                 </p>
               </div>
 
