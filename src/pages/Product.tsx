@@ -68,7 +68,7 @@ const productDetails = {
   category: "Smartphones",
   categorySlug: "smartphones",
   name: "iPhone 17 Pro Max",
-  tagline: "Introducing iPhone 17 Pro and iPhone 17 Pro Max, designed from the inside out to be the most powerful iPhone models ever made. At the core of the new design is a heat-forged aluminum unibody enclosure that maximizes performance, battery capacity, and durability. Up to 39 hrs video playback on iPhone 17 Pro Max 8",
+  tagline: "The most powerful iPhone ever — heat-forged aluminum unibody, A19 Pro chip, and up to 39 hrs video playback.",
   rating: 4.8,
   reviews: 1248,
   sold: "2,500+",
