@@ -656,24 +656,6 @@ const ProductPage = () => {
           </div>
         </section>
 
-        {/* Related */}
-        <section className="container-page py-12 md:py-16">
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <h2 className="font-display text-2xl font-extrabold md:text-3xl">You May Also Like</h2>
-              <p className="text-sm text-muted-foreground">Similar Galaxy devices customers shop alongside.</p>
-            </div>
-            <Button asChild variant="outline" size="sm">
-              <Link to={`/brand/${p.brandSlug}`}>View All <ChevronRight className="h-4 w-4" /></Link>
-            </Button>
-          </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-            {relatedProducts.map((rp) => (
-              <ProductCard key={rp.id} product={rp} />
-            ))}
-          </div>
-        </section>
-
         {/* Accessories */}
         <section className="bg-gradient-brand-soft py-12 md:py-16">
           <div className="container-page">
