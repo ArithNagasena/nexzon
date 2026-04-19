@@ -464,26 +464,6 @@ const ProductPage = () => {
           </div>
         </section>
 
-        {/* Highlights */}
-        <section className="container-page py-10 md:py-14">
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <h2 className="font-display text-2xl font-extrabold md:text-3xl">Product Highlights</h2>
-              <p className="text-sm text-muted-foreground">Designed for power users who demand the best.</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-            {p.highlights.map((h) => (
-              <div key={h.label} className="card-product flex flex-col items-start gap-2 p-4">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-hero text-primary-foreground">
-                  <h.icon className="h-5 w-5" />
-                </span>
-                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{h.label}</span>
-                <span className="text-sm font-bold leading-snug text-foreground">{h.value}</span>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* Tabs: Specs / Description */}
         <section className="container-page pb-10 md:pb-14">
