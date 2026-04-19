@@ -30,6 +30,7 @@ import Warranty from "./pages/Warranty.tsx";
 import TradeIn from "./pages/TradeIn.tsx";
 import FAQ from "./pages/FAQ.tsx";
 import Help from "./pages/Help.tsx";
+import ReturnsPolicy from "./pages/ReturnsPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -70,6 +71,7 @@ const App = () => (
           <Route path="/account/trade-in" element={<TradeIn />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/returns-policy" element={<ReturnsPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
