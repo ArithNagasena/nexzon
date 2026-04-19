@@ -471,17 +471,6 @@ const PriceAlerts = () => {
                                 <Eye className="mr-1.5 h-4 w-4" /> View Product
                               </Link>
                             </Button>
-                            <div className="ml-auto flex items-center gap-3">
-                              <Button
-                                size="icon"
-                                variant="ghost"
-                                aria-label="Remove alert"
-                                className="h-9 w-9 rounded-xl text-destructive hover:bg-destructive/10 hover:text-destructive"
-                                onClick={() => remove(a.id)}
-                              >
-                                <Trash2 className="h-4 w-4" />
-                              </Button>
-                            </div>
                           </div>
                         </div>
                       </div>
