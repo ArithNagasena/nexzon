@@ -39,7 +39,7 @@ const navGroups: { title: string; items: NavItem[] }[] = [
     items: [
       { label: "Orders", icon: Package, to: "/account/orders", badge: "3" },
       { label: "Order Tracking", icon: Truck, to: "/track-order" },
-      { label: "Wishlist", icon: Heart, to: "/account", badge: "12" },
+      { label: "Wishlist", icon: Heart, to: "/account/wishlist", badge: "12" },
       { label: "Reviews", icon: Star, to: "/account" },
     ],
   },
