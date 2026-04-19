@@ -22,12 +22,7 @@ const Hero = () => (
     <div className="container-page relative grid items-center gap-6 py-6 sm:py-8 lg:grid-cols-2 lg:gap-10 lg:py-10">
       {/* Left: copy */}
       <div className="relative z-10">
-        <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-          <Sparkles className="h-3.5 w-3.5" />
-          Sri Lanka's trusted tech store
-        </span>
-
-        <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
+        <h1 className="font-display text-3xl font-extrabold leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
           Discover the latest{" "}
           <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             tech
