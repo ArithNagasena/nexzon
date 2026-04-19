@@ -32,6 +32,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import galaxyS26UltraImg from "@/assets/galaxy-s26-ultra.png";
+import iphone17ProMaxImg from "@/assets/iphone-17-pro-max.png";
 
 type CompareProduct = {
   id: string;
@@ -113,8 +114,7 @@ const CATALOG: CompareProduct[] = [
     id: "iphone-17-pro-max",
     name: "Apple iPhone 17 Pro Max 512GB",
     brand: "Apple",
-    image:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-6-9inch-cosmicorange?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1756774190788",
+    image: iphone17ProMaxImg,
     price: 524900,
     rating: 4.9,
     reviews: 287,
