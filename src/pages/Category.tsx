@@ -242,37 +242,6 @@ const FilterSidebar = ({
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="rating">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Rating</AccordionTrigger>
-            <AccordionContent>
-              <div className="space-y-2 pt-1">
-                {ratings.map((r) => {
-                  const active = filters.rating === r;
-                  return (
-                    <button
-                      key={r}
-                      onClick={() => setFilters((f) => ({ ...f, rating: active ? null : r }))}
-                      className={`flex w-full items-center justify-between rounded-lg border px-3 py-2 text-sm transition-all ${
-                        active ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"
-                      }`}
-                    >
-                      <span className="flex items-center gap-1">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-3.5 w-3.5 ${
-                              i < r ? "fill-warning text-warning" : "text-muted-foreground/40"
-                            }`}
-                          />
-                        ))}
-                      </span>
-                      <span className="text-xs text-muted-foreground">& up</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
 
           <AccordionItem value="warr">
             <AccordionTrigger className="py-3 text-sm font-semibold">Warranty</AccordionTrigger>
