@@ -12,7 +12,6 @@ const navLinks: { label: string; to: string; badge?: string }[] = [
   { label: "Pre-Orders", to: "/shop" },
   { label: "Track Order", to: "/track-order" },
   { label: "Support", to: "/help" },
-  { label: "FAQ", to: "/faq" },
 ];
 
 const Logo = () => (
