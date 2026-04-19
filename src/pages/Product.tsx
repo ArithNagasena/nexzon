@@ -79,10 +79,9 @@ const productDetails = {
   stockCount: 14,
   images: [phone1, phone2, phone3, phone4],
   colors: [
-    { name: "Titanium Black", value: "#2a2a2a" },
-    { name: "Titanium Gray", value: "#9a9a9a" },
-    { name: "Titanium Violet", value: "#a89cc4" },
-    { name: "Titanium Yellow", value: "#d4c98a" },
+    { name: "Cosmic Orange", value: "#d96b3a" },
+    { name: "Silver", value: "#e8e8ea" },
+    { name: "Deep Blue", value: "#2b3a5a" },
   ],
   storage: ["256GB", "512GB", "1TB"],
   ram: ["12GB"],
