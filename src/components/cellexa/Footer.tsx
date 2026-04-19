@@ -60,8 +60,8 @@ const payments = ["VISA", "MASTERCARD", "AMEX", "LANKAQR", "FRIMI", "COD"];
 
 const Footer = () => (
   <footer className="bg-foreground text-background/85">
-    <div className="container-page py-14 sm:py-16">
-      <div className="grid gap-10 lg:grid-cols-12">
+    <div className="container-page py-8 sm:py-10">
+      <div className="grid gap-8 lg:grid-cols-12">
         {/* Brand */}
         <div className="lg:col-span-4">
           <Link to="/" className="flex items-center gap-1.5">
@@ -70,12 +70,12 @@ const Footer = () => (
             </span>
             <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
           </Link>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-background/65">
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-background/65">
             Sri Lanka's trusted online destination for genuine smartphones, tablets, audio, and tech
             accessories — backed by warranty, fast islandwide delivery, and local support.
           </p>
 
-          <ul className="mt-6 space-y-3 text-sm text-background/75">
+          <ul className="mt-4 space-y-2 text-sm text-background/75">
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" />
               <span>No. 142, Galle Road, Colombo 03, Sri Lanka</span>
@@ -90,7 +90,7 @@ const Footer = () => (
             </li>
           </ul>
 
-          <div className="mt-6 flex gap-2">
+          <div className="mt-4 flex gap-2">
             {[Facebook, Instagram, Youtube, Twitter].map((Icon, i) => (
               <a
                 key={i}
@@ -111,7 +111,7 @@ const Footer = () => (
               <h4 className="font-display text-sm font-bold uppercase tracking-wider text-background">
                 {s.title}
               </h4>
-              <ul className="mt-4 space-y-2.5 text-sm">
+              <ul className="mt-3 space-y-2 text-sm">
                 {s.links.map((l) => (
                   <li key={l.label}>
                     <Link to={l.to} className="text-background/65 transition-colors hover:text-primary-glow">
@@ -139,7 +139,7 @@ const Footer = () => (
 
     {/* Bottom bar */}
     <div className="border-t border-background/10">
-      <div className="container-page flex flex-col items-center justify-between gap-4 py-6 text-xs text-background/60 sm:flex-row">
+      <div className="container-page flex flex-col items-center justify-between gap-3 py-4 text-xs text-background/60 sm:flex-row">
         <div>© {new Date().getFullYear()} Cellexa (Pvt) Ltd. All rights reserved.</div>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {payments.map((p) => (
