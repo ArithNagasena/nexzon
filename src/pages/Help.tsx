@@ -183,7 +183,7 @@ const Help = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border/60 bg-gradient-brand-soft">
-        <div className="container-page py-10 sm:py-14 lg:py-16">
+        <div className="container-page py-5 sm:py-6">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground">
               Home
@@ -192,53 +192,36 @@ const Help = () => {
             <span className="font-semibold text-foreground">Help &amp; Support</span>
           </div>
 
-          <div className="mx-auto mt-6 max-w-2xl text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
-              <Sparkles className="h-3 w-3" />
-              Customer Support
-            </span>
-            <h1 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              We're here to help
-            </h1>
-            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Browse support topics, manage your orders or talk to a real
-              person — whichever works for you.
-            </p>
+          <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+                <Sparkles className="h-3 w-3" />
+                Customer Support
+              </span>
+              <h1 className="mt-1.5 font-display text-xl font-bold tracking-tight sm:text-2xl">
+                We're here to help
+              </h1>
+              <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
+                Browse topics, manage orders or talk to a real person.
+              </p>
+            </div>
 
             {/* Search */}
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="mx-auto mt-6 flex max-w-xl items-center gap-2 rounded-2xl border border-border/70 bg-card p-1.5 shadow-card"
+              className="flex w-full max-w-md items-center gap-2 rounded-xl border border-border/70 bg-card p-1 shadow-card sm:w-auto"
             >
-              <div className="grid h-10 w-10 shrink-0 place-items-center text-muted-foreground">
+              <div className="grid h-8 w-8 shrink-0 place-items-center text-muted-foreground">
                 <Search className="h-4 w-4" />
               </div>
               <Input
-                placeholder="Search for help with orders, delivery, returns…"
-                className="flex-1 border-0 bg-transparent text-sm shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                placeholder="Search help…"
+                className="h-8 flex-1 border-0 bg-transparent text-sm shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
-              <Button asChild size="sm" className="hidden sm:inline-flex">
+              <Button asChild size="sm" className="hidden sm:inline-flex h-8">
                 <Link to="/faq">Search</Link>
               </Button>
             </form>
-
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-1.5 text-[11px] text-muted-foreground">
-              <span>Popular:</span>
-              {[
-                { l: "refund", to: "/faq#faq-returns" },
-                { l: "tracking", to: "/track-order" },
-                { l: "warranty claim", to: "/account/warranty" },
-                { l: "installments", to: "/faq#faq-payments" },
-              ].map((p) => (
-                <Link
-                  key={p.l}
-                  to={p.to}
-                  className="rounded-full bg-card px-2 py-0.5 font-medium text-foreground hover:text-primary"
-                >
-                  {p.l}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </section>
