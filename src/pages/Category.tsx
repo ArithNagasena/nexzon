@@ -59,6 +59,7 @@ import phone1 from "@/assets/product-iphone-pink.png";
 import galaxyS25Fe from "@/assets/galaxy-s25-fe.png";
 import honorMagicV5 from "@/assets/honor-magic-v5.png";
 import iphoneAir from "@/assets/iphone-air.png";
+import galaxyZFlip7 from "@/assets/galaxy-z-flip7.png";
 import phone2 from "@/assets/product-iphone-pink.png";
 import phone3 from "@/assets/product-iphone-pink.png";
 import featurePhone from "@/assets/feature-phone.jpg";
@@ -67,7 +68,7 @@ import featurePhone from "@/assets/feature-phone.jpg";
 const catalog: (Product & { sub: string; storage: string; ram: string; color: string; screen: number; battery: number; fiveG: boolean })[] = [
   { id: "p1",  name: "Samsung Galaxy S25 FE",   brand: "Samsung",   price: 260299, oldPrice: 525000, rating: 4.9, reviews: 312, image: galaxyS25Fe, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "8GB",  color: "Titanium", screen: 6.7, battery: 4422, fiveG: true },
   { id: "p2",  name: "Apple iPhone Air 256GB",        brand: "Apple", price: 339900, oldPrice: 369000, rating: 4.8, reviews: 248, image: iphoneAir, badge: { label: "Hot Deal", tone: "promo" },  sub: "Flagship",  storage: "256GB", ram: "12GB", color: "White",    screen: 6.8, battery: 5000, fiveG: true },
-  { id: "p3",  name: "Xiaomi Redmi Note 13 Pro+ 5G 256GB",        brand: "Xiaomi",  price: 119500, oldPrice: 134000, rating: 4.6, reviews: 192, image: phone3, badge: { label: "-12%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "Blue",     screen: 6.7, battery: 5000, fiveG: true },
+  { id: "p3",  name: "Samsung Galaxy Z Flip 7",        brand: "Samsung",  price: 399900, oldPrice: 449000, rating: 4.6, reviews: 192, image: galaxyZFlip7, badge: { label: "-11%", tone: "promo" },     sub: "Foldable", storage: "256GB", ram: "12GB", color: "Coral",     screen: 6.7, battery: 5000, fiveG: true },
   { id: "p4",  name: "OnePlus 12R 5G 256GB Cool Blue",           brand: "OnePlus", price: 159000, oldPrice: 175000, rating: 4.7, reviews: 98,  image: phone3, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Blue",     screen: 6.78, battery: 5500, fiveG: true },
   { id: "p5",  name: "HONOR Magic V5 Foldable",          brand: "HONOR", price: 569900, oldPrice: 629000, rating: 4.6, reviews: 142, image: honorMagicV5, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "8GB",  color: "Black",     screen: 6.7, battery: 3700, fiveG: true },
   { id: "p6",  name: "Apple iPhone 15 128GB Pink",                brand: "Apple",   price: 289000, oldPrice: 309000, rating: 4.8, reviews: 421, image: phone1,                                              sub: "Flagship",  storage: "128GB", ram: "6GB",  color: "Pink",     screen: 6.1, battery: 3349, fiveG: true },
