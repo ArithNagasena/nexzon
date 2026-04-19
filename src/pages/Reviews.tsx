@@ -634,6 +634,7 @@ const Reviews = () => {
             </div>
           </section>
         </div>
+        </div>
       </main>
 
       <Footer />
