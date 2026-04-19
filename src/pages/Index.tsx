@@ -46,7 +46,6 @@ const Index = () => {
         <NewArrivals />
         <PromoBanner />
         <BestSellers />
-        <PhonesFeatured />
         <InstallmentBanner />
         <Testimonials />
         <FAQ />
