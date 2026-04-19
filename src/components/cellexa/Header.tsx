@@ -5,12 +5,11 @@ import { Button } from "@/components/ui/button";
 
 const navLinks: { label: string; to: string; badge?: string }[] = [
   { label: "Home", to: "/" },
-  { label: "Shop", to: "/shop" },
   { label: "Smartphones", to: "/category/smartphones" },
   { label: "Tablets", to: "/category/tablets" },
   { label: "Accessories", to: "/category/accessories" },
   { label: "Brands", to: "/brand/samsung" },
-  { label: "Pre-Orders", to: "/shop", badge: "New" },
+  { label: "Pre-Orders", to: "/shop" },
   { label: "Track Order", to: "/track-order" },
   { label: "Help", to: "/help" },
 ];
