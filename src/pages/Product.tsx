@@ -50,7 +50,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import phone1 from "@/assets/product-phone-1.jpg";
+import phone1 from "@/assets/iphone-17-pro-max-orange.png";
 import phone2 from "@/assets/product-phone-2.jpg";
 import phone3 from "@/assets/product-phone-3.jpg";
 import tablet from "@/assets/product-tablet.jpg";
