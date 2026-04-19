@@ -612,7 +612,7 @@ const Category = () => {
         </section>
 
         {/* Featured brands */}
-        <section className="bg-background pt-6 pb-10 sm:pb-14">
+        <section className="bg-background pb-10 pt-[34px] sm:pb-14">
           <div className="container-page">
             <div className="mb-3 flex items-end justify-between">
               <div>
