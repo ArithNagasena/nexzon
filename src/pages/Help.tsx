@@ -266,13 +266,8 @@ const Help = () => {
                 to={c.to}
                 className="group rounded-2xl border border-border/70 bg-card p-5 shadow-card transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lift"
               >
-                <div className="flex items-start justify-between">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-brand-soft text-primary">
-                    <c.icon className="h-5 w-5" />
-                  </div>
-                  <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-bold text-foreground">
-                    {c.count} articles
-                  </span>
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-brand-soft text-primary">
+                  <c.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-3 font-display text-base font-bold text-foreground">
                   {c.label}
