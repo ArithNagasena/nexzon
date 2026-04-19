@@ -789,16 +789,6 @@ const Category = () => {
               {/* Pagination */}
               {filtered.length > perPage && (
                 <div className="mt-8 flex flex-col items-center gap-5">
-                  {visible.length < filtered.length && (
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="rounded-xl"
-                      onClick={() => setPage((p) => p + 1)}
-                    >
-                      Load more {categoryName.toLowerCase()}
-                    </Button>
-                  )}
                   <Pagination>
                     <PaginationContent>
                       <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
