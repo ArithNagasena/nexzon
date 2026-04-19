@@ -528,24 +528,6 @@ const CartPage = () => {
           </section>
         )}
 
-        {/* Accessories suggestions */}
-        {items.length > 0 && (
-          <section className="bg-gradient-brand-soft py-12 md:py-16">
-            <div className="container-page">
-              <div className="mb-6 flex items-end justify-between gap-4">
-                <div>
-                  <h2 className="font-display text-2xl font-extrabold md:text-3xl">Frequently Bought Together</h2>
-                  <p className="text-sm text-muted-foreground">Genuine accessories to complete your setup.</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                {accessories.map((a) => (
-                  <ProductCard key={a.id} product={a} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
       </main>
 
       <Footer />
