@@ -36,6 +36,7 @@ import iphone17ProMaxImg from "@/assets/iphone-17-pro-max.png";
 import iphone17eImg from "@/assets/iphone-17e.png";
 import galaxyS25UltraImg from "@/assets/galaxy-s25-ultra.png";
 import iphone15ProMaxImg from "@/assets/iphone-15-pro-max.png";
+import googlePixel10Img from "@/assets/google-pixel-10.png";
 
 type CompareProduct = {
   id: string;
@@ -190,8 +191,7 @@ const RECOMMENDED: Product[] = [
     price: 289900,
     rating: 4.7,
     reviews: 488,
-    image:
-      "https://lh3.googleusercontent.com/Z9aBC_-OAS9oQX1WRUnwm-NWdbUTk_Hw-MFHlFEf_OF8YTqj-zYxTSBzLPHowFh3vnPwzXeu2X5IZ2qjQfzcg2Pqw1jYK7w=rw-e365-w3000",
+    image: googlePixel10Img,
     badge: { label: "Hot", tone: "warning" },
   },
 ];
