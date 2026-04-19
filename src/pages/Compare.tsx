@@ -394,24 +394,23 @@ const Compare = () => {
 
           {/* Spec table */}
           {filledCount > 0 && (
-            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-              <div className="flex items-center justify-between border-b border-border bg-gradient-brand-soft px-5 py-4">
+            <div className="mt-8 overflow-hidden rounded-2xl border-2 border-border bg-card shadow-soft">
+              <div className="flex items-center justify-between border-b-2 border-border bg-surface/60 px-5 py-4">
                 <h2 className="font-display text-lg font-bold sm:text-xl">
                   Full Specifications
                 </h2>
-                <span className="hidden text-xs text-muted-foreground sm:inline">
-                  Better values are <span className="font-semibold text-primary">highlighted in blue</span>
-                </span>
               </div>
 
+
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[680px] text-sm">
+                <table className="w-full min-w-[680px] border-collapse text-sm">
                   <colgroup>
-                    <col className="w-[26%]" />
+                    <col className="w-[24%]" />
                     {slots.map((_, i) => (
-                      <col key={i} className="w-[37%]" />
+                      <col key={i} className="w-[38%]" />
                     ))}
                   </colgroup>
+
 
                   {/* Image + name header inside table */}
                   <thead>
