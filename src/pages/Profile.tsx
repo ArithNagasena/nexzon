@@ -180,14 +180,13 @@ const Profile = () => {
             {/* Main content */}
             <div className="space-y-6 lg:col-span-9">
               {/* Profile overview */}
-              <section className="relative overflow-hidden rounded-3xl bg-gradient-hero p-6 text-primary-foreground shadow-lift sm:p-8">
-                <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-white/15 blur-2xl" />
-                <div className="pointer-events-none absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-primary-glow/30 blur-3xl" />
+              <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-card p-6 shadow-card sm:p-8">
+                <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-primary/5 blur-2xl" />
 
                 <div className="relative flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-4">
                     <div className="relative">
-                      <div className="grid h-20 w-20 place-items-center rounded-2xl border border-white/30 bg-white/15 font-display text-2xl font-extrabold backdrop-blur-sm">
+                      <div className="grid h-20 w-20 place-items-center rounded-2xl border border-border bg-surface font-display text-2xl font-extrabold text-foreground">
                         NP
                       </div>
                       <button
@@ -200,14 +199,14 @@ const Profile = () => {
                     </div>
 
                     <div>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
-                        <Crown className="h-3.5 w-3.5 text-primary-glow" />
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                        <Crown className="h-3.5 w-3.5" />
                         Gold Member · Since Mar 2023
                       </span>
-                      <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+                      <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
                         Nuwan Perera
                       </h2>
-                      <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary-foreground/85 sm:text-sm">
+                      <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground sm:text-sm">
                         <span className="inline-flex items-center gap-1.5">
                           <Mail className="h-3.5 w-3.5" />
                           nuwan@example.lk
@@ -220,7 +219,7 @@ const Profile = () => {
                     </div>
                   </div>
 
-                  <Button variant="hero" size="sm">
+                  <Button size="sm">
                     <Edit3 className="h-4 w-4" />
                     Quick Edit
                   </Button>
