@@ -20,6 +20,7 @@ import {
   CalendarDays,
   PackageCheck,
   Phone,
+  Eye,
   type LucideIcon,
 } from "lucide-react";
 import Header from "@/components/cellexa/Header";
