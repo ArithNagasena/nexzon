@@ -16,7 +16,7 @@ const navLinks: { label: string; to: string; badge?: string }[] = [
 
 const Logo = () => (
   <Link to="/" className="flex items-center gap-1.5 select-none" aria-label="Cellexa Home">
-    <span className="font-display text-2xl font-extrabold tracking-tight text-foreground">
+    <span className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
       Cell<span className="text-primary">exa</span>
     </span>
     
