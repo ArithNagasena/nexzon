@@ -28,6 +28,7 @@ import BackInStock from "./pages/BackInStock.tsx";
 import Returns from "./pages/Returns.tsx";
 import Warranty from "./pages/Warranty.tsx";
 import TradeIn from "./pages/TradeIn.tsx";
+import FAQ from "./pages/FAQ.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -66,6 +67,7 @@ const App = () => (
           <Route path="/account/returns" element={<Returns />} />
           <Route path="/account/warranty" element={<Warranty />} />
           <Route path="/account/trade-in" element={<TradeIn />} />
+          <Route path="/faq" element={<FAQ />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
