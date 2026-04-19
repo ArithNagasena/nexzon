@@ -35,6 +35,7 @@ import galaxyS26UltraImg from "@/assets/galaxy-s26-ultra.png";
 import iphone17ProMaxImg from "@/assets/iphone-17-pro-max.png";
 import iphone17eImg from "@/assets/iphone-17e.png";
 import galaxyS25UltraImg from "@/assets/galaxy-s25-ultra.png";
+import iphone15ProMaxImg from "@/assets/iphone-15-pro-max.png";
 
 type CompareProduct = {
   id: string;
@@ -179,8 +180,7 @@ const RECOMMENDED: Product[] = [
     oldPrice: 419900,
     rating: 4.9,
     reviews: 2104,
-    image:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-naturaltitanium-select?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1693010532225",
+    image: iphone15ProMaxImg,
     badge: { label: "Save 10%", tone: "promo" },
   },
   {
