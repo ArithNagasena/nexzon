@@ -55,9 +55,9 @@ import {
 } from "@/components/ui/pagination";
 
 import heroSmartphones from "@/assets/cat-hero-smartphones.jpg";
-import phone1 from "@/assets/product-phone-1.jpg";
-import phone2 from "@/assets/product-phone-2.jpg";
-import phone3 from "@/assets/product-phone-3.jpg";
+import phone1 from "@/assets/product-iphone-pink.png";
+import phone2 from "@/assets/product-iphone-pink.png";
+import phone3 from "@/assets/product-iphone-pink.png";
 import featurePhone from "@/assets/feature-phone.jpg";
 
 /* -------------------- Catalog (smartphones) -------------------- */
