@@ -1,4 +1,4 @@
-import { Heart, Star, ShoppingCart } from "lucide-react";
+import { Heart, Star, ShoppingCart, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export type Product = {
@@ -100,6 +100,22 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
         </div>
       </Link>
+
+      {/* Action buttons - always visible */}
+      <div className="flex gap-2 px-4 pb-4">
+        <button
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-primary py-2.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary-deep"
+        >
+          <ShoppingCart className="h-3.5 w-3.5" /> Add to Cart
+        </button>
+        <Link
+          to={`/product/${product.id}`}
+          className="flex items-center justify-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2.5 text-xs font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+        >
+          <Eye className="h-3.5 w-3.5" /> View
+        </Link>
+      </div>
     </article>
   );
 };
