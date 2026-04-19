@@ -626,6 +626,7 @@ const Notifications = () => {
             </div>
           </section>
         </div>
+        </div>
       </main>
 
       <Footer />
