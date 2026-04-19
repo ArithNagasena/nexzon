@@ -26,15 +26,15 @@ const Login = () => {
 
         <div className="container-page py-10 sm:py-14">
           <div className="mx-auto w-full max-w-md">
-            <div className="rounded-2xl border border-border/70 bg-card p-8 shadow-lift sm:p-10">
+            <div className="rounded-2xl border border-border/70 bg-card p-7 shadow-lift sm:p-8">
               <h1 className="text-center font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
                 Welcome back
               </h1>
-              <p className="mt-3 text-center text-xs text-muted-foreground">
+              <p className="mt-2 text-center text-xs text-muted-foreground">
                 Sign in to track orders, manage your wishlist and check out faster.
               </p>
 
-              <form className="mt-8 space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
                 {/* Email */}
                 <div className="space-y-1">
                   <Label htmlFor="email" className="text-xs font-semibold text-foreground">
