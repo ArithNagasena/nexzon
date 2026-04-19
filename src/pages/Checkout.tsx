@@ -345,7 +345,7 @@ const CheckoutPage = () => {
                 title="Delivery Method"
                 subtitle="Choose how fast you'd like to receive your order."
               >
-                <div className="grid gap-3 md:grid-cols-3">
+                <div className="grid gap-3 md:grid-cols-2">
                   <DeliveryOption
                     selected={delivery === "standard"}
                     onSelect={() => setDelivery("standard")}
@@ -363,15 +363,6 @@ const CheckoutPage = () => {
                     eta="Next business day (Colombo)"
                     price={fmtLKR(1500)}
                     badge="Fastest"
-                  />
-                  <DeliveryOption
-                    selected={delivery === "pickup"}
-                    onSelect={() => setDelivery("pickup")}
-                    icon={Building2}
-                    title="Store Pickup"
-                    eta="Ready in 2 hours"
-                    price="FREE"
-                    badge="Colombo 03"
                   />
                 </div>
               </SectionCard>
