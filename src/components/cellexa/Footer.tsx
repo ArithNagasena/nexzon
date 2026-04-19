@@ -89,19 +89,6 @@ const Footer = () => (
               <a href="mailto:hello@cellexa.lk" className="hover:text-background">hello@cellexa.lk</a>
             </li>
           </ul>
-
-          <div className="mt-4 flex gap-2">
-            {[Facebook, Instagram, Youtube, Twitter].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Social link"
-                className="grid h-10 w-10 place-items-center rounded-lg border border-background/15 transition-colors hover:border-primary-glow hover:bg-primary-glow/15 hover:text-primary-glow"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
         </div>
 
         {/* Link sections */}
