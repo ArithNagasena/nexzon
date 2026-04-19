@@ -73,7 +73,7 @@ const productDetails = {
   sold: "2,500+",
   price: 449900,
   oldPrice: 519900,
-  badges: ["Best Seller", "Genuine"],
+  badges: ["Best Seller"],
   inStock: true,
   stockCount: 14,
   images: [phone1, phone2, phone3, tablet],
