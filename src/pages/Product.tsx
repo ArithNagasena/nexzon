@@ -59,6 +59,7 @@ import earbuds from "@/assets/product-earbuds.jpg";
 import watch from "@/assets/product-watch.jpg";
 import productCase from "@/assets/product-case.jpg";
 import charger from "@/assets/product-charger.jpg";
+import accessoryImg1 from "@/assets/apple-watch-s11.png";
 
 /* -------------------- Product data -------------------- */
 const productDetails = {
@@ -182,7 +183,7 @@ const relatedProducts: Product[] = [
 ];
 
 const accessories: Product[] = [
-  { id: "a1", name: "Apple 40W Dynamic Power Adapter (USB-C)", brand: "Apple", price: 14900, rating: 4.8, reviews: 612, image: charger, badge: { label: "Genuine", tone: "success" } },
+  { id: "a1", name: "Apple 40W Dynamic Power Adapter (USB-C)", brand: "Apple", price: 14900, rating: 4.8, reviews: 612, image: accessoryImg1, badge: { label: "Genuine", tone: "success" } },
   { id: "a2", name: "iPhone 17 Pro Max FineWoven Case with MagSafe", brand: "Apple", price: 18900, oldPrice: 21900, rating: 4.7, reviews: 254, image: productCase },
   { id: "a3", name: "AirPods Pro 3 with USB-C", brand: "Apple", price: 89900, oldPrice: 99900, rating: 4.9, reviews: 1820, image: earbuds, badge: { label: "Bundle", tone: "primary" } },
   { id: "a4", name: "Apple Watch Series 11 (45mm GPS)", brand: "Apple", price: 159900, rating: 4.8, reviews: 740, image: watch },
