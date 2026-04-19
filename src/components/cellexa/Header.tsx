@@ -118,7 +118,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-primary transition-colors hover:bg-primary/10"
             >
               <Facebook className="h-4 w-4" />
             </a>
@@ -127,7 +127,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-primary transition-colors hover:bg-primary/10"
             >
               <Instagram className="h-4 w-4" />
             </a>
@@ -136,7 +136,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-primary transition-colors hover:bg-primary/10"
             >
               <Twitter className="h-4 w-4" />
             </a>
@@ -145,7 +145,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-primary transition-colors hover:bg-primary/10"
             >
               <Youtube className="h-4 w-4" />
             </a>
