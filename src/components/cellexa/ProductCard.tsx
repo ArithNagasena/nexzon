@@ -92,19 +92,13 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
       </Link>
 
-      {/* Action buttons - always visible */}
-      <div className="flex gap-2 px-4 pb-4">
-        <button
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-primary py-2.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary-deep"
-        >
-          <ShoppingCart className="h-3.5 w-3.5" /> Add to Cart
-        </button>
+      {/* Action button - always visible */}
+      <div className="px-4 pb-4">
         <Link
           to={`/product/${product.id}`}
-          className="flex items-center justify-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2.5 text-xs font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
         >
-          <Eye className="h-3.5 w-3.5" /> View
+          <Eye className="h-4 w-4" /> View Details
         </Link>
       </div>
     </article>
