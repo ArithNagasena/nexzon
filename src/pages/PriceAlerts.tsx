@@ -415,9 +415,6 @@ const PriceAlerts = () => {
                             >
                               <sm.Icon className="h-3 w-3" /> {sm.label}
                             </span>
-                            <span className="ml-auto text-[11px] font-medium text-muted-foreground">
-                              {a.triggeredOn ?? a.setOn}
-                            </span>
                           </div>
 
                           <div className="mt-1.5 text-[10px] font-bold uppercase tracking-wider text-primary">
