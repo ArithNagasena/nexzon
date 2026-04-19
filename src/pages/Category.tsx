@@ -54,7 +54,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import heroSmartphones from "@/assets/smartphones-hero.jpeg";
+import heroSmartphones from "@/assets/smartphones-hero.png";
 import phone1 from "@/assets/product-iphone-pink.png";
 import galaxyS25Fe from "@/assets/galaxy-s25-fe.png";
 import honorMagicV5 from "@/assets/honor-magic-v5.png";
