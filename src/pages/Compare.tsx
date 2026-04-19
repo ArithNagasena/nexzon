@@ -560,10 +560,7 @@ const Compare = () => {
           <div className="container-page py-12 sm:py-16">
             <div className="flex items-end justify-between gap-4">
               <div>
-                <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
-                  <Sparkles className="h-3.5 w-3.5" /> Hand-picked
-                </span>
-                <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+                <h2 className="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
                   Recommended for you
                 </h2>
               </div>
