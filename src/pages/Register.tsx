@@ -8,14 +8,7 @@ import {
   User,
   Phone,
   ShieldCheck,
-  Truck,
-  Heart,
-  Gift,
-  PackageCheck,
-  Bell,
-  ArrowLeft,
   Sparkles,
-  CheckCircle2,
 } from "lucide-react";
 import Header from "@/components/cellexa/Header";
 import Footer from "@/components/cellexa/Footer";
@@ -24,15 +17,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
-
-const benefits = [
-  { icon: Truck, title: "Faster checkout", text: "Saved addresses & one-tap payments." },
-  { icon: PackageCheck, title: "Track every order", text: "Live islandwide delivery updates." },
-  { icon: Heart, title: "Save your wishlist", text: "Keep favorite gear ready to buy." },
-  { icon: Gift, title: "Loyalty rewards", text: "Earn Cellexa Points on every purchase." },
-  { icon: Bell, title: "Launch & price alerts", text: "Be first to know about new drops." },
-  { icon: ShieldCheck, title: "Warranty & support", text: "Manage claims in one place." },
-];
 
 const getStrength = (pwd: string) => {
   let score = 0;
