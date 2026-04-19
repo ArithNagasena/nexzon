@@ -56,7 +56,7 @@ const legalLinks = [
   { label: "Warranty Policy", to: "/returns-policy" },
 ];
 
-const payments = ["VISA", "MASTERCARD", "AMEX", "LANKAQR", "FRIMI", "COD"];
+
 
 const Footer = () => (
   <footer className="bg-foreground text-background/85">
