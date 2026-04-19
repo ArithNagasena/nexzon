@@ -473,7 +473,7 @@ const ProductPage = () => {
 
 
         {/* Tabs: Specs / Description */}
-        <section className="container-page pb-10 md:pb-14">
+        <section className="container-page pb-10 pt-10 md:pb-14">
           <Tabs defaultValue="specs" className="w-full">
             <TabsList className="w-full justify-start gap-1 overflow-x-auto rounded-xl bg-surface p-1">
               <TabsTrigger value="specs" className="rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-soft">Specifications</TabsTrigger>
