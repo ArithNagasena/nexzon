@@ -366,36 +366,6 @@ const CartPage = () => {
                   </div>
                 </div>
 
-                {/* Promo code */}
-                <div className="mt-4 rounded-2xl border border-border/60 bg-card p-4 sm:p-5">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-hero text-primary-foreground">
-                      <Tag className="h-5 w-5" />
-                    </span>
-                    <div className="flex-1 min-w-[200px]">
-                      <div className="text-sm font-bold text-foreground">Have a promo code?</div>
-                      <div className="text-xs text-muted-foreground">Try CELLEXA10 or WELCOME5K at checkout.</div>
-                    </div>
-                    <div className="flex w-full items-center gap-2 sm:w-auto">
-                      <input
-                        value={code}
-                        onChange={(e) => setCode(e.target.value)}
-                        placeholder="Enter code"
-                        className="h-11 flex-1 rounded-xl border border-border bg-surface px-4 text-sm font-semibold uppercase tracking-wider outline-none focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/20 sm:w-56"
-                      />
-                      {applied ? (
-                        <Button variant="outline" onClick={clearCode}>Remove</Button>
-                      ) : (
-                        <Button onClick={applyCode}>Apply</Button>
-                      )}
-                    </div>
-                  </div>
-                  {codeMsg && (
-                    <p className={`mt-2 text-xs font-medium ${codeMsg.tone === "ok" ? "text-success" : "text-destructive"}`}>
-                      {codeMsg.text}
-                    </p>
-                  )}
-                </div>
 
                 {/* Trust strip */}
                 <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-border/60 bg-card p-3 text-sm md:grid-cols-4">
