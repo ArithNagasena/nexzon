@@ -670,19 +670,14 @@ const AddSlot = ({ onClick }: { onClick: () => void }) => (
 const FragmentGroup = ({
   group,
   slots,
-  bestIndexForRow,
 }: {
   group: SpecRow;
   slots: (CompareProduct | null)[];
-  bestIndexForRow: (
-    compareKey?: keyof CompareProduct["specs"],
-    higherBetter?: boolean,
-  ) => number | null;
 }) => {
   const Icon = group.icon;
   return (
     <>
-      <tr className="border-y-2 border-border bg-gradient-brand-soft">
+      <tr className="border-y-2 border-border bg-surface/60">
         <th
           scope="row"
           colSpan={1 + slots.length}
@@ -694,61 +689,37 @@ const FragmentGroup = ({
           </span>
         </th>
       </tr>
-      {group.rows.map((row, rowIdx) => {
-        const bestIdx = bestIndexForRow(row.compareKey, row.higherBetter);
-        const productIndices = slots.map((s, idx) => (s ? idx : -1));
-        const bestSlotIdx =
-          bestIdx !== null && bestIdx >= 0
-            ? productIndices.filter((i) => i !== -1)[bestIdx]
-            : bestIdx;
-
-        return (
-          <tr
-            key={row.label}
-            className={`border-b border-border/60 ${
-              rowIdx % 2 === 0 ? "bg-background" : "bg-surface/40"
-            }`}
+      {group.rows.map((row, rowIdx) => (
+        <tr
+          key={row.label}
+          className={`border-b border-border ${
+            rowIdx % 2 === 0 ? "bg-background" : "bg-surface/30"
+          }`}
+        >
+          <th
+            scope="row"
+            className="border-r border-border px-4 py-3.5 text-left align-top text-xs font-semibold uppercase tracking-wide text-muted-foreground"
           >
-            <th
-              scope="row"
-              className="px-4 py-3.5 text-left align-top text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+            {row.label}
+          </th>
+          {slots.map((p, i) => (
+            <td
+              key={`${row.label}-${i}`}
+              className={`px-4 py-3.5 align-top ${
+                i < slots.length - 1 ? "border-r border-border" : ""
+              }`}
             >
-              {row.label}
-            </th>
-            {slots.map((p, i) => {
-              const isBest =
-                bestSlotIdx !== null && bestSlotIdx === i && p !== null;
-              return (
-                <td
-                  key={`${row.label}-${i}`}
-                  className={`px-4 py-3.5 align-top ${
-                    isBest ? "bg-primary/5" : ""
-                  }`}
-                >
-                  {p ? (
-                    <div className="flex items-start gap-2">
-                      <span
-                        className={`text-sm leading-snug ${
-                          isBest ? "font-semibold text-primary" : "text-foreground"
-                        }`}
-                      >
-                        {p.specs[row.key] as string}
-                      </span>
-                      {isBest && (
-                        <span className="mt-0.5 inline-flex shrink-0 items-center rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-primary">
-                          Best
-                        </span>
-                      )}
-                    </div>
-                  ) : (
-                    <span className="text-muted-foreground">—</span>
-                  )}
-                </td>
-              );
-            })}
-          </tr>
-        );
-      })}
+              {p ? (
+                <span className="text-sm leading-snug text-foreground">
+                  {p.specs[row.key] as string}
+                </span>
+              ) : (
+                <span className="text-muted-foreground">—</span>
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
     </>
   );
 };
