@@ -54,7 +54,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import heroSmartphones from "@/assets/smartphones-hero.png";
+import heroSmartphones from "@/assets/smartphones-hero.jpeg";
 import phone1 from "@/assets/product-iphone-pink.png";
 import galaxyS25Fe from "@/assets/galaxy-s25-fe.png";
 import honorMagicV5 from "@/assets/honor-magic-v5.png";
@@ -545,11 +545,11 @@ const Category = () => {
         {/* Category hero */}
         <section className="bg-background pt-5 sm:pt-6">
           <div className="container-page">
-            <div className="relative overflow-hidden rounded-3xl border border-border/60 h-[180px] sm:h-[240px] lg:h-[300px]">
+            <div className="relative overflow-hidden rounded-3xl border border-border/60">
               <img
                 src={heroSmartphones}
                 alt={`${categoryName} category banner`}
-                className="h-full w-full object-cover object-top"
+                className="h-auto w-full object-cover"
               />
             </div>
           </div>
