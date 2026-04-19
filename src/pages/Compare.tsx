@@ -591,7 +591,7 @@ const Compare = () => {
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle className="font-display text-xl">
-              Add a product to compare
+              {pickerSlot !== null ? "Change product" : "Add a product to compare"}
             </DialogTitle>
           </DialogHeader>
           <div className="relative">
