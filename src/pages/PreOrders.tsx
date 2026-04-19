@@ -105,8 +105,8 @@ const PREORDERS: PreOrderProduct[] = [
   },
   {
     id: "pixel-10-pro-preorder",
-    brand: "Google",
-    name: "Pixel 10 Pro 256GB — Obsidian",
+    brand: "Samsung",
+    name: "Galaxy Tab S11 (11\")",
     image: pixel10,
     price: 309900,
     releaseDate: "Jun 02, 2026",
