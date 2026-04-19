@@ -139,7 +139,7 @@ const Footer = () => (
 
     {/* Bottom bar */}
     <div className="border-t border-background/10">
-      <div className="container-page flex flex-col items-center justify-between gap-4 py-6 text-xs text-background/60 sm:flex-row">
+      <div className="container-page flex flex-col items-center justify-between gap-3 py-4 text-xs text-background/60 sm:flex-row">
         <div>© {new Date().getFullYear()} Cellexa (Pvt) Ltd. All rights reserved.</div>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {payments.map((p) => (
