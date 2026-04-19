@@ -278,25 +278,6 @@ const CartPage = () => {
                                   )}
                                 </div>
 
-                                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px]">
-                                  {it.stock > 0 ? (
-                                    <span className="inline-flex items-center gap-1 font-semibold text-success">
-                                      <Check className="h-3 w-3" /> In Stock
-                                    </span>
-                                  ) : (
-                                    <span className="font-semibold text-promo">Out of stock</span>
-                                  )}
-                                  {it.warranty && (
-                                    <span className="inline-flex items-center gap-1 text-muted-foreground">
-                                      <ShieldCheck className="h-3 w-3 text-primary" /> {it.warranty}
-                                    </span>
-                                  )}
-                                  {it.badge && (
-                                    <span className="rounded-full bg-accent px-2 py-0.5 font-semibold text-accent-foreground">
-                                      {it.badge}
-                                    </span>
-                                  )}
-                                </div>
 
                                 {/* Mobile price */}
                                 <div className="mt-3 flex items-baseline gap-2 md:hidden">
