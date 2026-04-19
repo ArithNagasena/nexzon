@@ -117,7 +117,7 @@ const PREORDERS: PreOrderProduct[] = [
   {
     id: "iphone-17e-preorder",
     brand: "Apple",
-    name: "iPhone 17e 128GB — Midnight",
+    name: "Galaxy Ring",
     image: iphone17e,
     price: 219900,
     releaseDate: "Apr 30, 2026",
