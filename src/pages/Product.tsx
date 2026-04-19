@@ -51,7 +51,7 @@ import {
 } from "@/components/ui/table";
 
 import phone1 from "@/assets/iphone-17-pro-max-orange.png";
-import phone2 from "@/assets/product-phone-2.jpg";
+import phone2 from "@/assets/iphone-17-pro-max-white.png";
 import phone3 from "@/assets/product-phone-3.jpg";
 import tablet from "@/assets/product-tablet.jpg";
 import earbuds from "@/assets/product-earbuds.jpg";
