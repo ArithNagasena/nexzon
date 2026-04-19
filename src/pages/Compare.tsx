@@ -528,7 +528,7 @@ const Compare = () => {
                 </table>
               </div>
 
-              <div className="flex flex-col gap-3 border-t border-border bg-surface/60 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-3 border-t-2 border-border bg-surface/60 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs text-muted-foreground">
                   Specifications are for reference only. Final specs may vary by region.
                 </p>
@@ -537,7 +537,7 @@ const Compare = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => setPickerOpen(true)}
+                      onClick={() => openPicker(null)}
                     >
                       <Plus className="h-4 w-4" /> Add another product
                     </Button>
@@ -615,7 +615,7 @@ const Compare = () => {
               availableToAdd.map((p) => (
                 <button
                   key={p.id}
-                  onClick={() => add(p.id)}
+                  onClick={() => choose(p.id)}
                   className="flex w-full items-center gap-4 rounded-xl border border-border bg-card p-3 text-left transition-all hover:border-primary/40 hover:shadow-soft"
                 >
                   <div className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-lg bg-gradient-brand-soft">
