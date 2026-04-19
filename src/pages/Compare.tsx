@@ -412,47 +412,79 @@ const Compare = () => {
                   </colgroup>
 
 
-                  {/* Image + name header inside table */}
                   <thead>
-                    <tr className="border-b-2 border-border bg-surface/50">
-                      <th scope="col" className="px-4 py-4 text-left align-bottom">
+                    <tr className="border-b-2 border-border bg-surface/40">
+                      <th
+                        scope="col"
+                        className="border-r border-border px-4 py-5 text-left align-bottom"
+                      >
                         <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                           Product
                         </span>
                       </th>
                       {slots.map((p, i) => (
-                        <th key={`hdr-${i}`} scope="col" className="px-4 py-4 align-bottom">
+                        <th
+                          key={`hdr-${i}`}
+                          scope="col"
+                          className={`px-4 py-5 align-bottom ${
+                            i < slots.length - 1 ? "border-r border-border" : ""
+                          }`}
+                        >
                           {p ? (
                             <div className="flex flex-col items-center gap-3 text-center">
-                              <div className="grid h-28 w-28 place-items-center overflow-hidden rounded-xl border border-border bg-gradient-brand-soft">
+                              <div className="grid h-48 w-48 place-items-center overflow-hidden rounded-xl border border-border bg-background sm:h-56 sm:w-56">
                                 <img
                                   src={p.image}
                                   alt={p.name}
                                   loading="lazy"
-                                  className="h-full w-full object-contain p-2"
+                                  className="h-full w-full object-contain p-3"
                                 />
                               </div>
                               <div>
                                 <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                                   {p.brand}
                                 </div>
-                                <div className="mt-0.5 line-clamp-2 text-sm font-bold leading-snug text-foreground">
+                                <div className="mt-1 line-clamp-2 text-sm font-bold leading-snug text-foreground">
                                   {p.name}
                                 </div>
                               </div>
+                              <div className="flex items-center gap-2">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => openPicker(i)}
+                                >
+                                  Change
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => remove(p.id)}
+                                  aria-label="Remove product"
+                                >
+                                  <X className="h-4 w-4" />
+                                </Button>
+                              </div>
                             </div>
                           ) : (
-                            <span className="text-muted-foreground">—</span>
+                            <button
+                              onClick={() => openPicker(i)}
+                              className="mx-auto grid h-48 w-48 place-items-center rounded-xl border-2 border-dashed border-border bg-surface/40 text-muted-foreground transition-colors hover:border-primary hover:text-primary sm:h-56 sm:w-56"
+                            >
+                              <div className="flex flex-col items-center gap-2">
+                                <Plus className="h-6 w-6" />
+                                <span className="text-xs font-semibold">Add product</span>
+                              </div>
+                            </button>
                           )}
                         </th>
                       ))}
                     </tr>
 
-                    {/* Price row inside header */}
-                    <tr className="border-b border-border bg-background">
+                    <tr className="border-b-2 border-border bg-background">
                       <th
                         scope="row"
-                        className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                        className="border-r border-border px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground"
                       >
                         Price
                       </th>
@@ -460,20 +492,12 @@ const Compare = () => {
                         <td
                           key={`price-${i}`}
                           className={`px-4 py-3 text-center align-middle ${
-                            p && p.price === bestPrice && filledCount > 1
-                              ? "bg-primary/5"
-                              : ""
+                            i < slots.length - 1 ? "border-r border-border" : ""
                           }`}
                         >
                           {p ? (
                             <div className="flex flex-col items-center">
-                              <span
-                                className={`font-display text-lg font-extrabold ${
-                                  p.price === bestPrice && filledCount > 1
-                                    ? "text-primary"
-                                    : "text-foreground"
-                                }`}
-                              >
+                              <span className="font-display text-lg font-extrabold text-foreground">
                                 {fmtLKR(p.price)}
                               </span>
                               {p.oldPrice && (
@@ -490,13 +514,14 @@ const Compare = () => {
                     </tr>
                   </thead>
 
+
                   <tbody>
                     {SPEC_GROUPS.map((group) => (
                       <FragmentGroup
                         key={group.group}
                         group={group}
                         slots={slots}
-                        bestIndexForRow={bestIndexForRow}
+                        bestIndexForRow={() => null}
                       />
                     ))}
                   </tbody>
