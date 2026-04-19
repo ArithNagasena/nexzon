@@ -83,7 +83,7 @@ const productDetails = {
     { name: "Silver", value: "#e8e8ea" },
     { name: "Deep Blue", value: "#2b3a5a" },
   ],
-  storage: ["256GB", "512GB", "1TB"],
+  storage: ["256GB", "512GB", "1TB", "2TB"],
   ram: ["12GB"],
   highlights: [
     { icon: Smartphone, label: "Display", value: '6.8" QHD+ Dynamic AMOLED 2X, 120Hz' },
