@@ -172,6 +172,32 @@ const INITIAL: Notif[] = [
     cta: { label: "Shop Sale", to: "/shop" },
   },
   {
+    id: "n-back-001",
+    type: "back_in_stock",
+    category: "alerts",
+    title: "iPhone 15 Pro Max 1TB is back in stock",
+    message:
+      "Blue Titanium is available again at Cellexa. Order before 5 PM for next-day delivery in Colombo.",
+    time: "2 hours ago",
+    read: false,
+    cta: { label: "Buy Now", to: "/product/b1" },
+    thumb:
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=160&q=80",
+  },
+  {
+    id: "n-back-002",
+    type: "back_in_stock",
+    category: "alerts",
+    title: "AirPods Pro 2 (USB-C) restocked",
+    message:
+      "MagSafe Charging Case edition is back at LKR 78,500. Limited stock — your waitlist alert is now active.",
+    time: "Yesterday",
+    read: false,
+    cta: { label: "View Product", to: "/product/b4" },
+    thumb:
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=160&q=80",
+  },
+  {
     id: "n-005",
     type: "order_delivered",
     category: "orders",
