@@ -663,25 +663,6 @@ const Category = () => {
             {/* Right area */}
             <div className="min-w-0">
               {/* Category-specific merchandising */}
-              <div className="mb-5 grid gap-3 sm:grid-cols-3">
-                <div className="overflow-hidden rounded-2xl bg-gradient-deep p-4 text-primary-foreground sm:col-span-2">
-                  <span className="badge-promo bg-white/15 text-white">Latest Launches</span>
-                  <h3 className="mt-2 font-display text-lg font-extrabold sm:text-xl">
-                    iPhone 15 series + Galaxy S24 Ultra in stock now
-                  </h3>
-                  <p className="mt-1 text-sm text-white/85">Pre-orders open. Pay in 0% installments.</p>
-                </div>
-                <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-soft">
-                  <div className="flex items-center gap-2 text-primary">
-                    <Camera className="h-5 w-5" />
-                    <span className="text-xs font-bold uppercase tracking-wider">Camera Phones</span>
-                  </div>
-                  <p className="mt-2 text-sm font-semibold text-foreground">Pro-grade shooters under LKR 350K</p>
-                  <button className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
-                    View collection <ArrowRight className="h-3 w-3" />
-                  </button>
-                </div>
-              </div>
 
               {/* Toolbar */}
               <div className="mb-4 flex flex-col gap-3 rounded-2xl border border-border/70 bg-card p-3 shadow-soft sm:p-4 md:flex-row md:items-center">
