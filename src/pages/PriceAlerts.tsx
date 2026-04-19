@@ -278,59 +278,6 @@ const PriceAlerts = () => {
 
             {/* Main */}
             <section className="space-y-6 lg:col-span-9">
-            {/* Toolbar */}
-            <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-card sm:p-5">
-              <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-                <div className="flex flex-wrap items-center gap-1.5">
-                  {(
-                    [
-                      { k: "all", label: "All", count: counts.all },
-                      { k: "active", label: "Active", count: counts.active },
-                      { k: "triggered", label: "Triggered", count: counts.triggered },
-                      { k: "expired", label: "Expired", count: counts.expired },
-                    ] as { k: "all" | Status; label: string; count: number }[]
-                  ).map((tab) => {
-                    const active = filter === tab.k;
-                    return (
-                      <button
-                        key={tab.k}
-                        onClick={() => setFilter(tab.k)}
-                        className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition ${
-                          active
-                            ? "bg-primary text-primary-foreground shadow-sm"
-                            : "bg-secondary text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        {tab.label}
-                        <span
-                          className={`rounded-full px-1.5 text-[10px] ${
-                            active ? "bg-white/20" : "bg-card"
-                          }`}
-                        >
-                          {tab.count}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <Button asChild variant="brand" size="sm" className="rounded-xl">
-                    <Link to="/shop">
-                      <Plus className="mr-1.5 h-4 w-4" /> New Alert
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="rounded-xl text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    onClick={clearTriggered}
-                    disabled={!counts.triggered}
-                  >
-                    <Trash2 className="mr-1.5 h-4 w-4" /> Clear triggered
-                  </Button>
-                </div>
-              </div>
-            </div>
 
             {/* List or empty */}
             {filtered.length === 0 ? (
