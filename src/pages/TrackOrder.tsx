@@ -228,38 +228,38 @@ const TrackOrder = () => {
             </div>
 
             {/* Status hero */}
-            <div className="overflow-hidden rounded-2xl border border-border/70 bg-gradient-hero p-5 text-primary-foreground shadow-lift sm:p-7">
+            <div className="overflow-hidden rounded-2xl border border-border/70 bg-card p-5 shadow-card sm:p-7">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="min-w-0">
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                     <Truck className="h-3.5 w-3.5" />
                     {ORDER.status}
                   </div>
-                  <h2 className="mt-3 font-display text-xl font-extrabold sm:text-2xl">
+                  <h2 className="mt-3 font-display text-xl font-extrabold text-foreground sm:text-2xl">
                     Estimated arrival {ORDER.eta}
                   </h2>
-                  <p className="mt-1 text-sm text-primary-foreground/85">
+                  <p className="mt-1 text-sm text-muted-foreground">
                     {ORDER.etaDate} · Order {ORDER.id}
                   </p>
                   <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
-                    <span className="rounded-lg bg-white/15 px-2.5 py-1 font-mono backdrop-blur-sm">
+                    <span className="rounded-lg bg-secondary px-2.5 py-1 font-mono text-foreground">
                       {ORDER.trackingNo}
                     </span>
                     <button
                       onClick={copyTracking}
-                      className="inline-flex items-center gap-1 rounded-lg bg-white/15 px-2.5 py-1 font-semibold backdrop-blur-sm transition hover:bg-white/25"
+                      className="inline-flex items-center gap-1 rounded-lg bg-secondary px-2.5 py-1 font-semibold text-foreground transition hover:bg-secondary/70"
                     >
                       <Copy className="h-3 w-3" /> Copy
                     </button>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row">
-                  <Button asChild variant="hero" size="sm" className="rounded-xl">
+                  <Button asChild variant="brand" size="sm" className="rounded-xl">
                     <Link to={`/account/orders/${ORDER.id}`}>
                       <FileText className="mr-1.5 h-4 w-4" /> Order Details
                     </Link>
                   </Button>
-                  <Button variant="heroOutline" size="sm" className="rounded-xl">
+                  <Button variant="outline" size="sm" className="rounded-xl">
                     <Phone className="mr-1.5 h-4 w-4" /> Call Rider
                   </Button>
                 </div>
@@ -267,15 +267,15 @@ const TrackOrder = () => {
 
               {/* Mini progress bar */}
               <div className="mt-6">
-                <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/20">
+                <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
                   <div
-                    className="h-full rounded-full bg-white transition-all"
+                    className="h-full rounded-full bg-primary transition-all"
                     style={{
                       width: `${((CURRENT_STAGE_INDEX + 1) / STAGES.length) * 100}%`,
                     }}
                   />
                 </div>
-                <div className="mt-2 flex justify-between text-[10px] font-semibold uppercase tracking-wider text-primary-foreground/80">
+                <div className="mt-2 flex justify-between text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                   <span>Placed</span>
                   <span>Packed</span>
                   <span>Shipped</span>
