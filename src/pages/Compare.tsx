@@ -282,6 +282,7 @@ const Compare = () => {
     "iphone-17-pro-max",
   ]);
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [pickerSlot, setPickerSlot] = useState<number | null>(null);
   const [search, setSearch] = useState("");
 
   const products = useMemo(
@@ -295,10 +296,28 @@ const Compare = () => {
   const remove = (id: string) =>
     setSelectedIds((s) => s.filter((x) => x !== id));
 
-  const add = (id: string) => {
-    if (selectedIds.length >= MAX_SLOTS) return;
-    if (selectedIds.includes(id)) return;
-    setSelectedIds((s) => [...s, id]);
+  const openPicker = (slotIdx: number | null) => {
+    setPickerSlot(slotIdx);
+    setSearch("");
+    setPickerOpen(true);
+  };
+
+  const choose = (id: string) => {
+    if (selectedIds.includes(id)) {
+      setPickerOpen(false);
+      return;
+    }
+    setSelectedIds((current) => {
+      // Replace specific slot
+      if (pickerSlot !== null && current[pickerSlot] !== undefined) {
+        const next = [...current];
+        next[pickerSlot] = id;
+        return next;
+      }
+      // Append if room
+      if (current.length < MAX_SLOTS) return [...current, id];
+      return current;
+    });
     setPickerOpen(false);
   };
 
@@ -308,21 +327,6 @@ const Compare = () => {
       (search.trim() === "" ||
         (p.name + " " + p.brand).toLowerCase().includes(search.toLowerCase())),
   );
-
-  const bestPrice = products.length > 0 ? Math.min(...products.map((p) => p.price)) : 0;
-
-  const bestIndexForRow = (
-    compareKey?: keyof CompareProduct["specs"],
-    higherBetter = true,
-  ): number | null => {
-    if (!compareKey || products.length < 2) return null;
-    const values = products.map((p) => p.specs[compareKey] as number);
-    if (values.some((v) => typeof v !== "number")) return null;
-    const target = higherBetter ? Math.max(...values) : Math.min(...values);
-    const winners = values.filter((v) => v === target).length;
-    if (winners > 1) return -1;
-    return values.indexOf(target);
-  };
 
   const slots = Array.from({ length: MAX_SLOTS }).map((_, i) => products[i] ?? null);
   const filledCount = products.length;
@@ -353,12 +357,12 @@ const Compare = () => {
                 Compare Products
               </h1>
               <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-                Compare 2 products side by side. Better values are highlighted to help you decide faster.
+                See key specs of selected products side by side to help you decide faster.
               </p>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <div className="rounded-full border border-border bg-background px-3 py-1.5 font-medium">
-                <span className="text-primary">{filledCount}</span>
+                <span className="text-foreground">{filledCount}</span>
                 <span className="text-muted-foreground"> / {MAX_SLOTS} selected</span>
               </div>
               <Button variant="outline" asChild size="sm">
@@ -382,7 +386,7 @@ const Compare = () => {
               <p className="mt-1 text-sm text-muted-foreground">
                 Add up to {MAX_SLOTS} products to compare specs side by side.
               </p>
-              <Button className="mt-5" onClick={() => setPickerOpen(true)}>
+              <Button className="mt-5" onClick={() => openPicker(null)}>
                 <Plus className="h-4 w-4" /> Add a Product
               </Button>
             </div>
@@ -390,66 +394,97 @@ const Compare = () => {
 
           {/* Spec table */}
           {filledCount > 0 && (
-            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-              <div className="flex items-center justify-between border-b border-border bg-gradient-brand-soft px-5 py-4">
+            <div className="mt-8 overflow-hidden rounded-2xl border-2 border-border bg-card shadow-soft">
+              <div className="flex items-center justify-between border-b-2 border-border bg-surface/60 px-5 py-4">
                 <h2 className="font-display text-lg font-bold sm:text-xl">
                   Full Specifications
                 </h2>
-                <span className="hidden text-xs text-muted-foreground sm:inline">
-                  Better values are <span className="font-semibold text-primary">highlighted in blue</span>
-                </span>
               </div>
 
+
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[680px] text-sm">
+                <table className="w-full min-w-[680px] border-collapse text-sm">
                   <colgroup>
-                    <col className="w-[26%]" />
+                    <col className="w-[24%]" />
                     {slots.map((_, i) => (
-                      <col key={i} className="w-[37%]" />
+                      <col key={i} className="w-[38%]" />
                     ))}
                   </colgroup>
 
-                  {/* Image + name header inside table */}
+
                   <thead>
-                    <tr className="border-b-2 border-border bg-surface/50">
-                      <th scope="col" className="px-4 py-4 text-left align-bottom">
+                    <tr className="border-b-2 border-border bg-surface/40">
+                      <th
+                        scope="col"
+                        className="border-r border-border px-4 py-5 text-left align-bottom"
+                      >
                         <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                           Product
                         </span>
                       </th>
                       {slots.map((p, i) => (
-                        <th key={`hdr-${i}`} scope="col" className="px-4 py-4 align-bottom">
+                        <th
+                          key={`hdr-${i}`}
+                          scope="col"
+                          className={`px-4 py-5 align-bottom ${
+                            i < slots.length - 1 ? "border-r border-border" : ""
+                          }`}
+                        >
                           {p ? (
                             <div className="flex flex-col items-center gap-3 text-center">
-                              <div className="grid h-28 w-28 place-items-center overflow-hidden rounded-xl border border-border bg-gradient-brand-soft">
+                              <div className="grid h-48 w-48 place-items-center overflow-hidden rounded-xl border border-border bg-background sm:h-56 sm:w-56">
                                 <img
                                   src={p.image}
                                   alt={p.name}
                                   loading="lazy"
-                                  className="h-full w-full object-contain p-2"
+                                  className="h-full w-full object-contain p-3"
                                 />
                               </div>
                               <div>
                                 <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                                   {p.brand}
                                 </div>
-                                <div className="mt-0.5 line-clamp-2 text-sm font-bold leading-snug text-foreground">
+                                <div className="mt-1 line-clamp-2 text-sm font-bold leading-snug text-foreground">
                                   {p.name}
                                 </div>
                               </div>
+                              <div className="flex items-center gap-2">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => openPicker(i)}
+                                >
+                                  Change
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => remove(p.id)}
+                                  aria-label="Remove product"
+                                >
+                                  <X className="h-4 w-4" />
+                                </Button>
+                              </div>
                             </div>
                           ) : (
-                            <span className="text-muted-foreground">—</span>
+                            <button
+                              onClick={() => openPicker(i)}
+                              className="mx-auto grid h-48 w-48 place-items-center rounded-xl border-2 border-dashed border-border bg-surface/40 text-muted-foreground transition-colors hover:border-primary hover:text-primary sm:h-56 sm:w-56"
+                            >
+                              <div className="flex flex-col items-center gap-2">
+                                <Plus className="h-6 w-6" />
+                                <span className="text-xs font-semibold">Add product</span>
+                              </div>
+                            </button>
                           )}
                         </th>
                       ))}
                     </tr>
 
-                    {/* Price row inside header */}
-                    <tr className="border-b border-border bg-background">
+                    <tr className="border-b-2 border-border bg-background">
                       <th
                         scope="row"
-                        className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                        className="border-r border-border px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground"
                       >
                         Price
                       </th>
@@ -457,20 +492,12 @@ const Compare = () => {
                         <td
                           key={`price-${i}`}
                           className={`px-4 py-3 text-center align-middle ${
-                            p && p.price === bestPrice && filledCount > 1
-                              ? "bg-primary/5"
-                              : ""
+                            i < slots.length - 1 ? "border-r border-border" : ""
                           }`}
                         >
                           {p ? (
                             <div className="flex flex-col items-center">
-                              <span
-                                className={`font-display text-lg font-extrabold ${
-                                  p.price === bestPrice && filledCount > 1
-                                    ? "text-primary"
-                                    : "text-foreground"
-                                }`}
-                              >
+                              <span className="font-display text-lg font-extrabold text-foreground">
                                 {fmtLKR(p.price)}
                               </span>
                               {p.oldPrice && (
@@ -487,20 +514,21 @@ const Compare = () => {
                     </tr>
                   </thead>
 
+
                   <tbody>
                     {SPEC_GROUPS.map((group) => (
                       <FragmentGroup
                         key={group.group}
                         group={group}
                         slots={slots}
-                        bestIndexForRow={bestIndexForRow}
+                        
                       />
                     ))}
                   </tbody>
                 </table>
               </div>
 
-              <div className="flex flex-col gap-3 border-t border-border bg-surface/60 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-3 border-t-2 border-border bg-surface/60 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs text-muted-foreground">
                   Specifications are for reference only. Final specs may vary by region.
                 </p>
@@ -509,7 +537,7 @@ const Compare = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => setPickerOpen(true)}
+                      onClick={() => openPicker(null)}
                     >
                       <Plus className="h-4 w-4" /> Add another product
                     </Button>
@@ -563,7 +591,7 @@ const Compare = () => {
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle className="font-display text-xl">
-              Add a product to compare
+              {pickerSlot !== null ? "Change product" : "Add a product to compare"}
             </DialogTitle>
           </DialogHeader>
           <div className="relative">
@@ -587,7 +615,7 @@ const Compare = () => {
               availableToAdd.map((p) => (
                 <button
                   key={p.id}
-                  onClick={() => add(p.id)}
+                  onClick={() => choose(p.id)}
                   className="flex w-full items-center gap-4 rounded-xl border border-border bg-card p-3 text-left transition-all hover:border-primary/40 hover:shadow-soft"
                 >
                   <div className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-lg bg-gradient-brand-soft">
@@ -642,19 +670,14 @@ const AddSlot = ({ onClick }: { onClick: () => void }) => (
 const FragmentGroup = ({
   group,
   slots,
-  bestIndexForRow,
 }: {
   group: SpecRow;
   slots: (CompareProduct | null)[];
-  bestIndexForRow: (
-    compareKey?: keyof CompareProduct["specs"],
-    higherBetter?: boolean,
-  ) => number | null;
 }) => {
   const Icon = group.icon;
   return (
     <>
-      <tr className="border-y-2 border-border bg-gradient-brand-soft">
+      <tr className="border-y-2 border-border bg-surface/60">
         <th
           scope="row"
           colSpan={1 + slots.length}
@@ -666,61 +689,37 @@ const FragmentGroup = ({
           </span>
         </th>
       </tr>
-      {group.rows.map((row, rowIdx) => {
-        const bestIdx = bestIndexForRow(row.compareKey, row.higherBetter);
-        const productIndices = slots.map((s, idx) => (s ? idx : -1));
-        const bestSlotIdx =
-          bestIdx !== null && bestIdx >= 0
-            ? productIndices.filter((i) => i !== -1)[bestIdx]
-            : bestIdx;
-
-        return (
-          <tr
-            key={row.label}
-            className={`border-b border-border/60 ${
-              rowIdx % 2 === 0 ? "bg-background" : "bg-surface/40"
-            }`}
+      {group.rows.map((row, rowIdx) => (
+        <tr
+          key={row.label}
+          className={`border-b border-border ${
+            rowIdx % 2 === 0 ? "bg-background" : "bg-surface/30"
+          }`}
+        >
+          <th
+            scope="row"
+            className="border-r border-border px-4 py-3.5 text-left align-top text-xs font-semibold uppercase tracking-wide text-muted-foreground"
           >
-            <th
-              scope="row"
-              className="px-4 py-3.5 text-left align-top text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+            {row.label}
+          </th>
+          {slots.map((p, i) => (
+            <td
+              key={`${row.label}-${i}`}
+              className={`px-4 py-3.5 align-top ${
+                i < slots.length - 1 ? "border-r border-border" : ""
+              }`}
             >
-              {row.label}
-            </th>
-            {slots.map((p, i) => {
-              const isBest =
-                bestSlotIdx !== null && bestSlotIdx === i && p !== null;
-              return (
-                <td
-                  key={`${row.label}-${i}`}
-                  className={`px-4 py-3.5 align-top ${
-                    isBest ? "bg-primary/5" : ""
-                  }`}
-                >
-                  {p ? (
-                    <div className="flex items-start gap-2">
-                      <span
-                        className={`text-sm leading-snug ${
-                          isBest ? "font-semibold text-primary" : "text-foreground"
-                        }`}
-                      >
-                        {p.specs[row.key] as string}
-                      </span>
-                      {isBest && (
-                        <span className="mt-0.5 inline-flex shrink-0 items-center rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-primary">
-                          Best
-                        </span>
-                      )}
-                    </div>
-                  ) : (
-                    <span className="text-muted-foreground">—</span>
-                  )}
-                </td>
-              );
-            })}
-          </tr>
-        );
-      })}
+              {p ? (
+                <span className="text-sm leading-snug text-foreground">
+                  {p.specs[row.key] as string}
+                </span>
+              ) : (
+                <span className="text-muted-foreground">—</span>
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
     </>
   );
 };
