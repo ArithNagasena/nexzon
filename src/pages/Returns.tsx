@@ -333,33 +333,6 @@ const Returns = () => {
 
             {/* Main */}
             <section className="space-y-6 lg:col-span-9">
-            {/* Stat strip */}
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { label: "Eligible", value: counts.eligible, Icon: PackageCheck, cls: "from-primary to-primary-glow" },
-                { label: "In review", value: counts.submitted, Icon: Clock, cls: "from-warning to-promo" },
-                { label: "Approved", value: counts.approved, Icon: CheckCircle2, cls: "from-success to-primary" },
-                { label: "Rejected", value: counts.rejected, Icon: XCircle, cls: "from-destructive to-warning" },
-              ].map((s) => (
-                <div
-                  key={s.label}
-                  className="relative overflow-hidden rounded-2xl border border-border/70 bg-card p-4 shadow-card"
-                >
-                  <div
-                    className={`absolute -right-4 -top-4 grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br ${s.cls} text-white opacity-90`}
-                  >
-                    <s.Icon className="h-5 w-5" />
-                  </div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                    {s.label}
-                  </div>
-                  <div className="mt-1 font-display text-2xl font-extrabold text-foreground sm:text-3xl">
-                    {s.value}
-                  </div>
-                </div>
-              ))}
-            </div>
-
             {/* Policy summary card */}
             <div className="grid gap-3 rounded-2xl border border-border/70 bg-gradient-brand-soft p-5 shadow-card sm:grid-cols-3 sm:p-6">
               {[
