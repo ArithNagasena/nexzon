@@ -19,7 +19,7 @@ const Logo = () => (
     <span className="font-display text-2xl font-extrabold tracking-tight text-foreground">
       Cell<span className="text-primary">exa</span>
     </span>
-    <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
+    
   </Link>
 );
 
