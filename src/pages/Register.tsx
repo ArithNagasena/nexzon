@@ -292,66 +292,7 @@ const Register = () => {
                   <ShieldCheck className="h-3.5 w-3.5 text-primary" />
                   Secure 256-bit encrypted account creation
                 </div>
-              </div>
             </div>
-
-            {/* Promo / trust panel */}
-            <aside className="lg:col-span-5">
-              <div className="relative h-full overflow-hidden rounded-3xl bg-gradient-hero p-8 text-primary-foreground shadow-lift sm:p-10">
-                <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-white/15 blur-2xl" />
-                <div className="pointer-events-none absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-primary-glow/30 blur-3xl" />
-
-                <div className="relative">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Cellexa Members
-                  </span>
-
-                  <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-[2rem]">
-                    Join the smartest <br className="hidden sm:block" />
-                    way to shop <br className="hidden sm:block" />
-                    <span className="text-primary-glow">electronics in Sri Lanka.</span>
-                  </h2>
-
-                  <p className="mt-3 max-w-md text-sm text-primary-foreground/85 sm:text-base">
-                    Create a free Cellexa account to enjoy faster checkout, exclusive member
-                    pricing, and warranty-backed peace of mind.
-                  </p>
-
-                  <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                    {benefits.map(({ icon: Icon, title, text }) => (
-                      <li
-                        key={title}
-                        className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3.5 backdrop-blur-sm transition-colors hover:bg-white/15"
-                      >
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/15 text-primary-glow">
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <div>
-                          <div className="text-sm font-bold leading-tight">{title}</div>
-                          <div className="mt-0.5 text-xs text-primary-foreground/80">{text}</div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/15 pt-5 text-xs text-primary-foreground/85">
-                    <span className="inline-flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary-glow" />
-                      100% Genuine
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary-glow" />
-                      Islandwide Delivery
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary-glow" />
-                      Warranty Backed
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </aside>
           </div>
         </div>
       </main>
