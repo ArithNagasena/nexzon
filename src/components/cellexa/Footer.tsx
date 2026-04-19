@@ -111,7 +111,7 @@ const Footer = () => (
               <h4 className="font-display text-sm font-bold uppercase tracking-wider text-background">
                 {s.title}
               </h4>
-              <ul className="mt-4 space-y-2.5 text-sm">
+              <ul className="mt-3 space-y-2 text-sm">
                 {s.links.map((l) => (
                   <li key={l.label}>
                     <Link to={l.to} className="text-background/65 transition-colors hover:text-primary-glow">
