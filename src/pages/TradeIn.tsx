@@ -853,9 +853,10 @@ const TradeIn = () => {
                 </span>
               </div>
             </div>
-          </main>
+            </section>
+          </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
     </div>
