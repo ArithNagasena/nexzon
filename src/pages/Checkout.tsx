@@ -224,7 +224,7 @@ const CheckoutPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <PromoBar />
-      <CheckoutHeader />
+      <Header />
 
       <main>
         {/* Stepper */}
