@@ -612,7 +612,7 @@ const Category = () => {
         </section>
 
         {/* Featured brands */}
-        <section className="bg-background pt-6">
+        <section className="bg-background pt-6 pb-10 sm:pb-14">
           <div className="container-page">
             <div className="mb-3 flex items-end justify-between">
               <div>
@@ -628,22 +628,20 @@ const Category = () => {
                   <Link
                     key={b.name}
                     to={`/brand/${b.name.toLowerCase()}`}
-                    className="card-category group flex h-20 items-center justify-center px-3 py-3 text-center"
+                    className="card-category group flex h-24 flex-col items-center justify-center gap-1.5 px-3 py-3 text-center"
                     aria-label={`Shop ${b.name}`}
                   >
                     <img
                       src={`https://cdn.simpleicons.org/${slug}`}
                       alt={`${b.name} logo`}
                       loading="lazy"
-                      className="max-h-8 w-auto max-w-[80%] object-contain opacity-80 transition-all group-hover:opacity-100 group-hover:scale-105 dark:invert"
+                      className="max-h-7 w-auto max-w-[70%] object-contain opacity-80 transition-all group-hover:opacity-100 group-hover:scale-105 dark:invert"
                       onError={(e) => {
                         const target = e.currentTarget;
                         target.style.display = "none";
-                        const fallback = target.nextElementSibling as HTMLElement | null;
-                        if (fallback) fallback.style.display = "inline";
                       }}
                     />
-                    <span className="hidden font-display text-sm font-extrabold text-foreground transition-colors group-hover:text-primary">
+                    <span className="font-display text-xs font-bold text-foreground/80 transition-colors group-hover:text-primary sm:text-sm">
                       {b.name}
                     </span>
                   </Link>
