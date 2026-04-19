@@ -282,6 +282,7 @@ const Compare = () => {
     "iphone-17-pro-max",
   ]);
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [pickerSlot, setPickerSlot] = useState<number | null>(null);
   const [search, setSearch] = useState("");
 
   const products = useMemo(
@@ -295,10 +296,28 @@ const Compare = () => {
   const remove = (id: string) =>
     setSelectedIds((s) => s.filter((x) => x !== id));
 
-  const add = (id: string) => {
-    if (selectedIds.length >= MAX_SLOTS) return;
-    if (selectedIds.includes(id)) return;
-    setSelectedIds((s) => [...s, id]);
+  const openPicker = (slotIdx: number | null) => {
+    setPickerSlot(slotIdx);
+    setSearch("");
+    setPickerOpen(true);
+  };
+
+  const choose = (id: string) => {
+    if (selectedIds.includes(id)) {
+      setPickerOpen(false);
+      return;
+    }
+    setSelectedIds((current) => {
+      // Replace specific slot
+      if (pickerSlot !== null && current[pickerSlot] !== undefined) {
+        const next = [...current];
+        next[pickerSlot] = id;
+        return next;
+      }
+      // Append if room
+      if (current.length < MAX_SLOTS) return [...current, id];
+      return current;
+    });
     setPickerOpen(false);
   };
 
@@ -308,21 +327,6 @@ const Compare = () => {
       (search.trim() === "" ||
         (p.name + " " + p.brand).toLowerCase().includes(search.toLowerCase())),
   );
-
-  const bestPrice = products.length > 0 ? Math.min(...products.map((p) => p.price)) : 0;
-
-  const bestIndexForRow = (
-    compareKey?: keyof CompareProduct["specs"],
-    higherBetter = true,
-  ): number | null => {
-    if (!compareKey || products.length < 2) return null;
-    const values = products.map((p) => p.specs[compareKey] as number);
-    if (values.some((v) => typeof v !== "number")) return null;
-    const target = higherBetter ? Math.max(...values) : Math.min(...values);
-    const winners = values.filter((v) => v === target).length;
-    if (winners > 1) return -1;
-    return values.indexOf(target);
-  };
 
   const slots = Array.from({ length: MAX_SLOTS }).map((_, i) => products[i] ?? null);
   const filledCount = products.length;
