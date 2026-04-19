@@ -27,13 +27,13 @@ const Categories = () => (
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:auto-rows-[220px]">
         {cats.map((c, i) => (
           <Link
             key={c.name}
             to={`/category/${c.slug}`}
-            className={`card-category group relative aspect-[4/3] sm:aspect-square lg:aspect-auto ${
-              i === 0 ? "lg:col-span-2 lg:row-span-2 lg:aspect-auto" : ""
+            className={`card-category group relative aspect-[4/3] sm:aspect-square lg:aspect-auto lg:h-full ${
+              i === 0 ? "lg:col-span-2 lg:row-span-2" : ""
             }`}
           >
             <img
