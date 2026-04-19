@@ -34,6 +34,7 @@ import {
 import galaxyS26UltraImg from "@/assets/galaxy-s26-ultra.png";
 import iphone17ProMaxImg from "@/assets/iphone-17-pro-max.png";
 import iphone17eImg from "@/assets/iphone-17e.png";
+import galaxyS25UltraImg from "@/assets/galaxy-s25-ultra.png";
 
 type CompareProduct = {
   id: string;
@@ -167,8 +168,7 @@ const RECOMMENDED: Product[] = [
     oldPrice: 449900,
     rating: 4.8,
     reviews: 1284,
-    image:
-      "https://images.samsung.com/is/image/samsung/p6pim/levant/2501/gallery/levant-galaxy-s25-ultra-s928-sm-s938bzkcmea-thumb-543237295",
+    image: galaxyS25UltraImg,
     badge: { label: "Best Seller", tone: "primary" },
   },
   {
