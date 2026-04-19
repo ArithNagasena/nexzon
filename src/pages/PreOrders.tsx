@@ -30,7 +30,7 @@ import {
 
 import galaxyS26 from "@/assets/galaxy-s26-ultra.png";
 import iphone17ProMax from "@/assets/galaxy-s26-plus.png";
-import pixel10 from "@/assets/google-pixel-10.png";
+import pixel10 from "@/assets/preorder-tablet.png";
 import iphone17e from "@/assets/iphone-17e.png";
 
 /* -------------------- Types & data -------------------- */
