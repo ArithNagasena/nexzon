@@ -46,21 +46,6 @@ const Hero = () => (
           </Button>
         </div>
 
-        {/* trust row */}
-        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm">
-          <div className="inline-flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-primary" />
-            100% Genuine Products
-          </div>
-          <div className="inline-flex items-center gap-2">
-            <Truck className="h-4 w-4 text-primary" />
-            Islandwide Delivery
-          </div>
-          <div className="inline-flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-primary" />
-            0% Installments
-          </div>
-        </div>
       </div>
 
       {/* Right: category tiles */}
