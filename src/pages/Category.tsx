@@ -65,6 +65,7 @@ import iphone16 from "@/assets/iphone-16.png";
 import pixel9ProXl from "@/assets/pixel-9-pro-xl.png";
 import iphone13 from "@/assets/iphone-13.png";
 import oneplusNordCe5 from "@/assets/oneplus-nord-ce5.png";
+import iphone16e from "@/assets/iphone-16e.png";
 import phone2 from "@/assets/product-iphone-pink.png";
 import phone3 from "@/assets/product-iphone-pink.png";
 import featurePhone from "@/assets/feature-phone.jpg";
@@ -77,7 +78,7 @@ const catalog: (Product & { sub: string; storage: string; ram: string; color: st
   { id: "p4",  name: "Apple iPhone 16",                            brand: "Apple", price: 279900, oldPrice: 309000, rating: 4.7, reviews: 98,  image: iphone16, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "8GB",  color: "Ultramarine", screen: 6.1, battery: 3561, fiveG: true },
   { id: "p5",  name: "HONOR Magic V5 Foldable",          brand: "HONOR", price: 569900, oldPrice: 629000, rating: 4.6, reviews: 142, image: honorMagicV5, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "8GB",  color: "Black",     screen: 6.7, battery: 3700, fiveG: true },
   { id: "p6",  name: "Google Pixel 9 Pro XL",                      brand: "Google", price: 329900, oldPrice: 365000, rating: 4.8, reviews: 421, image: pixel9ProXl,                                              sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Obsidian",  screen: 6.8, battery: 5060, fiveG: true },
-  { id: "p7",  name: "ASUS ROG Phone 8 Pro 512GB Gaming",         brand: "ASUS",    price: 359000,                  rating: 4.7, reviews: 76,  image: phone2, badge: { label: "Pre-Order", tone: "warning" }, sub: "Gaming",  storage: "512GB", ram: "16GB", color: "Black",    screen: 6.78, battery: 5500, fiveG: true },
+  { id: "p7",  name: "Apple iPhone 16e",                            brand: "Apple",   price: 250900, oldPrice: 279000, rating: 4.7, reviews: 76,  image: iphone16e, badge: { label: "New", tone: "primary" }, sub: "Flagship",  storage: "128GB", ram: "8GB",  color: "White",    screen: 6.1, battery: 4005, fiveG: true },
   { id: "p8",  name: "Google Pixel 8 Pro 256GB Bay Blue",         brand: "Google",  price: 269000, oldPrice: 295000, rating: 4.7, reviews: 184, image: phone1, badge: { label: "Best Camera", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Blue", screen: 6.7, battery: 5050, fiveG: true },
   { id: "p9",  name: "OnePlus 13R 16GB",                          brand: "OnePlus",  price: 204900, oldPrice: 229000, rating: 4.8, reviews: 88,  image: oneplus13r, badge: { label: "Hot", tone: "promo" },        sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Rose Gold", screen: 6.78, battery: 5400, fiveG: true },
   { id: "p10", name: "Honor Magic 6 Pro 5G 256GB",               brand: "Honor",   price: 219000,                  rating: 4.6, reviews: 64,  image: phone2,                                              sub: "Flagship",  storage: "256GB", ram: "12GB", color: "Green",   screen: 6.8, battery: 5600, fiveG: true },
