@@ -54,7 +54,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import heroSmartphones from "@/assets/cat-hero-smartphones.jpg";
+import heroSmartphones from "@/assets/smartphones-hero.jpeg";
 import phone1 from "@/assets/product-iphone-pink.png";
 import galaxyS25Fe from "@/assets/galaxy-s25-fe.png";
 import honorMagicV5 from "@/assets/honor-magic-v5.png";
@@ -545,48 +545,12 @@ const Category = () => {
         {/* Category hero */}
         <section className="bg-background pt-5 sm:pt-6">
           <div className="container-page">
-            <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-brand-soft">
-              <div className="grid items-center gap-6 lg:grid-cols-2">
-                <div className="relative z-10 px-6 py-8 sm:px-10 sm:py-10 lg:py-14">
-                  <span className="badge-promo bg-primary/10 text-primary">
-                    <Smartphone className="h-3 w-3" /> {categoryName} Collection
-                  </span>
-                  <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
-                    Flagship power, <span className="bg-gradient-hero bg-clip-text text-transparent">everyday brilliance.</span>
-                  </h1>
-                  <p className="mt-3 max-w-md text-sm text-muted-foreground sm:text-base">
-                    The latest 5G smartphones from Apple, Samsung, Xiaomi, OnePlus & more — all genuine,
-                    warranty-backed, with 0% installments available islandwide.
-                  </p>
-                  <div className="mt-5 flex flex-wrap items-center gap-2">
-                    <Button size="lg" className="rounded-xl">
-                      <Sparkles className="h-4 w-4" /> Explore Flagships
-                    </Button>
-                    <Button size="lg" variant="outline" className="rounded-xl">
-                      Shop by Brand <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
-                    <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-3.5 w-3.5 text-success" /> Genuine</span>
-                    <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Warranty</span>
-                    <span className="inline-flex items-center gap-1.5"><Truck className="h-3.5 w-3.5 text-primary" /> Islandwide</span>
-                    <span className="inline-flex items-center gap-1.5"><Wallet className="h-3.5 w-3.5 text-primary" /> 0% Installments</span>
-                  </div>
-                </div>
-
-                <div className="relative h-56 sm:h-72 lg:h-full lg:min-h-[360px]">
-                  <img
-                    src={heroSmartphones}
-                    alt={`${categoryName} category banner`}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary)/0.05)] via-transparent to-transparent lg:from-background/30" />
-                  <div className="absolute bottom-4 right-4 hidden rounded-2xl border border-white/40 bg-white/85 px-4 py-3 shadow-lift backdrop-blur sm:block">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">Featured</p>
-                    <p className="text-sm font-bold text-foreground">120+ models in stock</p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative overflow-hidden rounded-3xl border border-border/60">
+              <img
+                src={heroSmartphones}
+                alt={`${categoryName} category banner`}
+                className="h-auto w-full object-cover"
+              />
             </div>
           </div>
         </section>
