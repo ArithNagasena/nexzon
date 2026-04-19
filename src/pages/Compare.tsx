@@ -31,6 +31,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import galaxyS26UltraImg from "@/assets/galaxy-s26-ultra.png";
 
 type CompareProduct = {
   id: string;
@@ -77,8 +78,7 @@ const CATALOG: CompareProduct[] = [
     id: "galaxy-s26-ultra",
     name: "Samsung Galaxy S26 Ultra 5G 512GB",
     brand: "Samsung",
-    image:
-      "https://images.samsung.com/is/image/samsung/p6pim/levant/2501/gallery/levant-galaxy-s25-ultra-s928-sm-s938bzkcmea-thumb-543237295",
+    image: galaxyS26UltraImg,
     price: 489900,
     oldPrice: 519900,
     rating: 4.9,
