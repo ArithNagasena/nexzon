@@ -32,8 +32,6 @@ import galaxyS26 from "@/assets/galaxy-s26-ultra.png";
 import iphone17ProMax from "@/assets/iphone-17-pro-max.png";
 import pixel10 from "@/assets/google-pixel-10.png";
 import iphone17e from "@/assets/iphone-17e.png";
-import airpodsPro3 from "@/assets/airpods-pro-3.png";
-import watchS11 from "@/assets/apple-watch-s11.png";
 
 /* -------------------- Types & data -------------------- */
 type PreOrderStatus = "open" | "limited" | "closing" | "coming";
