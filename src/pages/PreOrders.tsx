@@ -32,8 +32,6 @@ import galaxyS26 from "@/assets/galaxy-s26-ultra.png";
 import iphone17ProMax from "@/assets/iphone-17-pro-max.png";
 import pixel10 from "@/assets/google-pixel-10.png";
 import iphone17e from "@/assets/iphone-17e.png";
-import airpodsPro3 from "@/assets/airpods-pro-3.png";
-import watchS11 from "@/assets/apple-watch-s11.png";
 
 /* -------------------- Types & data -------------------- */
 type PreOrderStatus = "open" | "limited" | "closing" | "coming";
@@ -126,39 +124,6 @@ const PREORDERS: PreOrderProduct[] = [
     releaseISO: "2026-04-30",
     deposit: 10000,
     status: "closing",
-  },
-  {
-    id: "airpods-pro-3-preorder",
-    brand: "Apple",
-    name: "AirPods Pro 3 with USB-C",
-    image: airpodsPro3,
-    price: 89900,
-    releaseDate: "May 16, 2026",
-    releaseISO: "2026-05-16",
-    deposit: 5000,
-    status: "open",
-  },
-  {
-    id: "apple-watch-s11-preorder",
-    brand: "Apple",
-    name: "Apple Watch Series 11 — 45mm GPS",
-    image: watchS11,
-    price: 149900,
-    releaseDate: "May 30, 2026",
-    releaseISO: "2026-05-30",
-    deposit: 8000,
-    status: "open",
-  },
-  {
-    id: "galaxy-s26-flip-preorder",
-    brand: "Samsung",
-    name: "Galaxy Z Flip7 256GB — Mint",
-    image: galaxyS26,
-    price: 379900,
-    releaseDate: "Jul 12, 2026",
-    releaseISO: "2026-07-12",
-    deposit: 18000,
-    status: "coming",
   },
 ];
 
