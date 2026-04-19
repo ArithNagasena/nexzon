@@ -585,6 +585,7 @@ const Rewards = () => {
             </div>
           </section>
         </div>
+        </div>
       </main>
 
       <Footer />
