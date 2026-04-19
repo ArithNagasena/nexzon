@@ -622,18 +622,33 @@ const Category = () => {
               <Link to="/shop" className="hidden text-xs font-semibold text-primary hover:underline sm:inline">All brands →</Link>
             </div>
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
-              {brandTiles.map((b) => (
-                <Link
-                  key={b.name}
-                  to={`/brand/${b.name.toLowerCase()}`}
-                  className="card-category group flex flex-col items-center justify-center gap-1 px-2 py-3 text-center"
-                >
-                  <span className="font-display text-sm font-extrabold text-foreground transition-colors group-hover:text-primary">
-                    {b.name}
-                  </span>
-                  <span className="text-[10px] font-medium text-muted-foreground">{b.count} items</span>
-                </Link>
-              ))}
+              {brandTiles.map((b) => {
+                const slug = b.name.toLowerCase().replace(/\s+/g, "");
+                return (
+                  <Link
+                    key={b.name}
+                    to={`/brand/${b.name.toLowerCase()}`}
+                    className="card-category group flex h-20 items-center justify-center px-3 py-3 text-center"
+                    aria-label={`Shop ${b.name}`}
+                  >
+                    <img
+                      src={`https://cdn.simpleicons.org/${slug}`}
+                      alt={`${b.name} logo`}
+                      loading="lazy"
+                      className="max-h-8 w-auto max-w-[80%] object-contain opacity-80 transition-all group-hover:opacity-100 group-hover:scale-105 dark:invert"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.style.display = "none";
+                        const fallback = target.nextElementSibling as HTMLElement | null;
+                        if (fallback) fallback.style.display = "inline";
+                      }}
+                    />
+                    <span className="hidden font-display text-sm font-extrabold text-foreground transition-colors group-hover:text-primary">
+                      {b.name}
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
