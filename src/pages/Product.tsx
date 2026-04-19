@@ -450,28 +450,6 @@ const ProductPage = () => {
           </div>
         </section>
 
-        {/* Offers strip */}
-        <section className="container-page">
-          <div className="grid gap-3 rounded-2xl border border-border/60 bg-gradient-brand-soft p-4 sm:p-5 md:grid-cols-3">
-            {[
-              { icon: Wallet, title: "0% Installments", body: "Up to 12 months with HNB, Sampath, Commercial Bank" },
-              { icon: Truck, title: "Free Islandwide Delivery", body: "1–3 business days for orders over LKR 50,000" },
-              { icon: BadgeCheck, title: "Authorized Reseller", body: "Sealed box with full Sri Lanka warranty" },
-            ].map((o) => (
-              <div key={o.title} className="flex items-start gap-3 rounded-xl bg-background/70 p-3">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <o.icon className="h-5 w-5" />
-                </span>
-                <div>
-                  <div className="text-sm font-bold text-foreground">{o.title}</div>
-                  <div className="text-xs text-muted-foreground">{o.body}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-
         {/* Tabs: Specs / Description */}
         <section className="container-page pb-10 pt-10 md:pb-14">
           <Tabs defaultValue="specs" className="w-full">
