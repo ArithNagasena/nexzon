@@ -52,7 +52,7 @@ import {
 
 import phone1 from "@/assets/iphone-17-pro-max-orange.png";
 import phone2 from "@/assets/iphone-17-pro-max-white.png";
-import phone3 from "@/assets/product-phone-3.jpg";
+import phone3 from "@/assets/iphone-17-pro-max-camera.png";
 import tablet from "@/assets/product-tablet.jpg";
 import earbuds from "@/assets/product-earbuds.jpg";
 import watch from "@/assets/product-watch.jpg";
