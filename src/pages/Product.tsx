@@ -316,8 +316,6 @@ const ProductPage = () => {
                     <span className="ml-1 font-semibold">{p.rating}</span>
                   </div>
                   <a href="#reviews" className="text-muted-foreground hover:text-primary">{p.reviews.toLocaleString()} reviews</a>
-                  <span className="text-muted-foreground">·</span>
-                  <span className="text-muted-foreground">{p.sold} sold</span>
                 </div>
 
                 {/* Price */}
