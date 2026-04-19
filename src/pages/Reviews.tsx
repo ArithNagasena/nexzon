@@ -211,13 +211,14 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-secondary/30 via-background to-background">
+    <div className="min-h-screen bg-background">
       <Header />
 
-      <main className="container mx-auto px-3 py-6 sm:px-4 sm:py-8 lg:py-10">
-        {/* Breadcrumb */}
-        <nav className="mb-5 flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-foreground">Home</Link>
+      <main className="bg-gradient-to-b from-background to-secondary/40 pb-16">
+        <div className="container-page pt-6 sm:pt-8">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Link to="/" className="hover:text-primary">Home</Link>
           <ChevronRight className="h-3.5 w-3.5" />
           <Link to="/account" className="hover:text-foreground">My Account</Link>
           <ChevronRight className="h-3.5 w-3.5" />
@@ -632,6 +633,7 @@ const Reviews = () => {
               </div>
             </div>
           </section>
+        </div>
         </div>
       </main>
 
