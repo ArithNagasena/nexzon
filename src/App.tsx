@@ -21,6 +21,7 @@ import OrderDetails from "./pages/OrderDetails.tsx";
 import TrackOrder from "./pages/TrackOrder.tsx";
 import Wishlist from "./pages/Wishlist.tsx";
 import Notifications from "./pages/Notifications.tsx";
+import Rewards from "./pages/Rewards.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/account/wishlist" element={<Wishlist />} />
           <Route path="/account/notifications" element={<Notifications />} />
+          <Route path="/account/rewards" element={<Rewards />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
