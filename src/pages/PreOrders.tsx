@@ -276,10 +276,7 @@ const PreOrders = () => {
         <section className="container-page pt-8 md:pt-10 animate-fade-in">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground">
-                <Sparkles className="h-3.5 w-3.5" /> Reserve the Future
-              </span>
-              <h1 className="mt-3 font-display text-3xl font-extrabold leading-tight text-foreground md:text-4xl">
+              <h1 className="font-display text-3xl font-extrabold leading-tight text-foreground md:text-4xl">
                 Pre-Orders
               </h1>
               <p className="mt-2 max-w-2xl text-sm text-muted-foreground md:text-base">
