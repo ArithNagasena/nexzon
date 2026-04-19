@@ -96,7 +96,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       <div className="px-4 pb-4">
         <Link
           to={`/product/${product.id}`}
-          className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+          className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary bg-background py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
         >
           <Eye className="h-4 w-4" /> View Details
         </Link>
