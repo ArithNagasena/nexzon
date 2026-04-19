@@ -183,7 +183,7 @@ const Help = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border/60 bg-gradient-brand-soft">
-        <div className="container mx-auto px-4 py-10 sm:py-14 lg:py-16">
+        <div className="container-page py-10 sm:py-14 lg:py-16">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground">
               Home
@@ -243,7 +243,7 @@ const Help = () => {
         </div>
       </section>
 
-      <div className="container mx-auto space-y-10 px-4 py-10 lg:py-14">
+      <div className="container-page space-y-10 py-10 lg:py-14">
         {/* Quick actions */}
         <section>
           <SectionHeader
