@@ -24,7 +24,7 @@ import Notifications from "./pages/Notifications.tsx";
 import Rewards from "./pages/Rewards.tsx";
 import Reviews from "./pages/Reviews.tsx";
 import PriceAlerts from "./pages/PriceAlerts.tsx";
-import BackInStock from "./pages/BackInStock.tsx";
+
 import Returns from "./pages/Returns.tsx";
 import Warranty from "./pages/Warranty.tsx";
 import TradeIn from "./pages/TradeIn.tsx";
@@ -66,7 +66,7 @@ const App = () => (
           <Route path="/account/rewards" element={<Rewards />} />
           <Route path="/account/reviews" element={<Reviews />} />
           <Route path="/account/price-alerts" element={<PriceAlerts />} />
-          <Route path="/account/back-in-stock" element={<BackInStock />} />
+          
           <Route path="/account/returns" element={<Returns />} />
           <Route path="/account/warranty" element={<Warranty />} />
           <Route path="/account/trade-in" element={<TradeIn />} />
