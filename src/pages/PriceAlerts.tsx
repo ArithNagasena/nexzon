@@ -462,33 +462,7 @@ const PriceAlerts = () => {
                             )}
                           </div>
 
-                          {/* Target progress */}
-                          <div className="mt-3 rounded-xl bg-secondary/50 p-3">
-                            <div className="flex items-center justify-between text-[11px]">
-                              <span className="inline-flex items-center gap-1 font-semibold text-muted-foreground">
-                                <Target className="h-3 w-3 text-primary" /> Target {fmt(a.target)}
-                              </span>
-                              <span
-                                className={`font-bold ${
-                                  targetMet ? "text-success" : "text-muted-foreground"
-                                }`}
-                              >
-                                {targetMet
-                                  ? "Target reached"
-                                  : `${fmt(distanceToTarget)} to go`}
-                              </span>
-                            </div>
-                            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-card">
-                              <div
-                                className={`h-full rounded-full transition-all ${
-                                  targetMet
-                                    ? "bg-gradient-to-r from-success to-primary"
-                                    : "bg-gradient-to-r from-primary to-primary-glow"
-                                }`}
-                                style={{ width: `${targetProgress}%` }}
-                              />
-                            </div>
-                          </div>
+
 
                           {/* Footer actions */}
                           <div className="mt-4 flex flex-wrap items-center gap-2">
