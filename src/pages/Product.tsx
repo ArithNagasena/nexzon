@@ -189,7 +189,7 @@ const accessories: Product[] = [
   { id: "a1", name: "Apple Watch Series 11 – GPS", brand: "Apple", price: 195000, rating: 4.8, reviews: 612, image: accessoryImg1 },
   { id: "a2", name: "iPhone 17 Pro Max FineWoven Case with MagSafe", brand: "Apple", price: 18900, oldPrice: 21900, rating: 4.7, reviews: 254, image: iphoneCaseBlack },
   { id: "a3", name: "AirPods Pro 3 with USB-C", brand: "Apple", price: 89900, oldPrice: 99900, rating: 4.9, reviews: 1820, image: airpodsPro3, badge: { label: "Bundle", tone: "primary" } },
-  { id: "a4", name: "Apple Watch Series 11 (45mm GPS)", brand: "Apple", price: 159900, rating: 4.8, reviews: 740, image: magsafeCharger },
+  { id: "a4", name: "Magsafe Charger", brand: "Apple", price: 159900, rating: 4.8, reviews: 740, image: magsafeCharger },
 ];
 
 const fmtLKR = (n: number) =>
