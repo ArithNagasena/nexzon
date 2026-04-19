@@ -530,6 +530,7 @@ const Wishlist = () => {
             </div>
           </section>
         </div>
+        </div>
       </main>
 
       <Footer />
