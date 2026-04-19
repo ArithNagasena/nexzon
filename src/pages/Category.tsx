@@ -57,6 +57,7 @@ import {
 import heroSmartphones from "@/assets/cat-hero-smartphones.jpg";
 import phone1 from "@/assets/product-iphone-pink.png";
 import galaxyS25Fe from "@/assets/galaxy-s25-fe.png";
+import honorMagicV5 from "@/assets/honor-magic-v5.png";
 import phone2 from "@/assets/product-iphone-pink.png";
 import phone3 from "@/assets/product-iphone-pink.png";
 import featurePhone from "@/assets/feature-phone.jpg";
@@ -67,7 +68,7 @@ const catalog: (Product & { sub: string; storage: string; ram: string; color: st
   { id: "p2",  name: "Samsung Galaxy S24 Ultra 5G 512GB",        brand: "Samsung", price: 459000, oldPrice: 489000, rating: 4.8, reviews: 248, image: phone2, badge: { label: "Hot Deal", tone: "promo" },  sub: "Flagship",  storage: "512GB", ram: "12GB", color: "Black",    screen: 6.8, battery: 5000, fiveG: true },
   { id: "p3",  name: "Xiaomi Redmi Note 13 Pro+ 5G 256GB",        brand: "Xiaomi",  price: 119500, oldPrice: 134000, rating: 4.6, reviews: 192, image: phone3, badge: { label: "-12%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "12GB", color: "Blue",     screen: 6.7, battery: 5000, fiveG: true },
   { id: "p4",  name: "OnePlus 12R 5G 256GB Cool Blue",           brand: "OnePlus", price: 159000, oldPrice: 175000, rating: 4.7, reviews: 98,  image: phone3, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Blue",     screen: 6.78, battery: 5500, fiveG: true },
-  { id: "p5",  name: "Samsung Galaxy Z Flip5 5G 256GB",          brand: "Samsung", price: 329000, oldPrice: 365000, rating: 4.6, reviews: 142, image: phone2, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "8GB",  color: "Gold",     screen: 6.7, battery: 3700, fiveG: true },
+  { id: "p5",  name: "HONOR Magic V5 Foldable",          brand: "HONOR", price: 569900, oldPrice: 629000, rating: 4.6, reviews: 142, image: honorMagicV5, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "8GB",  color: "Black",     screen: 6.7, battery: 3700, fiveG: true },
   { id: "p6",  name: "Apple iPhone 15 128GB Pink",                brand: "Apple",   price: 289000, oldPrice: 309000, rating: 4.8, reviews: 421, image: phone1,                                              sub: "Flagship",  storage: "128GB", ram: "6GB",  color: "Pink",     screen: 6.1, battery: 3349, fiveG: true },
   { id: "p7",  name: "ASUS ROG Phone 8 Pro 512GB Gaming",         brand: "ASUS",    price: 359000,                  rating: 4.7, reviews: 76,  image: phone2, badge: { label: "Pre-Order", tone: "warning" }, sub: "Gaming",  storage: "512GB", ram: "16GB", color: "Black",    screen: 6.78, battery: 5500, fiveG: true },
   { id: "p8",  name: "Google Pixel 8 Pro 256GB Bay Blue",         brand: "Google",  price: 269000, oldPrice: 295000, rating: 4.7, reviews: 184, image: phone1, badge: { label: "Best Camera", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Blue", screen: 6.7, battery: 5050, fiveG: true },
