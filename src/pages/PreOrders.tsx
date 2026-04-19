@@ -146,7 +146,7 @@ const PreOrderCard = ({ product }: { product: PreOrderProduct }) => {
     <article className="card-product group flex flex-col">
       <Link
         to={`/product/${product.id}`}
-        className="relative block aspect-square overflow-hidden bg-gradient-brand-soft"
+        className="relative block aspect-square overflow-hidden border-b border-border/60 bg-white"
       >
         <img
           src={product.image}
