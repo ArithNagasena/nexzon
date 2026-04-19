@@ -46,7 +46,7 @@ const navGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "Alerts & Rewards",
     items: [
-      { label: "Notifications", icon: Bell, to: "/account", badge: "5" },
+      { label: "Notifications", icon: Bell, to: "/account/notifications", badge: "5" },
       { label: "Loyalty & Rewards", icon: Gift, to: "/account" },
       { label: "Price Alerts", icon: TrendingDown, to: "/account" },
       { label: "Back-in-Stock", icon: Boxes, to: "/account" },
