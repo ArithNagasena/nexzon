@@ -60,7 +60,7 @@ const Register = () => {
               <h1 className="text-center font-display text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
                 Create your account
               </h1>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 text-center text-xs text-muted-foreground">
                 Faster checkout, order tracking and member rewards.
               </p>
 
