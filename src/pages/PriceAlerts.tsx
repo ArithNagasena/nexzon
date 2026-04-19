@@ -491,38 +491,6 @@ const PriceAlerts = () => {
               </ul>
             )}
 
-            {/* Help card */}
-            <div className="grid gap-4 rounded-2xl border border-border/70 bg-gradient-brand-soft p-5 sm:grid-cols-[1fr_auto] sm:items-center sm:p-6">
-              <div className="flex gap-4">
-                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
-                  <HelpCircle className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="font-display text-base font-extrabold text-foreground">
-                    How price alerts work
-                  </h4>
-                  <p className="mt-0.5 text-sm text-muted-foreground">
-                    Cellexa monitors prices every hour and notifies you by email and in-app the moment your target is reached. Alerts auto-expire after 90 days.
-                  </p>
-                  <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold text-foreground">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-card px-2.5 py-1">
-                      <ShieldCheck className="h-3 w-3 text-primary" /> Hourly checks
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-card px-2.5 py-1">
-                      <Sparkles className="h-3 w-3 text-primary" /> Real-time notifications
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col gap-2 sm:flex-row">
-                <Button asChild variant="brand" size="sm" className="rounded-xl">
-                  <Link to="/account/profile">Manage Preferences</Link>
-                </Button>
-                <Button variant="outline" size="sm" className="rounded-xl bg-card">
-                  <MessageCircle className="mr-1.5 h-4 w-4" /> Contact Support
-                </Button>
-              </div>
-            </div>
           </section>
         </div>
         </div>
