@@ -56,7 +56,7 @@ const legalLinks = [
   { label: "Warranty Policy", to: "/returns-policy" },
 ];
 
-const payments = ["VISA", "MASTERCARD", "AMEX", "LANKAQR", "FRIMI", "COD"];
+
 
 const Footer = () => (
   <footer className="bg-foreground text-background/85">
@@ -137,22 +137,6 @@ const Footer = () => (
       </div>
     </div>
 
-    {/* Bottom bar */}
-    <div className="border-t border-background/10">
-      <div className="container-page flex flex-col items-center justify-between gap-3 py-4 text-xs text-background/60 sm:flex-row">
-        <div>© {new Date().getFullYear()} Cellexa (Pvt) Ltd. All rights reserved.</div>
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          {payments.map((p) => (
-            <span
-              key={p}
-              className="rounded-md border border-background/15 bg-background/5 px-2.5 py-1 text-[10px] font-bold tracking-wider text-background/75"
-            >
-              {p}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
   </footer>
 );
 
