@@ -62,8 +62,8 @@ import charger from "@/assets/product-charger.jpg";
 /* -------------------- Product data -------------------- */
 const productDetails = {
   id: "galaxy-s24-ultra",
-  brand: "Samsung",
-  brandSlug: "samsung",
+  brand: "Apple",
+  brandSlug: "apple",
   category: "Smartphones",
   categorySlug: "smartphones",
   name: "Samsung Galaxy S24 Ultra 5G",
