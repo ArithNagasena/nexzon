@@ -475,20 +475,6 @@ const PriceAlerts = () => {
                               </Link>
                             </Button>
                             <div className="ml-auto flex items-center gap-3">
-                              <label className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
-                                {a.enabled ? (
-                                  <Bell className="h-3.5 w-3.5 text-primary" />
-                                ) : (
-                                  <BellOff className="h-3.5 w-3.5" />
-                                )}
-                                <span className="hidden sm:inline">
-                                  {a.enabled ? "Alert on" : "Alert off"}
-                                </span>
-                                <Switch
-                                  checked={a.enabled}
-                                  onCheckedChange={() => toggle(a.id)}
-                                />
-                              </label>
                               <Button
                                 size="icon"
                                 variant="ghost"
