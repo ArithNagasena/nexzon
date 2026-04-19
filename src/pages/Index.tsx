@@ -6,7 +6,7 @@ import Brands from "@/components/cellexa/Brands";
 import NewArrivals from "@/components/cellexa/NewArrivals";
 import PromoBanner from "@/components/cellexa/PromoBanner";
 import BestSellers from "@/components/cellexa/BestSellers";
-import PhonesFeatured from "@/components/cellexa/PhonesFeatured";
+
 import InstallmentBanner from "@/components/cellexa/InstallmentBanner";
 import Testimonials from "@/components/cellexa/Testimonials";
 import FAQ from "@/components/cellexa/FAQ";
@@ -46,7 +46,6 @@ const Index = () => {
         <NewArrivals />
         <PromoBanner />
         <BestSellers />
-        <PhonesFeatured />
         <InstallmentBanner />
         <Testimonials />
         <FAQ />
