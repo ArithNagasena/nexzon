@@ -357,12 +357,12 @@ const Compare = () => {
                 Compare Products
               </h1>
               <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-                Compare 2 products side by side. Better values are highlighted to help you decide faster.
+                See key specs of selected products side by side to help you decide faster.
               </p>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <div className="rounded-full border border-border bg-background px-3 py-1.5 font-medium">
-                <span className="text-primary">{filledCount}</span>
+                <span className="text-foreground">{filledCount}</span>
                 <span className="text-muted-foreground"> / {MAX_SLOTS} selected</span>
               </div>
               <Button variant="outline" asChild size="sm">
