@@ -278,56 +278,6 @@ const PriceAlerts = () => {
 
             {/* Main */}
             <section className="space-y-6 lg:col-span-9">
-            {/* Stat strip */}
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                {
-                  label: "Tracking",
-                  value: counts.all,
-                  Icon: Target,
-                  cls: "from-primary to-primary-glow",
-                },
-                {
-                  label: "Active",
-                  value: counts.active,
-                  Icon: Bell,
-                  cls: "from-primary-deep to-primary",
-                },
-                {
-                  label: "Triggered",
-                  value: counts.triggered,
-                  Icon: TrendingDown,
-                  cls: "from-success to-primary",
-                },
-                {
-                  label: "Total Savings",
-                  value: fmt(totalSavings),
-                  Icon: Sparkles,
-                  cls: "from-promo to-warning",
-                  big: true,
-                },
-              ].map((s) => (
-                <div
-                  key={s.label}
-                  className="relative overflow-hidden rounded-2xl border border-border/70 bg-card p-4 shadow-card"
-                >
-                  <div
-                    className={`absolute -right-4 -top-4 grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br ${s.cls} text-white opacity-90`}
-                  >
-                    <s.Icon className="h-5 w-5" />
-                  </div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                    {s.label}
-                  </div>
-                  <div
-                    className={`mt-1 font-display font-extrabold text-foreground ${s.big ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl"}`}
-                  >
-                    {s.value}
-                  </div>
-                </div>
-              ))}
-            </div>
-
             {/* Toolbar */}
             <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-card sm:p-5">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
