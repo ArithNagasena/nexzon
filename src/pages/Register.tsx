@@ -57,14 +57,7 @@ const Register = () => {
         <div className="container-page py-4 sm:py-5">
           <div className="mx-auto w-full max-w-md">
             <div className="rounded-2xl border border-border/70 bg-card p-5 shadow-lift sm:p-6">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
-                  <Sparkles className="h-3 w-3" />
-                  Join Cellexa
-                </span>
-              </div>
-
-              <h1 className="mt-2 font-display text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
+              <h1 className="font-display text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
                 Create your account
               </h1>
               <p className="mt-1 text-xs text-muted-foreground">
