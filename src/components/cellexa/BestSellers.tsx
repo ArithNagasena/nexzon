@@ -17,7 +17,7 @@ const trending: Product[] = [
   { id: "t5", name: "Samsung Galaxy Watch 7 LTE 44mm", brand: "Samsung", price: 89500, oldPrice: 99000, rating: 4.7, reviews: 156, image: watch },
   { id: "t6", name: "Sony WH-1000XM5 Headphones — Black", brand: "Sony", price: 119000, oldPrice: 135000, rating: 4.9, reviews: 421, image: headphones, badge: { label: "Best Seller", tone: "success" } },
   { id: "t7", name: "iPhone 15 Pro Max 256GB — Natural Titanium", brand: "Apple", price: 489000, rating: 4.9, reviews: 312, image: phone1 },
-  { id: "t8", name: "Xiaomi 14 Pro 5G 256GB — White", brand: "Xiaomi", price: 219000, oldPrice: 245000, rating: 4.7, reviews: 98, image: phone3, badge: { label: "-11%", tone: "promo" } },
+  { id: "t8", name: "Xiaomi 14 Pro 5G 256GB — White", brand: "Xiaomi", price: 405000, oldPrice: 245000, rating: 4.7, reviews: 98, image: phone3, badge: { label: "-11%", tone: "promo" } },
 ];
 
 const BestSellers = () => (
