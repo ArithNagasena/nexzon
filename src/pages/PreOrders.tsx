@@ -94,8 +94,8 @@ const FEATURED: PreOrderProduct = {
 const PREORDERS: PreOrderProduct[] = [
   {
     id: "iphone-17-pro-max-preorder",
-    brand: "Apple",
-    name: "iPhone 17 Pro Max 256GB — Titanium",
+    brand: "Samsung",
+    name: "Samsung S26+ 512GB",
     image: iphone17ProMax,
     price: 459900,
     releaseDate: "May 09, 2026",
