@@ -1,4 +1,3 @@
-import PromoBar from "@/components/cellexa/PromoBar";
 import Header from "@/components/cellexa/Header";
 import Hero from "@/components/cellexa/Hero";
 import TrustStrip from "@/components/cellexa/TrustStrip";
@@ -38,7 +37,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <PromoBar />
       <Header />
       <main>
         <Hero />
