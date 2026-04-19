@@ -161,8 +161,8 @@ const OrderSuccessPage = () => {
         <div className="mx-auto max-w-2xl">
           {/* Success header */}
           <div className="text-center">
-            <div className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full bg-success/10 text-success">
-              <CheckCircle2 className="h-8 w-8" strokeWidth={2.5} />
+            <div className="mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full bg-success/10 text-success">
+              <CheckCircle2 className="h-12 w-12" strokeWidth={2.5} />
             </div>
             <h1 className="mt-4 font-display text-2xl font-extrabold text-foreground md:text-3xl">
               Order placed successfully
