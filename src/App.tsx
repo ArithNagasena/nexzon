@@ -21,6 +21,7 @@ import OrderDetails from "./pages/OrderDetails.tsx";
 import TrackOrder from "./pages/TrackOrder.tsx";
 import Wishlist from "./pages/Wishlist.tsx";
 import Notifications from "./pages/Notifications.tsx";
+import Rewards from "./pages/Rewards.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
