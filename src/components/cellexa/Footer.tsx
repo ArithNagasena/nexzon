@@ -10,42 +10,50 @@ const linkSections: { title: string; links: { label: string; to: string }[] }[] 
       { label: "Tablets", to: "/category/tablets" },
       { label: "Audio", to: "/category/audio" },
       { label: "Accessories", to: "/category/accessories" },
-      { label: "Gaming", to: "/category/gaming" },
+      { label: "Wishlist", to: "/account/wishlist" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Help Center", to: "/shop" },
-      { label: "Track Order", to: "/shop" },
-      { label: "Returns & Refunds", to: "/shop" },
-      { label: "Warranty", to: "/shop" },
-      { label: "Contact Us", to: "/shop" },
-      { label: "FAQ", to: "/" },
+      { label: "Help Center", to: "/help" },
+      { label: "FAQ", to: "/faq" },
+      { label: "Track Order", to: "/track-order" },
+      { label: "Returns & Refunds", to: "/account/returns" },
+      { label: "Warranty & Claims", to: "/account/warranty" },
+      { label: "Trade-In", to: "/account/trade-in" },
     ],
   },
   {
-    title: "Brands",
+    title: "My Account",
     links: [
-      { label: "Apple", to: "/brand/apple" },
-      { label: "Samsung", to: "/brand/samsung" },
-      { label: "Xiaomi", to: "/brand/xiaomi" },
-      { label: "Sony", to: "/brand/sony" },
-      { label: "JBL", to: "/brand/jbl" },
-      { label: "OnePlus", to: "/brand/oneplus" },
+      { label: "Sign In", to: "/login" },
+      { label: "Register", to: "/register" },
+      { label: "Dashboard", to: "/account" },
+      { label: "Orders", to: "/account/orders" },
+      { label: "Loyalty & Rewards", to: "/account/rewards" },
+      { label: "Notifications", to: "/account/notifications" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About Cellexa", to: "/" },
-      { label: "Stores", to: "/" },
+      { label: "Brands", to: "/brand/apple" },
+      { label: "Stores", to: "/help" },
       { label: "Careers", to: "/" },
-      { label: "Press", to: "/" },
-      { label: "Affiliates", to: "/" },
       { label: "Blog", to: "/" },
+      { label: "Contact Us", to: "/help" },
     ],
   },
+];
+
+const legalLinks = [
+  { label: "Returns & Refund Policy", to: "/returns-policy" },
+  { label: "Privacy Policy", to: "/returns-policy" },
+  { label: "Terms of Service", to: "/returns-policy" },
+  { label: "Shipping Policy", to: "/returns-policy" },
+  { label: "Warranty Policy", to: "/returns-policy" },
 ];
 
 const payments = ["VISA", "MASTERCARD", "AMEX", "LANKAQR", "FRIMI", "COD"];
@@ -115,6 +123,17 @@ const Footer = () => (
             </div>
           ))}
         </div>
+      </div>
+    </div>
+
+    {/* Legal strip */}
+    <div className="border-t border-background/10">
+      <div className="container-page flex flex-wrap items-center justify-center gap-x-5 gap-y-2 py-4 text-xs text-background/60">
+        {legalLinks.map((l) => (
+          <Link key={l.label} to={l.to} className="hover:text-primary-glow">
+            {l.label}
+          </Link>
+        ))}
       </div>
     </div>
 

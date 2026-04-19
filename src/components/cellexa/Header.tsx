@@ -11,7 +11,8 @@ const navLinks: { label: string; to: string; badge?: string }[] = [
   { label: "Accessories", to: "/category/accessories" },
   { label: "Brands", to: "/brand/samsung" },
   { label: "Pre-Orders", to: "/shop", badge: "New" },
-  { label: "Support", to: "/shop" },
+  { label: "Track Order", to: "/track-order" },
+  { label: "Help", to: "/help" },
 ];
 
 const Logo = () => (
@@ -62,7 +63,7 @@ const Header = () => {
               <User className="h-5 w-5" />
               <span className="hidden xl:inline">Account</span>
             </Link>
-            <Link to="/cart" className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg hover:bg-secondary" aria-label="Wishlist">
+            <Link to="/account/wishlist" className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg hover:bg-secondary" aria-label="Wishlist">
               <Heart className="h-5 w-5" />
               <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-promo px-1 text-[10px] font-bold text-promo-foreground">3</span>
             </Link>
