@@ -182,10 +182,10 @@ const relatedProducts: Product[] = [
 ];
 
 const accessories: Product[] = [
-  { id: "a1", name: "Samsung 45W Travel Adapter (USB-C)", brand: "Samsung", price: 8900, rating: 4.7, reviews: 540, image: charger, badge: { label: "Genuine", tone: "success" } },
-  { id: "a2", name: "S24 Ultra Silicone Case with S Pen Slot", brand: "Samsung", price: 7500, oldPrice: 9500, rating: 4.6, reviews: 188, image: productCase },
-  { id: "a3", name: "Samsung Galaxy Buds3 Pro", brand: "Samsung", price: 64900, oldPrice: 74900, rating: 4.6, reviews: 421, image: earbuds, badge: { label: "Bundle", tone: "primary" } },
-  { id: "a4", name: "Samsung Galaxy Watch6 Classic", brand: "Samsung", price: 119900, rating: 4.5, reviews: 302, image: watch },
+  { id: "a1", name: "Apple 40W Dynamic Power Adapter (USB-C)", brand: "Apple", price: 14900, rating: 4.8, reviews: 612, image: charger, badge: { label: "Genuine", tone: "success" } },
+  { id: "a2", name: "iPhone 17 Pro Max FineWoven Case with MagSafe", brand: "Apple", price: 18900, oldPrice: 21900, rating: 4.7, reviews: 254, image: productCase },
+  { id: "a3", name: "AirPods Pro 3 with USB-C", brand: "Apple", price: 89900, oldPrice: 99900, rating: 4.9, reviews: 1820, image: earbuds, badge: { label: "Bundle", tone: "primary" } },
+  { id: "a4", name: "Apple Watch Series 11 (45mm GPS)", brand: "Apple", price: 159900, rating: 4.8, reviews: 740, image: watch },
 ];
 
 const fmtLKR = (n: number) =>
@@ -662,7 +662,7 @@ const ProductPage = () => {
             <div className="mb-6 flex items-end justify-between gap-4">
               <div>
                 <h2 className="font-display text-2xl font-extrabold md:text-3xl">Pair With Accessories</h2>
-                <p className="text-sm text-muted-foreground">Genuine Samsung accessories, ready for your S24 Ultra.</p>
+                <p className="text-sm text-muted-foreground">Genuine Apple accessories, ready for your iPhone 17 Pro Max.</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
