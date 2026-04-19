@@ -163,13 +163,13 @@ const FilterSidebar = ({
   };
 
   return (
-    <aside className="space-y-3">
-      <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
-        <div className="mb-3 flex items-center justify-between">
-          <h3 className="font-display text-base font-bold">Refine</h3>
+    <aside className="space-y-4">
+      <div className="rounded-2xl border border-border/60 bg-card p-5 shadow-soft">
+        <div className="mb-4 flex items-center justify-between border-b border-border/60 pb-3">
+          <h3 className="font-display text-base font-bold tracking-tight">Refine</h3>
           <button
             onClick={() => setFilters(defaultFilters)}
-            className="text-xs font-semibold text-primary hover:underline"
+            className="text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground"
           >
             Clear all
           </button>
