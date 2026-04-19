@@ -693,6 +693,7 @@ const Returns = () => {
               </div>
             </div>
           </section>
+          </div>
         </div>
       </main>
 
