@@ -611,30 +611,6 @@ const Category = () => {
           </div>
         </section>
 
-        {/* Subcategory chips */}
-        <section className="bg-background pt-6">
-          <div className="container-page">
-            <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
-              {subcats.map((c) => {
-                const active = activeSub === c;
-                return (
-                  <button
-                    key={c}
-                    onClick={() => setActiveSub(c)}
-                    className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all ${
-                      active
-                        ? "border-primary bg-primary text-primary-foreground shadow-soft"
-                        : "border-border bg-card text-foreground/80 hover:border-primary/40 hover:text-primary"
-                    }`}
-                  >
-                    {c}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* Featured brands */}
         <section className="bg-background pt-6">
           <div className="container-page">
