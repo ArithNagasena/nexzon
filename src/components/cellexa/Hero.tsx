@@ -19,7 +19,7 @@ const Hero = () => (
     <div className="pointer-events-none absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full bg-primary/10 blur-3xl" />
     <div className="pointer-events-none absolute -bottom-32 -left-24 h-[380px] w-[380px] rounded-full bg-primary-glow/10 blur-3xl" />
 
-    <div className="container-page relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
+    <div className="container-page relative grid items-center gap-6 py-6 sm:py-8 lg:grid-cols-2 lg:gap-10 lg:py-10">
       {/* Left: copy */}
       <div className="relative z-10">
         <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
@@ -27,7 +27,7 @@ const Hero = () => (
           Sri Lanka's trusted tech store
         </span>
 
-        <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
+        <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] text-foreground sm:text-4xl lg:text-5xl xl:text-6xl">
           Discover the latest{" "}
           <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             tech
@@ -35,24 +35,24 @@ const Hero = () => (
           for every lifestyle.
         </h1>
 
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
           Shop genuine smartphones, tablets, audio gear and accessories from the brands you love —
           curated, certified, and delivered islandwide.
         </p>
 
-        <div className="mt-7 flex flex-wrap items-center gap-3">
-          <Button asChild size="xl" className="rounded-xl">
+        <div className="mt-5 flex flex-wrap items-center gap-3">
+          <Button asChild size="lg" className="rounded-xl">
             <Link to="/shop">
               Shop Now <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="xl" className="rounded-xl border-2">
+          <Button asChild variant="outline" size="lg" className="rounded-xl border-2">
             <Link to="/shop">Browse Categories</Link>
           </Button>
         </div>
 
         {/* trust row */}
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm">
           <div className="inline-flex items-center gap-2">
             <ShieldCheck className="h-4 w-4 text-primary" />
             100% Genuine Products
@@ -79,7 +79,7 @@ const Hero = () => (
                 i === 0 ? "sm:translate-y-4" : ""
               } ${i === 3 ? "sm:translate-y-4" : ""}`}
             >
-              <div className="aspect-[4/5] overflow-hidden bg-surface">
+              <div className="aspect-[4/3] overflow-hidden bg-surface lg:aspect-[5/4]">
                 <img
                   src={c.img}
                   alt={`${c.name} at Cellexa`}
