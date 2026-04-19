@@ -31,6 +31,7 @@ import TradeIn from "./pages/TradeIn.tsx";
 import FAQ from "./pages/FAQ.tsx";
 import Help from "./pages/Help.tsx";
 import Compare from "./pages/Compare.tsx";
+import PreOrders from "./pages/PreOrders.tsx";
 import ReturnsPolicy from "./pages/ReturnsPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
@@ -74,6 +75,7 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/help" element={<Help />} />
           <Route path="/compare" element={<Compare />} />
+          <Route path="/pre-orders" element={<PreOrders />} />
           <Route path="/returns-policy" element={<ReturnsPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
