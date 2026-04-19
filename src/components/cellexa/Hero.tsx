@@ -1,81 +1,105 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ShieldCheck, Truck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImg from "@/assets/hero-megasale.jpg";
+import smartphones from "@/assets/cat-smartphones.jpg";
+import tablets from "@/assets/cat-tablets.jpg";
+import audio from "@/assets/cat-audio.jpg";
+import accessories from "@/assets/cat-accessories.jpg";
+
+const categories = [
+  { name: "Smartphones", slug: "smartphones", img: smartphones, hint: "Latest flagships" },
+  { name: "Tablets", slug: "tablets", img: tablets, hint: "Work & play" },
+  { name: "Audio", slug: "audio", img: audio, hint: "Headphones & buds" },
+  { name: "Accessories", slug: "accessories", img: accessories, hint: "Cases, chargers & more" },
+];
 
 const Hero = () => (
-  <section className="relative overflow-hidden bg-gradient-deep">
-    {/* decorative glow */}
-    <div className="pointer-events-none absolute -top-20 -right-20 h-[480px] w-[480px] rounded-full bg-primary-glow/30 blur-3xl" />
-    <div className="pointer-events-none absolute -bottom-32 -left-20 h-[420px] w-[420px] rounded-full bg-white/10 blur-3xl" />
+  <section className="relative overflow-hidden bg-gradient-to-b from-surface via-background to-surface">
+    {/* soft decorative accents */}
+    <div className="pointer-events-none absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full bg-primary/10 blur-3xl" />
+    <div className="pointer-events-none absolute -bottom-32 -left-24 h-[380px] w-[380px] rounded-full bg-primary-glow/10 blur-3xl" />
 
-    <div className="container-page relative grid items-center gap-8 py-10 sm:py-14 lg:grid-cols-2 lg:py-20">
-      {/* Copy */}
-      <div className="relative z-10 text-primary-foreground">
-        <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur-md ring-1 ring-white/20">
+    <div className="container-page relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
+      {/* Left: copy */}
+      <div className="relative z-10">
+        <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
           <Sparkles className="h-3.5 w-3.5" />
-          Cellexa Mega Tech Sale · Limited Time
+          Sri Lanka's trusted tech store
         </span>
-        <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-          Sri Lanka's <br className="hidden sm:block" />
-          Smartest place <br className="hidden sm:block" />
-          to <span className="bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">upgrade.</span>
+
+        <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
+          Discover the latest{" "}
+          <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+            tech
+          </span>{" "}
+          for every lifestyle.
         </h1>
-        <p className="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
-          Save up to <span className="font-bold text-white">25% off</span> on the latest flagship smartphones, audio &amp; accessories.
-          Genuine products, islandwide delivery, and 0% installment plans.
+
+        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Shop genuine smartphones, tablets, audio gear and accessories from the brands you love —
+          curated, certified, and delivered islandwide.
         </p>
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
-          <Button asChild variant="hero" size="xl">
-            <Link to="/shop">Shop Now <ArrowRight className="h-5 w-5" /></Link>
+          <Button asChild size="xl" className="rounded-xl">
+            <Link to="/shop">
+              Shop Now <ArrowRight className="h-5 w-5" />
+            </Link>
           </Button>
-          <Button asChild variant="heroOutline" size="xl">
-            <Link to="/shop">View Deals</Link>
+          <Button asChild variant="outline" size="xl" className="rounded-xl border-2">
+            <Link to="/shop">Browse Categories</Link>
           </Button>
         </div>
 
-        {/* mini stats */}
-        <div className="mt-9 grid max-w-md grid-cols-3 gap-2 border-t border-white/15 pt-6 text-white/85">
-          <div>
-            <div className="font-display text-2xl font-extrabold text-white">120K+</div>
-            <div className="text-xs">Happy Customers</div>
+        {/* trust row */}
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
+          <div className="inline-flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            100% Genuine Products
           </div>
-          <div>
-            <div className="font-display text-2xl font-extrabold text-white">500+</div>
-            <div className="text-xs">Genuine Products</div>
+          <div className="inline-flex items-center gap-2">
+            <Truck className="h-4 w-4 text-primary" />
+            Islandwide Delivery
           </div>
-          <div>
-            <div className="font-display text-2xl font-extrabold text-white">4.9★</div>
-            <div className="text-xs">Customer Rating</div>
+          <div className="inline-flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-primary" />
+            0% Installments
           </div>
         </div>
       </div>
 
-      {/* Hero visual */}
+      {/* Right: category tiles */}
       <div className="relative">
-        <div className="absolute inset-0 -z-10 mx-auto h-[80%] w-[80%] rounded-full bg-primary-glow/30 blur-3xl" />
-        <img
-          src={heroImg}
-          alt="Latest flagship smartphones available at Cellexa mega tech sale"
-          width={1600}
-          height={900}
-          className="relative w-full max-w-2xl mx-auto drop-shadow-2xl animate-float"
-        />
-        {/* floating offer pill */}
-        <div className="absolute left-2 top-6 hidden rounded-2xl bg-white p-3 pr-4 shadow-glow sm:flex sm:items-center sm:gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-promo text-promo-foreground font-extrabold">25%</div>
-          <div className="text-left">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Mega Sale</div>
-            <div className="text-sm font-bold text-foreground">Up to 25% OFF</div>
-          </div>
-        </div>
-        <div className="absolute bottom-4 right-2 hidden rounded-2xl bg-white p-3 pr-4 shadow-glow md:flex md:items-center md:gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-success text-success-foreground font-extrabold">0%</div>
-          <div className="text-left">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Installments</div>
-            <div className="text-sm font-bold text-foreground">From LKR 8,500/mo</div>
-          </div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {categories.map((c, i) => (
+            <Link
+              key={c.slug}
+              to={`/category/${c.slug}`}
+              className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                i === 0 ? "sm:translate-y-4" : ""
+              } ${i === 3 ? "sm:translate-y-4" : ""}`}
+            >
+              <div className="aspect-[4/5] overflow-hidden bg-surface">
+                <img
+                  src={c.img}
+                  alt={`${c.name} at Cellexa`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/85 to-transparent p-4 pt-10">
+                <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">
+                  {c.hint}
+                </div>
+                <div className="mt-0.5 flex items-center justify-between gap-2">
+                  <h3 className="font-display text-base font-bold text-foreground sm:text-lg">
+                    {c.name}
+                  </h3>
+                  <ArrowRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5" />
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
