@@ -163,13 +163,13 @@ const FilterSidebar = ({
   };
 
   return (
-    <aside className="space-y-3">
-      <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
-        <div className="mb-3 flex items-center justify-between">
-          <h3 className="font-display text-base font-bold">Refine</h3>
+    <aside className="space-y-4">
+      <div className="rounded-2xl border border-border/60 bg-card p-5 shadow-soft">
+        <div className="mb-4 flex items-center justify-between border-b border-border/60 pb-3">
+          <h3 className="font-display text-base font-bold tracking-tight">Refine</h3>
           <button
             onClick={() => setFilters(defaultFilters)}
-            className="text-xs font-semibold text-primary hover:underline"
+            className="text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground"
           >
             Clear all
           </button>
@@ -433,10 +433,10 @@ const FilterSidebar = ({
         </Accordion>
       </div>
 
-      <div className="rounded-2xl border border-border/70 bg-gradient-brand-soft p-4">
+      <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-soft">
         <div className="flex items-start gap-3">
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-background shadow-soft">
-            <Wallet className="h-5 w-5 text-primary" />
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-surface">
+            <Wallet className="h-5 w-5 text-foreground/70" />
           </div>
           <div>
             <h4 className="text-sm font-bold text-foreground">0% Installments</h4>
@@ -549,82 +549,53 @@ const Category = () => {
       <Header />
 
       <main>
-        {/* Breadcrumb */}
-        <section className="bg-background">
-          <div className="container-page pt-5 sm:pt-6">
+        {/* Compact category header */}
+        <section className="border-b border-border/60 bg-background">
+          <div className="container-page pt-5 sm:pt-6 pb-5 sm:pb-6">
+            {/* Breadcrumb */}
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <Link to="/" className="hover:text-primary">Home</Link>
+              <Link to="/" className="hover:text-foreground">Home</Link>
               <ChevronRight className="h-3.5 w-3.5" />
-              <Link to="/shop" className="hover:text-primary">Shop</Link>
+              <Link to="/shop" className="hover:text-foreground">Shop</Link>
               <ChevronRight className="h-3.5 w-3.5" />
               <span className="text-foreground">{categoryName}</span>
             </nav>
-          </div>
-        </section>
 
-        {/* Category hero */}
-        <section className="bg-background pt-5 sm:pt-6">
-          <div className="container-page">
-            <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-brand-soft">
-              <div className="grid items-center gap-6 lg:grid-cols-2">
-                <div className="relative z-10 px-6 py-8 sm:px-10 sm:py-10 lg:py-14">
-                  <span className="badge-promo bg-primary/10 text-primary">
-                    <Smartphone className="h-3 w-3" /> {categoryName} Collection
-                  </span>
-                  <h1 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
-                    Flagship power, <span className="bg-gradient-hero bg-clip-text text-transparent">everyday brilliance.</span>
-                  </h1>
-                  <p className="mt-3 max-w-md text-sm text-muted-foreground sm:text-base">
-                    The latest 5G smartphones from Apple, Samsung, Xiaomi, OnePlus & more — all genuine,
-                    warranty-backed, with 0% installments available islandwide.
-                  </p>
-                  <div className="mt-5 flex flex-wrap items-center gap-2">
-                    <Button size="lg" className="rounded-xl">
-                      <Sparkles className="h-4 w-4" /> Explore Flagships
-                    </Button>
-                    <Button size="lg" variant="outline" className="rounded-xl">
-                      Shop by Brand <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
-                    <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-3.5 w-3.5 text-success" /> Genuine</span>
-                    <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Warranty</span>
-                    <span className="inline-flex items-center gap-1.5"><Truck className="h-3.5 w-3.5 text-primary" /> Islandwide</span>
-                    <span className="inline-flex items-center gap-1.5"><Wallet className="h-3.5 w-3.5 text-primary" /> 0% Installments</span>
-                  </div>
-                </div>
-
-                <div className="relative h-56 sm:h-72 lg:h-full lg:min-h-[360px]">
-                  <img
-                    src={heroSmartphones}
-                    alt={`${categoryName} category banner`}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary)/0.05)] via-transparent to-transparent lg:from-background/30" />
-                  <div className="absolute bottom-4 right-4 hidden rounded-2xl border border-white/40 bg-white/85 px-4 py-3 shadow-lift backdrop-blur sm:block">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">Featured</p>
-                    <p className="text-sm font-bold text-foreground">120+ models in stock</p>
-                  </div>
-                </div>
+            {/* Title + supporting line */}
+            <div className="mt-3 flex flex-col gap-3 sm:mt-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h1 className="font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+                  {categoryName}
+                </h1>
+                <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground">
+                  Browse the latest 5G {categoryName.toLowerCase()} from Apple, Samsung, Xiaomi, OnePlus and more.
+                </p>
               </div>
+              <p className="text-xs font-medium text-muted-foreground">
+                <span className="text-foreground font-semibold">{catalog.length}</span> models available
+              </p>
             </div>
-          </div>
-        </section>
 
-        {/* Subcategory chips */}
-        <section className="bg-background pt-6">
-          <div className="container-page">
-            <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+            {/* Subtle trust row */}
+            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-3.5 w-3.5 text-success" /> Genuine products</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-foreground/70" /> Warranty backed</span>
+              <span className="inline-flex items-center gap-1.5"><Wallet className="h-3.5 w-3.5 text-foreground/70" /> 0% installments</span>
+              <span className="inline-flex items-center gap-1.5"><Truck className="h-3.5 w-3.5 text-foreground/70" /> Islandwide delivery</span>
+            </div>
+
+            {/* Subcategory chips */}
+            <div className="mt-5 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
               {subcats.map((c) => {
                 const active = activeSub === c;
                 return (
                   <button
                     key={c}
                     onClick={() => setActiveSub(c)}
-                    className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all ${
+                    className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all sm:text-sm ${
                       active
-                        ? "border-primary bg-primary text-primary-foreground shadow-soft"
-                        : "border-border bg-card text-foreground/80 hover:border-primary/40 hover:text-primary"
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border bg-background text-foreground/75 hover:border-foreground/40 hover:text-foreground"
                     }`}
                   >
                     {c}
@@ -632,30 +603,22 @@ const Category = () => {
                 );
               })}
             </div>
-          </div>
-        </section>
 
-        {/* Featured brands */}
-        <section className="bg-background pt-6">
-          <div className="container-page">
-            <div className="mb-3 flex items-end justify-between">
-              <div>
-                <h2 className="font-display text-lg font-bold sm:text-xl">Shop by Brand</h2>
-                <p className="text-xs text-muted-foreground">Top {categoryName.toLowerCase()} brands available at Cellexa.</p>
-              </div>
-              <Link to="/shop" className="hidden text-xs font-semibold text-primary hover:underline sm:inline">All brands →</Link>
-            </div>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
+            {/* Featured brand shortcuts */}
+            <div className="mt-4 -mx-1 flex items-center gap-2 overflow-x-auto px-1 pb-1">
+              <span className="shrink-0 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Brands
+              </span>
               {brandTiles.map((b) => (
                 <Link
                   key={b.name}
                   to={`/brand/${b.name.toLowerCase()}`}
-                  className="card-category group flex flex-col items-center justify-center gap-1 px-2 py-3 text-center"
+                  className="group inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold text-foreground/80 transition-all hover:border-foreground/40 hover:text-foreground"
                 >
-                  <span className="font-display text-sm font-extrabold text-foreground transition-colors group-hover:text-primary">
-                    {b.name}
+                  {b.name}
+                  <span className="text-[10px] font-medium text-muted-foreground group-hover:text-foreground/60">
+                    {b.count}
                   </span>
-                  <span className="text-[10px] font-medium text-muted-foreground">{b.count} items</span>
                 </Link>
               ))}
             </div>
@@ -666,29 +629,29 @@ const Category = () => {
           <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8">
             {/* Desktop sidebar */}
             <div className="hidden lg:block">
-              <div className="sticky top-[180px]">
+              <div className="sticky top-[120px]">
                 <FilterSidebar filters={filters} setFilters={setFilters} />
               </div>
             </div>
 
             {/* Right area */}
             <div className="min-w-0">
-              {/* Category-specific merchandising */}
+              {/* Category-specific merchandising — toned down */}
               <div className="mb-5 grid gap-3 sm:grid-cols-3">
-                <div className="overflow-hidden rounded-2xl bg-gradient-deep p-4 text-primary-foreground sm:col-span-2">
-                  <span className="badge-promo bg-white/15 text-white">Latest Launches</span>
-                  <h3 className="mt-2 font-display text-lg font-extrabold sm:text-xl">
-                    iPhone 15 series + Galaxy S24 Ultra in stock now
+                <div className="overflow-hidden rounded-2xl border border-border/60 bg-card p-4 shadow-soft sm:col-span-2">
+                  <span className="badge-promo bg-foreground/5 text-foreground/80">Latest Launches</span>
+                  <h3 className="mt-2 font-display text-lg font-extrabold text-foreground sm:text-xl">
+                    iPhone 15 series & Galaxy S24 Ultra in stock now
                   </h3>
-                  <p className="mt-1 text-sm text-white/85">Pre-orders open. Pay in 0% installments.</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Pre-orders open. Pay with 0% installments.</p>
                 </div>
                 <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-soft">
-                  <div className="flex items-center gap-2 text-primary">
-                    <Camera className="h-5 w-5" />
-                    <span className="text-xs font-bold uppercase tracking-wider">Camera Phones</span>
+                  <div className="flex items-center gap-2 text-foreground">
+                    <Camera className="h-5 w-5 text-foreground/70" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Camera Phones</span>
                   </div>
                   <p className="mt-2 text-sm font-semibold text-foreground">Pro-grade shooters under LKR 350K</p>
-                  <button className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
+                  <button className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:text-primary">
                     View collection <ArrowRight className="h-3 w-3" />
                   </button>
                 </div>
@@ -784,27 +747,27 @@ const Category = () => {
                 </div>
               )}
 
-              {/* Editorial highlight */}
+              {/* Editorial highlight — premium, neutral */}
               <section className="mt-10 overflow-hidden rounded-3xl border border-border/60 bg-card shadow-soft">
                 <div className="grid lg:grid-cols-[1.1fr_1fr]">
-                  <div className="relative bg-gradient-deep p-6 text-primary-foreground sm:p-8">
-                    <span className="badge-promo bg-white/15 text-white">
+                  <div className="relative bg-surface p-6 sm:p-8">
+                    <span className="badge-promo bg-foreground/5 text-foreground/80">
                       <Sparkles className="h-3 w-3" /> Editor's Pick
                     </span>
-                    <h3 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
+                    <h3 className="mt-3 font-display text-2xl font-extrabold text-foreground sm:text-3xl">
                       Top Flagships This Month
                     </h3>
-                    <p className="mt-2 max-w-md text-sm text-white/85">
+                    <p className="mt-2 max-w-md text-sm text-muted-foreground">
                       Hand-picked by our team — the most loved premium smartphones at Cellexa right now,
                       backed by full warranty and instant 0% installments.
                     </p>
-                    <Button variant="secondary" size="lg" className="mt-5 rounded-xl bg-white text-primary hover:bg-white/90">
+                    <Button size="lg" className="mt-5 rounded-xl">
                       Explore all flagships <ArrowRight className="h-4 w-4" />
                     </Button>
                     <img
                       src={featurePhone}
                       alt=""
-                      className="pointer-events-none absolute -right-10 -top-6 hidden h-[140%] w-auto object-contain opacity-25 lg:block"
+                      className="pointer-events-none absolute -right-10 -top-6 hidden h-[140%] w-auto object-contain opacity-15 lg:block"
                     />
                   </div>
 

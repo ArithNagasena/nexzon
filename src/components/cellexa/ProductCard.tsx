@@ -18,8 +18,8 @@ const fmtLKR = (n: number) =>
 
 const toneClass: Record<NonNullable<Product["badge"]>["tone"], string> = {
   promo: "bg-promo text-promo-foreground",
-  primary: "bg-primary text-primary-foreground",
-  success: "bg-success text-success-foreground",
+  primary: "bg-foreground text-background",
+  success: "bg-foreground text-background",
   warning: "bg-warning text-warning-foreground",
 };
 
@@ -29,27 +29,29 @@ const ProductCard = ({ product }: { product: Product }) => {
       ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
       : 0;
 
+  // Show only ONE badge: prefer explicit badge, fall back to discount badge
+  const showDiscountBadge = !product.badge && discount > 0;
+
   return (
     <article className="card-product group flex flex-col">
       {/* Image area */}
-      <Link to={`/product/${product.id}`} className="relative block aspect-square overflow-hidden bg-gradient-brand-soft">
+      <Link to={`/product/${product.id}`} className="relative block aspect-square overflow-hidden bg-surface">
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.04]"
         />
 
-        {/* Badges */}
-        <div className="absolute left-3 top-3 flex flex-col gap-1.5">
-          {product.badge && (
+        {/* Single badge */}
+        <div className="absolute left-3 top-3">
+          {product.badge ? (
             <span className={`badge-promo ${toneClass[product.badge.tone]}`}>
               {product.badge.label}
             </span>
-          )}
-          {discount > 0 && (
-            <span className="badge-promo bg-foreground text-background">-{discount}%</span>
-          )}
+          ) : showDiscountBadge ? (
+            <span className="badge-promo bg-promo text-promo-foreground">-{discount}%</span>
+          ) : null}
         </div>
 
         {/* Wishlist */}
@@ -65,7 +67,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           <button
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background hover:bg-primary"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background transition-colors hover:bg-foreground/85"
           >
             <ShoppingCart className="h-4 w-4" /> Add to Cart
           </button>
