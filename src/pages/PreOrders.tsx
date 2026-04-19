@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/accordion";
 
 import galaxyS26 from "@/assets/galaxy-s26-ultra.png";
-import iphone17ProMax from "@/assets/iphone-17-pro-max.png";
+import iphone17ProMax from "@/assets/galaxy-s26-plus.png";
 import pixel10 from "@/assets/google-pixel-10.png";
 import iphone17e from "@/assets/iphone-17e.png";
 
