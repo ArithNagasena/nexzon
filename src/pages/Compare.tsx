@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/dialog";
 import galaxyS26UltraImg from "@/assets/galaxy-s26-ultra.png";
 import iphone17ProMaxImg from "@/assets/iphone-17-pro-max.png";
+import iphone17eImg from "@/assets/iphone-17e.png";
 
 type CompareProduct = {
   id: string;
@@ -155,8 +156,7 @@ const RECOMMENDED: Product[] = [
     oldPrice: 234900,
     rating: 4.7,
     reviews: 612,
-    image:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16e-finish-select-202502-6-1inch-white?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1738782406336",
+    image: iphone17eImg,
     badge: { label: "New", tone: "success" },
   },
   {
