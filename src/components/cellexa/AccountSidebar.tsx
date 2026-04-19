@@ -55,7 +55,7 @@ const navGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "Service",
     items: [
-      { label: "Returns & Refunds", icon: Undo2, to: "/account" },
+      { label: "Returns & Refunds", icon: Undo2, to: "/account/returns" },
       { label: "Warranty & Claims", icon: ShieldCheck, to: "/account" },
       { label: "Trade-In Requests", icon: Repeat, to: "/account" },
     ],
