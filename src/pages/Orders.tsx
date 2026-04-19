@@ -260,21 +260,6 @@ const Orders = () => {
                     })}
                   </div>
 
-                  {/* Search */}
-                  <div className="flex items-center gap-2">
-                    <div className="relative flex-1 lg:w-72 lg:flex-none">
-                      <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                      <Input
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Search by order number…"
-                        className="h-10 rounded-xl pl-10"
-                      />
-                    </div>
-                    <Button variant="outline" size="icon" aria-label="More filters">
-                      <Filter className="h-4 w-4" />
-                    </Button>
-                  </div>
                 </div>
               </section>
 
