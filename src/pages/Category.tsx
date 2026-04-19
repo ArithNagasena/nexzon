@@ -698,38 +698,6 @@ const Category = () => {
                 </div>
               )}
 
-              {/* Editorial highlight */}
-              <section className="mt-10 overflow-hidden rounded-3xl border border-border/60 bg-card shadow-soft">
-                <div className="grid lg:grid-cols-[1.1fr_1fr]">
-                  <div className="relative bg-gradient-deep p-6 text-primary-foreground sm:p-8">
-                    <span className="badge-promo bg-white/15 text-white">
-                      <Sparkles className="h-3 w-3" /> Editor's Pick
-                    </span>
-                    <h3 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
-                      Top Flagships This Month
-                    </h3>
-                    <p className="mt-2 max-w-md text-sm text-white/85">
-                      Hand-picked by our team — the most loved premium smartphones at Cellexa right now,
-                      backed by full warranty and instant 0% installments.
-                    </p>
-                    <Button variant="secondary" size="lg" className="mt-5 rounded-xl bg-white text-primary hover:bg-white/90">
-                      Explore all flagships <ArrowRight className="h-4 w-4" />
-                    </Button>
-                    <img
-                      src={featurePhone}
-                      alt=""
-                      className="pointer-events-none absolute -right-10 -top-6 hidden h-[140%] w-auto object-contain opacity-25 lg:block"
-                    />
-                  </div>
-
-                  <div className="grid gap-3 p-4 sm:grid-cols-3 sm:p-5">
-                    {topFlagships.map((p) => (
-                      <ProductCard key={p.id} product={p} />
-                    ))}
-                  </div>
-                </div>
-              </section>
-
               {/* Pagination */}
               {filtered.length > perPage && (
                 <div className="mt-8 flex flex-col items-center gap-5">
