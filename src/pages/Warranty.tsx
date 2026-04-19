@@ -847,9 +847,10 @@ const Warranty = () => {
                 </div>
               </div>
             </div>
-          </main>
+            </section>
+          </div>
         </div>
-      </div>
+      </main>
 
       {/* Submit claim dialog */}
       <Dialog
