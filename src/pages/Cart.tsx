@@ -298,7 +298,7 @@ const CartPage = () => {
                                   </button>
                                   <button
                                     onClick={() => removeItem(it.id)}
-                                    className="inline-flex items-center gap-1.5 font-semibold text-foreground/80 hover:text-destructive"
+                                    className="inline-flex items-center gap-1.5 font-semibold text-destructive hover:text-destructive/80"
                                   >
                                     <Trash2 className="h-3.5 w-3.5" /> Remove
                                   </button>
