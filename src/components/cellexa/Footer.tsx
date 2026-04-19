@@ -90,20 +90,6 @@ const Footer = () => (
             </li>
           </ul>
 
-          <div className="mt-4 flex gap-2">
-            {[Facebook, Instagram, Youtube, Twitter].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Social link"
-                className="grid h-10 w-10 place-items-center rounded-lg border border-background/15 transition-colors hover:border-primary-glow hover:bg-primary-glow/15 hover:text-primary-glow"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-
         {/* Link sections */}
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8 lg:grid-cols-4">
           {linkSections.map((s) => (
