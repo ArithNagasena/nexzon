@@ -386,7 +386,7 @@ const Compare = () => {
               <p className="mt-1 text-sm text-muted-foreground">
                 Add up to {MAX_SLOTS} products to compare specs side by side.
               </p>
-              <Button className="mt-5" onClick={() => setPickerOpen(true)}>
+              <Button className="mt-5" onClick={() => openPicker(null)}>
                 <Plus className="h-4 w-4" /> Add a Product
               </Button>
             </div>
