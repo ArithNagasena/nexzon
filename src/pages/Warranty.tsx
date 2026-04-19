@@ -444,34 +444,6 @@ const Warranty = () => {
             {/* Main */}
             <section className="min-w-0 space-y-6 lg:col-span-9">
 
-            {/* Stats */}
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              <StatCard
-                icon={PackageCheck}
-                label="Registered"
-                value={stats.registered}
-                tone="primary"
-              />
-              <StatCard
-                icon={ShieldCheck}
-                label="Active Warranty"
-                value={stats.active}
-                tone="emerald"
-              />
-              <StatCard
-                icon={Clock}
-                label="Expiring Soon"
-                value={stats.expiring}
-                tone="amber"
-              />
-              <StatCard
-                icon={FileText}
-                label="Claims Filed"
-                value={stats.claims}
-                tone="muted"
-              />
-            </div>
-
             {/* Mobile CTA */}
             <Button
               onClick={() => openClaim()}
