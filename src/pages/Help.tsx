@@ -194,7 +194,7 @@ const Help = () => {
 
           <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h1 className="mt-1.5 font-display text-4xl font-bold tracking-tight sm:text-6xl">
+              <h1 className="mt-1.5 font-display text-4xl font-bold tracking-tight sm:text-4xl">
                 We're here to help
               </h1>
               <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
