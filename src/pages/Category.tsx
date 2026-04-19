@@ -433,10 +433,10 @@ const FilterSidebar = ({
         </Accordion>
       </div>
 
-      <div className="rounded-2xl border border-border/70 bg-gradient-brand-soft p-4">
+      <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-soft">
         <div className="flex items-start gap-3">
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-background shadow-soft">
-            <Wallet className="h-5 w-5 text-primary" />
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-surface">
+            <Wallet className="h-5 w-5 text-foreground/70" />
           </div>
           <div>
             <h4 className="text-sm font-bold text-foreground">0% Installments</h4>
