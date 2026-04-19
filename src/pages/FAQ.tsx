@@ -233,7 +233,7 @@ const FAQ = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border/60 bg-gradient-brand-soft">
-        <div className="container mx-auto px-4 py-10 sm:py-14 lg:py-16">
+        <div className="container-page py-10 sm:py-14 lg:py-16">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground">
               Home
@@ -289,7 +289,7 @@ const FAQ = () => {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-8 lg:py-12">
+      <div className="container-page py-8 lg:py-12">
         {/* Category chips (mobile + tablet jump nav) */}
         {!isSearching && (
           <div className="mb-6 -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:hidden">
