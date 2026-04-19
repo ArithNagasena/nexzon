@@ -227,10 +227,30 @@ const CheckoutPage = () => {
       <Header />
 
       <main>
-        {/* Stepper */}
-        <section className="border-b border-border/60 bg-surface/60">
-          <div className="container-page py-5">
-            <Stepper />
+        {/* Breadcrumb */}
+        <div className="border-b border-border/60 bg-surface/60">
+          <div className="container-page py-3">
+            <nav className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <Link to="/" className="hover:text-primary">Home</Link>
+              <ChevronRight className="h-3.5 w-3.5" />
+              <Link to="/cart" className="hover:text-primary">Cart</Link>
+              <ChevronRight className="h-3.5 w-3.5" />
+              <span className="font-medium text-foreground">Checkout</span>
+            </nav>
+          </div>
+        </div>
+
+        {/* Page header */}
+        <section className="container-page pt-8 md:pt-10">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h1 className="font-display text-3xl font-extrabold leading-tight text-foreground md:text-4xl">
+                Checkout
+              </h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {`${itemCount} ${itemCount === 1 ? "item" : "items"} ready to ship. Complete your details to place the order.`}
+              </p>
+            </div>
           </div>
         </section>
 
