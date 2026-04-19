@@ -427,12 +427,21 @@ const ProductPage = () => {
                   </Button>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Heart className="h-4 w-4" /> Wishlist
+                <div className="flex items-stretch gap-2">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="flex-1 gap-2 border-2 border-primary bg-primary/5 font-bold text-primary shadow-soft hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <GitCompare className="h-5 w-5" /> Compare with other phones
                   </Button>
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <GitCompare className="h-4 w-4" /> Compare
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    aria-label="Add to wishlist"
+                    className="aspect-square px-0"
+                  >
+                    <Heart className="h-5 w-5" />
                   </Button>
                 </div>
 
