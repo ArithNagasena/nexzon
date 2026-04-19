@@ -31,7 +31,6 @@ const navGroups: { title: string; items: NavItem[] }[] = [
     items: [
       { label: "Dashboard", icon: LayoutDashboard, to: "/account" },
       { label: "Profile", icon: User, to: "/account/profile" },
-      { label: "Addresses", icon: MapPin, to: "/account/profile" },
     ],
   },
   {
