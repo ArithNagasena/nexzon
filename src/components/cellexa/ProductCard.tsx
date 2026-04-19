@@ -61,15 +61,6 @@ const ProductCard = ({ product }: { product: Product }) => {
           <Heart className="h-4 w-4" />
         </button>
 
-        {/* Quick add (desktop hover) */}
-        <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background hover:bg-primary"
-          >
-            <ShoppingCart className="h-4 w-4" /> Add to Cart
-          </button>
-        </div>
       </Link>
 
       {/* Body */}
