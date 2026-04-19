@@ -158,13 +158,6 @@ const OrderSuccessPage = () => {
       <Header />
 
       <main>
-        {/* Stepper */}
-        <section className="border-b border-border/60 bg-surface/60">
-          <div className="container-page py-5">
-            <Stepper />
-          </div>
-        </section>
-
         {/* Hero success */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-brand-soft" />
