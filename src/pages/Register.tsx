@@ -54,7 +54,7 @@ const Register = () => {
           <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--background))_0%,hsl(var(--secondary))_100%)] opacity-60" />
         </div>
 
-        <div className="container-page py-4 sm:py-5">
+        <div className="container-page py-10 sm:py-14">
           <div className="mx-auto w-full max-w-md">
             <div className="rounded-2xl border border-border/70 bg-card p-5 shadow-lift sm:p-6">
               <h1 className="text-center font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
