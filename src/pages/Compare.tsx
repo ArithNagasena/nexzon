@@ -32,6 +32,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import galaxyS26UltraImg from "@/assets/galaxy-s26-ultra.png";
+import iphone17ProMaxImg from "@/assets/iphone-17-pro-max.png";
 
 type CompareProduct = {
   id: string;
