@@ -4,7 +4,7 @@ import ProductCard, { type Product } from "./ProductCard";
 import phone1 from "@/assets/product-meta-quest-3.png";
 import phone2 from "@/assets/product-jbl-soundgear-frames.png";
 import phone3 from "@/assets/product-phone-3.jpg";
-import headphones from "@/assets/product-headphones.jpg";
+import headphones from "@/assets/product-airpods-max.png";
 import earbuds from "@/assets/product-earbuds.jpg";
 import tablet from "@/assets/product-insta360-go3.png";
 import watch from "@/assets/product-watch.jpg";
@@ -13,7 +13,7 @@ import controller from "@/assets/product-controller.jpg";
 const newArrivals: Product[] = [
   { id: "1", name: "Meta Quest 3", brand: "Meta", price: 194000, oldPrice: 219000, rating: 4.9, reviews: 312, image: phone1, badge: { label: "New", tone: "primary" } },
   { id: "2", name: "JBL Soundgear Frames Audio Glasses", brand: "JBL", price: 49000, oldPrice: 58000, rating: 4.8, reviews: 248, image: phone2, badge: { label: "New", tone: "primary" } },
-  { id: "3", name: "Sony WH-1000XM5 Wireless Noise Cancelling", brand: "Sony", price: 119000, oldPrice: 135000, rating: 4.9, reviews: 421, image: headphones, badge: { label: "Hot", tone: "promo" } },
+  { id: "3", name: "AirPods Max", brand: "Apple", price: 175000, oldPrice: 199000, rating: 4.9, reviews: 421, image: headphones, badge: { label: "Hot", tone: "promo" } },
   { id: "4", name: "Insta360 Go 3 Action Camera", brand: "Insta360", price: 140000, oldPrice: 165000, rating: 4.9, reviews: 87, image: tablet, badge: { label: "New", tone: "primary" } },
   { id: "5", name: "Samsung Galaxy Watch 7 44mm LTE", brand: "Samsung", price: 89500, oldPrice: 99000, rating: 4.7, reviews: 156, image: watch },
   { id: "6", name: "Apple AirPods Pro (2nd Gen) USB-C", brand: "Apple", price: 79900, oldPrice: 89000, rating: 4.9, reviews: 538, image: earbuds, badge: { label: "Best Seller", tone: "success" } },
