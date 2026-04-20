@@ -31,7 +31,7 @@ const faqs = [
 ];
 
 const FAQ = () => (
-  <section className="bg-surface py-14 sm:py-20">
+  <section className="bg-surface pb-14 pt-4 sm:pb-20 sm:pt-6">
     <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.5fr]">
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-primary">Help center</span>
