@@ -5,7 +5,7 @@ import phone1 from "@/assets/product-meta-quest-3.png";
 import phone2 from "@/assets/product-jbl-soundgear-frames.png";
 import phone3 from "@/assets/product-phone-3.jpg";
 import headphones from "@/assets/product-airpods-max.png";
-import earbuds from "@/assets/product-earbuds.jpg";
+import earbuds from "@/assets/product-ipad-air.png";
 import tablet from "@/assets/product-insta360-go3.png";
 import watch from "@/assets/product-watch.jpg";
 import controller from "@/assets/product-controller.jpg";
@@ -16,7 +16,7 @@ const newArrivals: Product[] = [
   { id: "3", name: "AirPods Max", brand: "Apple", price: 175000, oldPrice: 199000, rating: 4.9, reviews: 421, image: headphones, badge: { label: "Hot", tone: "promo" } },
   { id: "4", name: "Insta360 Go 3 Action Camera", brand: "Insta360", price: 140000, oldPrice: 165000, rating: 4.9, reviews: 87, image: tablet, badge: { label: "New", tone: "primary" } },
   { id: "5", name: "Samsung Galaxy Watch 7 44mm LTE", brand: "Samsung", price: 89500, oldPrice: 99000, rating: 4.7, reviews: 156, image: watch },
-  { id: "6", name: "Apple AirPods Pro (2nd Gen) USB-C", brand: "Apple", price: 79900, oldPrice: 89000, rating: 4.9, reviews: 538, image: earbuds, badge: { label: "Best Seller", tone: "success" } },
+  { id: "6", name: "Apple iPad Air 5th Gen", brand: "Apple", price: 165000, oldPrice: 189000, rating: 4.9, reviews: 538, image: earbuds, badge: { label: "Best Seller", tone: "success" } },
   { id: "7", name: "Xiaomi Redmi Note 13 Pro+ 5G 256GB", brand: "Xiaomi", price: 119500, oldPrice: 134000, rating: 4.6, reviews: 192, image: phone3, badge: { label: "-12%", tone: "promo" } },
   { id: "8", name: "Sony DualSense Wireless Controller PS5", brand: "Sony", price: 24900, rating: 4.8, reviews: 274, image: controller },
 ];
