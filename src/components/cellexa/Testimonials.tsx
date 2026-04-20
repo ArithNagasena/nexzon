@@ -19,7 +19,7 @@ const reviews = [
 ];
 
 const Testimonials = () => (
-  <section className="bg-surface py-16 sm:py-24">
+  <section className="bg-surface pb-16 pt-4 sm:pb-24 sm:pt-6">
     <div className="container-page">
       {/* Centered header */}
       <div className="mx-auto max-w-3xl text-center">
