@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import promoAudio from "@/assets/promo-audio.jpg";
+import promoPreorder from "@/assets/promo-preorder.jpg";
 
 const PromoBanner = () => (
   <section className="bg-background pb-14 sm:pb-20">
@@ -39,6 +40,12 @@ const PromoBanner = () => (
 
         {/* Small banner */}
         <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl bg-gradient-deep p-6 text-primary-foreground shadow-lift sm:p-8">
+          <img
+            src={promoPreorder}
+            alt="Flagship phone pre-order"
+            loading="lazy"
+            className="pointer-events-none absolute -right-6 bottom-0 h-48 w-auto object-contain opacity-70 mix-blend-luminosity sm:-right-4 sm:h-56"
+          />
           <div className="pointer-events-none absolute -right-10 -bottom-10 h-56 w-56 rounded-full bg-primary-glow/40 blur-3xl" />
           <div className="relative">
             <span className="inline-block rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur">
