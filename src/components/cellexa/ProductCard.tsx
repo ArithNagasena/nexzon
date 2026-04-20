@@ -32,7 +32,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="card-product group flex flex-col">
       {/* Image area */}
-      <Link to={`/product/${product.id}`} className="relative block aspect-square overflow-hidden bg-gradient-brand-soft">
+      <Link to={`/product/${product.id}`} className="relative block aspect-square overflow-hidden bg-white">
         <img
           src={product.image}
           alt={product.name}
