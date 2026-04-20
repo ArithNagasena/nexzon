@@ -8,7 +8,7 @@ import headphones from "@/assets/product-airpods-max.png";
 import earbuds from "@/assets/product-ipad-air.png";
 import tablet from "@/assets/product-insta360-go3.png";
 import watch from "@/assets/product-g29-racing-wheel.png";
-import controller from "@/assets/product-controller.jpg";
+import controller from "@/assets/product-nintendo-switch.png";
 
 const newArrivals: Product[] = [
   { id: "1", name: "Meta Quest 3", brand: "Meta", price: 194000, oldPrice: 219000, rating: 4.9, reviews: 312, image: phone1, badge: { label: "New", tone: "primary" } },
@@ -18,7 +18,7 @@ const newArrivals: Product[] = [
   { id: "5", name: "G29 Driving Force Racing Wheel", brand: "Logitech", price: 115900, oldPrice: 129000, rating: 4.7, reviews: 156, image: watch },
   { id: "6", name: "Apple iPad Air 5th Gen", brand: "Apple", price: 165000, oldPrice: 189000, rating: 4.9, reviews: 538, image: earbuds, badge: { label: "Best Seller", tone: "success" } },
   { id: "7", name: "Apple Watch Ultra 2", brand: "Apple", price: 309000, oldPrice: 345000, rating: 4.6, reviews: 192, image: phone3, badge: { label: "-10%", tone: "promo" } },
-  { id: "8", name: "Sony DualSense Wireless Controller PS5", brand: "Sony", price: 24900, rating: 4.8, reviews: 274, image: controller },
+  { id: "8", name: "Nintendo Switch", brand: "Nintendo", price: 99000, oldPrice: 115000, rating: 4.8, reviews: 274, image: controller },
 ];
 
 const NewArrivals = () => (
