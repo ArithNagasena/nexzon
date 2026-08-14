@@ -4,65 +4,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cellexa design system — bright sky-tech blue, premium ecommerce */
+/* Cellexa design system — premium violet-tech, premium ecommerce */
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 32% 12%;
+    --foreground: 255 25% 12%;
 
-    --surface: 210 40% 98%;
-    --surface-2: 214 32% 95%;
+    --surface: 255 40% 98%;
+    --surface-2: 258 32% 95%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 32% 12%;
+    --card-foreground: 255 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 32% 12%;
+    --popover-foreground: 255 25% 12%;
 
-    /* Brand: bright sky-tech blue */
-    --primary: 217 91% 55%;
+    /* Brand: vivid violet */
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 199 89% 60%;
-    --primary-deep: 224 76% 38%;
+    --primary-glow: 271 91% 70%;
+    --primary-deep: 259 72% 36%;
 
-    --secondary: 214 32% 95%;
-    --secondary-foreground: 222 32% 12%;
+    --secondary: 258 32% 95%;
+    --secondary-foreground: 255 25% 12%;
 
-    --muted: 214 32% 95%;
-    --muted-foreground: 215 16% 42%;
+    --muted: 258 32% 95%;
+    --muted-foreground: 258 16% 42%;
 
-    --accent: 199 89% 95%;
-    --accent-foreground: 217 91% 35%;
+    --accent: 271 89% 95%;
+    --accent-foreground: 262 83% 35%;
 
     /* Promo accents */
-    --promo: 14 95% 55%;        /* warm orange for sale */
+    --promo: 330 85% 58%;       /* vivid magenta-pink for sale */
     --promo-foreground: 0 0% 100%;
     --success: 152 65% 42%;
     --success-foreground: 0 0% 100%;
     --warning: 38 95% 55%;
-    --warning-foreground: 222 32% 12%;
+    --warning-foreground: 255 25% 12%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 28% 90%;
-    --input: 214 28% 90%;
-    --ring: 217 91% 55%;
+    --border: 258 28% 90%;
+    --input: 258 28% 90%;
+    --ring: 262 83% 58%;
 
     --radius: 0.875rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 55%) 0%, hsl(199 89% 60%) 100%);
-    --gradient-promo: linear-gradient(135deg, hsl(14 95% 55%) 0%, hsl(35 95% 58%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(214 32% 95%) 100%);
-    --gradient-brand-soft: linear-gradient(135deg, hsl(217 91% 97%) 0%, hsl(199 89% 95%) 100%);
-    --gradient-deep: linear-gradient(135deg, hsl(224 76% 38%) 0%, hsl(217 91% 55%) 60%, hsl(199 89% 60%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(271 91% 70%) 100%);
+    --gradient-promo: linear-gradient(135deg, hsl(330 85% 58%) 0%, hsl(310 85% 62%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(255 40% 98%) 0%, hsl(258 32% 95%) 100%);
+    --gradient-brand-soft: linear-gradient(135deg, hsl(262 83% 97%) 0%, hsl(271 91% 95%) 100%);
+    --gradient-deep: linear-gradient(135deg, hsl(259 72% 36%) 0%, hsl(262 83% 58%) 60%, hsl(271 91% 70%) 100%);
 
     /* Shadows */
-    --shadow-card: 0 1px 2px hsl(217 30% 30% / 0.04), 0 4px 16px hsl(217 30% 30% / 0.06);
-    --shadow-lift: 0 10px 30px -8px hsl(217 91% 55% / 0.18), 0 4px 12px hsl(217 30% 30% / 0.06);
-    --shadow-glow: 0 20px 60px -10px hsl(217 91% 55% / 0.45);
-    --shadow-soft: 0 1px 3px hsl(217 30% 30% / 0.05);
+    --shadow-card: 0 1px 2px hsl(258 30% 30% / 0.04), 0 4px 16px hsl(258 30% 30% / 0.06);
+    --shadow-lift: 0 10px 30px -8px hsl(262 83% 58% / 0.18), 0 4px 12px hsl(258 30% 30% / 0.06);
+    --shadow-glow: 0 20px 60px -10px hsl(262 83% 58% / 0.45);
+    --shadow-soft: 0 1px 3px hsl(258 30% 30% / 0.05);
 
     --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -73,7 +73,7 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 262 83% 58%;
   }
 }
 
