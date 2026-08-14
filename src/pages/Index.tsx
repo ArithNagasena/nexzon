@@ -1,13 +1,12 @@
 import Header from "@/components/cellexa/Header";
 import Hero from "@/components/cellexa/Hero";
 import TrustStrip from "@/components/cellexa/TrustStrip";
+import PhoneSpotlight from "@/components/cellexa/PhoneSpotlight";
 import Categories from "@/components/cellexa/Categories";
 import Brands from "@/components/cellexa/Brands";
 import NewArrivals from "@/components/cellexa/NewArrivals";
-import PromoBanner from "@/components/cellexa/PromoBanner";
-
-
-import InstallmentBanner from "@/components/cellexa/InstallmentBanner";
+import BestSellers from "@/components/cellexa/BestSellers";
+import ValueBento from "@/components/cellexa/ValueBento";
 import Testimonials from "@/components/cellexa/Testimonials";
 import FAQ from "@/components/cellexa/FAQ";
 import Newsletter from "@/components/cellexa/Newsletter";
@@ -41,12 +40,12 @@ const Index = () => {
       <main>
         <Hero />
         <TrustStrip />
+        <PhoneSpotlight />
         <Categories />
         <Brands />
         <NewArrivals />
-        <PromoBanner />
-        
-        <InstallmentBanner />
+        <BestSellers />
+        <ValueBento />
         <Testimonials />
         <FAQ />
         <Newsletter />

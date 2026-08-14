@@ -7,10 +7,10 @@ import audio from "@/assets/cat-audio.jpg";
 import gaming from "@/assets/cat-gaming.jpg";
 
 const cats = [
-  { name: "Smartphones", slug: "smartphones", count: "240+ models", img: smartphones, large: true },
+  { name: "Accessories", slug: "accessories", count: "500+ items", img: accessories, large: true },
+  { name: "Smartphones", slug: "smartphones", count: "240+ models", img: smartphones },
   { name: "Tablets", slug: "tablets", count: "60+ models", img: tablets },
   { name: "Audio", slug: "audio", count: "180+ products", img: audio },
-  { name: "Accessories", slug: "accessories", count: "500+ items", img: accessories },
   { name: "Gaming", slug: "gaming", count: "120+ products", img: gaming },
 ];
 

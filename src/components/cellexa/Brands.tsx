@@ -12,13 +12,15 @@ const Brands = () => (
         </div>
         <Link to="/shop" className="text-sm font-semibold text-primary hover:underline">All brands →</Link>
       </div>
+    </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-5 lg:grid-cols-5">
-        {brands.slice(0, 10).map((b) => (
+    <div className="overflow-hidden">
+      <div className="marquee-track flex w-max gap-3 hover:[animation-play-state:paused] sm:gap-4">
+        {[...brands, ...brands].map((b, i) => (
           <Link
-            key={b}
+            key={`${b}-${i}`}
             to={`/brand/${b.toLowerCase()}`}
-            className="group flex h-20 items-center justify-center rounded-xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lift sm:h-24"
+            className="group flex h-20 shrink-0 items-center justify-center rounded-xl border border-border bg-card px-8 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lift sm:h-24"
           >
             <span className="font-display text-xl font-extrabold tracking-tight text-foreground/70 transition-colors group-hover:text-primary sm:text-2xl">
               {b}
