@@ -107,7 +107,7 @@ const PRODUCTS: WarrantyProduct[] = [
     daysLeft: 480,
     state: "active",
     serial: "F2LXK9P7QH",
-    coverage: "Manufacturer + Cellexa Care",
+    coverage: "Manufacturer + Nexzon Care",
   },
   {
     id: "p2",
@@ -167,7 +167,7 @@ const PRODUCTS: WarrantyProduct[] = [
     daysLeft: 530,
     state: "active",
     serial: "APP2-44LMQ",
-    coverage: "Manufacturer + Cellexa Care",
+    coverage: "Manufacturer + Nexzon Care",
   },
 ];
 
@@ -186,7 +186,7 @@ const CLAIM_HISTORY: ClaimRecord[] = [
     status: "approved",
     resolvedOn: "2025-12-11",
     resolutionNote: "Battery replacement completed under warranty.",
-    technician: "Cellexa Service Center · Colombo 03",
+    technician: "Nexzon Service Center · Colombo 03",
   },
   {
     id: "c2",
@@ -461,7 +461,7 @@ const Warranty = () => {
                     Your Registered Products
                   </h2>
                   <p className="text-xs text-muted-foreground">
-                    Devices linked to your Cellexa account
+                    Devices linked to your Nexzon account
                   </p>
                 </div>
                 <span className="rounded-full bg-secondary px-2.5 py-1 text-[11px] font-bold text-foreground">
@@ -753,7 +753,7 @@ const Warranty = () => {
                       Warranty Coverage
                     </h3>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      What's protected under your Cellexa warranty
+                      What's protected under your Nexzon warranty
                     </p>
                   </div>
                 </div>
@@ -762,7 +762,7 @@ const Warranty = () => {
                     "Manufacturing defects covered for the full warranty period",
                     "Free pickup & drop-off for in-warranty repairs island-wide",
                     "Genuine parts and certified technicians",
-                    "Cellexa Care extends coverage with accidental damage protection",
+                    "Nexzon Care extends coverage with accidental damage protection",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-2">
                       <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />

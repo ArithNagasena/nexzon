@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import {
   ChevronRight,
   Search,
@@ -422,16 +422,29 @@ const FilterSidebar = ({
 
 /* -------------------- Page -------------------- */
 const Shop = () => {
+  const [searchParams] = useSearchParams();
+  // Only honour a ?cat= that matches a real category, so a bad URL falls back to "All".
+  const catParam = searchParams.get("cat");
+  const initialCat = catParam && categories.includes(catParam) ? catParam : "All";
+
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [sort, setSort] = useState("relevance");
-  const [activeCat, setActiveCat] = useState<string>("All");
-  const [search, setSearch] = useState("");
+  const [activeCat, setActiveCat] = useState<string>(initialCat);
+  const [search, setSearch] = useState(searchParams.get("q") ?? "");
   const [page, setPage] = useState(1);
   const perPage = 12;
 
+  // Re-sync when the header search fires again while already on /shop.
   useEffect(() => {
-    document.title = "Shop All Products — Cellexa Sri Lanka";
-    const desc = "Browse all smartphones, tablets, audio, gaming & accessories at Cellexa. LKR pricing, genuine products, warranty & islandwide delivery.";
+    const cat = searchParams.get("cat");
+    setSearch(searchParams.get("q") ?? "");
+    setActiveCat(cat && categories.includes(cat) ? cat : "All");
+    setPage(1);
+  }, [searchParams]);
+
+  useEffect(() => {
+    document.title = "Shop All Products — Nexzon Sri Lanka";
+    const desc = "Browse all smartphones, tablets, audio, gaming & accessories at Nexzon. LKR pricing, genuine products, warranty & islandwide delivery.";
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");

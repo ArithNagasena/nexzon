@@ -350,7 +350,7 @@ const Wishlist = () => {
                 <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
                   {items.length === 0
                     ? "Save phones, laptops, audio gear and accessories to keep track of price drops and stock alerts."
-                    : "Try a different filter or browse the latest arrivals at Cellexa."}
+                    : "Try a different filter or browse the latest arrivals at Nexzon."}
                 </p>
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
                   <Button asChild variant="brand" className="rounded-xl">
@@ -480,7 +480,7 @@ const Wishlist = () => {
                     You may also like
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Based on your saved items and browsing across Cellexa.
+                    Based on your saved items and browsing across Nexzon.
                   </p>
                 </div>
                 <Button asChild variant="ghost" size="sm" className="rounded-xl">
@@ -507,7 +507,7 @@ const Wishlist = () => {
                     Need help choosing?
                   </h4>
                   <p className="mt-0.5 text-sm text-muted-foreground">
-                    Our Cellexa product specialists can compare specs, check warranty, and arrange island-wide delivery from Colombo to Jaffna.
+                    Our Nexzon product specialists can compare specs, check warranty, and arrange island-wide delivery from Colombo to Jaffna.
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold text-foreground">
                     <span className="inline-flex items-center gap-1 rounded-full bg-card px-2.5 py-1">

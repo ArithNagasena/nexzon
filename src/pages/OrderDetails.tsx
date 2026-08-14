@@ -373,7 +373,7 @@ const OrderDetails = () => {
                 </div>
                 <div className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-primary/5 px-3 py-2 text-xs font-semibold text-primary">
                   <ShieldCheck className="h-3.5 w-3.5" />
-                  Cellexa Buyer Protection active
+                  Nexzon Buyer Protection active
                 </div>
               </div>
             </div>

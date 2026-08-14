@@ -20,7 +20,7 @@ const ChatbotWidget = () => {
     {
       id: 1,
       role: "bot",
-      text: "Hi! I'm Cellexa Assistant 👋 Ask me about products, orders, delivery, warranty or returns.",
+      text: "Hi! I'm Nexzon Assistant 👋 Ask me about products, orders, delivery, warranty or returns.",
     },
   ]);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -72,7 +72,7 @@ const ChatbotWidget = () => {
       {open && (
         <div
           role="dialog"
-          aria-label="Cellexa AI chat"
+          aria-label="Nexzon AI chat"
           className="fixed bottom-24 right-4 z-50 flex h-[70vh] max-h-[560px] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-lift animate-in fade-in slide-in-from-bottom-4 sm:right-6"
         >
           {/* Header */}
@@ -82,7 +82,7 @@ const ChatbotWidget = () => {
                 <Sparkles className="h-5 w-5" />
               </div>
               <div className="flex-1">
-                <h3 className="font-display text-base font-bold leading-tight">Cellexa Assistant</h3>
+                <h3 className="font-display text-base font-bold leading-tight">Nexzon Assistant</h3>
                 <div className="flex items-center gap-1.5 text-[11px] text-white/80">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   Online · Replies instantly

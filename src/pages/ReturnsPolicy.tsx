@@ -84,7 +84,7 @@ const REFUND_METHODS: {
   },
   {
     icon: Gift,
-    title: "Cellexa store credit",
+    title: "Nexzon store credit",
     time: "Instant on approval",
     desc: "Receive 5% bonus credit. Never expires, stackable with promotions.",
     tone: "emerald",

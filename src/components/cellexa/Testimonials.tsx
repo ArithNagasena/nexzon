@@ -4,12 +4,12 @@ const reviews = [
   {
     name: "Aisha Rahman",
     role: "Product Designer",
-    text: "Cellexa nailed the experience from browse to delivery. My new Pro 15 arrived next day perfectly packaged. The 0% installment made it effortless.",
+    text: "Nexzon nailed the experience from browse to delivery. My new Pro 15 arrived next day perfectly packaged. The 0% installment made it effortless.",
   },
   {
     name: "Daniel Perera",
     role: "Software Engineer",
-    text: "I've bought four devices through Cellexa now. Authentic stock, fair prices, and their support team actually knows the products. Hard to beat.",
+    text: "I've bought four devices through Nexzon now. Authentic stock, fair prices, and their support team actually knows the products. Hard to beat.",
   },
   {
     name: "Maya Fernando",

@@ -14,7 +14,7 @@ const trending: Product[] = [
   { id: "t1", name: "Apple AirPods Pro (2nd Gen) USB-C", brand: "Apple", price: 79900, oldPrice: 89000, rating: 4.9, reviews: 538, image: earbuds, badge: { label: "#1 Trending", tone: "promo" } },
   { id: "t2", name: "Anker 20W MagSafe Wireless Charger", brand: "Anker", price: 6900, oldPrice: 8900, rating: 4.7, reviews: 348, image: charger, badge: { label: "Hot Deal", tone: "promo" } },
   { id: "t3", name: "Sony DualSense PS5 Controller — Midnight Black", brand: "Sony", price: 24900, rating: 4.8, reviews: 274, image: controller },
-  { id: "t4", name: "Premium Leather Folio Case for iPhone 15", brand: "Cellexa", price: 7500, oldPrice: 9500, rating: 4.6, reviews: 142, image: productCase, badge: { label: "-21%", tone: "promo" } },
+  { id: "t4", name: "Premium Leather Folio Case for iPhone 15", brand: "Nexzon", price: 7500, oldPrice: 9500, rating: 4.6, reviews: 142, image: productCase, badge: { label: "-21%", tone: "promo" } },
   { id: "t5", name: "Samsung Galaxy Watch 7 LTE 44mm", brand: "Samsung", price: 89500, oldPrice: 99000, rating: 4.7, reviews: 156, image: watch },
   { id: "t6", name: "Sony WH-1000XM5 Headphones — Black", brand: "Sony", price: 119000, oldPrice: 135000, rating: 4.9, reviews: 421, image: headphones, badge: { label: "Best Seller", tone: "success" } },
   { id: "t7", name: "iPhone 15 Pro Max 256GB — Natural Titanium", brand: "Apple", price: 489000, rating: 4.9, reviews: 312, image: phone1 },

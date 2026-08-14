@@ -140,7 +140,7 @@ const INITIAL: Notif[] = [
     category: "alerts",
     title: "Price drop on Sony WH-1000XM5",
     message:
-      "Now LKR 112,000 — down LKR 8,000 from your wishlist price. Limited time at Cellexa.",
+      "Now LKR 112,000 — down LKR 8,000 from your wishlist price. Limited time at Nexzon.",
     time: "1 hour ago",
     read: false,
     cta: { label: "View Deal", to: "/product/p-sony-wh1000" },
@@ -177,7 +177,7 @@ const INITIAL: Notif[] = [
     category: "alerts",
     title: "iPhone 15 Pro Max 1TB is back in stock",
     message:
-      "Blue Titanium is available again at Cellexa. Order before 5 PM for next-day delivery in Colombo.",
+      "Blue Titanium is available again at Nexzon. Order before 5 PM for next-day delivery in Colombo.",
     time: "2 hours ago",
     read: false,
     cta: { label: "Buy Now", to: "/product/b1" },
@@ -225,7 +225,7 @@ const INITIAL: Notif[] = [
     id: "n-007",
     type: "loyalty",
     category: "promotions",
-    title: "You earned 240 Cellexa Reward points",
+    title: "You earned 240 Nexzon Reward points",
     message:
       "You're 260 points away from Platinum tier — unlock free express delivery and early sale access.",
     time: "5 days ago",
@@ -314,7 +314,7 @@ const Notifications = () => {
                   <span className="font-semibold text-primary">
                     {counts.unread} unread
                   </span>{" "}
-                  update{counts.unread !== 1 ? "s" : ""} from Cellexa.
+                  update{counts.unread !== 1 ? "s" : ""} from Nexzon.
                 </>
               ) : (
                 "You're all caught up — no unread notifications."
@@ -415,7 +415,7 @@ const Notifications = () => {
                 </h3>
                 <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
                   {items.length === 0
-                    ? "We'll let you know about order updates, price drops, restocks, and Cellexa promos here."
+                    ? "We'll let you know about order updates, price drops, restocks, and Nexzon promos here."
                     : "Switch tabs above to see other notifications."}
                 </p>
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
@@ -597,7 +597,7 @@ const Notifications = () => {
                     Notification preferences
                   </h4>
                   <p className="mt-0.5 text-sm text-muted-foreground">
-                    Choose how Cellexa reaches you — email, SMS, or in-app — for orders, deals, and stock alerts across Sri Lanka.
+                    Choose how Nexzon reaches you — email, SMS, or in-app — for orders, deals, and stock alerts across Sri Lanka.
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold text-foreground">
                     <span className="inline-flex items-center gap-1 rounded-full bg-card px-2.5 py-1">

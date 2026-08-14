@@ -38,7 +38,7 @@ const linkSections: { title: string; links: { label: string; to: string }[] }[] 
   {
     title: "Company",
     links: [
-      { label: "About Cellexa", to: "/" },
+      { label: "About Nexzon", to: "/" },
       { label: "Brands", to: "/brand/apple" },
       { label: "Stores", to: "/help" },
       { label: "Careers", to: "/" },
@@ -64,11 +64,17 @@ const Footer = () => (
       <div className="grid gap-8 lg:grid-cols-12">
         {/* Brand */}
         <div className="lg:col-span-4">
-          <Link to="/" className="flex items-center gap-1.5">
-            <span className="font-display text-2xl font-extrabold tracking-tight text-background">
-              Cell<span className="text-primary-glow">exa</span>
+          <Link
+            to="/"
+            className="inline-flex select-none flex-col items-stretch leading-none"
+            aria-label="Nexzon Electronics Shop — Home"
+          >
+            <span className="font-display text-[26px] font-extrabold uppercase tracking-[0.01em] text-background">
+              Ne<span className="text-primary-glow">x</span>zon
             </span>
-            <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-gradient-hero" />
+            <span className="mt-1 indent-[0.18em] text-center text-[7.5px] font-medium uppercase tracking-[0.36em] text-background/55">
+              Electronics Shop
+            </span>
           </Link>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-background/65">
             Sri Lanka's trusted online destination for genuine smartphones, tablets, audio, and tech
@@ -86,7 +92,7 @@ const Footer = () => (
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-4 w-4 shrink-0 text-primary-glow" />
-              <a href="mailto:hello@cellexa.lk" className="hover:text-background">hello@cellexa.lk</a>
+              <a href="mailto:hello@nexzon.lk" className="hover:text-background">hello@nexzon.lk</a>
             </li>
           </ul>
         </div>

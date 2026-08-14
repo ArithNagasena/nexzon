@@ -528,7 +528,7 @@ const Profile = () => {
                     Notification Preferences
                   </h3>
                   <p className="text-xs text-muted-foreground">
-                    Choose what you'd like to hear about from Cellexa.
+                    Choose what you'd like to hear about from Nexzon.
                   </p>
                 </div>
 
@@ -540,7 +540,7 @@ const Profile = () => {
                     { key: "priceDrops", icon: Bell, title: "Price drop alerts", text: "Notify me when wishlist items drop in price." },
                     { key: "backInStock", icon: Star, title: "Back-in-stock alerts", text: "When out-of-stock items are restocked." },
                     { key: "preorders", icon: Sparkles, title: "Pre-order & launch updates", text: "Be first to hear about new launches." },
-                    { key: "newsletter", icon: Mail, title: "Cellexa newsletter", text: "Monthly tech roundup and buying guides." },
+                    { key: "newsletter", icon: Mail, title: "Nexzon newsletter", text: "Monthly tech roundup and buying guides." },
                   ].map((p) => (
                     <div key={p.key} className="flex items-center justify-between gap-3 p-4">
                       <div className="flex items-start gap-3">
@@ -570,7 +570,7 @@ const Profile = () => {
                     </div>
                     <div>
                       <h3 className="font-display text-xl font-extrabold tracking-tight text-foreground">
-                        Your data is secure with Cellexa
+                        Your data is secure with Nexzon
                       </h3>
                       <p className="mt-1 max-w-lg text-sm text-muted-foreground">
                         Profile changes are encrypted in transit. Need help updating something?

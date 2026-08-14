@@ -61,7 +61,7 @@ interface Reward {
 const REWARDS: Reward[] = [
   {
     id: "r1",
-    title: "LKR 500 Cellexa Voucher",
+    title: "LKR 500 Nexzon Voucher",
     desc: "Apply on any order above LKR 5,000 at checkout.",
     cost: 500,
     Icon: Ticket,
@@ -131,11 +131,11 @@ const HISTORY: History[] = [
 ];
 
 const EARN_WAYS: { Icon: LucideIcon; title: string; desc: string; pts: string }[] = [
-  { Icon: ShoppingBag, title: "Shop & spend", desc: "Earn 1 point for every LKR 100 spent at Cellexa.", pts: "1 pt / 100 LKR" },
+  { Icon: ShoppingBag, title: "Shop & spend", desc: "Earn 1 point for every LKR 100 spent at Nexzon.", pts: "1 pt / 100 LKR" },
   { Icon: Star, title: "Write reviews", desc: "Share your honest product experience with photos.", pts: "+50 pts" },
   { Icon: Share2, title: "Refer a friend", desc: "They get LKR 1,000 off, you earn 300 pts.", pts: "+300 pts" },
   { Icon: Cake, title: "Birthday bonus", desc: "Auto-credited every year on your birthday.", pts: "+250 pts" },
-  { Icon: Calendar, title: "Anniversary reward", desc: "Celebrate each year as a Cellexa member.", pts: "+500 pts" },
+  { Icon: Calendar, title: "Anniversary reward", desc: "Celebrate each year as a Nexzon member.", pts: "+500 pts" },
   { Icon: Sparkles, title: "Complete profile", desc: "Add address, phone, and preferences.", pts: "+100 pts" },
 ];
 
@@ -199,7 +199,7 @@ const Rewards = () => {
               Loyalty &amp; Rewards
             </h1>
             <p className="mt-1 max-w-xl text-sm text-muted-foreground">
-              Earn Cellexa points on every purchase and unlock perks across Sri Lanka.
+              Earn Nexzon points on every purchase and unlock perks across Sri Lanka.
             </p>
           </div>
           <div className="lg:hidden">
@@ -252,7 +252,7 @@ const Rewards = () => {
                   </div>
                   <p className="mt-1 text-sm text-primary-foreground/85">
                     Worth approximately{" "}
-                    <span className="font-bold text-white">{fmt(POINTS * POINT_VALUE_LKR)}</span> in Cellexa vouchers.
+                    <span className="font-bold text-white">{fmt(POINTS * POINT_VALUE_LKR)}</span> in Nexzon vouchers.
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
@@ -317,7 +317,7 @@ const Rewards = () => {
                     <Crown className="h-3 w-3" /> Membership Tiers
                   </div>
                   <h3 className="mt-2 font-display text-lg font-extrabold text-foreground sm:text-xl">
-                    Your Cellexa journey
+                    Your Nexzon journey
                   </h3>
                 </div>
                 <span className="text-xs font-semibold text-muted-foreground">
@@ -373,7 +373,7 @@ const Rewards = () => {
                     Available rewards
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Trade your points for vouchers, perks, and Cellexa exclusives.
+                    Trade your points for vouchers, perks, and Nexzon exclusives.
                   </p>
                 </div>
               </div>
@@ -459,7 +459,7 @@ const Rewards = () => {
                     </div>
                     <h4 className="mt-3 font-bold text-foreground">No activity yet</h4>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      Place your first order to start earning Cellexa points.
+                      Place your first order to start earning Nexzon points.
                     </p>
                     <Button asChild variant="brand" size="sm" className="mt-3 rounded-xl">
                       <Link to="/shop">Start Shopping</Link>
@@ -570,7 +570,7 @@ const Rewards = () => {
                     Questions about rewards?
                   </h4>
                   <p className="mt-0.5 text-sm text-muted-foreground">
-                    Our Cellexa loyalty team can help with point credits, voucher issues, and tier upgrades across Sri Lanka.
+                    Our Nexzon loyalty team can help with point credits, voucher issues, and tier upgrades across Sri Lanka.
                   </p>
                 </div>
               </div>

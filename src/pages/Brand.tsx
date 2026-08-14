@@ -116,7 +116,7 @@ const samsungConfig: BrandConfig = {
   slug: "samsung",
   tagline: "Galaxy power for every moment.",
   description:
-    "Authorized Samsung products at Cellexa — flagship Galaxy smartphones, tablets, earbuds, wearables and accessories with full local warranty.",
+    "Authorized Samsung products at Nexzon — flagship Galaxy smartphones, tablets, earbuds, wearables and accessories with full local warranty.",
   productCount: samsungProducts.length,
   series: ["Galaxy S", "Galaxy Z", "Galaxy A", "Galaxy Tab", "Galaxy Watch", "Galaxy Buds", "Soundbar", "Power"],
   pillars: [
@@ -138,14 +138,14 @@ const fallbackBrand = (name: string, slug: string): BrandConfig => ({
   name,
   slug,
   tagline: `Discover the latest from ${name}.`,
-  description: `Genuine ${name} products available at Cellexa with islandwide delivery, 0% installments and full warranty.`,
+  description: `Genuine ${name} products available at Nexzon with islandwide delivery, 0% installments and full warranty.`,
   productCount: 0,
   series: [],
   pillars: samsungConfig.pillars,
   highlight: {
     eyebrow: `Top ${name} Picks`,
     title: `Editor's choice from ${name}.`,
-    desc: `Our most-loved ${name} products at Cellexa — all genuine and warranty-backed.`,
+    desc: `Our most-loved ${name} products at Nexzon — all genuine and warranty-backed.`,
   },
   catalog: samsungProducts.map((p) => ({ ...p, brand: name })),
 });
@@ -500,8 +500,8 @@ const Brand = () => {
   const perPage = 12;
 
   useEffect(() => {
-    document.title = `${brand.name} — Genuine Products in Sri Lanka | Cellexa`;
-    const desc = `Shop genuine ${brand.name} smartphones, tablets, audio, wearables & accessories at Cellexa. Warranty, 0% installments & islandwide delivery.`;
+    document.title = `${brand.name} — Genuine Products in Sri Lanka | Nexzon`;
+    const desc = `Shop genuine ${brand.name} smartphones, tablets, audio, wearables & accessories at Nexzon. Warranty, 0% installments & islandwide delivery.`;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");

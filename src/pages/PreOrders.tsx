@@ -247,7 +247,7 @@ const PreOrders = () => {
               <p className="mt-2 max-w-2xl text-sm text-muted-foreground md:text-base">
                 Reserve the latest smartphones, wearables and audio gear before
                 they hit the shelves. Pay a small deposit today and get
-                priority delivery on launch day — backed by Cellexa's full
+                priority delivery on launch day — backed by Nexzon's full
                 warranty and easy returns.
               </p>
             </div>
@@ -485,7 +485,7 @@ const PreOrders = () => {
                   },
                   {
                     q: "Can I cancel or change my pre-order?",
-                    a: "Absolutely. Manage your pre-orders from your Cellexa account — change variants, color or cancel until the dispatch confirmation email is sent.",
+                    a: "Absolutely. Manage your pre-orders from your Nexzon account — change variants, color or cancel until the dispatch confirmation email is sent.",
                   },
                   {
                     q: "How will I know when my device ships?",

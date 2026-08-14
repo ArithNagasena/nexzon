@@ -201,7 +201,7 @@ const REASONS = [
 const RESOLUTIONS = [
   { v: "refund", label: "Refund to original payment", Icon: Wallet },
   { v: "replacement", label: "Replacement of same item", Icon: RefreshCcw },
-  { v: "store-credit", label: "Cellexa store credit (+5% bonus)", Icon: Sparkles },
+  { v: "store-credit", label: "Nexzon store credit (+5% bonus)", Icon: Sparkles },
   { v: "repair", label: "Repair under warranty", Icon: ShieldCheck },
 ];
 

@@ -451,8 +451,8 @@ const Category = () => {
   const perPage = 12;
 
   useEffect(() => {
-    document.title = `${categoryName} — Best Prices in Sri Lanka | Cellexa`;
-    const desc = `Shop the latest ${categoryName.toLowerCase()} at Cellexa. Genuine products, warranty support, 0% installments and islandwide delivery.`;
+    document.title = `${categoryName} — Best Prices in Sri Lanka | Nexzon`;
+    const desc = `Shop the latest ${categoryName.toLowerCase()} at Nexzon. Genuine products, warranty support, 0% installments and islandwide delivery.`;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
@@ -561,7 +561,7 @@ const Category = () => {
             <div className="mb-3 flex items-end justify-between">
               <div>
                 <h2 className="font-display text-lg font-bold sm:text-xl">Shop by Brand</h2>
-                <p className="text-xs text-muted-foreground">Top {categoryName.toLowerCase()} brands available at Cellexa.</p>
+                <p className="text-xs text-muted-foreground">Top {categoryName.toLowerCase()} brands available at Nexzon.</p>
               </div>
               <Link to="/shop" className="hidden text-xs font-semibold text-primary hover:underline sm:inline">All brands →</Link>
             </div>

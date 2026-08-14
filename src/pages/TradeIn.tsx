@@ -371,7 +371,7 @@ const TradeIn = () => {
                 </div>
                 <div>
                   <h2 className="font-display text-lg font-bold text-foreground">
-                    How Cellexa Trade-In works
+                    How Nexzon Trade-In works
                   </h2>
                   <p className="text-xs text-muted-foreground">
                     Three quick steps to upgrade smarter
@@ -725,7 +725,7 @@ const TradeIn = () => {
                     Previous Requests
                   </h2>
                   <p className="text-xs text-muted-foreground">
-                    Your trade-in history with Cellexa
+                    Your trade-in history with Nexzon
                   </p>
                 </div>
                 <span className="rounded-full bg-secondary px-2.5 py-1 text-[11px] font-bold text-foreground">

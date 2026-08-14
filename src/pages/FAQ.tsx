@@ -47,7 +47,7 @@ const GROUPS: FaqGroup[] = [
     icon: ShoppingBag,
     items: [
       {
-        q: "How do I place an order on Cellexa?",
+        q: "How do I place an order on Nexzon?",
         a: "Browse the shop, add items to your cart, then proceed to checkout. You can pay securely online or choose Cash on Delivery for eligible items. Once placed, you'll get an instant order confirmation by email and SMS.",
       },
       {
@@ -101,7 +101,7 @@ const GROUPS: FaqGroup[] = [
         a: "Yes — 0% interest installments are available with selected banks (Commercial, Sampath, HNB, NDB, NTB) for 3, 6, and 12 months on eligible products.",
       },
       {
-        q: "Is it safe to save my card on Cellexa?",
+        q: "Is it safe to save my card on Nexzon?",
         a: "Saved cards are tokenized by our payment partner — we never see or store your full card number. You can remove saved cards anytime from My Account → Profile.",
       },
       {
@@ -116,8 +116,8 @@ const GROUPS: FaqGroup[] = [
     icon: ShieldCheck,
     items: [
       {
-        q: "What warranty do Cellexa products come with?",
-        a: "All products carry the official manufacturer warranty (typically 12–24 months). Cellexa Care, our optional extended plan, adds accidental damage protection.",
+        q: "What warranty do Nexzon products come with?",
+        a: "All products carry the official manufacturer warranty (typically 12–24 months). Nexzon Care, our optional extended plan, adds accidental damage protection.",
       },
       {
         q: "How do I file a warranty claim?",
@@ -129,7 +129,7 @@ const GROUPS: FaqGroup[] = [
       },
       {
         q: "Are physical/liquid damages covered?",
-        a: "Manufacturer warranty does not cover physical or liquid damage. Cellexa Care covers accidental damage with a small service fee per claim.",
+        a: "Manufacturer warranty does not cover physical or liquid damage. Nexzon Care covers accidental damage with a small service fee per claim.",
       },
     ],
   },
@@ -454,7 +454,7 @@ const FAQ = () => {
                   Couldn't find what you need?
                 </div>
                 <h2 className="mt-1 font-display text-xl font-bold sm:text-2xl">
-                  Talk to a Cellexa specialist
+                  Talk to a Nexzon specialist
                 </h2>
                 <p className="mt-1 text-sm opacity-90">
                   Our friendly support team is here 7 days a week, 9 AM – 9 PM.
@@ -476,7 +476,7 @@ const FAQ = () => {
                 <ContactCard
                   icon={Mail}
                   title="Email"
-                  desc="help@cellexa.lk"
+                  desc="help@nexzon.lk"
                   cta="Send email"
                 />
               </div>

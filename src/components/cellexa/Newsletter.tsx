@@ -17,7 +17,7 @@ const Newsletter = () => (
               Get LKR 1,000 off your first order.
             </h2>
             <p className="mt-3 max-w-md text-sm text-white/85 sm:text-base">
-              Subscribe to Cellexa Insider and get early access to launches, flash deals, and exclusive
+              Subscribe to Nexzon Insider and get early access to launches, flash deals, and exclusive
               discounts straight to your inbox.
             </p>
           </div>

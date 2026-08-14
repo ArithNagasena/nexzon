@@ -101,7 +101,7 @@ const STAGES: {
     key: "confirmed",
     title: "Confirmed",
     icon: CheckCircle2,
-    desc: "Order verified by Cellexa fulfillment center.",
+    desc: "Order verified by Nexzon fulfillment center.",
     time: "18 Apr · 12:08 PM",
   },
   {
@@ -469,7 +469,7 @@ const TrackOrder = () => {
                     Delivery issue or delay?
                   </h4>
                   <p className="mt-0.5 text-sm text-muted-foreground">
-                    Our Cellexa support team is available 8 AM – 9 PM daily across Sri Lanka. Get instant help with your shipment.
+                    Our Nexzon support team is available 8 AM – 9 PM daily across Sri Lanka. Get instant help with your shipment.
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold text-foreground">
                     <span className="inline-flex items-center gap-1 rounded-full bg-card px-2.5 py-1">

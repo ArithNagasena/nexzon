@@ -77,7 +77,7 @@ const PUBLISHED: Published[] = [
     img: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=240&q=80",
     rating: 5,
     title: "Worth every rupee",
-    text: "Camera quality is stunning, especially in low light around Galle Face at night. Battery comfortably lasts a full work day in Colombo with heavy use. Cellexa delivery was next-day and properly sealed.",
+    text: "Camera quality is stunning, especially in low light around Galle Face at night. Battery comfortably lasts a full work day in Colombo with heavy use. Nexzon delivery was next-day and properly sealed.",
     date: "12 Apr 2026",
     helpful: 24,
     photos: 3,
@@ -105,7 +105,7 @@ const PUBLISHED: Published[] = [
     img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=240&q=80",
     rating: 5,
     title: "Studio-grade audio",
-    text: "Best over-ear I've owned. Comfortable for long flights to Singapore and the Cellexa warranty support gave me peace of mind.",
+    text: "Best over-ear I've owned. Comfortable for long flights to Singapore and the Nexzon warranty support gave me peace of mind.",
     date: "21 Mar 2026",
     helpful: 38,
     photos: 2,
@@ -232,7 +232,7 @@ const Reviews = () => {
               My Reviews
             </h1>
             <p className="mt-1 max-w-xl text-sm text-muted-foreground">
-              Share your experience with Cellexa products and earn loyalty points on every published review.
+              Share your experience with Nexzon products and earn loyalty points on every published review.
             </p>
           </div>
           <div className="lg:hidden">
@@ -611,7 +611,7 @@ const Reviews = () => {
                     Review guidelines
                   </h4>
                   <p className="mt-0.5 text-sm text-muted-foreground">
-                    Honest reviews help fellow Cellexa shoppers across Sri Lanka. Each published review with a photo earns you bonus loyalty points.
+                    Honest reviews help fellow Nexzon shoppers across Sri Lanka. Each published review with a photo earns you bonus loyalty points.
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold text-foreground">
                     <span className="inline-flex items-center gap-1 rounded-full bg-card px-2.5 py-1">

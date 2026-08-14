@@ -153,7 +153,7 @@ const reviewsData = {
       rating: 5,
       date: "2 weeks ago",
       title: "Best iPhone Apple has ever made",
-      body: "Coming from the iPhone 15 Pro Max, the A19 Pro chip is blazing fast and the new aluminum unibody feels incredible. The 8x telephoto is a game changer for low-light shots. Cellexa delivered next day in Colombo with a sealed box.",
+      body: "Coming from the iPhone 15 Pro Max, the A19 Pro chip is blazing fast and the new aluminum unibody feels incredible. The 8x telephoto is a game changer for low-light shots. Nexzon delivered next day in Colombo with a sealed box.",
       verified: true,
     },
     {
@@ -171,7 +171,7 @@ const reviewsData = {
       rating: 4,
       date: "1 month ago",
       title: "Stunning camera, slightly heavy",
-      body: "48MP Fusion camera produces incredible detail and the new vapor chamber keeps it cool during 4K ProRes recording. Only gripe is the 233g weight — noticeable after long use. Installment plan from Cellexa made it affordable.",
+      body: "48MP Fusion camera produces incredible detail and the new vapor chamber keeps it cool during 4K ProRes recording. Only gripe is the 233g weight — noticeable after long use. Installment plan from Nexzon made it affordable.",
       verified: true,
     },
   ],
@@ -552,7 +552,7 @@ const ProductPage = () => {
             <div className="mb-6 flex items-end justify-between gap-4">
               <div>
                 <h2 className="font-display text-2xl font-extrabold md:text-3xl">Ratings & Reviews</h2>
-                <p className="text-sm text-muted-foreground">Verified feedback from Cellexa customers.</p>
+                <p className="text-sm text-muted-foreground">Verified feedback from Nexzon customers.</p>
               </div>
               <Button variant="outline" size="sm">Write a Review</Button>
             </div>
@@ -660,7 +660,7 @@ const ProductPage = () => {
             <div className="lg:col-span-8">
               <Accordion type="single" collapsible className="rounded-2xl border border-border/60 bg-card px-4">
                 {[
-                  { q: "Is this an authentic Samsung Sri Lanka product?", a: "Yes. Cellexa is an authorized reseller. You'll receive a sealed box with full 1-year manufacturer warranty serviced by Samsung Sri Lanka." },
+                  { q: "Is this an authentic Samsung Sri Lanka product?", a: "Yes. Nexzon is an authorized reseller. You'll receive a sealed box with full 1-year manufacturer warranty serviced by Samsung Sri Lanka." },
                   { q: "How long does delivery take?", a: "Colombo orders typically arrive next business day. Outstation orders take 1–3 business days. Free delivery for orders above LKR 50,000." },
                   { q: "Can I pay in installments?", a: "Yes — 0% installment plans up to 12 months are available with HNB, Sampath, Commercial Bank, BOC and NDB credit cards." },
                   { q: "Is cash on delivery available?", a: "COD is available islandwide on eligible items. A small handling fee may apply for orders above LKR 100,000." },

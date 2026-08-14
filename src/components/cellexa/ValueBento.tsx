@@ -8,7 +8,7 @@ const trustItems = [
   { icon: Wallet, title: "0% Installment Plans", desc: "Pay in 3, 6 or 12 months with leading Sri Lankan banks." },
   { icon: BadgeCheck, title: "100% Genuine Devices", desc: "Sourced directly from authorized distributors." },
   { icon: Lock, title: "Secure Local Checkout", desc: "Pay with card, COD, or LankaQR — fully encrypted." },
-  { icon: ShieldCheck, title: "Warranty-Backed", desc: "Local service centers + Cellexa care guarantee." },
+  { icon: ShieldCheck, title: "Warranty-Backed", desc: "Local service centers + Nexzon care guarantee." },
 ];
 
 const ValueBento = () => (

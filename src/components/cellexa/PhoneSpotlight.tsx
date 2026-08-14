@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import catHeroSmartphones from "@/assets/cat-hero-smartphones.jpg";
 import iphoneCameraDetail from "@/assets/iphone-17-pro-max-camera.png";
 import iphoneWhite from "@/assets/iphone-17-pro-max-white.png";
 import galaxyS26Ultra from "@/assets/galaxy-s26-ultra.png";
@@ -34,30 +33,33 @@ const PhoneSpotlight = () => (
         </Link>
       </div>
 
-      <div className="relative h-80 overflow-hidden rounded-3xl sm:h-[420px]">
-        <img
-          src={catHeroSmartphones}
-          alt="Smartphones lineup"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/30 to-transparent" />
-        <div className="relative z-10 flex h-full max-w-md flex-col justify-center gap-3 p-8 sm:p-12">
-          <span className="inline-block w-fit rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur">
-            New Arrival
-          </span>
-          <h3 className="font-display text-2xl font-extrabold text-white sm:text-3xl">
-            iPhone 17 Pro Max. Titanium. Unreal camera system.
-          </h3>
-          <p className="text-sm font-semibold text-white/90">From LKR 429,000 · or LKR 17,900/mo</p>
-          <Button asChild variant="hero" size="lg" className="mt-2 w-fit">
-            <Link to="/category/smartphones">Shop iPhone 17 Pro Max</Link>
-          </Button>
+      <div className="overflow-hidden rounded-3xl bg-gradient-deep">
+        <div className="grid items-center gap-8 p-8 sm:p-12 md:grid-cols-2">
+          <div className="flex flex-col gap-3">
+            <span className="inline-block w-fit rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur">
+              New Arrival
+            </span>
+            <h3 className="font-display text-2xl font-extrabold text-white sm:text-3xl">
+              iPhone 17 Pro Max. Titanium. Unreal camera system.
+            </h3>
+            <p className="text-sm font-semibold text-white/90">From LKR 429,000 · or LKR 17,900/mo</p>
+            <Button asChild variant="hero" size="lg" className="mt-2 w-fit">
+              <Link to="/product/iphone-17-pro-max">Shop iPhone 17 Pro Max</Link>
+            </Button>
+          </div>
+
+          {/* Product stage. The source PNGs have no alpha channel, so `mix-blend-multiply`
+              is what knocks out their white box. `isolate` confines that blend to this
+              light panel — over a photo or the violet gradient it smears instead. */}
+          <div className="isolate overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-secondary p-6">
+            <img
+              src={iphoneCameraDetail}
+              alt="iPhone 17 Pro Max camera system"
+              loading="lazy"
+              className="animate-float mx-auto h-56 w-auto object-contain mix-blend-multiply sm:h-72"
+            />
+          </div>
         </div>
-        <img
-          src={iphoneCameraDetail}
-          alt="iPhone 17 Pro Max camera detail"
-          className="animate-float pointer-events-none absolute bottom-0 right-4 h-64 object-contain mix-blend-multiply sm:right-10 sm:h-[26rem]"
-        />
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">

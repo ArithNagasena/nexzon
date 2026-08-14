@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Are your products genuine and warranty-backed?",
-    a: "Every product sold by Cellexa is 100% genuine and sourced from authorized distributors. All devices come with manufacturer warranty plus our Cellexa Care guarantee.",
+    a: "Every product sold by Nexzon is 100% genuine and sourced from authorized distributors. All devices come with manufacturer warranty plus our Nexzon Care guarantee.",
   },
   {
     q: "Can I pre-order upcoming smartphones?",

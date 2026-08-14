@@ -1,24 +1,26 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductCard, { type Product } from "./ProductCard";
-import phone1 from "@/assets/product-meta-quest-3.png";
-import phone2 from "@/assets/product-jbl-soundgear-frames.png";
-import phone3 from "@/assets/product-apple-watch-ultra-2.png";
-import headphones from "@/assets/product-airpods-max.png";
-import earbuds from "@/assets/product-ipad-air.png";
-import tablet from "@/assets/product-insta360-go3.png";
-import watch from "@/assets/product-g29-racing-wheel.png";
-import controller from "@/assets/product-nintendo-switch.png";
+import iphoneAir from "@/assets/iphone-air.png";
+import galaxyS26Plus from "@/assets/galaxy-s26-plus.png";
+import galaxyZFlip7 from "@/assets/galaxy-z-flip7.png";
+import pixel9ProFold from "@/assets/pixel-9-pro-fold.png";
+import iphone17e from "@/assets/iphone-17e.png";
+import oneplus13r from "@/assets/oneplus-13r.png";
+import airpodsPro3 from "@/assets/airpods-pro-3.png";
+import appleWatchS11 from "@/assets/apple-watch-s11.png";
 
+/* Names and pricing are kept in step with the same products on the Category,
+   Compare and Product pages so the store never quotes two prices for one item. */
 const newArrivals: Product[] = [
-  { id: "1", name: "Meta Quest 3", brand: "Meta", price: 194000, oldPrice: 219000, rating: 4.9, reviews: 312, image: phone1, badge: { label: "New", tone: "primary" } },
-  { id: "2", name: "JBL Soundgear Frames Audio Glasses", brand: "JBL", price: 49000, oldPrice: 58000, rating: 4.8, reviews: 248, image: phone2, badge: { label: "New", tone: "primary" } },
-  { id: "3", name: "AirPods Max", brand: "Apple", price: 175000, oldPrice: 199000, rating: 4.9, reviews: 421, image: headphones, badge: { label: "Hot", tone: "promo" } },
-  { id: "4", name: "Insta360 Go 3 Action Camera", brand: "Insta360", price: 140000, oldPrice: 165000, rating: 4.9, reviews: 87, image: tablet, badge: { label: "New", tone: "primary" } },
-  { id: "5", name: "G29 Driving Force Racing Wheel", brand: "Logitech", price: 115900, oldPrice: 129000, rating: 4.7, reviews: 156, image: watch },
-  { id: "6", name: "Apple iPad Air 5th Gen", brand: "Apple", price: 165000, oldPrice: 189000, rating: 4.9, reviews: 538, image: earbuds, badge: { label: "Best Seller", tone: "success" } },
-  { id: "7", name: "Apple Watch Ultra 2", brand: "Apple", price: 309000, oldPrice: 345000, rating: 4.6, reviews: 192, image: phone3, badge: { label: "-10%", tone: "promo" } },
-  { id: "8", name: "Nintendo Switch", brand: "Nintendo", price: 99000, oldPrice: 115000, rating: 4.8, reviews: 274, image: controller },
+  { id: "iphone-air-256gb", name: "Apple iPhone Air 256GB", brand: "Apple", price: 339900, oldPrice: 369000, rating: 4.8, reviews: 248, image: iphoneAir, badge: { label: "New", tone: "primary" } },
+  { id: "galaxy-s26-plus-512gb", name: "Samsung Galaxy S26+ 512GB", brand: "Samsung", price: 459900, oldPrice: 489900, rating: 4.8, reviews: 164, image: galaxyS26Plus, badge: { label: "New", tone: "primary" } },
+  { id: "galaxy-z-flip-7", name: "Samsung Galaxy Z Flip 7", brand: "Samsung", price: 399900, oldPrice: 449000, rating: 4.6, reviews: 192, image: galaxyZFlip7, badge: { label: "Trending", tone: "promo" } },
+  { id: "pixel-9-pro-fold", name: "Google Pixel 9 Pro Fold", brand: "Google", price: 549900, oldPrice: 599000, rating: 4.7, reviews: 184, image: pixel9ProFold, badge: { label: "Foldable", tone: "primary" } },
+  { id: "iphone-17e-128gb", name: "Apple iPhone 17e 128GB", brand: "Apple", price: 219900, oldPrice: 234900, rating: 4.7, reviews: 612, image: iphone17e, badge: { label: "New", tone: "success" } },
+  { id: "oneplus-13r-16gb", name: "OnePlus 13R 16GB", brand: "OnePlus", price: 204900, oldPrice: 229000, rating: 4.8, reviews: 88, image: oneplus13r, badge: { label: "Hot", tone: "promo" } },
+  { id: "airpods-pro-3", name: "AirPods Pro 3 with USB-C", brand: "Apple", price: 89900, oldPrice: 99900, rating: 4.9, reviews: 1820, image: airpodsPro3, badge: { label: "Bundle", tone: "primary" } },
+  { id: "apple-watch-series-11", name: "Apple Watch Series 11 — GPS", brand: "Apple", price: 195000, rating: 4.8, reviews: 612, image: appleWatchS11 },
 ];
 
 const NewArrivals = () => (

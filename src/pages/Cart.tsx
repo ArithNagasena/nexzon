@@ -115,7 +115,7 @@ const fmtLKR = (n: number) =>
 
 /* Coupon registry */
 const COUPONS: Record<string, { type: "pct" | "flat"; value: number; label: string }> = {
-  CELLEXA10: { type: "pct", value: 10, label: "10% off entire order" },
+  NEXZON10: { type: "pct", value: 10, label: "10% off entire order" },
   WELCOME5K: { type: "flat", value: 5000, label: "LKR 5,000 off" },
   GALAXY15: { type: "pct", value: 15, label: "15% off Galaxy items" },
 };
@@ -155,7 +155,7 @@ const CartPage = () => {
     if (!k) return;
     const c = COUPONS[k];
     if (!c) {
-      setCodeMsg({ tone: "err", text: "Invalid code. Try CELLEXA10 or WELCOME5K." });
+      setCodeMsg({ tone: "err", text: "Invalid code. Try NEXZON10 or WELCOME5K." });
       setApplied(null);
       return;
     }

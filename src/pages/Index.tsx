@@ -3,8 +3,10 @@ import Hero from "@/components/cellexa/Hero";
 import TrustStrip from "@/components/cellexa/TrustStrip";
 import PhoneSpotlight from "@/components/cellexa/PhoneSpotlight";
 import Categories from "@/components/cellexa/Categories";
+import FlashDeals from "@/components/cellexa/FlashDeals";
 import Brands from "@/components/cellexa/Brands";
 import NewArrivals from "@/components/cellexa/NewArrivals";
+import PromoBanners from "@/components/cellexa/PromoBanners";
 import BestSellers from "@/components/cellexa/BestSellers";
 import ValueBento from "@/components/cellexa/ValueBento";
 import Testimonials from "@/components/cellexa/Testimonials";
@@ -15,8 +17,8 @@ import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Cellexa — Smartphones, Audio & Tech Online in Sri Lanka";
-    const desc = "Shop the latest smartphones, tablets, audio & accessories in Sri Lanka. Genuine products, islandwide delivery, COD & 0% installments at Cellexa.";
+    document.title = "Nexzon — Smartphones, Audio & Tech Online in Sri Lanka";
+    const desc = "Shop the latest smartphones, tablets, audio & accessories in Sri Lanka. Genuine products, islandwide delivery, COD & 0% installments at Nexzon.";
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
@@ -42,8 +44,10 @@ const Index = () => {
         <TrustStrip />
         <PhoneSpotlight />
         <Categories />
+        <FlashDeals />
         <Brands />
         <NewArrivals />
+        <PromoBanners />
         <BestSellers />
         <ValueBento />
         <Testimonials />

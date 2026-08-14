@@ -1,10 +1,10 @@
-# Cellexa Homepage Project
+# Nexzon Homepage Project
 
-Design and build a fully responsive customer-facing ecommerce Home page for a Sri Lankan electronics retailer called Cellexa. The store sells smartphones, tablets, accessories, audio products, gaming products, and tech peripherals. The page must feel like a real active online electronics store, not a generic startup landing page or portfolio website.
+Design and build a fully responsive customer-facing ecommerce Home page for a Sri Lankan electronics retailer called Nexzon. The store sells smartphones, tablets, accessories, audio products, gaming products, and tech peripherals. The page must feel like a real active online electronics store, not a generic startup landing page or portfolio website.
 
 Use a light UI with a clean white / very light gray base, blue as the main brand color, and a few contrasting accent colors only in promotional areas. The overall look should be modern, polished, energetic, slightly flashy, and conversion-focused, while still feeling professional and trustworthy. Use rounded soft cards, subtle shadows, clean spacing, and light animations only such as gentle hover effects, smooth transitions, soft card lift, and subtle emphasis on banners and CTAs. Keep the visual style close to a polished modern multi-brand electronics store.
 
-Create a clean text-based logo for the brand name Cellexa in the header. No tagline for now.
+Create a clean text-based logo for the brand name Nexzon in the header — the wordmark set in heavy uppercase with the `X` in the brand accent color, above a letterspaced "Electronics Shop" subline.
 
 The homepage should include these sections in this general order:
 
@@ -12,7 +12,7 @@ Top promo bar above the header showing localized ecommerce trust and offer messa
 
 Sticky main header with:
 
-text logo “Cellexa”
+text logo “Nexzon”
 
 navigation links
 
@@ -129,7 +129,7 @@ Ensure desktop, tablet, and mobile responsiveness
 
 Mobile version should remain rich and polished, but simplified appropriately for smaller screens
 
-Use consistent design language that can be extended to the rest of the Cellexa website later
+Use consistent design language that can be extended to the rest of the Nexzon website later
 
 Keep animations subtle, not excessive
 

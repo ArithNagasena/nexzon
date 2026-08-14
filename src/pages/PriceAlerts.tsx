@@ -242,7 +242,7 @@ const PriceAlerts = () => {
                 Price Drop Alerts
               </h1>
               <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-                Track Cellexa products and get notified the moment prices fall in Sri Lanka.
+                Track Nexzon products and get notified the moment prices fall in Sri Lanka.
               </p>
             </div>
 
@@ -290,7 +290,7 @@ const PriceAlerts = () => {
                 </h3>
                 <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
                   {items.length === 0
-                    ? "Browse Cellexa, set a target price on any product, and we'll notify you the second it drops."
+                    ? "Browse Nexzon, set a target price on any product, and we'll notify you the second it drops."
                     : "Switch tabs above to see other alerts."}
                 </p>
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-2">

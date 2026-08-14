@@ -94,7 +94,7 @@ const fmtLKR = (n: number) =>
 
 /* Coupon registry */
 const COUPONS: Record<string, { type: "pct" | "flat"; value: number; label: string }> = {
-  CELLEXA10: { type: "pct", value: 10, label: "10% off entire order" },
+  NEXZON10: { type: "pct", value: 10, label: "10% off entire order" },
   WELCOME5K: { type: "flat", value: 5000, label: "LKR 5,000 off" },
   GALAXY15: { type: "pct", value: 15, label: "15% off Galaxy items" },
 };
@@ -206,7 +206,7 @@ const CheckoutPage = () => {
     if (!k) return;
     const c = COUPONS[k];
     if (!c) {
-      setCodeMsg({ tone: "err", text: "Invalid code. Try CELLEXA10 or WELCOME5K." });
+      setCodeMsg({ tone: "err", text: "Invalid code. Try NEXZON10 or WELCOME5K." });
       setApplied(null);
       return;
     }
@@ -404,7 +404,7 @@ const CheckoutPage = () => {
                     onSelect={() => setPayment("bank")}
                     icon={Building2}
                     title="Bank Transfer"
-                    sub="Direct deposit to Cellexa account"
+                    sub="Direct deposit to Nexzon account"
                     tags={["1–2 days verification"]}
                   />
                 </div>
@@ -596,7 +596,7 @@ const CheckoutPage = () => {
                         onChange={(e) => setTerms(e.target.checked)}
                         className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
                       />
-                      I agree to Cellexa's{" "}
+                      I agree to Nexzon's{" "}
                       <Link to="/" className="text-primary hover:underline">Terms</Link>{" "}
                       and{" "}
                       <Link to="/" className="text-primary hover:underline">Privacy Policy</Link>.

@@ -171,7 +171,7 @@ const Account = () => {
                 My Account
               </h1>
               <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-                Manage orders, wishlist, rewards, and your Cellexa profile in one place.
+                Manage orders, wishlist, rewards, and your Nexzon profile in one place.
               </p>
             </div>
 
@@ -411,7 +411,7 @@ const Account = () => {
                       <div className="mt-3 font-display text-4xl font-extrabold tracking-tight">
                         2,480
                       </div>
-                      <div className="text-xs text-primary-foreground/85">Cellexa Points</div>
+                      <div className="text-xs text-primary-foreground/85">Nexzon Points</div>
 
                       <div className="mt-5">
                         <div className="flex items-center justify-between text-[11px] font-semibold">

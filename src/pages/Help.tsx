@@ -65,7 +65,7 @@ const CATEGORIES: Category[] = [
     id: "warranty",
     label: "Warranty",
     icon: ShieldCheck,
-    desc: "Coverage, claims and Cellexa Care",
+    desc: "Coverage, claims and Nexzon Care",
     to: "/account/warranty",
     count: 8,
   },
@@ -343,7 +343,7 @@ const Help = () => {
             <ContactCard
               icon={Mail}
               title="Email Support"
-              desc="help@cellexa.lk"
+              desc="help@nexzon.lk"
               meta="Reply within 12 hours"
               metaTone="muted"
               cta="Send email"

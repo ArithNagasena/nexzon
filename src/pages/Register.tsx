@@ -194,7 +194,7 @@ const Register = () => {
                     htmlFor="terms"
                     className="cursor-pointer text-xs font-medium leading-snug text-muted-foreground"
                   >
-                    I agree to Cellexa's{" "}
+                    I agree to Nexzon's{" "}
                     <Link to="/register" className="font-semibold text-primary hover:underline">
                       Terms
                     </Link>{" "}
