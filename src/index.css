@@ -4,65 +4,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Nexzon design system — premium violet-tech, premium ecommerce */
+/* Nexzon design system — trust blue + deal orange, premium ecommerce.
+   Contrast ratios in the comments are white text on that colour, measured
+   against WCAG 2.1: 4.5:1 for normal text, 3:1 for large text and UI. */
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 255 25% 12%;
+    --foreground: 222 30% 12%;
 
-    --surface: 255 40% 98%;
-    --surface-2: 258 32% 95%;
+    --surface: 214 40% 98%;
+    --surface-2: 214 32% 95%;
 
     --card: 0 0% 100%;
-    --card-foreground: 255 25% 12%;
+    --card-foreground: 222 30% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 255 25% 12%;
+    --popover-foreground: 222 30% 12%;
 
-    /* Brand: vivid violet */
-    --primary: 262 83% 58%;
+    /* Brand: electronics-retail trust blue, matching the logo wordmark */
+    --primary: 221 83% 53%;     /* 5.17:1 — AA for button and link text */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 271 91% 70%;
-    --primary-deep: 259 72% 36%;
+    --primary-glow: 212 90% 56%; /* 3.54:1 — light end of gradient-hero */
+    --primary-deep: 224 76% 38%; /* 8.99:1 */
 
-    --secondary: 258 32% 95%;
-    --secondary-foreground: 255 25% 12%;
+    --secondary: 214 32% 95%;
+    --secondary-foreground: 222 30% 12%;
 
-    --muted: 258 32% 95%;
-    --muted-foreground: 258 16% 42%;
+    --muted: 214 32% 95%;
+    --muted-foreground: 215 18% 42%;  /* 5.68:1 on white */
 
-    --accent: 271 89% 95%;
-    --accent-foreground: 262 83% 35%;
+    --accent: 214 95% 94%;
+    --accent-foreground: 221 83% 38%; /* 7.26:1 on --accent */
 
-    /* Promo accents */
-    --promo: 330 85% 58%;       /* vivid magenta-pink for sale */
+    /* Status + promo. Sale orange sits well clear of destructive red so a
+       discount badge never reads as an error. */
+    --promo: 24 92% 39%;        /* 4.78:1 — AA for the 10-11px sale badges */
     --promo-foreground: 0 0% 100%;
-    --success: 152 65% 42%;
+    --success: 152 65% 32%;     /* 4.52:1 */
     --success-foreground: 0 0% 100%;
-    --warning: 38 95% 55%;
-    --warning-foreground: 255 25% 12%;
+    --warning: 38 95% 55%;      /* pairs with dark text, not white */
+    --warning-foreground: 222 30% 12%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 74% 45%;   /* 5.94:1 */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 258 28% 90%;
-    --input: 258 28% 90%;
-    --ring: 262 83% 58%;
+    --border: 214 28% 90%;
+    --input: 214 28% 90%;
+    --ring: 221 83% 53%;
 
     --radius: 0.875rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(271 91% 70%) 100%);
-    --gradient-promo: linear-gradient(135deg, hsl(330 85% 58%) 0%, hsl(310 85% 62%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(255 40% 98%) 0%, hsl(258 32% 95%) 100%);
-    --gradient-brand-soft: linear-gradient(135deg, hsl(262 83% 97%) 0%, hsl(271 91% 95%) 100%);
-    --gradient-deep: linear-gradient(135deg, hsl(259 72% 36%) 0%, hsl(262 83% 58%) 60%, hsl(271 91% 70%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(212 90% 56%) 100%);
+    --gradient-promo: linear-gradient(135deg, hsl(24 92% 39%) 0%, hsl(32 92% 45%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(214 40% 98%) 0%, hsl(214 32% 95%) 100%);
+    --gradient-brand-soft: linear-gradient(135deg, hsl(214 95% 97%) 0%, hsl(212 90% 95%) 100%);
+    --gradient-deep: linear-gradient(135deg, hsl(224 76% 32%) 0%, hsl(221 83% 50%) 60%, hsl(212 90% 60%) 100%);
 
     /* Shadows */
-    --shadow-card: 0 1px 2px hsl(258 30% 30% / 0.04), 0 4px 16px hsl(258 30% 30% / 0.06);
-    --shadow-lift: 0 10px 30px -8px hsl(262 83% 58% / 0.18), 0 4px 12px hsl(258 30% 30% / 0.06);
-    --shadow-glow: 0 20px 60px -10px hsl(262 83% 58% / 0.45);
-    --shadow-soft: 0 1px 3px hsl(258 30% 30% / 0.05);
+    --shadow-card: 0 1px 2px hsl(215 30% 30% / 0.04), 0 4px 16px hsl(215 30% 30% / 0.06);
+    --shadow-lift: 0 10px 30px -8px hsl(221 83% 53% / 0.18), 0 4px 12px hsl(215 30% 30% / 0.06);
+    --shadow-glow: 0 20px 60px -10px hsl(221 83% 53% / 0.45);
+    --shadow-soft: 0 1px 3px hsl(215 30% 30% / 0.05);
 
     --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -73,7 +76,7 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 262 83% 58%;
+    --sidebar-ring: 221 83% 53%;
   }
 }
 

@@ -1,6 +1,5 @@
 import Header from "@/components/cellexa/Header";
 import Hero from "@/components/cellexa/Hero";
-import TrustStrip from "@/components/cellexa/TrustStrip";
 import PhoneSpotlight from "@/components/cellexa/PhoneSpotlight";
 import Categories from "@/components/cellexa/Categories";
 import FlashDeals from "@/components/cellexa/FlashDeals";
@@ -41,7 +40,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <TrustStrip />
         <PhoneSpotlight />
         <Categories />
         <FlashDeals />
