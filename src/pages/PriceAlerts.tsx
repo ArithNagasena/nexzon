@@ -1,439 +1,175 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  ChevronRight,
-  Menu,
-  TrendingDown,
-  TrendingUp,
-  Bell,
-  BellOff,
-  Trash2,
-  Eye,
-  ShoppingCart,
-  CheckCircle2,
-  AlertCircle,
-  Clock,
-  PackageX,
-  Sparkles,
-  HelpCircle,
-  MessageCircle,
-  ShieldCheck,
-  Plus,
-  Target,
-  type LucideIcon,
-} from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import {
-  AccountSidebarNav,
-  AccountProfileCard,
-} from "@/components/cellexa/AccountSidebar";
+import { TrendingDown, Bell, BellOff, Trash2, Plus, Check, Target } from "lucide-react";
+import AccountLayout from "@/components/cellexa/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { toast } from "sonner";
+import { allProducts, fmtLKR, getProduct } from "@/data/catalog";
+import { cn } from "@/lib/utils";
 
-type Status = "active" | "triggered" | "expired";
-type Stock = "in" | "low" | "out";
-
-interface Alert {
+type Alert = {
   id: string;
-  brand: string;
-  name: string;
-  variant: string;
-  img: string;
-  current: number;
-  previous: number;
+  productId: string;
   target: number;
-  status: Status;
-  stock: Stock;
-  enabled: boolean;
-  setOn: string;
-  triggeredOn?: string;
-}
+  active: boolean;
+  createdAt: string;
+  hit?: { on: string; price: number };
+};
 
-const INITIAL: Alert[] = [
-  {
-    id: "a1",
-    brand: "Sony",
-    name: "WH-1000XM5 Wireless Headphones",
-    variant: "Midnight Black",
-    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=480&q=80",
-    current: 112000,
-    previous: 124000,
-    target: 115000,
-    status: "triggered",
-    stock: "in",
-    enabled: true,
-    setOn: "Set 02 Apr",
-    triggeredOn: "Triggered 1 hour ago",
-  },
-  {
-    id: "a2",
-    brand: "Apple",
-    name: "iPhone 15 Pro Max 256GB",
-    variant: "Natural Titanium",
-    img: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=480&q=80",
-    current: 365000,
-    previous: 389000,
-    target: 350000,
-    status: "active",
-    stock: "in",
-    enabled: true,
-    setOn: "Set 12 Apr",
-  },
-  {
-    id: "a3",
-    brand: "Samsung",
-    name: "Galaxy S24 Ultra 512GB",
-    variant: "Titanium Black",
-    img: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=480&q=80",
-    current: 332000,
-    previous: 332000,
-    target: 310000,
-    status: "active",
-    stock: "low",
-    enabled: true,
-    setOn: "Set 09 Apr",
-  },
-  {
-    id: "a4",
-    brand: "Apple",
-    name: 'iPad Air 11" M2 128GB Wi-Fi',
-    variant: "Space Gray",
-    img: "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=480&q=80",
-    current: 218000,
-    previous: 225000,
-    target: 200000,
-    status: "active",
-    stock: "in",
-    enabled: false,
-    setOn: "Set 28 Mar",
-  },
-  {
-    id: "a5",
-    brand: "Google",
-    name: "Pixel 8 Pro 256GB",
-    variant: "Bay Blue",
-    img: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=480&q=80",
-    current: 198000,
-    previous: 215000,
-    target: 195000,
-    status: "triggered",
-    stock: "out",
-    enabled: false,
-    setOn: "Set 22 Mar",
-    triggeredOn: "Triggered 2 days ago",
-  },
-  {
-    id: "a6",
-    brand: "OnePlus",
-    name: "OnePlus 12R 5G 256GB",
-    variant: "Cool Blue",
-    img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=480&q=80",
-    current: 142000,
-    previous: 158000,
-    target: 130000,
-    status: "expired",
-    stock: "in",
-    enabled: false,
-    setOn: "Set 04 Feb",
-  },
+const START: Alert[] = [
+  { id: "a1", productId: "pixel-10-pro", target: 350000, active: true, createdAt: "2 Aug 2026", hit: { on: "14 Aug 2026", price: 349900 } },
+  { id: "a2", productId: "galaxy-s26-ultra", target: 480000, active: true, createdAt: "28 Jul 2026" },
+  { id: "a3", productId: "honor-magic-v5", target: 500000, active: true, createdAt: "19 Jul 2026" },
+  { id: "a4", productId: "iphone-15-pro-max", target: 440000, active: false, createdAt: "3 Jun 2026" },
 ];
 
-const fmt = (n: number) =>
-  `LKR ${n.toLocaleString("en-LK", { minimumFractionDigits: 0 })}`;
-
-const stockMeta: Record<Stock, { label: string; cls: string; Icon: LucideIcon }> = {
-  in: { label: "In Stock", cls: "bg-success/15 text-success", Icon: CheckCircle2 },
-  low: { label: "Low Stock", cls: "bg-warning/20 text-warning", Icon: AlertCircle },
-  out: { label: "Out of Stock", cls: "bg-destructive/15 text-destructive", Icon: PackageX },
-};
-
-const statusMeta: Record<
-  Status,
-  { label: string; cls: string; Icon: LucideIcon; tone: string }
-> = {
-  active: {
-    label: "Active",
-    cls: "bg-primary/12 text-primary",
-    Icon: Bell,
-    tone: "border-primary/20",
-  },
-  triggered: {
-    label: "Triggered",
-    cls: "bg-success/15 text-success",
-    Icon: TrendingDown,
-    tone: "border-success/30",
-  },
-  expired: {
-    label: "Expired",
-    cls: "bg-muted text-muted-foreground",
-    Icon: Clock,
-    tone: "border-border",
-  },
-};
-
 const PriceAlerts = () => {
-  const [items, setItems] = useState<Alert[]>(INITIAL);
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [filter, setFilter] = useState<"all" | Status>("all");
+  const [alerts, setAlerts] = useState<Alert[]>(START);
+  const [adding, setAdding] = useState(false);
+  const [pick, setPick] = useState(allProducts[3].id);
+  const [target, setTarget] = useState("");
 
-  const counts = useMemo(
-    () => ({
-      all: items.length,
-      active: items.filter((i) => i.status === "active").length,
-      triggered: items.filter((i) => i.status === "triggered").length,
-      expired: items.filter((i) => i.status === "expired").length,
-    }),
-    [items],
-  );
+  useEffect(() => {
+    document.title = "Price alerts — Nexzon";
+  }, []);
 
-  const totalSavings = useMemo(
-    () =>
-      items
-        .filter((i) => i.status === "triggered")
-        .reduce((s, i) => s + Math.max(i.previous - i.current, 0), 0),
-    [items],
-  );
+  const active = alerts.filter((a) => a.active).length;
+  const triggered = alerts.filter((a) => a.hit).length;
 
-  const filtered = useMemo(
-    () => (filter === "all" ? items : items.filter((i) => i.status === filter)),
-    [items, filter],
-  );
+  const toggle = (id: string) =>
+    setAlerts((prev) => prev.map((a) => (a.id === id ? { ...a, active: !a.active } : a)));
+  const remove = (id: string) => setAlerts((prev) => prev.filter((a) => a.id !== id));
 
-  const toggle = (id: string) => {
-    setItems((prev) =>
-      prev.map((a) => (a.id === id ? { ...a, enabled: !a.enabled } : a)),
-    );
-  };
-  const remove = (id: string) => {
-    setItems((prev) => prev.filter((a) => a.id !== id));
-    toast.success("Alert removed");
-  };
-  const clearTriggered = () => {
-    setItems((prev) => prev.filter((a) => a.status !== "triggered"));
-    toast.success("Triggered alerts cleared");
-  };
-  const addToCart = (a: Alert) => {
-    if (a.stock === "out") return toast.error("Out of stock");
-    toast.success(`${a.name} added to cart`);
+  const add = (e: React.FormEvent) => {
+    e.preventDefault();
+    const n = Number(target.replace(/\D/g, ""));
+    if (!n) return;
+    setAlerts((prev) => [
+      { id: `a${Date.now()}`, productId: pick, target: n, active: true, createdAt: "Just now" },
+      ...prev,
+    ]);
+    setAdding(false);
+    setTarget("");
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-
-      <main className="bg-gradient-to-b from-background to-secondary/40 pb-16">
-        <div className="container-page pt-6 sm:pt-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Link to="/" className="hover:text-primary">Home</Link>
-            <ChevronRight className="h-3.5 w-3.5" />
-            <Link to="/account" className="hover:text-primary">My Account</Link>
-            <ChevronRight className="h-3.5 w-3.5" />
-            <span className="font-semibold text-foreground">Price Drop Alerts</span>
-          </nav>
-
-          {/* Page header */}
-          <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h1 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-                Price Drop Alerts
-              </h1>
-              <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-                Track Nexzon products and get notified the moment prices fall in Sri Lanka.
-              </p>
+    <AccountLayout
+      title="Price alerts"
+      subtitle={`${active} active · ${triggered} hit your target`}
+      actions={
+        <Button onClick={() => setAdding((v) => !v)} variant={adding ? "outline" : "default"}>
+          {adding ? "Cancel" : <><Plus className="h-4 w-4" /> New alert</>}
+        </Button>
+      }
+    >
+      {adding && (
+        <form onSubmit={add} className="rounded-2xl border border-primary/30 bg-card p-6 shadow-card">
+          <h2 className="font-display text-base font-bold">Watch a product</h2>
+          <div className="mt-4 grid gap-4 [&>*]:min-w-0 sm:grid-cols-2">
+            <div className="space-y-1.5">
+              <label htmlFor="pa-product" className="text-xs font-semibold text-foreground">Product</label>
+              <select
+                id="pa-product"
+                value={pick}
+                onChange={(e) => setPick(e.target.value)}
+                className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-primary"
+              >
+                {allProducts.map((p) => (
+                  <option key={p.id} value={p.id}>{p.name} — {fmtLKR(p.price)}</option>
+                ))}
+              </select>
             </div>
-
-            <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
-              <SheetTrigger asChild>
-                <Button variant="outline" className="lg:hidden">
-                  <Menu className="h-4 w-4" />
-                  Account Menu
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-80 overflow-y-auto p-6">
-                <div className="mb-6">
-                  <p className="font-display text-lg font-extrabold">Account</p>
-                </div>
-                <AccountSidebarNav
-                  onNavigate={() => setMobileNavOpen(false)}
-                  activePath="/account/price-alerts"
-                />
-              </SheetContent>
-            </Sheet>
+            <div className="space-y-1.5">
+              <label htmlFor="pa-target" className="text-xs font-semibold text-foreground">Alert me below</label>
+              <input
+                id="pa-target"
+                required
+                inputMode="numeric"
+                value={target}
+                onChange={(e) => setTarget(e.target.value)}
+                placeholder="e.g. 320000"
+                className="h-11 w-full rounded-xl border border-border bg-surface px-3 text-sm outline-none focus:border-primary focus:bg-background"
+              />
+            </div>
           </div>
+          <Button type="submit" className="mt-4">Create alert</Button>
+        </form>
+      )}
 
-          <div className="mt-6 grid gap-6 lg:mt-8 lg:grid-cols-12 lg:gap-8">
-            {/* Sidebar */}
-            <aside className="hidden lg:col-span-3 lg:block">
-              <div className="sticky top-24 space-y-4">
-                <AccountProfileCard />
-                <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-card">
-                  <AccountSidebarNav activePath="/account/price-alerts" />
-                </div>
-              </div>
-            </aside>
+      {alerts.length === 0 ? (
+        <div className="mt-5 rounded-2xl border border-dashed border-border bg-card p-12 text-center">
+          <BellOff className="mx-auto h-10 w-10 text-muted-foreground/60" />
+          <h2 className="mt-3 font-display text-lg font-bold">No price alerts yet</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Tell us your price and we'll email the moment a product drops to it.
+          </p>
+        </div>
+      ) : (
+        <ul className={cn("space-y-3", adding && "mt-5")}>
+          {alerts.map((a) => {
+            const p = getProduct(a.productId);
+            if (!p) return null;
+            const distance = p.price - a.target;
+            const pct = Math.min(100, Math.max(0, Math.round((a.target / p.price) * 100)));
+            return (
+              <li key={a.id} className={cn("rounded-2xl border bg-card p-5 shadow-soft", a.hit ? "border-success/30" : "border-border")}>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                  <Link to={`/product/${p.id}`} className="isolate grid h-20 w-20 shrink-0 place-items-center self-center rounded-xl bg-white">
+                    <img src={p.image} alt="" className="h-16 w-auto object-contain mix-blend-multiply" />
+                  </Link>
 
-            {/* Main */}
-            <section className="space-y-6 lg:col-span-9">
-
-            {/* List or empty */}
-            {filtered.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-border bg-card p-10 text-center shadow-card sm:p-14">
-                <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-brand-soft text-primary">
-                  <TrendingDown className="h-8 w-8" />
-                </div>
-                <h3 className="mt-4 font-display text-xl font-extrabold text-foreground">
-                  {items.length === 0 ? "No price alerts yet" : "Nothing in this view"}
-                </h3>
-                <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-                  {items.length === 0
-                    ? "Browse Nexzon, set a target price on any product, and we'll notify you the second it drops."
-                    : "Switch tabs above to see other alerts."}
-                </p>
-                <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-                  <Button asChild variant="brand" className="rounded-xl">
-                    <Link to="/shop">
-                      <Plus className="mr-1.5 h-4 w-4" /> Browse &amp; Track
+                  <div className="min-w-0 flex-1">
+                    <Link to={`/product/${p.id}`} className="block font-display text-sm font-bold text-foreground hover:text-primary">
+                      {p.name}
                     </Link>
-                  </Button>
-                  <Button asChild variant="outline" className="rounded-xl">
-                    <Link to="/account/wishlist">View Wishlist</Link>
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <ul className="space-y-4">
-                {filtered.map((a) => {
-                  const drop = a.previous - a.current;
-                  const dropPct = a.previous
-                    ? Math.round((drop / a.previous) * 100)
-                    : 0;
-                  const dropped = drop > 0;
-                  const targetMet = a.current <= a.target;
-                  const sm = stockMeta[a.stock];
-                  const stm = statusMeta[a.status];
-                  const distanceToTarget = a.current - a.target;
-                  const targetProgress = Math.min(
-                    100,
-                    Math.max(
-                      0,
-                      ((a.previous - a.current) / Math.max(a.previous - a.target, 1)) * 100,
-                    ),
-                  );
+                    <p className="mt-0.5 text-xs text-muted-foreground">Watching since {a.createdAt}</p>
 
-                  return (
-                    <li
-                      key={a.id}
-                      className={`relative overflow-hidden rounded-2xl border bg-card shadow-card transition hover:-translate-y-0.5 hover:shadow-lift ${stm.tone}`}
-                    >
-                      {a.status === "triggered" && (
-                        <div className="absolute right-0 top-0 rounded-bl-2xl bg-gradient-to-l from-success to-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-soft">
-                          🎉 Price drop hit
+                    {a.hit ? (
+                      <p className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-success/10 px-2.5 py-1 text-[11px] font-bold text-success">
+                        <Check className="h-3.5 w-3.5" /> Hit {fmtLKR(a.hit.price)} on {a.hit.on}
+                      </p>
+                    ) : (
+                      <div className="mt-2.5 max-w-xs">
+                        <div className="flex justify-between text-[11px] text-muted-foreground">
+                          <span>Now {fmtLKR(p.price)}</span>
+                          <span className="inline-flex items-center gap-1"><Target className="h-3 w-3" /> {fmtLKR(a.target)}</span>
                         </div>
-                      )}
-
-                      <div className="flex flex-col gap-4 p-4 sm:flex-row sm:p-5">
-                        {/* Image */}
-                        <Link
-                          to={`/product/${a.id}`}
-                          className="relative block h-28 w-full shrink-0 overflow-hidden rounded-xl bg-secondary sm:h-28 sm:w-28"
-                        >
-                          <img
-                            src={a.img}
-                            alt={a.name}
-                            loading="lazy"
-                            className="h-full w-full object-cover"
-                          />
-                          {dropped && (
-                            <span className="absolute left-2 top-2 rounded-md bg-foreground px-1.5 py-0.5 text-[10px] font-bold text-background">
-                              -{dropPct}%
-                            </span>
-                          )}
-                        </Link>
-
-                        {/* Body */}
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-1.5">
-                            <span
-                              className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${sm.cls}`}
-                            >
-                              <sm.Icon className="h-3 w-3" /> {sm.label}
-                            </span>
-                          </div>
-
-                          <div className="mt-1.5 text-[10px] font-bold uppercase tracking-wider text-primary">
-                            {a.brand}
-                          </div>
-                          <Link
-                            to={`/product/${a.id}`}
-                            className="line-clamp-2 text-sm font-bold text-foreground hover:text-primary sm:text-base"
-                          >
-                            {a.name}
-                          </Link>
-                          <div className="truncate text-xs text-muted-foreground">{a.variant}</div>
-
-                          {/* Price block */}
-                          <div className="mt-3 flex flex-wrap items-end gap-3">
-                            <div>
-                              <div className="font-display text-xl font-extrabold text-foreground sm:text-2xl">
-                                {fmt(a.current)}
-                              </div>
-                              {dropped && (
-                                <div className="text-xs text-muted-foreground line-through">
-                                  was {fmt(a.previous)}
-                                </div>
-                              )}
-                            </div>
-                            {dropped && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-success/15 px-2 py-1 text-xs font-bold text-success">
-                                <TrendingDown className="h-3.5 w-3.5" />
-                                Save {fmt(drop)}
-                              </span>
-                            )}
-                            {!dropped && a.status === "active" && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-secondary px-2 py-1 text-xs font-bold text-muted-foreground">
-                                <TrendingUp className="h-3.5 w-3.5" /> Holding price
-                              </span>
-                            )}
-                          </div>
-
-
-
-                          {/* Footer actions */}
-                          <div className="mt-4 flex flex-wrap items-center gap-2">
-                            <Button
-                              size="sm"
-                              variant="brand"
-                              className="h-9 rounded-xl"
-                              disabled={a.stock === "out"}
-                              onClick={() => addToCart(a)}
-                            >
-                              <ShoppingCart className="mr-1.5 h-4 w-4" /> Add to Cart
-                            </Button>
-                            <Button asChild size="sm" variant="outline" className="h-9 rounded-xl">
-                              <Link to={`/product/${a.id}`}>
-                                <Eye className="mr-1.5 h-4 w-4" /> View Product
-                              </Link>
-                            </Button>
-                          </div>
+                        <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-muted">
+                          <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
                         </div>
+                        <p className="mt-1 text-[11px] text-muted-foreground">
+                          {fmtLKR(distance)} above your target
+                        </p>
                       </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+                    )}
+                  </div>
 
-          </section>
-        </div>
-        </div>
-      </main>
+                  <div className="flex shrink-0 items-center gap-3 sm:flex-col sm:items-end">
+                    <label className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+                      <Switch checked={a.active} onCheckedChange={() => toggle(a.id)} aria-label={`Alert for ${p.name}`} />
+                      {a.active ? <Bell className="h-3.5 w-3.5 text-primary" /> : <BellOff className="h-3.5 w-3.5" />}
+                    </label>
+                    <button
+                      onClick={() => remove(a.id)}
+                      aria-label={`Delete alert for ${p.name}`}
+                      className="text-muted-foreground transition-colors hover:text-destructive"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
 
-      <Footer />
-    </div>
+      <p className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-card p-4 text-xs leading-relaxed text-muted-foreground">
+        <TrendingDown className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+        We check prices hourly. Alerts arrive by email, and by SMS if you've enabled it in{" "}
+        <Link to="/account/profile" className="font-semibold text-primary hover:underline">preferences</Link>.
+      </p>
+    </AccountLayout>
   );
 };
 

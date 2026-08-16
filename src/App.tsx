@@ -12,6 +12,9 @@ import Cart from "./pages/Cart.tsx";
 import Checkout from "./pages/Checkout.tsx";
 import OrderSuccess from "./pages/OrderSuccess.tsx";
 import Login from "./pages/Login.tsx";
+import VerifyOtp from "./pages/VerifyOtp.tsx";
+import VerifyDevice from "./pages/VerifyDevice.tsx";
+import Buyback from "./pages/Buyback.tsx";
 import Register from "./pages/Register.tsx";
 import ForgotPassword from "./pages/ForgotPassword.tsx";
 import Account from "./pages/Account.tsx";
@@ -56,6 +59,7 @@ const App = () => (
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order/success" element={<OrderSuccess />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/verify-otp" element={<VerifyOtp />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/account" element={<Account />} />
@@ -75,6 +79,8 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/help" element={<Help />} />
           <Route path="/compare" element={<Compare />} />
+          <Route path="/verify" element={<VerifyDevice />} />
+          <Route path="/buyback" element={<Buyback />} />
           <Route path="/pre-orders" element={<PreOrders />} />
           <Route path="/returns-policy" element={<ReturnsPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -14,11 +14,11 @@ import appleWatchS11 from "@/assets/apple-watch-s11.png";
    Compare and Product pages so the store never quotes two prices for one item. */
 const newArrivals: Product[] = [
   { id: "iphone-air-256gb", name: "Apple iPhone Air 256GB", brand: "Apple", price: 339900, oldPrice: 369000, rating: 4.8, reviews: 248, image: iphoneAir, badge: { label: "New", tone: "primary" } },
-  { id: "galaxy-s26-plus-512gb", name: "Samsung Galaxy S26+ 512GB", brand: "Samsung", price: 459900, oldPrice: 489900, rating: 4.8, reviews: 164, image: galaxyS26Plus, badge: { label: "New", tone: "primary" } },
+  { id: "galaxy-s26-plus", name: "Samsung Galaxy S26+ 512GB", brand: "Samsung", price: 459900, oldPrice: 489900, rating: 4.8, reviews: 164, image: galaxyS26Plus, badge: { label: "New", tone: "primary" } },
   { id: "galaxy-z-flip-7", name: "Samsung Galaxy Z Flip 7", brand: "Samsung", price: 399900, oldPrice: 449000, rating: 4.6, reviews: 192, image: galaxyZFlip7, badge: { label: "Trending", tone: "promo" } },
   { id: "pixel-9-pro-fold", name: "Google Pixel 9 Pro Fold", brand: "Google", price: 549900, oldPrice: 599000, rating: 4.7, reviews: 184, image: pixel9ProFold, badge: { label: "Foldable", tone: "primary" } },
   { id: "iphone-17e-128gb", name: "Apple iPhone 17e 128GB", brand: "Apple", price: 219900, oldPrice: 234900, rating: 4.7, reviews: 612, image: iphone17e, badge: { label: "New", tone: "success" } },
-  { id: "oneplus-13r-16gb", name: "OnePlus 13R 16GB", brand: "OnePlus", price: 204900, oldPrice: 229000, rating: 4.8, reviews: 88, image: oneplus13r, badge: { label: "Hot", tone: "promo" } },
+  { id: "oneplus-13r", name: "OnePlus 13R 16GB", brand: "OnePlus", price: 204900, oldPrice: 229000, rating: 4.8, reviews: 88, image: oneplus13r, badge: { label: "Hot", tone: "promo" } },
   { id: "airpods-pro-3", name: "AirPods Pro 3 with USB-C", brand: "Apple", price: 89900, oldPrice: 99900, rating: 4.9, reviews: 1820, image: airpodsPro3, badge: { label: "Bundle", tone: "primary" } },
   { id: "apple-watch-series-11", name: "Apple Watch Series 11 — GPS", brand: "Apple", price: 195000, rating: 4.8, reviews: 612, image: appleWatchS11 },
 ];

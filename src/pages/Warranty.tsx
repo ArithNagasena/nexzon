@@ -1,1014 +1,193 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  ChevronRight,
-  Menu,
-  ShieldCheck,
-  Upload,
-  CheckCircle2,
-  Clock,
-  XCircle,
-  HelpCircle,
-  MessageCircle,
-  Sparkles,
-  FileText,
-  Wrench,
-  RefreshCcw,
-  AlertCircle,
-  Image as ImageIcon,
-  X,
-  CalendarDays,
-  PackageCheck,
-  Phone,
-  Eye,
-  type LucideIcon,
-} from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import {
-  AccountSidebarNav,
-  AccountProfileCard,
-} from "@/components/cellexa/AccountSidebar";
+import { ShieldCheck, Plus, Wrench, CheckCircle2, Clock, Truck, Info, CalendarClock } from "lucide-react";
+import AccountLayout from "@/components/cellexa/AccountLayout";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { toast } from "sonner";
+import { orders } from "@/data/account";
+import { getProduct } from "@/data/catalog";
+import { site } from "@/data/site";
+import { cn } from "@/lib/utils";
 
-type ClaimStatus = "active" | "submitted" | "approved" | "rejected" | "expired";
-type WarrantyState = "active" | "expiring" | "expired";
+type ClaimStatus = "submitted" | "collected" | "in-repair" | "returned";
 
-interface WarrantyProduct {
-  id: string;
-  orderNo: string;
-  brand: string;
-  name: string;
-  variant: string;
-  img: string;
-  purchasedOn: string;
-  warrantyMonths: number;
-  expiresOn: string;
-  daysLeft: number;
-  state: WarrantyState;
-  serial: string;
-  coverage: string;
-}
-
-interface ClaimRecord {
-  id: string;
-  caseNo: string;
-  productId: string;
-  productName: string;
-  productImg: string;
-  brand: string;
-  category: string;
-  description: string;
-  submittedOn: string;
-  status: ClaimStatus;
-  resolvedOn?: string;
-  resolutionNote?: string;
-  technician?: string;
-}
-
-const fmtDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("en-LK", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-
-const PRODUCTS: WarrantyProduct[] = [
-  {
-    id: "p1",
-    orderNo: "CLX-10293",
-    brand: "Apple",
-    name: "iPhone 15 Pro Max",
-    variant: "256GB · Natural Titanium",
-    img: "https://images.unsplash.com/photo-1592286927505-1def25115558?w=300&q=80",
-    purchasedOn: "2025-08-12",
-    warrantyMonths: 12,
-    expiresOn: "2026-08-12",
-    daysLeft: 480,
-    state: "active",
-    serial: "F2LXK9P7QH",
-    coverage: "Manufacturer + Nexzon Care",
-  },
-  {
-    id: "p2",
-    orderNo: "CLX-10198",
-    brand: "Samsung",
-    name: "Galaxy S24 Ultra",
-    variant: "512GB · Titanium Black",
-    img: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300&q=80",
-    purchasedOn: "2025-05-03",
-    warrantyMonths: 24,
-    expiresOn: "2027-05-03",
-    daysLeft: 745,
-    state: "active",
-    serial: "RZ8N40KXLM",
-    coverage: "Manufacturer Warranty",
-  },
-  {
-    id: "p3",
-    orderNo: "CLX-09872",
-    brand: "Sony",
-    name: "WH-1000XM5 Headphones",
-    variant: "Midnight Blue",
-    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&q=80",
-    purchasedOn: "2025-01-22",
-    warrantyMonths: 12,
-    expiresOn: "2026-01-22",
-    daysLeft: 28,
-    state: "expiring",
-    serial: "WHX5-22A91",
-    coverage: "Manufacturer Warranty",
-  },
-  {
-    id: "p4",
-    orderNo: "CLX-09541",
-    brand: "Xiaomi",
-    name: "Redmi Note 13 Pro",
-    variant: "256GB · Aurora Purple",
-    img: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&q=80",
-    purchasedOn: "2024-09-15",
-    warrantyMonths: 12,
-    expiresOn: "2025-09-15",
-    daysLeft: -120,
-    state: "expired",
-    serial: "RN13P-77K2",
-    coverage: "Manufacturer Warranty",
-  },
-  {
-    id: "p5",
-    orderNo: "CLX-10311",
-    brand: "Apple",
-    name: "AirPods Pro (2nd Gen)",
-    variant: "USB-C · MagSafe Case",
-    img: "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=300&q=80",
-    purchasedOn: "2025-09-30",
-    warrantyMonths: 12,
-    expiresOn: "2026-09-30",
-    daysLeft: 530,
-    state: "active",
-    serial: "APP2-44LMQ",
-    coverage: "Manufacturer + Nexzon Care",
-  },
-];
-
-const CLAIM_HISTORY: ClaimRecord[] = [
-  {
-    id: "c1",
-    caseNo: "WC-44218",
-    productId: "p2",
-    productName: "Galaxy S24 Ultra",
-    productImg:
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=200&q=80",
-    brand: "Samsung",
-    category: "Battery Issue",
-    description: "Battery drains within 4 hours under normal use.",
-    submittedOn: "2025-12-04",
-    status: "approved",
-    resolvedOn: "2025-12-11",
-    resolutionNote: "Battery replacement completed under warranty.",
-    technician: "Nexzon Service Center · Colombo 03",
-  },
-  {
-    id: "c2",
-    caseNo: "WC-44102",
-    productId: "p3",
-    productName: "WH-1000XM5 Headphones",
-    productImg:
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=200&q=80",
-    brand: "Sony",
-    category: "Audio Defect",
-    description: "Right earcup cuts out intermittently when paired.",
-    submittedOn: "2026-01-08",
-    status: "submitted",
-  },
-  {
-    id: "c3",
-    caseNo: "WC-43997",
-    productId: "p4",
-    productName: "Redmi Note 13 Pro",
-    productImg:
-      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=200&q=80",
-    brand: "Xiaomi",
-    category: "Screen Defect",
-    description: "Hairline crack appeared along the bottom bezel.",
-    submittedOn: "2025-10-19",
-    status: "rejected",
-    resolvedOn: "2025-10-23",
-    resolutionNote:
-      "Physical damage is not covered by manufacturer warranty.",
-  },
-];
-
-const ISSUE_CATEGORIES = [
-  "Battery Issue",
-  "Charging Problem",
-  "Screen Defect",
-  "Audio Defect",
-  "Camera Malfunction",
-  "Software / Boot Issue",
-  "Connectivity (Wi-Fi / BT)",
-  "Overheating",
-  "Manufacturing Defect",
-  "Other",
-];
-
-const FILTERS: { id: "all" | ClaimStatus; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "submitted", label: "Submitted" },
-  { id: "approved", label: "Approved" },
-  { id: "rejected", label: "Rejected" },
-];
-
-const stateBadge: Record<
-  WarrantyState,
-  { label: string; cls: string; icon: LucideIcon }
-> = {
-  active: {
-    label: "Active",
-    cls: "bg-emerald-50 text-emerald-700 border-emerald-200",
-    icon: ShieldCheck,
-  },
-  expiring: {
-    label: "Expiring Soon",
-    cls: "bg-amber-50 text-amber-700 border-amber-200",
-    icon: Clock,
-  },
-  expired: {
-    label: "Expired",
-    cls: "bg-rose-50 text-rose-700 border-rose-200",
-    icon: XCircle,
-  },
+const claimMeta: Record<ClaimStatus, { label: string; cls: string; icon: typeof Clock }> = {
+  submitted: { label: "Submitted", cls: "border-promo/25 bg-promo/10 text-promo", icon: Clock },
+  collected: { label: "Collected", cls: "border-primary/25 bg-accent text-accent-foreground", icon: Truck },
+  "in-repair": { label: "In repair", cls: "border-primary/25 bg-accent text-accent-foreground", icon: Wrench },
+  returned: { label: "Returned to you", cls: "border-success/25 bg-success/10 text-success", icon: CheckCircle2 },
 };
 
-const claimBadge: Record<
-  ClaimStatus,
-  { label: string; cls: string; icon: LucideIcon }
-> = {
-  active: {
-    label: "Active",
-    cls: "bg-primary/10 text-primary border-primary/20",
-    icon: ShieldCheck,
-  },
-  submitted: {
-    label: "Under Review",
-    cls: "bg-amber-50 text-amber-700 border-amber-200",
-    icon: Clock,
-  },
-  approved: {
-    label: "Approved",
-    cls: "bg-emerald-50 text-emerald-700 border-emerald-200",
-    icon: CheckCircle2,
-  },
-  rejected: {
-    label: "Rejected",
-    cls: "bg-rose-50 text-rose-700 border-rose-200",
-    icon: XCircle,
-  },
-  expired: {
-    label: "Expired",
-    cls: "bg-muted text-muted-foreground border-border",
-    icon: XCircle,
-  },
-};
+/** Devices owned, with warranty windows measured from delivery. */
+const coverage = [
+  { productId: "oneplus-13r", orderId: "NX-260614-5023", start: "17 Jun 2026", end: "17 Jun 2027", monthsLeft: 10, care: false },
+  { productId: "ipad-air-5th-gen", orderId: "NX-260503-4471", start: "6 May 2026", end: "6 May 2027", monthsLeft: 9, care: true },
+  { productId: "iphone-17-pro-max", orderId: "NX-260812-7734", start: "Pending delivery", end: "—", monthsLeft: 12, care: false },
+];
+
+const claims = [
+  { id: "WC-260702-0088", productId: "ipad-air-5th-gen", issue: "Dead pixel, top-left of the display", status: "in-repair" as ClaimStatus, opened: "2 Jul 2026", eta: "Back by 22 Aug" },
+];
 
 const Warranty = () => {
-  const [claims, setClaims] = useState<ClaimRecord[]>(CLAIM_HISTORY);
-  const [filter, setFilter] = useState<"all" | ClaimStatus>("all");
   const [open, setOpen] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState<string>("");
-  const [issueCategory, setIssueCategory] = useState<string>("");
-  const [description, setDescription] = useState("");
-  const [files, setFiles] = useState<File[]>([]);
+  const [sent, setSent] = useState(false);
+  const [device, setDevice] = useState(coverage[0].productId);
 
-  const stats = useMemo(() => {
-    return {
-      registered: PRODUCTS.length,
-      active: PRODUCTS.filter((p) => p.state === "active").length,
-      expiring: PRODUCTS.filter((p) => p.state === "expiring").length,
-      claims: claims.length,
-    };
-  }, [claims]);
-
-  const counts = useMemo(() => {
-    const c: Record<string, number> = { all: claims.length };
-    claims.forEach((cl) => {
-      c[cl.status] = (c[cl.status] || 0) + 1;
-    });
-    return c;
-  }, [claims]);
-
-  const filteredClaims = useMemo(() => {
-    if (filter === "all") return claims;
-    return claims.filter((c) => c.status === filter);
-  }, [claims, filter]);
-
-  const eligibleProducts = useMemo(
-    () => PRODUCTS.filter((p) => p.state !== "expired"),
-    []
-  );
-
-  const openClaim = (productId?: string) => {
-    if (productId) setSelectedProductId(productId);
-    setOpen(true);
-  };
-
-  const resetForm = () => {
-    setSelectedProductId("");
-    setIssueCategory("");
-    setDescription("");
-    setFiles([]);
-  };
-
-  const onFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const list = Array.from(e.target.files ?? []);
-    setFiles((prev) => [...prev, ...list].slice(0, 5));
-  };
-
-  const removeFile = (idx: number) =>
-    setFiles((prev) => prev.filter((_, i) => i !== idx));
-
-  const submit = () => {
-    if (!selectedProductId) {
-      toast.error("Please select a product");
-      return;
-    }
-    if (!issueCategory) {
-      toast.error("Please choose an issue category");
-      return;
-    }
-    if (description.trim().length < 15) {
-      toast.error("Please describe the issue (min 15 characters)");
-      return;
-    }
-    const product = PRODUCTS.find((p) => p.id === selectedProductId)!;
-    const caseNo = "WC-" + Math.floor(40000 + Math.random() * 9000);
-    const newClaim: ClaimRecord = {
-      id: "c" + Date.now(),
-      caseNo,
-      productId: product.id,
-      productName: product.name,
-      productImg: product.img,
-      brand: product.brand,
-      category: issueCategory,
-      description: description.trim(),
-      submittedOn: new Date().toISOString(),
-      status: "submitted",
-    };
-    setClaims((prev) => [newClaim, ...prev]);
-    toast.success(`Claim ${caseNo} submitted successfully`);
-    setOpen(false);
-    resetForm();
-    setFilter("submitted");
-  };
+  useEffect(() => {
+    document.title = "Warranty & repairs — Nexzon";
+  }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-
-      <main className="bg-gradient-to-b from-background to-secondary/40 pb-16">
-        <div className="container-page pt-6 sm:pt-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Link to="/" className="hover:text-primary">Home</Link>
-            <ChevronRight className="h-3.5 w-3.5" />
-            <Link to="/account" className="hover:text-primary">My Account</Link>
-            <ChevronRight className="h-3.5 w-3.5" />
-            <span className="font-semibold text-foreground">Warranty &amp; Claims</span>
-          </nav>
-
-          {/* Page header */}
-          <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h1 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-                Warranty &amp; Claims
-              </h1>
-              <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-                Track warranties on your registered devices and submit service claims.
+    <AccountLayout
+      title="Warranty & repairs"
+      subtitle="Every device you've bought, and its cover."
+      actions={
+        <Button onClick={() => { setOpen((v) => !v); setSent(false); }} variant={open ? "outline" : "default"}>
+          {open ? "Cancel" : <><Plus className="h-4 w-4" /> Raise a claim</>}
+        </Button>
+      }
+    >
+      {open && (
+        <div className="rounded-2xl border border-primary/30 bg-card p-6 shadow-card">
+          {sent ? (
+            <div className="py-4 text-center">
+              <CheckCircle2 className="mx-auto h-10 w-10 text-success" />
+              <h2 className="mt-3 font-display text-lg font-bold">Claim submitted</h2>
+              <p className="mx-auto mt-1.5 max-w-md text-sm text-muted-foreground">
+                We'll confirm by email within one working day and arrange a free pickup from your address.
+                Urgent? Call {site.phoneDisplay}.
               </p>
+              <Button variant="outline" className="mt-5" onClick={() => { setOpen(false); setSent(false); }}>Done</Button>
             </div>
-
-            <div className="flex items-center gap-2">
-              <Button onClick={() => openClaim()} className="hidden gap-2 lg:inline-flex">
-                <Wrench className="h-4 w-4" />
-                Submit New Claim
-              </Button>
-
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline" className="lg:hidden">
-                    <Menu className="h-4 w-4" />
-                    Account Menu
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-80 overflow-y-auto p-6">
-                  <div className="mb-6">
-                    <p className="font-display text-lg font-extrabold">Account</p>
-                  </div>
-                  <AccountSidebarNav activePath="/account/warranty" />
-                </SheetContent>
-              </Sheet>
-            </div>
-          </div>
-
-          <div className="mt-6 grid gap-6 lg:mt-8 lg:grid-cols-12 lg:gap-8">
-            {/* Sidebar */}
-            <aside className="hidden lg:col-span-3 lg:block">
-              <div className="sticky top-24 space-y-4">
-                <AccountProfileCard />
-                <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-card">
-                  <AccountSidebarNav activePath="/account/warranty" />
-                </div>
-              </div>
-            </aside>
-
-            {/* Main */}
-            <section className="min-w-0 space-y-6 lg:col-span-9">
-
-            {/* Mobile CTA */}
-            <Button
-              onClick={() => openClaim()}
-              className="w-full gap-2 lg:hidden"
-            >
-              <Wrench className="h-4 w-4" />
-              Submit New Claim
-            </Button>
-
-            {/* Registered products */}
-            <section className="rounded-2xl border border-border/70 bg-card p-5 shadow-card sm:p-6">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <h2 className="font-display text-lg font-bold">
-                    Your Registered Products
-                  </h2>
-                  <p className="text-xs text-muted-foreground">
-                    Devices linked to your Nexzon account
-                  </p>
-                </div>
-                <span className="rounded-full bg-secondary px-2.5 py-1 text-[11px] font-bold text-foreground">
-                  {PRODUCTS.length} items
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                {PRODUCTS.map((p) => {
-                  const sb = stateBadge[p.state];
-                  const Icon = sb.icon;
-                  const totalDays = p.warrantyMonths * 30;
-                  const used = Math.max(
-                    0,
-                    Math.min(100, ((totalDays - p.daysLeft) / totalDays) * 100)
-                  );
-                  return (
-                    <div
-                      key={p.id}
-                      className="rounded-xl border border-border/70 bg-background p-4 transition-shadow hover:shadow-card"
-                    >
-                      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                        <div className="flex items-center gap-4 sm:flex-1 min-w-0">
-                          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-border/60 bg-secondary">
-                            <img
-                              src={p.img}
-                              alt={p.name}
-                              className="h-full w-full object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-2">
-                              <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                                {p.brand}
-                              </span>
-                              <span
-                                className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold ${sb.cls}`}
-                              >
-                                <Icon className="h-3 w-3" />
-                                {sb.label}
-                              </span>
-                            </div>
-                            <h3 className="mt-0.5 truncate font-semibold text-foreground">
-                              {p.name}
-                            </h3>
-                            <p className="truncate text-xs text-muted-foreground">
-                              {p.variant}
-                            </p>
-                            <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
-                              <span>
-                                Order{" "}
-                                <span className="font-semibold text-foreground">
-                                  #{p.orderNo}
-                                </span>
-                              </span>
-                              <span className="hidden sm:inline">·</span>
-                              <span>
-                                S/N:{" "}
-                                <span className="font-mono font-semibold text-foreground">
-                                  {p.serial}
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="sm:w-[280px] sm:shrink-0">
-                          <div className="grid grid-cols-2 gap-2 text-[11px]">
-                            <div className="rounded-lg bg-secondary/60 px-2.5 py-1.5">
-                              <div className="text-muted-foreground">
-                                Purchased
-                              </div>
-                              <div className="font-semibold text-foreground">
-                                {fmtDate(p.purchasedOn)}
-                              </div>
-                            </div>
-                            <div className="rounded-lg bg-secondary/60 px-2.5 py-1.5">
-                              <div className="text-muted-foreground">
-                                Expires
-                              </div>
-                              <div className="font-semibold text-foreground">
-                                {fmtDate(p.expiresOn)}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="mt-2.5">
-                            <div className="mb-1 flex items-center justify-between text-[10px]">
-                              <span className="font-semibold text-muted-foreground">
-                                {p.coverage}
-                              </span>
-                              <span
-                                className={`font-bold ${
-                                  p.state === "expired"
-                                    ? "text-rose-600"
-                                    : p.state === "expiring"
-                                    ? "text-amber-600"
-                                    : "text-primary"
-                                }`}
-                              >
-                                {p.state === "expired"
-                                  ? "Expired"
-                                  : `${p.daysLeft} days left`}
-                              </span>
-                            </div>
-                            <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
-                              <div
-                                className={`h-full rounded-full ${
-                                  p.state === "expired"
-                                    ? "bg-rose-400"
-                                    : p.state === "expiring"
-                                    ? "bg-amber-500"
-                                    : "bg-primary"
-                                }`}
-                                style={{ width: `${used}%` }}
-                              />
-                            </div>
-                          </div>
-
-                          <div className="mt-3 flex gap-2">
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="flex-1 gap-1.5"
-                              asChild
-                            >
-                              <Link to={`/product/${p.id}`}>
-                                <Eye className="h-3.5 w-3.5" />
-                                View
-                              </Link>
-                            </Button>
-                            <Button
-                              size="sm"
-                              className="flex-1 gap-1.5"
-                              disabled={p.state === "expired"}
-                              onClick={() => openClaim(p.id)}
-                            >
-                              <Wrench className="h-3.5 w-3.5" />
-                              File Claim
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-
-            {/* Claim History */}
-            <section className="rounded-2xl border border-border/70 bg-card p-5 shadow-card sm:p-6">
-              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h2 className="font-display text-lg font-bold">
-                    Claim History
-                  </h2>
-                  <p className="text-xs text-muted-foreground">
-                    All your warranty service requests
-                  </p>
-                </div>
-              </div>
-
-              {/* Filter tabs */}
-              <div className="mb-4 -mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1">
-                {FILTERS.map((f) => {
-                  const active = filter === f.id;
-                  const count = counts[f.id] ?? 0;
-                  return (
-                    <button
-                      key={f.id}
-                      onClick={() => setFilter(f.id)}
-                      className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-                        active
-                          ? "bg-primary text-primary-foreground shadow-sm"
-                          : "bg-secondary text-foreground hover:bg-secondary/70"
-                      }`}
-                    >
-                      {f.label}
-                      <span
-                        className={`ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] ${
-                          active
-                            ? "bg-primary-foreground/20 text-primary-foreground"
-                            : "bg-background text-muted-foreground"
-                        }`}
-                      >
-                        {count}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {filteredClaims.length === 0 ? (
-                <EmptyClaims onNew={() => openClaim()} />
-              ) : (
-                <div className="space-y-3">
-                  {filteredClaims.map((c) => {
-                    const cb = claimBadge[c.status];
-                    const Icon = cb.icon;
-                    return (
-                      <div
-                        key={c.id}
-                        className="rounded-xl border border-border/70 bg-background p-4 transition-shadow hover:shadow-card"
-                      >
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-                          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-border/60 bg-secondary">
-                            <img
-                              src={c.productImg}
-                              alt={c.productName}
-                              className="h-full w-full object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="flex flex-wrap items-center gap-2">
-                              <span className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[11px] font-bold text-foreground">
-                                {c.caseNo}
-                              </span>
-                              <span
-                                className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold ${cb.cls}`}
-                              >
-                                <Icon className="h-3 w-3" />
-                                {cb.label}
-                              </span>
-                              <span className="text-[11px] text-muted-foreground">
-                                <CalendarDays className="mr-1 inline h-3 w-3" />
-                                {fmtDate(c.submittedOn)}
-                              </span>
-                            </div>
-                            <h3 className="mt-1 font-semibold text-foreground">
-                              {c.productName}{" "}
-                              <span className="text-xs font-normal text-muted-foreground">
-                                · {c.brand}
-                              </span>
-                            </h3>
-                            <p className="text-xs">
-                              <span className="font-semibold text-primary">
-                                {c.category}
-                              </span>{" "}
-                              <span className="text-muted-foreground">
-                                — {c.description}
-                              </span>
-                            </p>
-
-                            {c.resolutionNote && (
-                              <div
-                                className={`mt-2 flex items-start gap-2 rounded-lg border px-3 py-2 text-xs ${
-                                  c.status === "approved"
-                                    ? "border-emerald-200 bg-emerald-50/60 text-emerald-800"
-                                    : "border-rose-200 bg-rose-50/60 text-rose-800"
-                                }`}
-                              >
-                                <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                                <div>
-                                  <div className="font-semibold">
-                                    Resolution
-                                    {c.resolvedOn
-                                      ? ` · ${fmtDate(c.resolvedOn)}`
-                                      : ""}
-                                  </div>
-                                  <p>{c.resolutionNote}</p>
-                                  {c.technician && (
-                                    <p className="mt-0.5 opacity-80">
-                                      {c.technician}
-                                    </p>
-                                  )}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </section>
-
-            {/* Info + Help cards */}
-            <div className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-2xl border border-primary/15 bg-gradient-brand-soft p-5 shadow-card">
-                <div className="flex items-start gap-3">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-base font-bold text-foreground">
-                      Warranty Coverage
-                    </h3>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      What's protected under your Nexzon warranty
-                    </p>
-                  </div>
-                </div>
-                <ul className="mt-4 space-y-2 text-xs">
-                  {[
-                    "Manufacturing defects covered for the full warranty period",
-                    "Free pickup & drop-off for in-warranty repairs island-wide",
-                    "Genuine parts and certified technicians",
-                    "Nexzon Care extends coverage with accidental damage protection",
-                  ].map((t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                      <span className="text-foreground">{t}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="mt-4 gap-1.5"
-                  asChild
+          ) : (
+            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+              <h2 className="font-display text-base font-bold">What's wrong with it?</h2>
+              <div className="mt-4 space-y-1.5">
+                <label htmlFor="wc-device" className="text-xs font-semibold text-foreground">Device</label>
+                <select
+                  id="wc-device"
+                  value={device}
+                  onChange={(e) => setDevice(e.target.value)}
+                  className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-primary"
                 >
-                  <Link to="/account">
-                    <FileText className="h-3.5 w-3.5" />
-                    Read full warranty policy
-                  </Link>
-                </Button>
+                  {coverage.map((c) => {
+                    const p = getProduct(c.productId);
+                    return <option key={c.productId} value={c.productId}>{p?.name} — {c.orderId}</option>;
+                  })}
+                </select>
               </div>
-
-              <div className="rounded-2xl border border-border/70 bg-card p-5 shadow-card">
-                <div className="flex items-start gap-3">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
-                    <HelpCircle className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-base font-bold text-foreground">
-                      Need help with a claim?
-                    </h3>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Our support team is available 7 days a week
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-4 grid grid-cols-2 gap-2">
-                  <Button variant="outline" size="sm" className="gap-1.5">
-                    <MessageCircle className="h-3.5 w-3.5" />
-                    Live Chat
-                  </Button>
-                  <Button variant="outline" size="sm" className="gap-1.5">
-                    <Phone className="h-3.5 w-3.5" />
-                    Call Us
-                  </Button>
-                </div>
-                <div className="mt-3 rounded-lg bg-secondary/60 px-3 py-2.5 text-xs">
-                  <div className="flex items-center gap-1.5 font-bold text-foreground">
-                    <Sparkles className="h-3.5 w-3.5 text-primary" />
-                    Service Centers
-                  </div>
-                  <p className="mt-1 text-muted-foreground">
-                    Colombo · Kandy · Galle · Jaffna · Negombo — walk in with
-                    your case number for priority service.
-                  </p>
-                </div>
-              </div>
-            </div>
-            </section>
-          </div>
-        </div>
-      </main>
-
-      {/* Submit claim dialog */}
-      <Dialog
-        open={open}
-        onOpenChange={(o) => {
-          setOpen(o);
-          if (!o) resetForm();
-        }}
-      >
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 font-display">
-              <Wrench className="h-5 w-5 text-primary" />
-              Submit Warranty Claim
-            </DialogTitle>
-            <DialogDescription>
-              Tell us what's happening — our team will review within 24 hours.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4 py-2">
-            <div className="space-y-1.5">
-              <Label htmlFor="product">Select product</Label>
-              <Select
-                value={selectedProductId}
-                onValueChange={setSelectedProductId}
-              >
-                <SelectTrigger id="product">
-                  <SelectValue placeholder="Choose a registered device" />
-                </SelectTrigger>
-                <SelectContent>
-                  {eligibleProducts.map((p) => (
-                    <SelectItem key={p.id} value={p.id}>
-                      {p.name} · #{p.orderNo}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-1.5">
-              <Label htmlFor="category">Issue category</Label>
-              <Select value={issueCategory} onValueChange={setIssueCategory}>
-                <SelectTrigger id="category">
-                  <SelectValue placeholder="Select an issue type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {ISSUE_CATEGORIES.map((c) => (
-                    <SelectItem key={c} value={c}>
-                      {c}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-1.5">
-              <Label htmlFor="desc">Describe the issue</Label>
-              <Textarea
-                id="desc"
-                rows={4}
-                maxLength={500}
-                placeholder="When did it start? What have you tried? Any error messages?"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              <div className="text-right text-[10px] text-muted-foreground">
-                {description.length}/500
-              </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <Label>Upload evidence (optional)</Label>
-              <label
-                htmlFor="files"
-                className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border bg-secondary/40 px-4 py-5 text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
-              >
-                <Upload className="h-4 w-4" />
-                <span>
-                  Click to upload photos or videos
-                  <span className="ml-1 text-[10px]">(max 5 files)</span>
-                </span>
-                <Input
-                  id="files"
-                  type="file"
-                  multiple
-                  accept="image/*,video/*"
-                  className="hidden"
-                  onChange={onFiles}
+              <div className="mt-4 space-y-1.5">
+                <label htmlFor="wc-issue" className="text-xs font-semibold text-foreground">Describe the fault</label>
+                <textarea
+                  id="wc-issue"
+                  required
+                  rows={4}
+                  maxLength={800}
+                  placeholder="When did it start? Does it happen every time? Anything you've already tried?"
+                  className="w-full rounded-xl border border-border bg-surface p-3 text-sm outline-none focus:border-primary focus:bg-background"
                 />
-              </label>
-              {files.length > 0 && (
-                <div className="grid grid-cols-3 gap-2 pt-1">
-                  {files.map((f, i) => (
-                    <div
-                      key={i}
-                      className="group relative overflow-hidden rounded-lg border border-border bg-secondary p-2"
-                    >
-                      <div className="flex items-center gap-1.5 text-[10px]">
-                        <ImageIcon className="h-3 w-3 shrink-0 text-primary" />
-                        <span className="truncate">{f.name}</span>
-                      </div>
-                      <button
-                        onClick={() => removeFile(i)}
-                        className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-background/90 text-muted-foreground opacity-0 transition-opacity hover:text-destructive group-hover:opacity-100"
-                        aria-label="Remove file"
-                      >
-                        <X className="h-3 w-3" />
-                      </button>
+              </div>
+              <Button type="submit" className="mt-4">Submit claim</Button>
+            </form>
+          )}
+        </div>
+      )}
+
+      {/* Open claims */}
+      {claims.length > 0 && (
+        <section className={cn(open && "mt-6")}>
+          <h2 className="font-display text-lg font-bold">Open claims</h2>
+          <div className="mt-4 space-y-3">
+            {claims.map((c) => {
+              const p = getProduct(c.productId);
+              const meta = claimMeta[c.status];
+              return (
+                <article key={c.id} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                    {p && (
+                      <span className="isolate grid h-20 w-20 shrink-0 place-items-center self-center rounded-xl bg-white">
+                        <img src={p.image} alt="" className="h-16 w-auto object-contain mix-blend-multiply" />
+                      </span>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <span className={cn("inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold", meta.cls)}>
+                        <meta.icon className="h-3.5 w-3.5" /> {meta.label}
+                      </span>
+                      <h3 className="mt-1.5 font-display text-sm font-bold text-foreground">{p?.name}</h3>
+                      <p className="text-xs text-muted-foreground">{c.id} · opened {c.opened}</p>
+                      <p className="mt-1 text-sm text-muted-foreground">"{c.issue}"</p>
                     </div>
-                  ))}
+                    <div className="shrink-0 sm:text-right">
+                      <p className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <CalendarClock className="h-3.5 w-3.5 text-primary" /> {c.eta}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* Coverage */}
+      <section className="mt-8">
+        <h2 className="font-display text-lg font-bold">Your devices</h2>
+        <div className="mt-4 space-y-3">
+          {coverage.map((c) => {
+            const p = getProduct(c.productId);
+            const pct = Math.round((c.monthsLeft / 12) * 100);
+            return (
+              <div key={c.productId} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                  {p && (
+                    <Link to={`/product/${p.id}`} className="isolate grid h-20 w-20 shrink-0 place-items-center self-center rounded-xl bg-white">
+                      <img src={p.image} alt="" className="h-16 w-auto object-contain mix-blend-multiply" />
+                    </Link>
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-display text-sm font-bold text-foreground">{p?.name}</h3>
+                      {c.care && (
+                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-bold text-accent-foreground">
+                          Nexzon Care
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-0.5 text-xs text-muted-foreground">
+                      From order{" "}
+                      <Link to={`/account/orders/${c.orderId}`} className="font-semibold text-primary hover:underline">{c.orderId}</Link>
+                      {" "}· {c.start} → {c.end}
+                    </p>
+                    <div className="mt-2.5 max-w-xs">
+                      <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+                        <div className={cn("h-full rounded-full", pct > 25 ? "bg-success" : "bg-promo")} style={{ width: `${pct}%` }} />
+                      </div>
+                      <p className="mt-1 text-[11px] text-muted-foreground">{c.monthsLeft} months of cover left</p>
+                    </div>
+                  </div>
+                  <Button size="sm" variant="outline" className="shrink-0" onClick={() => { setDevice(c.productId); setOpen(true); setSent(false); }}>
+                    <Wrench className="h-3.5 w-3.5" /> Claim
+                  </Button>
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
-          <DialogFooter className="gap-2 sm:gap-2">
-            <Button variant="outline" onClick={() => setOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={submit} className="gap-2">
-              <RefreshCcw className="h-4 w-4" />
-              Submit Claim
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <p className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-card p-4 text-xs leading-relaxed text-muted-foreground">
+        <Info className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+        Manufacturer warranty covers manufacturing faults, not accidental or liquid damage.{" "}
+        <Link to="/faq" className="font-semibold text-primary hover:underline">Nexzon Care</Link> adds accidental
+        damage cover for a small fee per claim.
+      </p>
 
-      <Footer />
-    </div>
+      <p className="mt-3 text-xs text-muted-foreground">
+        {orders.length} orders on file · claims are handled by our Colombo service desk.
+      </p>
+    </AccountLayout>
   );
 };
-
-const StatCard = ({
-  icon: Icon,
-  label,
-  value,
-  tone,
-}: {
-  icon: LucideIcon;
-  label: string;
-  value: number | string;
-  tone: "primary" | "emerald" | "amber" | "muted";
-}) => {
-  const tones = {
-    primary: "bg-primary/10 text-primary",
-    emerald: "bg-emerald-50 text-emerald-600",
-    amber: "bg-amber-50 text-amber-600",
-    muted: "bg-secondary text-foreground",
-  };
-  return (
-    <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-card">
-      <div className="flex items-center gap-3">
-        <div
-          className={`grid h-10 w-10 place-items-center rounded-xl ${tones[tone]}`}
-        >
-          <Icon className="h-5 w-5" />
-        </div>
-        <div className="min-w-0">
-          <div className="text-xs font-semibold text-muted-foreground">
-            {label}
-          </div>
-          <div className="font-display text-xl font-bold text-foreground">
-            {value}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const EmptyClaims = ({ onNew }: { onNew: () => void }) => (
-  <div className="rounded-xl border-2 border-dashed border-border bg-secondary/30 px-6 py-12 text-center">
-    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/10 text-primary">
-      <ShieldCheck className="h-7 w-7" />
-    </div>
-    <h3 className="mt-3 font-display text-base font-bold">No claims yet</h3>
-    <p className="mt-1 text-xs text-muted-foreground">
-      All your devices are running smoothly. File a claim if anything stops
-      working.
-    </p>
-    <Button onClick={onNew} className="mt-4 gap-1.5" size="sm">
-      <Wrench className="h-3.5 w-3.5" />
-      File a Claim
-    </Button>
-  </div>
-);
 
 export default Warranty;

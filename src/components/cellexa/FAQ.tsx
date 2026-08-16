@@ -3,6 +3,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { LifeBuoy, MessageCircle, Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { site } from "@/data/site";
 
 type Faq = { topic: string; q: string; a: string };
 
@@ -82,8 +83,8 @@ const faqs: Faq[] = [
 const topics = ["All", "Delivery", "Payments", "Warranty", "Returns", "Pre-Orders"];
 
 const supportChannels = [
-  { icon: Phone, label: "Call us", value: "+94 11 200 0000", to: "tel:+94112000000", external: true },
-  { icon: MessageCircle, label: "Live chat", value: "Mon–Sun · 9 AM – 9 PM", to: "/help", external: false },
+  { icon: Phone, label: "Call us", value: site.phoneDisplay, to: site.phoneHref, external: true },
+  { icon: MessageCircle, label: "Live chat", value: site.hours, to: "/help", external: false },
   { icon: LifeBuoy, label: "Help centre", value: "Guides & policies", to: "/help", external: false },
 ];
 

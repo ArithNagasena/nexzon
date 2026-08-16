@@ -5,6 +5,7 @@ import { Search, User, Heart, ShoppingCart, Menu, X, ChevronDown, Phone, GitComp
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import MegaMenu from "./MegaMenu";
+import { site } from "@/data/site";
 
 const navLinks: { label: string; to: string; badge?: string }[] = [
   { label: "Home", to: "/" },
@@ -12,8 +13,8 @@ const navLinks: { label: string; to: string; badge?: string }[] = [
   { label: "Tablets", to: "/category/tablets" },
   { label: "Accessories", to: "/category/accessories" },
   { label: "Brands", to: "/brand/samsung" },
-  { label: "Pre-Orders", to: "/pre-orders", badge: "New" },
-  { label: "Trade-In", to: "/account/trade-in" },
+  { label: "Pre-Orders", to: "/pre-orders" },
+  { label: "Buyback", to: "/buyback", badge: "New" },
   { label: "Track Order", to: "/track-order" },
   { label: "Support", to: "/help" },
 ];
@@ -110,7 +111,7 @@ const Header = () => {
           {/* Right icons */}
           <div className="ml-auto flex items-center gap-1 sm:gap-2">
             <a
-              href="tel:+94112000000"
+              href={site.phoneHref}
               className="mr-1 hidden items-center gap-2 rounded-lg px-2.5 py-1.5 transition-colors hover:bg-secondary xl:inline-flex"
             >
               <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-accent-foreground">
@@ -118,7 +119,7 @@ const Header = () => {
               </span>
               <span className="leading-tight">
                 <span className="block text-[11px] text-muted-foreground">Hotline · 7 days</span>
-                <span className="block text-sm font-bold text-foreground">+94 11 200 0000</span>
+                <span className="block text-sm font-bold text-foreground">{site.phoneDisplay}</span>
               </span>
             </a>
             <Link
@@ -237,7 +238,7 @@ const Header = () => {
                 </Link>
               </Button>
               <p className="mt-4 text-sm text-muted-foreground">
-                Hotline: <a href="tel:+94112000000" className="text-primary">+94 11 200 0000</a>
+                Hotline: <a href={site.phoneHref} className="text-primary">{site.phoneDisplay}</a>
               </p>
             </div>
           </aside>

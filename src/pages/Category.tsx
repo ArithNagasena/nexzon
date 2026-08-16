@@ -3,27 +3,24 @@ import { Link, useParams } from "react-router-dom";
 import {
   ChevronRight,
   Search,
-  SlidersHorizontal,
-  X,
   Star,
-  Sparkles,
-  ShieldCheck,
-  Wallet,
-  Truck,
-  BadgeCheck,
   Camera,
-  Smartphone,
-  Zap,
+  Gamepad2,
+  BatteryFull,
+  Wallet,
+  LayoutGrid,
+  Rows3,
   ArrowRight,
+  Cpu,
+  Smartphone,
+  Signal,
+  Trophy,
+  X,
 } from "lucide-react";
-import PromoBar from "@/components/cellexa/PromoBar";
 import Header from "@/components/cellexa/Header";
 import Footer from "@/components/cellexa/Footer";
 import ProductCard, { type Product } from "@/components/cellexa/ProductCard";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
 import {
   Accordion,
   AccordionContent,
@@ -37,400 +34,88 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { cn } from "@/lib/utils";
+import { phones as catalog, fmtLKR, type CatalogItem } from "@/data/catalog";
+import iphone17ProMax from "@/assets/iphone-17-pro-max.png";
 
-import heroSmartphones from "@/assets/smartphones-hero.jpeg";
-import phone1 from "@/assets/product-iphone-pink.png";
-import galaxyS25Fe from "@/assets/galaxy-s25-fe.png";
-import honorMagicV5 from "@/assets/honor-magic-v5.png";
-import iphoneAir from "@/assets/iphone-air.png";
-import galaxyZFlip7 from "@/assets/galaxy-z-flip7.png";
-import oneplus13r from "@/assets/oneplus-13r.png";
-import iphone16 from "@/assets/iphone-16.png";
-import pixel9ProXl from "@/assets/pixel-9-pro-xl.png";
-import iphone13 from "@/assets/iphone-13.png";
-import oneplusNordCe5 from "@/assets/oneplus-nord-ce5.png";
-import iphone16e from "@/assets/iphone-16e.png";
-import pixel9ProFold from "@/assets/pixel-9-pro-fold.png";
-import phone2 from "@/assets/product-iphone-pink.png";
-import phone3 from "@/assets/product-iphone-pink.png";
-import featurePhone from "@/assets/feature-phone.jpg";
 
-/* -------------------- Catalog (smartphones) -------------------- */
-const catalog: (Product & { sub: string; storage: string; ram: string; color: string; screen: number; battery: number; fiveG: boolean })[] = [
-  { id: "p1",  name: "Samsung Galaxy S25 FE",   brand: "Samsung",   price: 260299, oldPrice: 525000, rating: 4.9, reviews: 312, image: galaxyS25Fe, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "8GB",  color: "Titanium", screen: 6.7, battery: 4422, fiveG: true },
-  { id: "p2",  name: "Apple iPhone Air 256GB",        brand: "Apple", price: 339900, oldPrice: 369000, rating: 4.8, reviews: 248, image: iphoneAir, badge: { label: "Hot Deal", tone: "promo" },  sub: "Flagship",  storage: "256GB", ram: "12GB", color: "White",    screen: 6.8, battery: 5000, fiveG: true },
-  { id: "p3",  name: "Samsung Galaxy Z Flip 7",        brand: "Samsung",  price: 399900, oldPrice: 449000, rating: 4.6, reviews: 192, image: galaxyZFlip7, badge: { label: "-11%", tone: "promo" },     sub: "Foldable", storage: "256GB", ram: "12GB", color: "Coral",     screen: 6.7, battery: 5000, fiveG: true },
-  { id: "p4",  name: "Apple iPhone 16",                            brand: "Apple", price: 279900, oldPrice: 309000, rating: 4.7, reviews: 98,  image: iphone16, badge: { label: "New", tone: "primary" },     sub: "Flagship",  storage: "256GB", ram: "8GB",  color: "Ultramarine", screen: 6.1, battery: 3561, fiveG: true },
-  { id: "p5",  name: "HONOR Magic V5 Foldable",          brand: "HONOR", price: 569900, oldPrice: 629000, rating: 4.6, reviews: 142, image: honorMagicV5, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "8GB",  color: "Black",     screen: 6.7, battery: 3700, fiveG: true },
-  { id: "p6",  name: "Google Pixel 9 Pro XL",                      brand: "Google", price: 329900, oldPrice: 365000, rating: 4.8, reviews: 421, image: pixel9ProXl,                                              sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Obsidian",  screen: 6.8, battery: 5060, fiveG: true },
-  { id: "p7",  name: "Apple iPhone 16e",                            brand: "Apple",   price: 250900, oldPrice: 279000, rating: 4.7, reviews: 76,  image: iphone16e, badge: { label: "New", tone: "primary" }, sub: "Flagship",  storage: "128GB", ram: "8GB",  color: "White",    screen: 6.1, battery: 4005, fiveG: true },
-  { id: "p8",  name: "Google Pixel 9 Pro Fold",                     brand: "Google",  price: 549900, oldPrice: 599000, rating: 4.7, reviews: 184, image: pixel9ProFold, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "256GB", ram: "16GB", color: "Porcelain", screen: 8.0, battery: 4650, fiveG: true },
-  { id: "p9",  name: "OnePlus 13R 16GB",                          brand: "OnePlus",  price: 204900, oldPrice: 229000, rating: 4.8, reviews: 88,  image: oneplus13r, badge: { label: "Hot", tone: "promo" },        sub: "Flagship",  storage: "256GB", ram: "16GB", color: "Rose Gold", screen: 6.78, battery: 5400, fiveG: true },
-  { id: "p10", name: "iPhone 17e 256GB", brand: "Apple", price: 405000, rating: 4.6, reviews: 64, image: phone2, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Green", screen: 6.8, battery: 5600, fiveG: true },
-  { id: "p11", name: "OnePlus Nord CE5",                            brand: "OnePlus", price: 119900, oldPrice: 134000, rating: 4.5, reviews: 121, image: oneplusNordCe5, badge: { label: "-9%", tone: "promo" },     sub: "Mid-Range", storage: "256GB", ram: "8GB",  color: "Silver",   screen: 6.7, battery: 5200, fiveG: true },
-  { id: "p12", name: "Apple iPhone 13",                              brand: "Apple",    price: 149900, oldPrice: 169000, rating: 4.5, reviews: 92,  image: iphone13,                                              sub: "Mid-Range", storage: "128GB", ram: "4GB",  color: "Pink",   screen: 6.1, battery: 3240, fiveG: true },
-  { id: "p13", name: "Xiaomi Redmi 13C 128GB Midnight Black",     brand: "Xiaomi",  price: 39900, oldPrice: 45000,  rating: 4.4, reviews: 312, image: phone3, badge: { label: "Best Value", tone: "success" }, sub: "Budget", storage: "128GB", ram: "6GB",  color: "Black",    screen: 6.74, battery: 5000, fiveG: false },
-  { id: "p14", name: "Samsung Galaxy A15 5G 128GB Light Blue",    brand: "Samsung", price: 54900,                  rating: 4.5, reviews: 218, image: phone2,                                              sub: "Budget",    storage: "128GB", ram: "6GB",  color: "Blue",     screen: 6.5, battery: 5000, fiveG: true },
-  { id: "p15", name: "Samsung Galaxy Z Fold5 5G 512GB",           brand: "Samsung", price: 549000, oldPrice: 589000, rating: 4.7, reviews: 76,  image: phone2, badge: { label: "Foldable", tone: "primary" }, sub: "Foldable", storage: "512GB", ram: "12GB", color: "Black", screen: 7.6, battery: 4400, fiveG: true },
-  { id: "p16", name: "OnePlus 12 5G 256GB Silky Black",           brand: "OnePlus", price: 229000, oldPrice: 249000, rating: 4.8, reviews: 156, image: phone1, badge: { label: "Best Seller", tone: "success" }, sub: "Flagship", storage: "256GB", ram: "12GB", color: "Black", screen: 6.82, battery: 5400, fiveG: true },
+const useCases = [
+  { id: "camera", label: "Best cameras", desc: "48MP and up", icon: Camera },
+  { id: "gaming", label: "Built for gaming", desc: "12GB+ RAM", icon: Gamepad2 },
+  { id: "battery", label: "All-day battery", desc: "5,000mAh+", icon: BatteryFull },
+  { id: "value", label: "Value picks", desc: "Under LKR 270,000", icon: Wallet },
 ];
 
-const subcats = ["All", "Flagship", "Mid-Range", "Budget", "Gaming", "Foldable", "5G", "New Launches"];
-const brands = ["Apple", "Samsung", "Xiaomi", "OnePlus", "Google", "ASUS", "Honor", "Vivo", "Oppo"];
-const ratings = [4, 3, 2, 1];
-const storages = ["64GB", "128GB", "256GB", "512GB", "1TB"];
-const rams = ["4GB", "6GB", "8GB", "12GB", "16GB"];
-const colors = [
-  { name: "Black", hex: "#0F172A" },
-  { name: "White", hex: "#F8FAFC" },
-  { name: "Blue", hex: "#2563EB" },
-  { name: "Titanium", hex: "#9CA3AF" },
-  { name: "Gold", hex: "#D4AF37" },
-  { name: "Green", hex: "#10B981" },
-  { name: "Pink", hex: "#F472B6" },
-];
-const cameras = ["12MP+", "48MP+", "108MP+", "200MP+"];
-
-const fmtLKR = (n: number) =>
-  "LKR " + n.toLocaleString("en-LK", { maximumFractionDigits: 0 });
-
-/* Brand quick-shop tiles */
-const brandTiles = [
-  { name: "Apple", count: 28 },
-  { name: "Samsung", count: 42 },
-  { name: "Xiaomi", count: 36 },
-  { name: "OnePlus", count: 14 },
-  { name: "Google", count: 9 },
-  { name: "ASUS", count: 7 },
-  { name: "Honor", count: 11 },
-  { name: "Vivo", count: 16 },
-  { name: "Oppo", count: 18 },
+const picks = [
+  { id: "iphone-17-pro-max", crown: "Best overall", why: "The most complete phone we sell — a 48MP main sensor, the fastest chip on the shelf, and resale value that holds." },
+  { id: "galaxy-s26-ultra", crown: "Best camera", why: "A 200MP sensor with a proper optical zoom range. If photography decides your purchase, this is it." },
+  { id: "oneplus-13r", crown: "Best value", why: "16GB of RAM and a 6,000mAh cell for well under half the price of the flagships above." },
 ];
 
-/* -------------------- Filter sidebar -------------------- */
-type FilterState = {
-  brands: string[];
-  price: [number, number];
-  inStock: boolean;
-  rating: number | null;
-  warranty: boolean;
-  storages: string[];
-  rams: string[];
-  colors: string[];
-  screen: [number, number];
-  battery: number;
-  cameras: string[];
-  fiveG: boolean;
-  promo: boolean;
-  preorder: boolean;
-};
+const brandList = ["Apple", "Samsung", "Google", "OnePlus", "HONOR"];
 
-const defaultFilters: FilterState = {
-  brands: [],
-  price: [0, 600000],
-  inStock: false,
-  rating: null,
-  warranty: false,
-  storages: [],
-  rams: [],
-  colors: [],
-  screen: [5.5, 8],
-  battery: 0,
-  cameras: [],
-  fiveG: false,
-  promo: false,
-  preorder: false,
-};
+const guide = [
+  { q: "How much should I spend on a phone in Sri Lanka?", a: "Under LKR 150,000 gets a dependable everyday phone. LKR 200,000–300,000 is the sweet spot for a great camera and years of updates. Above LKR 400,000 you are paying for zoom lenses, foldables and top-end chips." },
+  { q: "Is a foldable worth it?", a: "A flip saves pocket space; a book-style fold gives you a tablet-sized screen. Both cost more and weigh more than a slab phone. Buy one because you want the form factor, not for the camera." },
+  { q: "Do I need 12GB of RAM?", a: "For messaging, video and photos, 8GB is plenty. 12GB and above matters if you keep many apps resident or play demanding games for long sessions." },
+  { q: "Will my phone work on all Sri Lankan networks?", a: "Every handset here is dual-SIM and supports 5G on Dialog and Mobitel where coverage exists. Devices are the international model, not carrier-locked." },
+];
 
-const FilterSidebar = ({
-  filters,
-  setFilters,
-}: {
-  filters: FilterState;
-  setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
-}) => {
-  const toggle = <K extends keyof FilterState>(key: K, value: string) => {
-    setFilters((f) => {
-      const arr = f[key] as unknown as string[];
-      const next = arr.includes(value) ? arr.filter((x) => x !== value) : [...arr, value];
-      return { ...f, [key]: next } as FilterState;
-    });
-  };
 
+const SpecPill = ({ icon: Icon, children }: { icon: typeof Cpu; children: React.ReactNode }) => (
+  <span className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-2.5 py-1 text-[11px] font-semibold text-foreground/75">
+    <Icon className="h-3.5 w-3.5 text-primary" />
+    {children}
+  </span>
+);
+
+/* List-view row — the grid uses ProductCard, this shows the specs instead. */
+const PhoneRow = ({ p }: { p: CatalogItem }) => {
+  const discount = p.oldPrice ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
   return (
-    <aside className="space-y-3">
-      <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
-        <div className="mb-3 flex items-center justify-between">
-          <h3 className="font-display text-base font-bold">Refine</h3>
-          <button
-            onClick={() => setFilters(defaultFilters)}
-            className="text-xs font-semibold text-primary hover:underline"
-          >
-            Clear all
-          </button>
-        </div>
-
-        <Accordion type="multiple" defaultValue={["brand", "price", "rating", "storage"]} className="w-full">
-          <AccordionItem value="brand">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Brand</AccordionTrigger>
-            <AccordionContent>
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                {brands.map((b) => {
-                  const active = filters.brands.includes(b);
-                  return (
-                    <button
-                      key={b}
-                      onClick={() => toggle("brands", b)}
-                      className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-all ${
-                        active
-                          ? "border-primary bg-primary/10 text-primary"
-                          : "border-border bg-background text-foreground/80 hover:border-primary/40"
-                      }`}
-                    >
-                      {b}
-                    </button>
-                  );
-                })}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="price">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Price (LKR)</AccordionTrigger>
-            <AccordionContent>
-              <div className="px-1 pb-1 pt-3">
-                <Slider
-                  value={filters.price}
-                  min={0}
-                  max={600000}
-                  step={5000}
-                  onValueChange={(v) =>
-                    setFilters((f) => ({ ...f, price: [v[0], v[1]] as [number, number] }))
-                  }
-                />
-                <div className="mt-3 flex items-center justify-between text-xs font-medium">
-                  <span className="rounded-md bg-secondary px-2 py-1">{fmtLKR(filters.price[0])}</span>
-                  <span className="text-muted-foreground">to</span>
-                  <span className="rounded-md bg-secondary px-2 py-1">{fmtLKR(filters.price[1])}</span>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="avail">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Availability</AccordionTrigger>
-            <AccordionContent>
-              <div className="space-y-3 pt-1">
-                <label className="flex items-center justify-between text-sm">
-                  <span>In stock only</span>
-                  <Switch checked={filters.inStock} onCheckedChange={(v) => setFilters((f) => ({ ...f, inStock: v }))} />
-                </label>
-                <label className="flex items-center justify-between text-sm">
-                  <span>Pre-order</span>
-                  <Switch checked={filters.preorder} onCheckedChange={(v) => setFilters((f) => ({ ...f, preorder: v }))} />
-                </label>
-                <label className="flex items-center justify-between text-sm">
-                  <span>On promotion</span>
-                  <Switch checked={filters.promo} onCheckedChange={(v) => setFilters((f) => ({ ...f, promo: v }))} />
-                </label>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-
-          <AccordionItem value="warr">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Warranty</AccordionTrigger>
-            <AccordionContent>
-              <label className="flex items-center justify-between pt-1 text-sm">
-                <span className="inline-flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-success" /> Warranty backed
-                </span>
-                <Switch checked={filters.warranty} onCheckedChange={(v) => setFilters((f) => ({ ...f, warranty: v }))} />
-              </label>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="storage">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Storage</AccordionTrigger>
-            <AccordionContent>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {storages.map((s) => {
-                  const active = filters.storages.includes(s);
-                  return (
-                    <button
-                      key={s}
-                      onClick={() => toggle("storages", s)}
-                      className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
-                        active
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border bg-background hover:border-primary/40"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  );
-                })}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="ram">
-            <AccordionTrigger className="py-3 text-sm font-semibold">RAM</AccordionTrigger>
-            <AccordionContent>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {rams.map((s) => {
-                  const active = filters.rams.includes(s);
-                  return (
-                    <button
-                      key={s}
-                      onClick={() => toggle("rams", s)}
-                      className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
-                        active
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border bg-background hover:border-primary/40"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  );
-                })}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="color">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Color</AccordionTrigger>
-            <AccordionContent>
-              <div className="flex flex-wrap gap-2 pt-1">
-                {colors.map((c) => {
-                  const active = filters.colors.includes(c.name);
-                  return (
-                    <button
-                      key={c.name}
-                      title={c.name}
-                      onClick={() => toggle("colors", c.name)}
-                      className={`relative h-8 w-8 rounded-full border-2 transition-all ${
-                        active ? "border-primary ring-2 ring-primary/30" : "border-border hover:border-primary/40"
-                      }`}
-                      style={{ backgroundColor: c.hex }}
-                    />
-                  );
-                })}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="screen">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Screen size</AccordionTrigger>
-            <AccordionContent>
-              <div className="px-1 pb-1 pt-3">
-                <Slider
-                  value={filters.screen}
-                  min={5}
-                  max={8}
-                  step={0.1}
-                  onValueChange={(v) =>
-                    setFilters((f) => ({ ...f, screen: [v[0], v[1]] as [number, number] }))
-                  }
-                />
-                <div className="mt-3 flex items-center justify-between text-xs font-medium">
-                  <span className="rounded-md bg-secondary px-2 py-1">{filters.screen[0].toFixed(1)}"</span>
-                  <span className="text-muted-foreground">to</span>
-                  <span className="rounded-md bg-secondary px-2 py-1">{filters.screen[1].toFixed(1)}"</span>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="battery">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Battery (mAh+)</AccordionTrigger>
-            <AccordionContent>
-              <div className="grid grid-cols-2 gap-1.5 pt-1">
-                {[0, 4000, 5000, 5500].map((v) => {
-                  const active = filters.battery === v;
-                  return (
-                    <button
-                      key={v}
-                      onClick={() => setFilters((f) => ({ ...f, battery: v }))}
-                      className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-all ${
-                        active
-                          ? "border-primary bg-primary/10 text-primary"
-                          : "border-border bg-background hover:border-primary/40"
-                      }`}
-                    >
-                      {v === 0 ? "Any" : `${v}+`}
-                    </button>
-                  );
-                })}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="cam">
-            <AccordionTrigger className="py-3 text-sm font-semibold">Camera</AccordionTrigger>
-            <AccordionContent>
-              <div className="space-y-2.5 pt-1">
-                {cameras.map((c) => (
-                  <label key={c} className="flex cursor-pointer items-center gap-2.5 text-sm">
-                    <Checkbox
-                      checked={filters.cameras.includes(c)}
-                      onCheckedChange={() => toggle("cameras", c)}
-                    />
-                    <span className="text-foreground/90">{c}</span>
-                  </label>
-                ))}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="5g">
-            <AccordionTrigger className="py-3 text-sm font-semibold">5G Support</AccordionTrigger>
-            <AccordionContent>
-              <label className="flex items-center justify-between pt-1 text-sm">
-                <span className="inline-flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-primary" /> 5G ready only
-                </span>
-                <Switch checked={filters.fiveG} onCheckedChange={(v) => setFilters((f) => ({ ...f, fiveG: v }))} />
-              </label>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+    <Link
+      to={`/product/${p.id}`}
+      className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-4 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift sm:flex-row sm:items-center"
+    >
+      <div className="grid h-32 w-32 shrink-0 place-items-center self-center rounded-xl bg-white">
+        <img src={p.image} alt={p.name} loading="lazy" className="h-28 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
       </div>
 
-      <div className="rounded-2xl border border-border/70 bg-gradient-brand-soft p-4">
-        <div className="flex items-start gap-3">
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-background shadow-soft">
-            <Wallet className="h-5 w-5 text-primary" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-foreground">0% Installments</h4>
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              Pay in 3, 6, 12 or 24 months on selected smartphones with leading banks.
-            </p>
-          </div>
+      <div className="min-w-0 flex-1">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{p.brand}</span>
+        <h3 className="font-display text-base font-bold leading-tight text-foreground">{p.name}</h3>
+        <div className="mt-1.5 flex items-center gap-1.5">
+          <Star className="h-3.5 w-3.5 fill-warning text-warning" />
+          <span className="text-xs font-semibold text-foreground">{p.rating}</span>
+          <span className="text-xs text-muted-foreground">({p.reviews})</span>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          <SpecPill icon={Smartphone}>{p.screen}"</SpecPill>
+          <SpecPill icon={Cpu}>{p.ram} RAM</SpecPill>
+          <SpecPill icon={BatteryFull}>{(p.battery ?? 0).toLocaleString()}mAh</SpecPill>
+          <SpecPill icon={Camera}>{p.camera}MP</SpecPill>
+          {p.fiveG && <SpecPill icon={Signal}>5G</SpecPill>}
         </div>
       </div>
-    </aside>
+
+      <div className="shrink-0 sm:w-44 sm:text-right">
+        {p.oldPrice && (
+          <div className="text-xs text-muted-foreground line-through">{fmtLKR(p.oldPrice)}</div>
+        )}
+        <div className="font-display text-xl font-extrabold text-foreground">{fmtLKR(p.price)}</div>
+        {discount > 0 && (
+          <span className="mt-1 inline-block rounded-full bg-promo px-2 py-0.5 text-[10px] font-bold text-promo-foreground">
+            Save {discount}%
+          </span>
+        )}
+        <div className="mt-1 text-[11px] text-muted-foreground">
+          or {fmtLKR(Math.round(p.price / 12))}/mo × 12
+        </div>
+      </div>
+    </Link>
   );
 };
 
-/* -------------------- Page -------------------- */
 const Category = () => {
   const params = useParams();
   const slug = params.slug ?? "smartphones";
@@ -443,16 +128,15 @@ const Category = () => {
   };
   const categoryName = titleMap[slug] ?? "Smartphones";
 
-  const [filters, setFilters] = useState<FilterState>(defaultFilters);
+  const [useCase, setUseCase] = useState<string | null>(null);
+  const [brands, setBrands] = useState<string[]>([]);
   const [sort, setSort] = useState("relevance");
-  const [activeSub, setActiveSub] = useState<string>("All");
+  const [view, setView] = useState<"grid" | "list">("grid");
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
-  const perPage = 12;
 
   useEffect(() => {
     document.title = `${categoryName} — Best Prices in Sri Lanka | Nexzon`;
-    const desc = `Shop the latest ${categoryName.toLowerCase()} at Nexzon. Genuine products, warranty support, 0% installments and islandwide delivery.`;
+    const desc = `Compare and buy ${categoryName.toLowerCase()} at Nexzon. Genuine stock, warranty support, 0% installments and islandwide delivery.`;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
@@ -462,24 +146,13 @@ const Category = () => {
     meta.setAttribute("content", desc);
   }, [categoryName]);
 
+  const toggleBrand = (b: string) =>
+    setBrands((prev) => (prev.includes(b) ? prev.filter((x) => x !== b) : [...prev, b]));
+
   const filtered = useMemo(() => {
     let list = catalog.filter((p) => {
-      if (activeSub !== "All") {
-        if (activeSub === "5G" && !p.fiveG) return false;
-        if (activeSub === "New Launches" && p.badge?.label !== "New") return false;
-        if (!["5G", "New Launches"].includes(activeSub) && p.sub !== activeSub) return false;
-      }
-      if (filters.brands.length && !filters.brands.includes(p.brand)) return false;
-      if (p.price < filters.price[0] || p.price > filters.price[1]) return false;
-      if (filters.rating && p.rating < filters.rating) return false;
-      if (filters.storages.length && !filters.storages.includes(p.storage)) return false;
-      if (filters.rams.length && !filters.rams.includes(p.ram)) return false;
-      if (filters.colors.length && !filters.colors.includes(p.color)) return false;
-      if (p.screen < filters.screen[0] || p.screen > filters.screen[1]) return false;
-      if (filters.battery && p.battery < filters.battery) return false;
-      if (filters.fiveG && !p.fiveG) return false;
-      if (filters.promo && !p.oldPrice) return false;
-      if (filters.preorder && p.badge?.label !== "Pre-Order") return false;
+      if (useCase && !(p.uses ?? []).includes(useCase)) return false;
+      if (brands.length && !brands.includes(p.brand)) return false;
       if (search && !`${p.name} ${p.brand}`.toLowerCase().includes(search.toLowerCase())) return false;
       return true;
     });
@@ -487,239 +160,332 @@ const Category = () => {
       case "price-asc": list = [...list].sort((a, b) => a.price - b.price); break;
       case "price-desc": list = [...list].sort((a, b) => b.price - a.price); break;
       case "rating": list = [...list].sort((a, b) => b.rating - a.rating); break;
-      case "newest": list = [...list].sort((a, b) => Number(b.id.slice(1)) - Number(a.id.slice(1))); break;
+      case "battery": list = [...list].sort((a, b) => (b.battery ?? 0) - (a.battery ?? 0)); break;
     }
     return list;
-  }, [filters, sort, activeSub, search]);
+  }, [useCase, brands, sort, search]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
-  const visible = filtered.slice(0, page * perPage);
+  const pickCards = picks
+    .map((k) => ({ ...k, phone: catalog.find((c) => c.id === k.id)! }))
+    .filter((k) => k.phone);
 
-  /* Top flagships highlight */
-  const topFlagships = useMemo(
-    () => catalog.filter((p) => p.sub === "Flagship").slice(0, 3),
-    [],
-  );
-
-  /* Active chips */
-  const chips: { label: string; onRemove: () => void }[] = [];
-  filters.brands.forEach((b) =>
-    chips.push({ label: b, onRemove: () => setFilters((f) => ({ ...f, brands: f.brands.filter((x) => x !== b) })) }),
-  );
-  filters.storages.forEach((s) =>
-    chips.push({ label: s, onRemove: () => setFilters((f) => ({ ...f, storages: f.storages.filter((x) => x !== s) })) }),
-  );
-  filters.colors.forEach((c) =>
-    chips.push({ label: c, onRemove: () => setFilters((f) => ({ ...f, colors: f.colors.filter((x) => x !== c) })) }),
-  );
-  if (filters.rating)
-    chips.push({ label: `${filters.rating}★ & up`, onRemove: () => setFilters((f) => ({ ...f, rating: null })) });
-  if (filters.fiveG)
-    chips.push({ label: "5G", onRemove: () => setFilters((f) => ({ ...f, fiveG: false })) });
-  if (filters.warranty)
-    chips.push({ label: "Warranty", onRemove: () => setFilters((f) => ({ ...f, warranty: false })) });
-  if (filters.promo)
-    chips.push({ label: "On Sale", onRemove: () => setFilters((f) => ({ ...f, promo: false })) });
-  if (filters.preorder)
-    chips.push({ label: "Pre-Order", onRemove: () => setFilters((f) => ({ ...f, preorder: false })) });
+  const hasFilters = Boolean(useCase) || brands.length > 0 || search.length > 0;
+  const reset = () => {
+    setUseCase(null);
+    setBrands([]);
+    setSearch("");
+  };
 
   return (
-    <div className="min-h-screen bg-surface">
-      <PromoBar />
+    <div className="min-h-screen bg-background">
       <Header />
 
       <main>
         {/* Breadcrumb */}
-        <section className="bg-background">
-          <div className="container-page pt-5 sm:pt-6">
-            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <Link to="/" className="hover:text-primary">Home</Link>
-              <ChevronRight className="h-3.5 w-3.5" />
-              <Link to="/shop" className="hover:text-primary">Shop</Link>
-              <ChevronRight className="h-3.5 w-3.5" />
-              <span className="text-foreground">{categoryName}</span>
-            </nav>
-          </div>
-        </section>
+        <div className="container-page pt-5">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+            <Link to="/" className="hover:text-primary">Home</Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <Link to="/shop" className="hover:text-primary">Shop</Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="text-foreground">{categoryName}</span>
+          </nav>
+        </div>
 
-        {/* Category hero */}
-        <section className="bg-background pt-5 sm:pt-6">
-          <div className="container-page">
-            <div className="relative overflow-hidden rounded-3xl border border-border/60">
-              <img
-                src={heroSmartphones}
-                alt={`${categoryName} category banner`}
-                className="h-auto w-full object-cover"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Featured brands */}
-        <section className="bg-background pb-10 pt-[34px] sm:pb-14">
-          <div className="container-page">
-            <div className="mb-3 flex items-end justify-between">
-              <div>
-                <h2 className="font-display text-lg font-bold sm:text-xl">Shop by Brand</h2>
-                <p className="text-xs text-muted-foreground">Top {categoryName.toLowerCase()} brands available at Nexzon.</p>
+        {/* Split hero */}
+        <section className="container-page pt-5">
+          <div className="overflow-hidden rounded-3xl bg-gradient-deep">
+            <div className="grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-2">
+              <div className="text-primary-foreground">
+                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur">
+                  <Trophy className="h-3.5 w-3.5" /> {catalog.length} models in stock
+                </span>
+                <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
+                  {categoryName}, chosen properly.
+                </h1>
+                <p className="mt-4 max-w-md text-sm text-white/85 sm:text-base">
+                  Filter by what you actually care about — camera, battery, gaming or price — and compare
+                  the specs side by side before you commit.
+                </p>
+                <dl className="mt-6 flex flex-wrap gap-6">
+                  {[
+                    { k: "From", v: fmtLKR(Math.min(...catalog.map((c) => c.price))) },
+                    { k: "Brands", v: String(brandList.length) },
+                    { k: "Installments", v: "0% · 12mo" },
+                  ].map((s) => (
+                    <div key={s.k}>
+                      <dt className="text-[11px] uppercase tracking-wider text-white/60">{s.k}</dt>
+                      <dd className="font-display text-lg font-extrabold">{s.v}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
-              <Link to="/shop" className="hidden text-xs font-semibold text-primary hover:underline sm:inline">All brands →</Link>
+
+              <div className="isolate overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-secondary p-6">
+                <img
+                  src={iphone17ProMax}
+                  alt="Featured smartphone"
+                  className="mx-auto h-48 w-auto object-contain mix-blend-multiply sm:h-64"
+                />
+              </div>
             </div>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
-              {brandTiles.map((b) => {
-                const slug = b.name.toLowerCase().replace(/\s+/g, "");
-                return (
-                  <Link
-                    key={b.name}
-                    to={`/brand/${b.name.toLowerCase()}`}
-                    className="card-category group flex h-24 flex-col items-center justify-center gap-1.5 px-3 py-3 text-center"
-                    aria-label={`Shop ${b.name}`}
+          </div>
+        </section>
+
+        {/* Use-case tiles */}
+        <section className="container-page pt-12">
+          <h2 className="font-display text-xl font-bold">What matters most to you?</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {useCases.map((u) => {
+              const active = useCase === u.id;
+              return (
+                <button
+                  key={u.id}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setUseCase(active ? null : u.id)}
+                  className={cn(
+                    "flex items-center gap-3 rounded-2xl border p-4 text-left transition-all hover:-translate-y-0.5",
+                    active
+                      ? "border-primary bg-accent shadow-lift"
+                      : "border-border bg-card shadow-soft hover:border-primary/40",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors",
+                      active ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground",
+                    )}
                   >
-                    <img
-                      src={`https://cdn.simpleicons.org/${slug}`}
-                      alt={`${b.name} logo`}
-                      loading="lazy"
-                      className="max-h-7 w-auto max-w-[70%] object-contain opacity-80 transition-all group-hover:opacity-100 group-hover:scale-105 dark:invert"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        target.style.display = "none";
-                      }}
-                    />
-                    <span className="font-display text-xs font-bold text-foreground/80 transition-colors group-hover:text-primary sm:text-sm">
-                      {b.name}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
+                    <u.icon className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-bold text-foreground">{u.label}</span>
+                    <span className="block text-xs text-muted-foreground">{u.desc}</span>
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </section>
 
-        <div className="container-page py-7 lg:py-10">
-          <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-8">
-            {/* Desktop sidebar */}
-            <div className="hidden lg:block">
-              <div className="sticky top-[180px]">
-                <FilterSidebar filters={filters} setFilters={setFilters} />
-              </div>
+        {/* Editor's picks */}
+        <section className="container-page pt-12">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <h2 className="font-display text-xl font-bold">Our picks this month</h2>
+              <p className="mt-1 text-sm text-muted-foreground">Three phones we would recommend without hesitating.</p>
             </div>
-
-            {/* Right area */}
-            <div className="min-w-0">
-              {/* Category-specific merchandising */}
-
-              {/* Toolbar */}
-              <div className="mb-4 flex flex-col gap-3 rounded-2xl border border-border/70 bg-card p-3 shadow-soft sm:p-4 md:flex-row md:items-center">
-                <div className="relative flex-1">
-                  <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <input
-                    type="search"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder={`Search in ${categoryName.toLowerCase()}…`}
-                    className="h-10 w-full rounded-xl border border-border bg-surface pl-10 pr-3 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/20"
-                  />
+          </div>
+          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+            {pickCards.map(({ crown, why, phone }) => (
+              <Link
+                key={phone.id}
+                to={`/product/${phone.id}`}
+                className="group flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="grid h-28 w-24 shrink-0 place-items-center rounded-xl bg-white">
+                  <img src={phone.image} alt={phone.name} loading="lazy" className="h-24 w-auto object-contain" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="hidden text-xs font-medium text-muted-foreground sm:inline">
-                    Showing <strong className="text-foreground">{visible.length}</strong> of{" "}
-                    <strong className="text-foreground">{filtered.length}</strong>
+                <div className="min-w-0">
+                  <span className="inline-block rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-primary-foreground">
+                    {crown}
                   </span>
-                  <Select value={sort} onValueChange={setSort}>
-                    <SelectTrigger className="h-10 w-[180px] rounded-xl">
-                      <SelectValue placeholder="Sort by" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="relevance">Relevance</SelectItem>
-                      <SelectItem value="newest">Newest</SelectItem>
-                      <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                      <SelectItem value="price-desc">Price: High to Low</SelectItem>
-                      <SelectItem value="rating">Top Rated</SelectItem>
-                      <SelectItem value="best">Best Selling</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Sheet>
-                    <SheetTrigger asChild>
-                      <Button variant="outline" className="h-10 rounded-xl lg:hidden">
-                        <SlidersHorizontal className="h-4 w-4" />
-                        Filters
-                      </Button>
-                    </SheetTrigger>
-                    <SheetContent side="left" className="w-[88%] max-w-sm overflow-y-auto p-4">
-                      <SheetHeader>
-                        <SheetTitle>Refine</SheetTitle>
-                      </SheetHeader>
-                      <div className="mt-4">
-                        <FilterSidebar filters={filters} setFilters={setFilters} />
-                      </div>
-                    </SheetContent>
-                  </Sheet>
+                  <h3 className="mt-2 font-display text-sm font-bold leading-tight text-foreground">{phone.name}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{why}</p>
+                  <p className="mt-2 font-display text-base font-extrabold text-foreground">{fmtLKR(phone.price)}</p>
                 </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Catalog */}
+        <section className="container-page pt-12">
+          <div className="rounded-2xl border border-border bg-card p-4 shadow-soft">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+              <div className="relative lg:w-72">
+                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder={`Search ${categoryName.toLowerCase()}…`}
+                  className="h-10 w-full rounded-xl border border-border bg-surface pl-10 pr-3 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/20"
+                />
               </div>
 
-              {/* Active chips */}
-              {chips.length > 0 && (
-                <div className="mb-4 flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-semibold text-muted-foreground">Active:</span>
-                  {chips.map((c, i) => (
+              <div className="flex flex-wrap items-center gap-2">
+                {brandList.map((b) => {
+                  const active = brands.includes(b);
+                  return (
                     <button
-                      key={i}
-                      onClick={c.onRemove}
-                      className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/15"
+                      key={b}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => toggleBrand(b)}
+                      className={cn(
+                        "rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors",
+                        active
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-background text-foreground/75 hover:border-primary/40 hover:text-primary",
+                      )}
                     >
-                      {c.label}
-                      <X className="h-3 w-3" />
+                      {b}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="flex items-center gap-2 lg:ml-auto">
+                <Select value={sort} onValueChange={setSort}>
+                  <SelectTrigger className="h-10 w-[170px] rounded-xl">
+                    <SelectValue placeholder="Sort by" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="relevance">Relevance</SelectItem>
+                    <SelectItem value="price-asc">Price: Low to High</SelectItem>
+                    <SelectItem value="price-desc">Price: High to Low</SelectItem>
+                    <SelectItem value="rating">Top Rated</SelectItem>
+                    <SelectItem value="battery">Biggest Battery</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                <div className="flex overflow-hidden rounded-xl border border-border" role="group" aria-label="View">
+                  {([["grid", LayoutGrid], ["list", Rows3]] as const).map(([v, Icon]) => (
+                    <button
+                      key={v}
+                      type="button"
+                      aria-pressed={view === v}
+                      aria-label={`${v} view`}
+                      onClick={() => setView(v)}
+                      className={cn(
+                        "grid h-10 w-10 place-items-center transition-colors",
+                        view === v ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground hover:text-primary",
+                      )}
+                    >
+                      <Icon className="h-4 w-4" />
                     </button>
                   ))}
-                  <button
-                    onClick={() => setFilters(defaultFilters)}
-                    className="text-xs font-semibold text-muted-foreground hover:text-foreground"
-                  >
-                    Clear all
-                  </button>
                 </div>
-              )}
+              </div>
+            </div>
 
-              {/* Grid */}
-              {visible.length > 0 ? (
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
-                  {visible.map((p) => (
-                    <ProductCard key={p.id} product={p} />
-                  ))}
-                </div>
-              ) : (
-                <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
-                  <Smartphone className="mx-auto h-10 w-10 text-muted-foreground/60" />
-                  <h3 className="mt-3 font-display text-lg font-bold">No {categoryName.toLowerCase()} match your filters</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">Try removing a few filters.</p>
-                  <Button variant="outline" className="mt-4" onClick={() => { setFilters(defaultFilters); setSearch(""); setActiveSub("All"); }}>
-                    Reset filters
-                  </Button>
-                </div>
-              )}
-
-              {/* Pagination */}
-              {filtered.length > perPage && (
-                <div className="mt-8 flex flex-col items-center gap-5">
-                  <Pagination>
-                    <PaginationContent>
-                      <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
-                      {Array.from({ length: Math.min(totalPages, 4) }).map((_, i) => (
-                        <PaginationItem key={i}>
-                          <PaginationLink href="#" isActive={i === 0}>{i + 1}</PaginationLink>
-                        </PaginationItem>
-                      ))}
-                      {totalPages > 4 && (
-                        <PaginationItem><PaginationEllipsis /></PaginationItem>
-                      )}
-                      <PaginationItem><PaginationNext href="#" /></PaginationItem>
-                    </PaginationContent>
-                  </Pagination>
-                </div>
+            <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border pt-3">
+              <span className="text-xs text-muted-foreground">
+                <strong className="text-foreground">{filtered.length}</strong> of {catalog.length} models
+              </span>
+              {hasFilters && (
+                <button
+                  onClick={reset}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                >
+                  <X className="h-3 w-3" /> Clear filters
+                </button>
               )}
             </div>
           </div>
-        </div>
+
+          {filtered.length > 0 ? (
+            view === "grid" ? (
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
+                {filtered.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+            ) : (
+              <div className="mt-5 flex flex-col gap-3">
+                {filtered.map((p) => (
+                  <PhoneRow key={p.id} p={p} />
+                ))}
+              </div>
+            )
+          ) : (
+            <div className="mt-5 rounded-2xl border border-dashed border-border bg-card p-12 text-center">
+              <Smartphone className="mx-auto h-10 w-10 text-muted-foreground/60" />
+              <h3 className="mt-3 font-display text-lg font-bold">Nothing matches those filters</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Try clearing a filter or two.</p>
+              <Button variant="outline" className="mt-4" onClick={reset}>Clear filters</Button>
+            </div>
+          )}
+        </section>
+
+        {/* Spec comparison */}
+        <section className="container-page pt-14">
+          <h2 className="font-display text-xl font-bold">Our picks, side by side</h2>
+          <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card shadow-soft">
+            <table className="w-full min-w-[640px] text-sm">
+              <thead>
+                <tr className="border-b border-border bg-surface">
+                  <th className="p-4 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground">Spec</th>
+                  {pickCards.map(({ phone }) => (
+                    <th key={phone.id} className="p-4 text-left font-display text-sm font-bold text-foreground">
+                      {phone.name}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {([
+                  ["Price", (p: CatalogItem) => fmtLKR(p.price)],
+                  ["Screen", (p: CatalogItem) => `${p.screen}"`],
+                  ["RAM", (p: CatalogItem) => p.ram],
+                  ["Storage", (p: CatalogItem) => p.storage],
+                  ["Battery", (p: CatalogItem) => `${p.battery.toLocaleString()}mAh`],
+                  ["Main camera", (p: CatalogItem) => `${p.camera}MP`],
+                  ["Rating", (p: CatalogItem) => `${p.rating} / 5`],
+                ] as const).map(([label, get], i) => (
+                  <tr key={label} className={cn("border-b border-border last:border-0", i % 2 === 1 && "bg-surface/50")}>
+                    <th scope="row" className="p-4 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {label}
+                    </th>
+                    {pickCards.map(({ phone }) => (
+                      <td key={phone.id} className="p-4 font-semibold text-foreground">{get(phone)}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <Link to="/compare" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+            Build your own comparison <ArrowRight className="h-4 w-4" />
+          </Link>
+        </section>
+
+        {/* Buying guide */}
+        <section className="container-page py-14">
+          <div className="grid gap-8 lg:grid-cols-[22rem_1fr]">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Buying guide</span>
+              <h2 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
+                Not sure which one?
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                A few honest answers to the questions our Colombo store gets asked every day.
+              </p>
+              <Button asChild className="mt-5">
+                <Link to="/help">Talk to a specialist</Link>
+              </Button>
+            </div>
+
+            <Accordion type="single" collapsible className="w-full">
+              {guide.map((g, i) => (
+                <AccordionItem
+                  key={g.q}
+                  value={`g-${i}`}
+                  className="mb-3 overflow-hidden rounded-xl border border-border bg-card px-5 shadow-soft"
+                >
+                  <AccordionTrigger className="text-left text-base font-semibold hover:no-underline">
+                    {g.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                    {g.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
       </main>
 
       <Footer />

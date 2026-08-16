@@ -27,6 +27,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { site } from "@/data/site";
 
 interface FaqItem {
   q: string;
@@ -476,7 +477,7 @@ const FAQ = () => {
                 <ContactCard
                   icon={Mail}
                   title="Email"
-                  desc="help@nexzon.lk"
+                  desc={site.email}
                   cta="Send email"
                 />
               </div>
