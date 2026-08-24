@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Package, TrendingDown, Gift, Boxes, ShieldAlert, BellOff, CheckCheck, Bell } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { notifications as seed, type Notification } from "@/data/account";
 import { cn } from "@/lib/utils";

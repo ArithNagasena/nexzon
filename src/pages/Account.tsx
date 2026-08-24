@@ -12,7 +12,7 @@ import {
   TrendingDown,
   ShieldCheck,
 } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { customer, notifications, orders, statusMeta, pendingReviews } from "@/data/account";
 import { fmtLKR, getProduct } from "@/data/catalog";

@@ -14,9 +14,9 @@ import {
   ShieldCheck,
   CalendarClock,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import ProductCard from "@/components/cellexa/ProductCard";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
+import ProductCard from "@/components/NexZon/ProductCard";
 import { Button } from "@/components/ui/button";
 import { allProducts, fmtLKR, getProduct, type CatalogItem } from "@/data/catalog";
 import { cn } from "@/lib/utils";
@@ -194,7 +194,7 @@ const OrderSuccess = () => {
                     <MapPin className="h-3.5 w-3.5 text-primary" /> Delivering to
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-foreground">
-                    Nuwan Jayasuriya<br />
+                    Arith Nagasena<br />
                     No. 142, Galle Road<br />
                     Colombo 03, Colombo District<br />
                     +94 71 234 5678
@@ -234,7 +234,7 @@ const OrderSuccess = () => {
 
                 <ul className="mt-5 space-y-2.5 border-t border-border pt-5">
                   {[
-                    { icon: Mail, t: "Invoice sent to nuwan@example.lk" },
+                    { icon: Mail, t: "Invoice sent to arith@example.lk" },
                     { icon: ShieldCheck, t: "Warranty registered automatically" },
                     { icon: Headphones, t: "Support 9 AM – 9 PM, seven days" },
                   ].map((r) => (

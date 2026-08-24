@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { User, Mail, Phone, Calendar, MapPin, Lock, Bell, Trash2, Plus, Check, Smartphone, Monitor } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

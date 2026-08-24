@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #2463EB; } a:hover { color: #173FAB; }
+    .pg { width: 794px; height: 1123px; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #151B28; display: flex; flex-direction: column; overflow: hidden; }
+    .hd { display: flex; align-items: baseline; justify-content: space-between; padding: 40px 56px 16px; border-bottom: 2px solid #151B28; }
+    .wm { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; }
+    .kick { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #58687E; }
+    .bd { flex-grow: 1; padding: 26px 56px 0; display: flex; flex-direction: column; gap: 22px; }
+    .sec { display: flex; flex-direction: column; gap: 10px; }
+    .st { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.015em; }
+    .sd { font-size: 12.5px; line-height: 1.55; color: #58687E; margin-top: -4px; }
+    .row { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid #EEF2F6; }
+    .fn { font-size: 13.5px; font-weight: 600; }
+    .fd { font-size: 12.5px; line-height: 1.5; color: #58687E; }
+    .ft { padding: 0 56px 26px; display: flex; justify-content: space-between; font-size: 10.5px; color: #8A97A8; }
+    .rl { display: grid; grid-template-columns: 118px 56px minmax(0, 1fr); gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid #EEF2F6; font-size: 12.5px; }
+    .cnt { text-align: center; font-weight: 800; font-size: 13px; color: #2463EB; }
+  </style>
+</helmet>
+
+<div class="pg">
+  <div class="hd">
+    <div class="wm">Ne<span style="color: #2463EB;">x</span>zon</div>
+    <div class="kick">Admin dashboard</div>
+  </div>
+
+  <div class="bd">
+
+    <div class="sec">
+      <div class="st">Who can use it</div>
+      <div class="sd">Staff sign in with their own work address, separately from customer accounts. Five roles decide which of the twelve areas each person sees — the menu hides what they cannot reach, and typing the address directly does not get past it.</div>
+      <div>
+        <div class="rl" style="font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #8A97A8;"><div>Role</div><div style="text-align: center;">Areas</div><div>What they handle</div></div>
+        <div class="rl"><div style="font-weight: 600;">Owner</div><div class="cnt">12</div><div style="color: #58687E;">Everything, including staff accounts and roles.</div></div>
+        <div class="rl"><div style="font-weight: 600;">Manager</div><div class="cnt">12</div><div style="color: #58687E;">Everything day to day; distinguished from Owner only in how permissions are granted.</div></div>
+        <div class="rl"><div style="font-weight: 600;">Merchandiser</div><div class="cnt">6</div><div style="color: #58687E;">Products, stock, pre-order launches, promotions and the home page.</div></div>
+        <div class="rl"><div style="font-weight: 600;">Support</div><div class="cnt">5</div><div style="color: #58687E;">Orders, customers, review moderation and the service desk.</div></div>
+        <div class="rl" style="border-bottom: none;"><div style="font-weight: 600;">Warehouse</div><div class="cnt">4</div><div style="color: #58687E;">Stock levels, order dispatch and courier assignment.</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Catalogue and stock</div>
+      <div>
+        <div class="row"><div class="fn">Overview</div><div class="fd">Opens on what needs attention: revenue, orders awaiting action, cash still with couriers, deposits held on launches, items out of stock, open service cases and reviews to moderate. Switches between 7, 30 and 90 days or all time.</div></div>
+        <div class="row"><div class="fn">Products</div><div class="fd">Search all products by name, brand or code; filter by brand, category, publish status and stock level; see price, cost, margin and availability at a glance.</div></div>
+        <div class="row"><div class="fn">Create and edit</div><div class="fd">One form covering everything the shop page shows — name, brand, category, description, price and old price, cost, code, stock, low-stock alert level, supplier, publish status, colour swatches, storage options, full specifications, box contents, warranty wording and sale badge. Entries are checked before saving.</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Inventory</div><div class="fd">Three views: current stock with units held, reserved and available; a movement log recording every increase and decrease with a reason and the staff member who made it; and the IMEI register that backs the customer authenticity checker.</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Orders and delivery</div>
+      <div>
+        <div class="row"><div class="fn">Orders</div><div class="fd">Every order across all customers, searchable by order number, customer name, phone, email or tracking number, and filterable by stage, district and payment method.</div></div>
+        <div class="row"><div class="fn">Order detail</div><div class="fd">Full picture of one order — items, totals, discount, payment state, delivery address and time slot, gift message, serial numbers issued and any return raised — with the actions to confirm, pack, dispatch, mark delivered, cancel or refund, and a printable invoice.</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Delivery &amp; payments</div><div class="fd">A dispatch board showing load by district, a payments view for confirming bank transfers and recording cash collected from couriers, and a refunds queue.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft"><span>NexZon Electronics · Feature Inventory</span><span>Page 5 of 6</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

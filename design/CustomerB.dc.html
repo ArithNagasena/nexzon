@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #2463EB; } a:hover { color: #173FAB; }
+    .pg { width: 794px; height: 1123px; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #151B28; display: flex; flex-direction: column; overflow: hidden; }
+    .hd { display: flex; align-items: baseline; justify-content: space-between; padding: 40px 56px 16px; border-bottom: 2px solid #151B28; }
+    .wm { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; }
+    .kick { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #58687E; }
+    .bd { flex-grow: 1; padding: 26px 56px 0; display: flex; flex-direction: column; gap: 22px; }
+    .sec { display: flex; flex-direction: column; gap: 10px; }
+    .st { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.015em; }
+    .sd { font-size: 12.5px; line-height: 1.55; color: #58687E; margin-top: -4px; }
+    .row { display: grid; grid-template-columns: 168px minmax(0, 1fr) 104px; gap: 16px; align-items: center; padding: 9px 0; border-bottom: 1px solid #EEF2F6; }
+    .fn { font-size: 13.5px; font-weight: 600; }
+    .fd { font-size: 12.5px; line-height: 1.5; color: #58687E; }
+    .pl { text-align: center; border-radius: 999px; font-size: 10.5px; font-weight: 700; padding: 4px 0; }
+    .ok { border: 1px solid rgba(29,135,85,0.25); background: rgba(29,135,85,0.10); color: #1D8755; }
+    .dz { border: 1px solid rgba(191,81,8,0.25); background: rgba(191,81,8,0.10); color: #BF5108; }
+    .np { border: 1px solid #DEE5ED; background: #EEF2F6; color: #58687E; }
+    .ft { padding: 0 56px 26px; display: flex; justify-content: space-between; font-size: 10.5px; color: #8A97A8; }
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .step { border: 1px solid #DEE5ED; border-radius: 12px; background: #F8FAFC; padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .sn { width: 22px; height: 22px; border-radius: 999px; background: #2463EB; color: #FFFFFF; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  </style>
+</helmet>
+
+<div class="pg">
+  <div class="hd">
+    <div class="wm">Ne<span style="color: #2463EB;">x</span>zon</div>
+    <div class="kick">Customer web application</div>
+  </div>
+
+  <div class="bd">
+
+    <div class="sec">
+      <div class="st">Basket and checkout</div>
+      <div class="sd">Checkout is a single page in four clearly numbered steps.</div>
+
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div style="font-size: 12.5px; font-weight: 700;">Contact details</div><div style="font-size: 11.5px; line-height: 1.45; color: #58687E;">Name, email and mobile number.</div></div>
+        <div class="step"><div class="sn">2</div><div style="font-size: 12.5px; font-weight: 700;">Delivery</div><div style="font-size: 11.5px; line-height: 1.45; color: #58687E;">Address, district, method and time slot.</div></div>
+        <div class="step"><div class="sn">3</div><div style="font-size: 12.5px; font-weight: 700;">Payment</div><div style="font-size: 11.5px; line-height: 1.45; color: #58687E;">Choose one of four methods.</div></div>
+        <div class="step"><div class="sn">4</div><div style="font-size: 12.5px; font-weight: 700;">Review</div><div style="font-size: 11.5px; line-height: 1.45; color: #58687E;">Confirm totals and place the order.</div></div>
+      </div>
+
+      <div style="margin-top: 4px;">
+        <div class="row"><div class="fn">Basket</div><div class="fd">Change quantities, remove lines, save an item for later, apply a promotion code and see the running total.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Add to basket</div><div class="fd">No add-to-basket button exists on product cards or the product page, so the basket cannot yet be filled by a shopper.</div><div class="pl np">Not present</div></div>
+        <div class="row"><div class="fn">Address capture</div><div class="fd">Full address form covering 10 districts, with four delivery time slots to choose from.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Delivery options</div><div class="fd">Standard (free above LKR 25,000), Express at LKR 950 for next working day, or collect in store within two hours.</div><div class="pl ok">Built</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Gift orders</div><div class="fd">Mark an order as a gift and add a message shown to the recipient.</div><div class="pl ok">Built</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Payment methods</div>
+      <div class="sd">All four appear at checkout and can be selected. None can take a payment until the gateway is connected in the next phase.</div>
+      <div>
+        <div class="row"><div class="fn">Card</div><div class="fd">Visa, Mastercard and Amex.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Installments</div><div class="fd">0% plans over 3, 6, 12 or 24 months with the major local banks.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Cash on delivery</div><div class="fd">Inspect before paying; available islandwide except two northern and eastern districts.</div><div class="pl dz">Designed only</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Bank transfer</div><div class="fd">Direct deposit, confirmed by staff in the dashboard.</div><div class="pl dz">Designed only</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Orders</div>
+      <div class="sd">What a customer sees after buying.</div>
+      <div>
+        <div class="row"><div class="fn">Confirmation</div><div class="fd">Order number, summary and what happens next.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Order history</div><div class="fd">Past orders with status filters and a search box, each expandable to full detail.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Order detail</div><div class="fd">Items, totals, delivery address and a status timeline for a single order.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Tracking</div><div class="fd">Courier name and tracking number shown; live carrier lookup arrives with the courier integration.</div><div class="pl dz">Designed only</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Invoices</div><div class="fd">An invoice button is in place on the order pages, ready for the document generator.</div><div class="pl dz">Designed only</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft"><span>NexZon Electronics · Feature Inventory</span><span>Page 3 of 6</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

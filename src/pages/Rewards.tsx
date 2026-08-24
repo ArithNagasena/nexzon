@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Crown, Gift, ArrowUpRight, ArrowDownRight, Ticket, Users, Star, Check } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { customer, pointsLedger, rewardTiers } from "@/data/account";
 import { fmtLKR } from "@/data/catalog";

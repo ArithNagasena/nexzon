@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #2463EB; } a:hover { color: #173FAB; }
+    .pg { width: 794px; height: 1123px; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #151B28; display: flex; flex-direction: column; overflow: hidden; }
+    .hd { display: flex; align-items: baseline; justify-content: space-between; padding: 40px 56px 16px; border-bottom: 2px solid #151B28; }
+    .wm { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; }
+    .kick { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #58687E; }
+    .bd { flex-grow: 1; padding: 26px 56px 0; display: flex; flex-direction: column; gap: 22px; }
+    .sec { display: flex; flex-direction: column; gap: 10px; }
+    .st { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.015em; }
+    .sd { font-size: 12.5px; line-height: 1.55; color: #58687E; margin-top: -4px; }
+    .row { display: grid; grid-template-columns: 168px minmax(0, 1fr) 104px; gap: 16px; align-items: center; padding: 9px 0; border-bottom: 1px solid #EEF2F6; }
+    .fn { font-size: 13.5px; font-weight: 600; }
+    .fd { font-size: 12.5px; line-height: 1.5; color: #58687E; }
+    .pl { text-align: center; border-radius: 999px; font-size: 10.5px; font-weight: 700; padding: 4px 0; }
+    .ok { border: 1px solid rgba(29,135,85,0.25); background: rgba(29,135,85,0.10); color: #1D8755; }
+    .dz { border: 1px solid rgba(191,81,8,0.25); background: rgba(191,81,8,0.10); color: #BF5108; }
+    .np { border: 1px solid #DEE5ED; background: #EEF2F6; color: #58687E; }
+    .ft { padding: 0 56px 26px; display: flex; justify-content: space-between; font-size: 10.5px; color: #8A97A8; }
+    .resp { border: 1px solid #DEE5ED; border-radius: 14px; background: #F8FAFC; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; }
+    .rrow { display: grid; grid-template-columns: 132px repeat(3, minmax(0, 1fr)); gap: 12px; font-size: 12px; align-items: center; }
+  </style>
+</helmet>
+
+<div class="pg">
+  <div class="hd">
+    <div class="wm">Ne<span style="color: #2463EB;">x</span>zon</div>
+    <div class="kick">Customer web application</div>
+  </div>
+
+  <div class="bd">
+
+    <div class="sec">
+      <div class="st">After the sale</div>
+      <div class="sd">Each of these has its own case history and its own set of stages a customer can follow.</div>
+      <div>
+        <div class="row"><div class="fn">Returns</div><div class="fd">Request a return against a delivered order with a reason, then follow it through requested, approved, collected and refunded.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Warranty claims</div><div class="fd">Raise a repair claim and follow it through submitted, collected, in repair and returned.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Trade-in</div><div class="fd">Pick a model and condition for an instant valuation. The calculator genuinely works; submitting the device needs the back end.</div><div class="pl ok">Built</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Guaranteed buyback</div><div class="fd">Calculator showing what NexZon will pay to take a device back at 12, 24 or 36 months, and the real cost of ownership.</div><div class="pl ok">Built</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Keeping customers coming back</div>
+      <div>
+        <div class="row"><div class="fn">Wishlist</div><div class="fd">A saved-products page with sorting. The heart button on product cards is not yet connected to it.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Price alerts</div><div class="fd">Set a target price on a product and be told when it drops. Alerts can be genuinely added and removed.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Notifications</div><div class="fd">One feed covering order updates, price drops, back-in-stock notices, rewards and account activity.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Loyalty points</div><div class="fd">Four tiers from Bronze to Platinum, with points balance, earn history and voucher redemption.</div><div class="pl dz">Designed only</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Pre-orders</div><div class="fd">Upcoming launches with deposit amount, release date and launch bundle. Placing a reservation needs the back end.</div><div class="pl dz">Designed only</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Help and support</div>
+      <div>
+        <div class="row"><div class="fn">Help centre</div><div class="fd">Contact channels, self-service topics, store address and opening hours, including a direct WhatsApp link.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">FAQ</div><div class="fd">Expandable answers on delivery, payment, warranty, returns and pre-orders, with a shorter set on the home page.</div><div class="pl ok">Built</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Chat assistant</div><div class="fd">A chat window opens on every page and accepts questions. It returns a holding reply until the assistant service is connected.</div><div class="pl dz">Designed only</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">On phones and tablets</div>
+      <div class="sd">The same pages reflow at four widths. Every feature stays available at every size — nothing is hidden or cut on a small screen.</div>
+      <div class="resp">
+        <div class="rrow" style="font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #8A97A8; padding-bottom: 8px; border-bottom: 1px solid #DEE5ED;">
+          <div>Element</div><div>Phone · under 640px</div><div>Tablet · 640 to 1023px</div><div>Desktop · 1024px and up</div>
+        </div>
+        <div class="rrow"><div style="font-weight: 600;">Navigation</div><div style="color: #58687E;">Hamburger, full-screen menu</div><div style="color: #58687E;">Hamburger, full-screen menu</div><div style="color: #58687E;">Full bar with mega menu</div></div>
+        <div class="rrow"><div style="font-weight: 600;">Filters</div><div style="color: #58687E;">Slide-over panel</div><div style="color: #58687E;">Slide-over panel</div><div style="color: #58687E;">Permanent sidebar</div></div>
+        <div class="rrow"><div style="font-weight: 600;">Product grid</div><div style="color: #58687E;">2 columns</div><div style="color: #58687E;">3 columns</div><div style="color: #58687E;">4 columns</div></div>
+        <div class="rrow"><div style="font-weight: 600;">Comparison</div><div style="color: #58687E;">Scrolls sideways, labels pinned</div><div style="color: #58687E;">Scrolls sideways, labels pinned</div><div style="color: #58687E;">Full table</div></div>
+        <div class="rrow"><div style="font-weight: 600;">Checkout</div><div style="color: #58687E;">Single column</div><div style="color: #58687E;">Single column</div><div style="color: #58687E;">Two columns, summary pinned</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft"><span>NexZon Electronics · Feature Inventory</span><span>Page 4 of 6</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

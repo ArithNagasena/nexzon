@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, Loader2, ShieldCheck } from "lucide-react";
-import AuthLayout from "@/components/cellexa/AuthLayout";
+import AuthLayout from "@/components/NexZon/AuthLayout";
 import { Button } from "@/components/ui/button";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 

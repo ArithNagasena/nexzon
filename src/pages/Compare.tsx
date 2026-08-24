@@ -12,8 +12,8 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -149,7 +149,7 @@ const Compare = () => {
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 <Scale className="h-3.5 w-3.5" /> Side by side
               </span>
-              <h1 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">Compare phones</h1>
+              <h1 className="mt-2 font-display text-2xl font-extrabold sm:text-3xl lg:text-4xl">Compare phones</h1>
               <p className="mt-2 max-w-xl text-sm text-muted-foreground">
                 Line up to {MAX_SLOTS} handsets on the specs that decide it. The best figure in each row is
                 marked.

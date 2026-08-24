@@ -17,10 +17,10 @@ import {
   Layers,
   Package,
 } from "lucide-react";
-import PromoBar from "@/components/cellexa/PromoBar";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import ProductCard, { type Product } from "@/components/cellexa/ProductCard";
+import PromoBar from "@/components/NexZon/PromoBar";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
+import ProductCard, { type Product } from "@/components/NexZon/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";

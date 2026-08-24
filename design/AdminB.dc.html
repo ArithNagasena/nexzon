@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #2463EB; } a:hover { color: #173FAB; }
+    .pg { width: 794px; height: 1123px; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #151B28; display: flex; flex-direction: column; overflow: hidden; }
+    .hd { display: flex; align-items: baseline; justify-content: space-between; padding: 40px 56px 16px; border-bottom: 2px solid #151B28; }
+    .wm { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; }
+    .kick { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #58687E; }
+    .bd { flex-grow: 1; padding: 26px 56px 0; display: flex; flex-direction: column; gap: 22px; }
+    .sec { display: flex; flex-direction: column; gap: 10px; }
+    .st { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.015em; }
+    .sd { font-size: 12.5px; line-height: 1.55; color: #58687E; margin-top: -4px; }
+    .row { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid #EEF2F6; }
+    .fn { font-size: 13.5px; font-weight: 600; }
+    .fd { font-size: 12.5px; line-height: 1.5; color: #58687E; }
+    .ft { padding: 0 56px 26px; display: flex; justify-content: space-between; font-size: 10.5px; color: #8A97A8; }
+    .nx { border-top: 2px solid #151B28; padding-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+    .nxr { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+    .nxn { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 13px; font-weight: 800; color: #2463EB; }
+  </style>
+</helmet>
+
+<div class="pg">
+  <div class="hd">
+    <div class="wm">Ne<span style="color: #2463EB;">x</span>zon</div>
+    <div class="kick">Admin dashboard</div>
+  </div>
+
+  <div class="bd">
+
+    <div class="sec">
+      <div class="st">Customers and growth</div>
+      <div>
+        <div class="row"><div class="fn">Customers</div><div class="fd">Search by name, email, phone or NIC; filter by loyalty tier and district; sorted by lifetime spend, with accounts that need watching clearly flagged.</div></div>
+        <div class="row"><div class="fn">Customer profile</div><div class="fd">Everything about one person on one screen for a phone call — orders, addresses, points balance and history, reviews written, service cases, pre-order reservations and registered devices — plus manual points adjustments with a reason.</div></div>
+        <div class="row"><div class="fn">Pre-orders</div><div class="fd">Launch campaigns showing units reserved, deposits held and days to release, with a form to open a new launch (device, price, deposit, release date, allocation limit and bundle).</div></div>
+        <div class="row"><div class="fn">Campaign queue</div><div class="fd">The reservation list for one launch, held strictly in the order taken, with the tools to allocate arriving units down the queue, turn a reservation into an order, or refund a deposit if the launch slips.</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Promotions</div><div class="fd">Discount rules with scope, schedule, usage and revenue; coupon codes with per-customer and total limits; and the home page flash-deal slots with their unit caps.</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Service and moderation</div>
+      <div>
+        <div class="row"><div class="fn">Reviews</div><div class="fd">Moderation queue with reported items first, marking clearly whether the reviewer actually bought the product. Each opens in a panel to read the full text, add a shop reply, then publish or reject.</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Service desk</div><div class="fd">Returns, warranty claims and trade-ins in one place, each with its own stages, each case opening to inspection and repair notes. Warranty claims open longer than ten days are marked in red.</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Store setup</div>
+      <div>
+        <div class="row"><div class="fn">Content</div><div class="fd">Reorder and show or hide the twelve home page sections, schedule banners and top-bar messages, and manage FAQ answers and customer testimonials.</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Settings</div><div class="fd">Shop details and VAT registration; delivery rates and transit times for all ten districts, free-delivery threshold and time slots; which payment methods are switched on; loyalty tiers and points rules; email and SMS message templates; and staff accounts with a role permission grid.</div></div>
+      </div>
+    </div>
+
+    <div class="nx">
+      <div class="st" style="font-size: 17px;">What the next phase adds</div>
+      <div style="display: flex; flex-direction: column; gap: 9px;">
+        <div class="nxr"><div class="nxn">1</div><div class="fd">The server and database, so accounts, baskets, orders and stock are stored and shared between customers and staff.</div></div>
+        <div class="nxr"><div class="nxn">2</div><div class="fd">Payment gateway connection, turning the four checkout methods into real transactions.</div></div>
+        <div class="nxr"><div class="nxn">3</div><div class="fd">Email and SMS delivery for order confirmations, dispatch notices and the sign-in code.</div></div>
+        <div class="nxr"><div class="nxn">4</div><div class="fd">Courier integration for live tracking, and invoice generation for the buttons already in place.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft"><span>NexZon Electronics · Feature Inventory</span><span>Page 6 of 6</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

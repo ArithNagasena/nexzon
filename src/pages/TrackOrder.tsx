@@ -13,8 +13,8 @@ import {
   Clock,
   MessageSquare,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
 import { Button } from "@/components/ui/button";
 import { addresses, orders, statusMeta } from "@/data/account";
 import { fmtLKR, getProduct } from "@/data/catalog";
@@ -67,7 +67,7 @@ const TrackOrder = () => {
         {/* Search */}
         <section className="container-page pt-6">
           <div className="overflow-hidden rounded-3xl bg-gradient-deep p-8 text-primary-foreground sm:p-12">
-            <h1 className="font-display text-3xl font-extrabold sm:text-4xl">Where's my order?</h1>
+            <h1 className="font-display text-2xl font-extrabold sm:text-3xl lg:text-4xl">Where's my order?</h1>
             <p className="mt-3 max-w-lg text-sm text-white/85">
               Enter your order number — it's in your confirmation email and starts with NX. No sign-in needed.
             </p>

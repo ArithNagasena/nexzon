@@ -97,6 +97,11 @@
 @layer components {
   .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
 
+  /* Standard vertical rhythm for a homepage section. Phones get noticeably
+     tighter bands — a dozen sections at desktop spacing turns the page into
+     mostly empty scrolling on a small screen. */
+  .section-y { @apply py-10 sm:py-14 lg:py-20; }
+
   .card-product {
     @apply relative bg-card rounded-2xl border border-border/60 overflow-hidden;
     box-shadow: var(--shadow-soft);

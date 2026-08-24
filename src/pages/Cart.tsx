@@ -16,9 +16,9 @@ import {
   ArrowRight,
   Wallet,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import ProductCard from "@/components/cellexa/ProductCard";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
+import ProductCard from "@/components/NexZon/ProductCard";
 import { Button } from "@/components/ui/button";
 import { allProducts, fmtLKR, getProduct, type CatalogItem } from "@/data/catalog";
 import { cn } from "@/lib/utils";
@@ -113,7 +113,7 @@ const CartPage = () => {
         </div>
 
         <section className="container-page pt-6">
-          <h1 className="font-display text-3xl font-extrabold sm:text-4xl">
+          <h1 className="font-display text-2xl font-extrabold sm:text-3xl lg:text-4xl">
             Your cart{" "}
             <span className="text-lg font-semibold text-muted-foreground">
               ({items.length} {items.length === 1 ? "item" : "items"})
@@ -122,8 +122,8 @@ const CartPage = () => {
         </section>
 
         {items.length === 0 ? (
-          <section className="container-page py-16">
-            <div className="mx-auto max-w-md rounded-2xl border border-dashed border-border bg-card p-10 text-center">
+          <section className="container-page py-10 sm:py-16">
+            <div className="mx-auto max-w-md rounded-2xl border border-dashed border-border bg-card p-6 text-center sm:p-10">
               <ShoppingBag className="mx-auto h-12 w-12 text-muted-foreground/60" />
               <h2 className="mt-4 font-display text-xl font-bold">Your cart is empty</h2>
               <p className="mt-2 text-sm text-muted-foreground">

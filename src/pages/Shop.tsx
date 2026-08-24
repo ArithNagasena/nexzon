@@ -13,10 +13,10 @@ import {
   Truck,
   BadgeCheck,
 } from "lucide-react";
-import PromoBar from "@/components/cellexa/PromoBar";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import ProductCard, { type Product } from "@/components/cellexa/ProductCard";
+import PromoBar from "@/components/NexZon/PromoBar";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
+import ProductCard, { type Product } from "@/components/NexZon/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
@@ -527,7 +527,7 @@ const Shop = () => {
             <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-primary">All Departments</span>
-                <h1 className="mt-1 font-display text-3xl font-extrabold sm:text-4xl">Shop All Products</h1>
+                <h1 className="mt-1 font-display text-2xl font-extrabold sm:text-3xl lg:text-4xl">Shop All Products</h1>
                 <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
                   Browse the latest smartphones, tablets, audio gear, gaming and accessories — all genuine,
                   warranty-backed, and delivered islandwide.

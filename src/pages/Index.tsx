@@ -1,17 +1,17 @@
-import Header from "@/components/cellexa/Header";
-import Hero from "@/components/cellexa/Hero";
-import PhoneSpotlight from "@/components/cellexa/PhoneSpotlight";
-import Categories from "@/components/cellexa/Categories";
-import FlashDeals from "@/components/cellexa/FlashDeals";
-import Brands from "@/components/cellexa/Brands";
-import NewArrivals from "@/components/cellexa/NewArrivals";
-import PromoBanners from "@/components/cellexa/PromoBanners";
-import BestSellers from "@/components/cellexa/BestSellers";
-import ValueBento from "@/components/cellexa/ValueBento";
-import Testimonials from "@/components/cellexa/Testimonials";
-import FAQ from "@/components/cellexa/FAQ";
-import Newsletter from "@/components/cellexa/Newsletter";
-import Footer from "@/components/cellexa/Footer";
+import Header from "@/components/NexZon/Header";
+import Hero from "@/components/NexZon/Hero";
+import PhoneSpotlight from "@/components/NexZon/PhoneSpotlight";
+import Categories from "@/components/NexZon/Categories";
+import FlashDeals from "@/components/NexZon/FlashDeals";
+import Brands from "@/components/NexZon/Brands";
+import NewArrivals from "@/components/NexZon/NewArrivals";
+import PromoBanners from "@/components/NexZon/PromoBanners";
+import BestSellers from "@/components/NexZon/BestSellers";
+import ValueBento from "@/components/NexZon/ValueBento";
+import Testimonials from "@/components/NexZon/Testimonials";
+import FAQ from "@/components/NexZon/FAQ";
+import Newsletter from "@/components/NexZon/Newsletter";
+import Footer from "@/components/NexZon/Footer";
 import { useEffect } from "react";
 
 const Index = () => {

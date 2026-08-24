@@ -18,8 +18,8 @@ import {
   Repeat,
   Store,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -122,7 +122,7 @@ const Help = () => {
                   </span>
                   Team online now
                 </span>
-                <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
+                <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
                   Talk to a real person.
                 </h1>
                 <p className="mt-4 max-w-lg text-sm text-white/85 sm:text-base">
@@ -213,7 +213,7 @@ const Help = () => {
                     <div className="grid gap-4 [&>*]:min-w-0 sm:grid-cols-2">
                       <div className="space-y-1.5">
                         <Label htmlFor="c-name" className="text-xs font-semibold">Your name</Label>
-                        <Input id="c-name" required placeholder="Nuwan Jayasuriya" className="h-11 rounded-xl" />
+                        <Input id="c-name" required placeholder="Arith Nagasena" className="h-11 rounded-xl" />
                       </div>
                       <div className="space-y-1.5">
                         <Label htmlFor="c-email" className="text-xs font-semibold">Email</Label>

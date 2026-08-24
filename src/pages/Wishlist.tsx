@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Heart, ShoppingCart, Trash2, Bell, Share2, Star, TrendingDown } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { allProducts, fmtLKR, getProduct, type CatalogItem } from "@/data/catalog";
 import { cn } from "@/lib/utils";

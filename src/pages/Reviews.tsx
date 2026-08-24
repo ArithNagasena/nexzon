@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Star, ThumbsUp, Pencil, Trash2, PenLine, Gift, Check } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { myReviews, pendingReviews } from "@/data/account";
 import { getProduct } from "@/data/catalog";

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react";
-import AuthLayout from "@/components/cellexa/AuthLayout";
+import AuthLayout from "@/components/NexZon/AuthLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -54,7 +54,7 @@ const Register = () => {
             <Input
               id="name"
               autoComplete="name"
-              placeholder="Nuwan Jayasuriya"
+              placeholder="Arith Nagasena"
               className="h-11 rounded-xl pl-10 text-sm"
             />
           </div>

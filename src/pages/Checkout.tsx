@@ -17,8 +17,8 @@ import {
   ArrowRight,
   Pencil,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -111,7 +111,7 @@ const CheckoutPage = () => {
 
         <section className="container-page pt-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h1 className="font-display text-3xl font-extrabold sm:text-4xl">Checkout</h1>
+            <h1 className="font-display text-2xl font-extrabold sm:text-3xl lg:text-4xl">Checkout</h1>
             <p className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
               <Lock className="h-3.5 w-3.5 text-success" /> Secure encrypted checkout
             </p>
@@ -127,7 +127,7 @@ const CheckoutPage = () => {
                   <div className="grid gap-4 [&>*]:min-w-0 sm:grid-cols-2">
                     <div className="space-y-1.5">
                       <Label htmlFor="name" className="text-xs font-semibold">Full name</Label>
-                      <Input id="name" required placeholder="Nuwan Jayasuriya" className="h-11 rounded-xl" />
+                      <Input id="name" required placeholder="Arith Nagasena" className="h-11 rounded-xl" />
                     </div>
                     <div className="space-y-1.5">
                       <Label htmlFor="phone" className="text-xs font-semibold">Mobile number</Label>

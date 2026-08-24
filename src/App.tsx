@@ -38,7 +38,30 @@ import PreOrders from "./pages/PreOrders.tsx";
 import ReturnsPolicy from "./pages/ReturnsPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
-import ChatbotWidget from "./components/cellexa/ChatbotWidget.tsx";
+import ChatbotWidget from "./components/NexZon/ChatbotWidget.tsx";
+import StorefrontOnly from "./components/StorefrontOnly.tsx";
+
+// Admin console. Everything under /admin renders inside AdminLayout, behind the
+// staff route guard, with no storefront header, footer, promo bar or chatbot.
+import AdminLayout from "./components/admin/AdminLayout.tsx";
+import RequireAdmin from "./components/admin/RequireAdmin.tsx";
+import AdminLogin from "./pages/admin/Login.tsx";
+import AdminDashboard from "./pages/admin/Dashboard.tsx";
+import AdminProducts from "./pages/admin/Products.tsx";
+import AdminProductForm from "./pages/admin/ProductForm.tsx";
+import AdminInventory from "./pages/admin/Inventory.tsx";
+import AdminOrders from "./pages/admin/Orders.tsx";
+import AdminOrderDetail from "./pages/admin/OrderDetail.tsx";
+import AdminFulfilment from "./pages/admin/Fulfilment.tsx";
+import AdminCustomers from "./pages/admin/Customers.tsx";
+import AdminCustomerDetail from "./pages/admin/CustomerDetail.tsx";
+import AdminPreOrders from "./pages/admin/PreOrders.tsx";
+import AdminPreOrderDetail from "./pages/admin/PreOrderDetail.tsx";
+import AdminPromotions from "./pages/admin/Promotions.tsx";
+import AdminReviews from "./pages/admin/Reviews.tsx";
+import AdminService from "./pages/admin/Service.tsx";
+import AdminContent from "./pages/admin/Content.tsx";
+import AdminSettings from "./pages/admin/Settings.tsx";
 
 const queryClient = new QueryClient();
 
@@ -83,10 +106,43 @@ const App = () => (
           <Route path="/buyback" element={<Buyback />} />
           <Route path="/pre-orders" element={<PreOrders />} />
           <Route path="/returns-policy" element={<ReturnsPolicy />} />
+
+          {/* Admin console — 17 pages across 18 routes. Login sits outside the
+              layout so a signed-out staff member has somewhere to land. */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={
+              <RequireAdmin>
+                <AdminLayout />
+              </RequireAdmin>
+            }
+          >
+            <Route index element={<AdminDashboard />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="products/new" element={<AdminProductForm />} />
+            <Route path="products/:id/edit" element={<AdminProductForm />} />
+            <Route path="inventory" element={<AdminInventory />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="orders/:id" element={<AdminOrderDetail />} />
+            <Route path="fulfilment" element={<AdminFulfilment />} />
+            <Route path="customers" element={<AdminCustomers />} />
+            <Route path="customers/:id" element={<AdminCustomerDetail />} />
+            <Route path="pre-orders" element={<AdminPreOrders />} />
+            <Route path="pre-orders/:id" element={<AdminPreOrderDetail />} />
+            <Route path="promotions" element={<AdminPromotions />} />
+            <Route path="reviews" element={<AdminReviews />} />
+            <Route path="service" element={<AdminService />} />
+            <Route path="content" element={<AdminContent />} />
+            <Route path="settings" element={<AdminSettings />} />
+          </Route>
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <ChatbotWidget />
+        <StorefrontOnly>
+          <ChatbotWidget />
+        </StorefrontOnly>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -17,9 +17,9 @@ import {
   Trophy,
   X,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import ProductCard, { type Product } from "@/components/cellexa/ProductCard";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
+import ProductCard, { type Product } from "@/components/NexZon/ProductCard";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -195,19 +195,19 @@ const Category = () => {
         {/* Split hero */}
         <section className="container-page pt-5">
           <div className="overflow-hidden rounded-3xl bg-gradient-deep">
-            <div className="grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-2">
+            <div className="grid items-center gap-6 p-6 sm:gap-8 sm:p-10 lg:grid-cols-2 lg:p-12">
               <div className="text-primary-foreground">
                 <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur">
                   <Trophy className="h-3.5 w-3.5" /> {catalog.length} models in stock
                 </span>
-                <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
+                <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
                   {categoryName}, chosen properly.
                 </h1>
-                <p className="mt-4 max-w-md text-sm text-white/85 sm:text-base">
+                <p className="mt-4 hidden max-w-md text-sm text-white/85 sm:block sm:text-base">
                   Filter by what you actually care about — camera, battery, gaming or price — and compare
                   the specs side by side before you commit.
                 </p>
-                <dl className="mt-6 flex flex-wrap gap-6">
+                <dl className="mt-5 flex flex-wrap gap-5 sm:mt-6 sm:gap-6">
                   {[
                     { k: "From", v: fmtLKR(Math.min(...catalog.map((c) => c.price))) },
                     { k: "Brands", v: String(brandList.length) },

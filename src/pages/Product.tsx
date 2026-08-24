@@ -16,10 +16,10 @@ import {
   GitCompareArrows,
   BadgeCheck,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
-import ProductCard from "@/components/cellexa/ProductCard";
-import BuybackPanel from "@/components/cellexa/BuybackPanel";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
+import ProductCard from "@/components/NexZon/ProductCard";
+import BuybackPanel from "@/components/NexZon/BuybackPanel";
 import { Button } from "@/components/ui/button";
 import { allProducts, buildSpecs, fmtLKR, getProduct } from "@/data/catalog";
 import { cn } from "@/lib/utils";
@@ -36,7 +36,7 @@ const ratingBreakdown = [
 ];
 
 const customerReviews = [
-  { name: "Nuwan Jayasuriya", when: "2 weeks ago", rating: 5, title: "Exactly as described", body: "Sealed box, Sri Lanka warranty card inside, and it arrived in Kandy two days after I ordered. The installment plan took two minutes to set up at checkout." },
+  { name: "Arith Nagasena", when: "2 weeks ago", rating: 5, title: "Exactly as described", body: "Sealed box, Sri Lanka warranty card inside, and it arrived in Kandy two days after I ordered. The installment plan took two minutes to set up at checkout." },
   { name: "Fathima Rizwan", when: "1 month ago", rating: 5, title: "Camera is the reason to buy", body: "Low-light shots are noticeably better than my old phone. Battery comfortably lasts a full clinic day with plenty to spare." },
   { name: "Mohamed Aslam", when: "2 months ago", rating: 4, title: "Great, but heavy", body: "No complaints about performance. It is on the heavier side though — you notice it after a long call. Delivery was a day later than quoted but they phoned ahead." },
 ];
@@ -118,11 +118,11 @@ const ProductPage = () => {
         <section className="container-page pt-6">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-10">
             <div>
-              <div className="isolate overflow-hidden rounded-3xl bg-gradient-to-br from-white via-white to-secondary p-8">
+              <div className="isolate overflow-hidden rounded-3xl bg-gradient-to-br from-white via-white to-secondary p-5 sm:p-8">
                 <img
                   src={gallery[activeImage]}
                   alt={p.name}
-                  className="mx-auto h-72 w-auto object-contain mix-blend-multiply sm:h-[26rem]"
+                  className="mx-auto h-60 w-auto object-contain mix-blend-multiply sm:h-80 lg:h-[26rem]"
                 />
               </div>
 
@@ -145,6 +145,10 @@ const ProductPage = () => {
                   ))}
                 </div>
               )}
+
+              <div className="mt-6">
+                <BuybackPanel product={p} />
+              </div>
             </div>
 
             {/* Buy rail */}
@@ -276,10 +280,6 @@ const ProductPage = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="mt-4">
-                <BuybackPanel product={p} />
               </div>
             </aside>
           </div>

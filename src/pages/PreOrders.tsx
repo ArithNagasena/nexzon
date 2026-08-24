@@ -12,8 +12,8 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
-import Header from "@/components/cellexa/Header";
-import Footer from "@/components/cellexa/Footer";
+import Header from "@/components/NexZon/Header";
+import Footer from "@/components/NexZon/Footer";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -293,7 +293,7 @@ const PreOrders = () => {
                 <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur">
                   <Sparkles className="h-3.5 w-3.5" /> {openCount} launches open now
                 </span>
-                <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
+                <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
                   Reserve the next generation.
                 </h1>
                 <p className="mt-4 max-w-md text-sm text-white/85 sm:text-base">

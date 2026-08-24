@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Undo2, Plus, Clock, CheckCircle2, XCircle, Truck, Banknote, Info } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { orders } from "@/data/account";
 import { fmtLKR, getProduct } from "@/data/catalog";

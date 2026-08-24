@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "1 · Overview", "x": 0, "y": 0, "w": 794, "h": 1123, "print": "fixed" },
+    { "file": "CustomerA.dc.html", "title": "2 · Account & finding products", "x": 874, "y": 0, "w": 794, "h": 1123, "print": "fixed" },
+    { "file": "CustomerB.dc.html", "title": "3 · Checkout, payment & orders", "x": 1748, "y": 0, "w": 794, "h": 1123, "print": "fixed" },
+    { "file": "CustomerC.dc.html", "title": "4 · After-sales, retention & mobile", "x": 0, "y": 1223, "w": 794, "h": 1123, "print": "fixed" },
+    { "file": "AdminA.dc.html", "title": "5 · Admin — roles, catalogue & orders", "x": 874, "y": 1223, "w": 794, "h": 1123, "print": "fixed" },
+    { "file": "AdminB.dc.html", "title": "6 · Admin — customers, service & setup", "x": 1748, "y": 1223, "w": 794, "h": 1123, "print": "fixed" }
+  ],
+  "launch": { "view": "canvas" }
+}

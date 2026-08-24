@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, Package, ArrowRight, Download, Repeat, Truck } from "lucide-react";
-import AccountLayout from "@/components/cellexa/AccountLayout";
+import AccountLayout from "@/components/NexZon/AccountLayout";
 import { Button } from "@/components/ui/button";
 import { customer, orders, statusMeta, type OrderStatus } from "@/data/account";
 import { fmtLKR, getProduct } from "@/data/catalog";

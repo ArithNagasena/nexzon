@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #2463EB; } a:hover { color: #173FAB; }
+    .pg { width: 794px; height: 1123px; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #151B28; display: flex; flex-direction: column; overflow: hidden; }
+    .hd { display: flex; align-items: baseline; justify-content: space-between; padding: 40px 56px 16px; border-bottom: 2px solid #151B28; }
+    .wm { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; }
+    .kick { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #58687E; }
+    .bd { flex-grow: 1; padding: 26px 56px 0; display: flex; flex-direction: column; gap: 24px; }
+    .sec { display: flex; flex-direction: column; gap: 10px; }
+    .st { font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.015em; }
+    .sd { font-size: 12.5px; line-height: 1.55; color: #58687E; margin-top: -4px; }
+    .row { display: grid; grid-template-columns: 168px minmax(0, 1fr) 104px; gap: 16px; align-items: center; padding: 9px 0; border-bottom: 1px solid #EEF2F6; }
+    .fn { font-size: 13.5px; font-weight: 600; }
+    .fd { font-size: 12.5px; line-height: 1.5; color: #58687E; }
+    .pl { text-align: center; border-radius: 999px; font-size: 10.5px; font-weight: 700; padding: 4px 0; }
+    .ok { border: 1px solid rgba(29,135,85,0.25); background: rgba(29,135,85,0.10); color: #1D8755; }
+    .dz { border: 1px solid rgba(191,81,8,0.25); background: rgba(191,81,8,0.10); color: #BF5108; }
+    .np { border: 1px solid #DEE5ED; background: #EEF2F6; color: #58687E; }
+    .ft { padding: 0 56px 26px; display: flex; justify-content: space-between; font-size: 10.5px; color: #8A97A8; }
+  </style>
+</helmet>
+
+<div class="pg">
+  <div class="hd">
+    <div class="wm">Ne<span style="color: #2463EB;">x</span>zon</div>
+    <div class="kick">Customer web application</div>
+  </div>
+
+  <div class="bd">
+
+    <div class="sec">
+      <div class="st">Account</div>
+      <div class="sd">Sign-up, sign-in and personal details.</div>
+      <div>
+        <div class="row"><div class="fn">Registration</div><div class="fd">Create an account with name, email, phone and password, with live password-strength feedback.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Verification</div><div class="fd">Six-digit code screen with a 30-second resend timer.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Login</div><div class="fd">Email and password with show/hide, leading into the verification step.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Password reset</div><div class="fd">Request a reset link by email.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Profile</div><div class="fd">Personal details, contact numbers and NIC on one page.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Saved addresses</div><div class="fd">Home and office addresses with a default marker, reused at checkout.</div><div class="pl dz">Designed only</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Guest checkout</div><div class="fd">No sign-in gate exists anywhere — every page is open to a visitor, so checkout is already effectively guest-first.</div><div class="pl np">Not present</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Finding products</div>
+      <div class="sd">How a shopper gets from the home page to the right product.</div>
+      <div>
+        <div class="row"><div class="fn">Catalogue</div><div class="fd">23 real products across smartphones, tablets, accessories, audio and gaming, with LKR pricing.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Categories</div><div class="fd">Five category pages, each with its own hero, use-case filters and brand list.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Brand pages</div><div class="fd">A landing page per brand with its own products.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Search</div><div class="fd">Header search with a category scope selector; matches on product name and brand.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Filters</div><div class="fd">Category, brand, price range slider, star rating, in stock, pre-order, on promotion and warranty.</div><div class="pl ok">Built</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Sorting</div><div class="fd">Price low to high, price high to low, customer rating, newest, and battery life on category pages.</div><div class="pl ok">Built</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="st">Choosing between products</div>
+      <div class="sd">What helps a shopper decide once they have a shortlist.</div>
+      <div>
+        <div class="row"><div class="fn">Product page</div><div class="fd">Image gallery, colour swatches, storage options, price and saving, in three tabs.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Specifications</div><div class="fd">Full spec table per product — screen, chip, memory, camera, battery and connectivity.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Comparison</div><div class="fd">Up to four handsets side by side; at least two required. The best figure in each row is highlighted automatically.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Warranty and box</div><div class="fd">Warranty statement and full in-the-box contents shown on every product.</div><div class="pl ok">Built</div></div>
+        <div class="row"><div class="fn">Reviews</div><div class="fd">Star ratings and written customer reviews display on the product page.</div><div class="pl dz">Designed only</div></div>
+        <div class="row"><div class="fn">Authenticity check</div><div class="fd">Enter an IMEI to confirm a device is official local stock. The number is genuinely validated before lookup.</div><div class="pl ok">Built</div></div>
+        <div class="row" style="border-bottom: none;"><div class="fn">Accessory matching</div><div class="fd">Suggesting cases and chargers that fit a chosen device.</div><div class="pl np">Not present</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft"><span>NexZon Electronics · Feature Inventory</span><span>Page 2 of 6</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
