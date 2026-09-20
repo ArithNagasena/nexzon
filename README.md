@@ -2,7 +2,7 @@
 
 # 🛒 Nexzon
 
-**A modern, fully responsive electronics storefront home page for Sri Lanka.**
+**A modern, fully responsive electronics e-commerce platform with an admin panel to manage both the admin side and the customer side.**
 
 Smartphones · Tablets · Accessories · Audio · Gaming · Peripherals
 
@@ -36,8 +36,8 @@ Smartphones · Tablets · Accessories · Audio · Gaming · Peripherals
 **1. Clone the repository**
 
 ```bash
-git clone <this-repository-url>
-cd <repository-name>
+git clone https://github.com/ArithNagasena/nexzon.git DreamToon-Studio
+cd DreamToon-Studio
 ```
 
 **2. Install dependencies**
